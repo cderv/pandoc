@@ -35,8 +35,12 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 
 }
 
-pandoc_home <- function(version) {
+pandoc_home <- function(version = NULL) {
   rappdirs::user_data_dir("r-pandoc", version = version)
+}
+
+pandoc_installed_version <- function() {
+  fs::path_file(fs::dir_ls(pandoc_home()))
 }
 
 pandoc_release_asset <- function(version) {
