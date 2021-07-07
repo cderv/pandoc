@@ -1,5 +1,5 @@
 
-pandoc_install <- function(version = "latest") {
+pandoc_install <- function(version = "latest", force = FALSE) {
   if (!rlang::is_installed("gh")) {
     rlang::abort("`gh` package is required to install Pandoc from Gitub")
   }
@@ -18,10 +18,17 @@ pandoc_install <- function(version = "latest") {
 
   install_dir <- pandoc_home(release_bundle$version)
 
+  if (fs::file_exists(install_dir) && !force) {
+    rlang::inform(c(
+      sprintf("Pandoc %s already installed.", release_bundle$version),
+      "Use 'force = TRUE' to overwrite."))
+    return(invisible())
+  }
+
   # install bundle
   switch(fs::path_ext(release_bundle$url),
     gz = utils::untar(tmp_file, exdir = install_dir, tar = "internal"),
-    zip  = utils::unzip(tmp_file, exdir = install_dir)
+    zip  = utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
   )
 
   install_dir
