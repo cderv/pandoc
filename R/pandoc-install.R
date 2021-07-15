@@ -1,3 +1,24 @@
+#' Install a pandoc binary for Github release page
+#'
+#' Binary releases of Pandoc are available on its release page. By default, this
+#' function will install the latest available version.
+#' `pandoc_install_nightly()` is a wrapper for `pandoc_install("nightly")`.
+#' `pandoc_installed_versions()` will list all installed version.
+#'
+#' Pandoc versions are installed in `pandoc_home()` with one folder per version.
+#' All installed version can be list with `pandoc_installed_versions()`
+#'
+#' Only one nightly version is available at a time as there should be no need to
+#' switch between them. The latest nightly will be installed over the current
+#' one if any. Installing nightly version is useful for example to test a bug
+#' against the very last available built version.
+#'
+#' @param version This can be either:
+#'   * `"latest"` for the latest release
+#'   * A version number (e.g `"2.11.4"`) for a specific version
+#'   * `"nightly"` for the last pandoc devel built
+#' @param force To set to `TRUE` to force a reinstallation
+#' @export
 pandoc_install <- function(version = "latest", force = FALSE) {
   gh_required()
 
@@ -38,6 +59,8 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 
 }
 
+#' @rdname pandoc_install
+#' @export
 pandoc_install_nightly <- function() {
   gh_required()
   os <- tolower(pandoc_os())
@@ -78,13 +101,19 @@ pandoc_nightly_version <- function() {
   gsub("^Built from ([^[:space:]]*)\\s*$", "\\1", x, perl = TRUE)
 }
 
+#' @rdname pandoc_install
+#' @export
+pandoc_installed_versions <- function() {
+  fs::path_file(fs::dir_ls(pandoc_home()))
+}
+
+#' Path version Pandoc binaries are installed
+#'
+#' @param version `NULL` (the default) will return the install folder for all version. If specified
+#' @export
 #' @importFrom rappdirs user_data_dir
 pandoc_home <- function(version = NULL) {
   rappdirs::user_data_dir("r-pandoc", version = version)
-}
-
-pandoc_installed_version <- function() {
-  fs::path_file(fs::dir_ls(pandoc_home()))
 }
 
 pandoc_available_versions <- function() {
