@@ -63,6 +63,13 @@ pandoc_release_asset <- function(version) {
     i <- 1L
     version <- releases[[1]]$tag_name
   } else {
+    # special know case
+    if (version == "2.2.3") {
+      rlang::abort(c(
+        "Pandoc 2.2.3 had a serious regression so binaries are no more available",
+        "Download 2.2.3.1 instead."))
+    }
+
     versions <- map_chr(releases, "[[", "tag_name")
     i <- which(version == versions)
     if (length(i) == 0) {
