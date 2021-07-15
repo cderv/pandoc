@@ -44,6 +44,14 @@ pandoc_installed_version <- function() {
   fs::path_file(fs::dir_ls(pandoc_home()))
 }
 
+pandoc_available_versions <- function() {
+  releases <- pandoc_releases()
+  versions <- map_chr(releases, "[[", "tag_name")
+  keep(versions, ~ numeric_version(.x) >= .min_supported_version)
+}
+
+.min_supported_version <- numeric_version("2.0.3")
+
 pandoc_release_asset <- function(version) {
   releases <- pandoc_releases()
   if (version == "latest") {
@@ -59,8 +67,8 @@ pandoc_release_asset <- function(version) {
 
   # we don't have common zip / tar.gz versions for all OS before
   version_num <- numeric_version(version)
-  if (version_num <= numeric_version("2.0.3")) {
-    rlang::abort("Only version above 2.0.3 can be installed with this package")
+  if (version_num <= .min_supported_version) {
+    rlang::abort(sprintf("Only version above %s can be installed with this package", .min_supported_version))
   }
 
   assets <- releases[[i]][["assets"]]
