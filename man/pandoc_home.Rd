@@ -2,13 +2,17 @@
 % Please edit documentation in R/pandoc-install.R
 \name{pandoc_home}
 \alias{pandoc_home}
-\title{Path version Pandoc binaries are installed}
+\title{Path where Pandoc binaries are installed}
 \usage{
 pandoc_home(version = NULL)
 }
 \arguments{
-\item{version}{\code{NULL} (the default) will return the install folder for all version. If specified}
+\item{version}{\code{NULL} (the default) will return the install folder for all
+versions. If a version is specified (e.g \code{"2.11.4"}), it will return the path for a specific version.}
+}
+\value{
+Path of install Pandoc binaries or specific version binary.
 }
 \description{
-Path version Pandoc binaries are installed
+Path where Pandoc binaries are installed
 }

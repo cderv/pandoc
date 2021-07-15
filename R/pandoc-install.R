@@ -107,9 +107,11 @@ pandoc_installed_versions <- function() {
   fs::path_file(fs::dir_ls(pandoc_home()))
 }
 
-#' Path version Pandoc binaries are installed
+#' Path where Pandoc binaries are installed
 #'
-#' @param version `NULL` (the default) will return the install folder for all version. If specified
+#' @param version `NULL` (the default) will return the install folder for all
+#'   versions. If a version is specified (e.g `"2.11.4"`), it will return the path for a specific version.
+#' @return Path of install Pandoc binaries or specific version binary.
 #' @export
 #' @importFrom rappdirs user_data_dir
 pandoc_home <- function(version = NULL) {
