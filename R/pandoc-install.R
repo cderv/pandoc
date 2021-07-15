@@ -109,7 +109,7 @@ pandoc_releases <- function() {
 }
 
 fetch_gh_releases <- function() {
-  message("Fetching Pandoc releases info from github...")
+  rlang::inform(c(i = "Fetching Pandoc releases info from github..."))
   gh::gh(
     "GET /repos/:owner/:repo/releases",
     owner = "jgm",
