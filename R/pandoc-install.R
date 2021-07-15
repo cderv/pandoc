@@ -57,7 +57,7 @@ pandoc_available_versions <- function() {
 
 .min_supported_version <- numeric_version("2.0.3")
 
-pandoc_release_asset <- function(version) {
+pandoc_release_asset <- function(version, os = pandoc_os(), arch = pandoc_arch(os)) {
   releases <- pandoc_releases()
   if (version == "latest") {
     i <- 1L
@@ -86,7 +86,7 @@ pandoc_release_asset <- function(version) {
   assets <- releases[[i]][["assets"]]
   names <- map_chr(assets, "[[", "name")
 
-  bundle_name <- pandoc_bundle_name(version)
+  bundle_name <- pandoc_bundle_name(version, os = os, arch = arch)
 
   i <- grep(bundle_name, names)
 
