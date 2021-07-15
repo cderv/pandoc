@@ -35,6 +35,7 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 
 }
 
+#' @importFrom rappdirs user_data_dir
 pandoc_home <- function(version = NULL) {
   rappdirs::user_data_dir("r-pandoc", version = version)
 }
