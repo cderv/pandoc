@@ -11,14 +11,15 @@ Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 URL: https://github.com/cderv/pandoc
 BugReports: https://github.com/cderv/pandoc/issues
+Imports: 
+    fs,
+    rappdirs,
+    rlang (>= 0.4.11.9000)
 Suggests: 
     testthat (>= 3.0.0)
+Remotes: 
+    r-lib/rlang
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Imports: 
-    fs,
-    rlang (>= 0.4.11.9000),
-    rappdirs
-Remotes: r-lib/rlang
