@@ -12,7 +12,7 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 
   # where to install
   install_dir <- pandoc_home(release_bundle$version)
-  if (fs::file_exists(install_dir) && !force) {
+  if (fs::dir_exists(install_dir) && !force) {
     rlang::inform(c(
       sprintf("Pandoc %s already installed.", release_bundle$version),
       "Use 'force = TRUE' to overwrite."))
