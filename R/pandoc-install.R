@@ -1,6 +1,8 @@
 pandoc_install <- function(version = "latest", force = FALSE) {
-  if (!rlang::is_installed("gh")) {
-    rlang::abort("`gh` package is required to install Pandoc from Gitub")
+  gh_required()
+
+  if (version == "nightly") {
+    return(pandoc_install_nightly())
   }
 
   # get bundle download url
@@ -34,6 +36,46 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 
   install_dir
 
+}
+
+pandoc_install_nightly <- function() {
+  gh_required()
+  os <- tolower(pandoc_os())
+  bundle_name <- sprintf("nightly-%s", os)
+  install_dir <- pandoc_home("nightly")
+  rlang::inform(c(i = "Retrieving last available nightly informations..."))
+  runs <- gh::gh('/repos/jgm/pandoc/actions/workflows/nightly.yml/runs',
+                 .params = list(status = "success"),
+                 .limit = 1L)
+  artifacts_url <- runs$workflow_runs[[1]][["artifacts_url"]]
+  head_sha <- runs$workflow_runs[[1]][["head_sha"]]
+  artifacts <- gh::gh(artifacts_url)
+  artifact_url <- keep(artifacts$artifacts, ~.x$name == bundle_name)[[1]][["archive_download_url"]]
+  if (fs::dir_exists(install_dir)) {
+    current_version <- pandoc_nightly_version()
+    if (head_sha == current_version) {
+      rlang::inform(c(v = paste0("Last version already installed: ", current_version)))
+      return(invisible(install_dir))
+    }
+    rlang::inform(c(i = paste0("Removing old Pandoc nightly version ", current_version)))
+    fs::dir_delete(install_dir)
+  }
+  rlang::inform(c(i = "Installing last available nightly..."))
+  tmp_file <- fs::file_temp(ext = ".zip")
+  gh::gh(artifact_url, .destfile = tmp_file)
+  utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
+  rlang::inform(c(v = paste0("Last Pandoc nightly installed: ", pandoc_nightly_version())))
+  invisible(install_dir)
+}
+
+pandoc_nightly_version <- function() {
+  nightly_home <- pandoc_home("nightly")
+  readme <- fs::path(nightly_home, "README.nightly.txt")
+  if (!fs::file_exists(readme)) {
+    return(NULL)
+  }
+  x <- readLines(readme, n = 1L, encoding = "UTF-8")
+  gsub("^Built from ([^[:space:]]*)\\s*$", "\\1", x, perl = TRUE)
 }
 
 #' @importFrom rappdirs user_data_dir
@@ -108,6 +150,7 @@ pandoc_releases <- function() {
 }
 
 fetch_gh_releases <- function() {
+  gh_required()
   rlang::inform(c(i = "Fetching Pandoc releases info from github..."))
   gh::gh(
     "GET /repos/:owner/:repo/releases",
@@ -146,4 +189,10 @@ pandoc_os <- function() {
 
 pandoc_browse_release <- function(version = "latest") {
   utils::browseURL(paste0("https://github.com/jgm/pandoc/releases/", version))
+}
+
+gh_required <- function() {
+  if (!rlang::is_installed("gh")) {
+    rlang::abort("`gh` package is required to install Pandoc from Gitub")
+  }
 }
