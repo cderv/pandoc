@@ -10,20 +10,19 @@ pandoc_install <- function(version = "latest", force = FALSE) {
   # get bundle download url
   release_bundle <- pandoc_release_asset(version)
 
-  # download bundle
-  tmp_file <- fs::file_temp(ext = fs::path_ext(release_bundle$url))
-  download.file(release_bundle$url, destfile = tmp_file)
-
   # where to install
-
   install_dir <- pandoc_home(release_bundle$version)
-
   if (fs::file_exists(install_dir) && !force) {
     rlang::inform(c(
       sprintf("Pandoc %s already installed.", release_bundle$version),
       "Use 'force = TRUE' to overwrite."))
     return(invisible())
   }
+
+  # download bundle
+  tmp_file <- fs::file_temp(ext = fs::path_ext(release_bundle$url))
+  download.file(release_bundle$url, destfile = tmp_file)
+
 
   # install bundle
   switch(fs::path_ext(release_bundle$url),
