@@ -81,7 +81,8 @@ pandoc_release_asset <- function(version) {
 
   bundle_name <- pandoc_bundle_name(version)
 
-  i <- which(bundle_name == names)
+  i <- grep(bundle_name, names)
+
   if (length(i) == 0L) rlang::abort(sprintf("No release bundle with name '%s' available.", bundle_name))
 
   bundle_url <- assets[[i]][["browser_download_url"]]
@@ -92,7 +93,8 @@ pandoc_release_asset <- function(version) {
 pandoc_bundle_name <- function(version, os = pandoc_os(), arch = pandoc_arch(os)) {
   ext <- switch(os, linux = ".tar.gz", macOS = ,  windows = ".zip")
   arch <- if (!is.null(arch)) paste0("-", arch)
-  paste0("pandoc-", version, "-", os, arch, ext)
+  regex <- paste0("pandoc-", version, "(-\\d)?", "-", os, arch, ext)
+  gsub("\\.", "\\\\.", regex)
 }
 
 pandoc_releases <- function() {
