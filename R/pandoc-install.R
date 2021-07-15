@@ -121,3 +121,7 @@ pandoc_os <- function() {
     rlang::abort("Unknown operating system.")
   )
 }
+
+pandoc_browse_release <- function(version = "latest") {
+  utils::browseURL(paste0("https://github.com/jgm/pandoc/releases/", version))
+}
