@@ -63,7 +63,10 @@ pandoc_release_asset <- function(version, os = pandoc_os(), arch = pandoc_arch(o
     i <- 1L
     version <- releases[[1]]$tag_name
   } else {
-    # special know case
+    # special known cases
+    if (os == "linux" && arch == "arm64" && numeric_version(version) <= "2.12") {
+      rlang::abort("Pandoc binaries for arm64 are available for 2.12 and above only")
+    }
     if (version == "2.2.3") {
       rlang::abort(c(
         "Pandoc 2.2.3 had a serious regression so binaries are no more available",
