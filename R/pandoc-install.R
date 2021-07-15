@@ -72,7 +72,7 @@ pandoc_release_asset <- function(version) {
 
   # we don't have common zip / tar.gz versions for all OS before
   version_num <- numeric_version(version)
-  if (version_num <= .min_supported_version) {
+  if (version_num < .min_supported_version) {
     rlang::abort(sprintf("Only version above %s can be installed with this package", .min_supported_version))
   }
 
@@ -92,7 +92,7 @@ pandoc_release_asset <- function(version) {
 
 pandoc_bundle_name <- function(version, os = pandoc_os(), arch = pandoc_arch(os)) {
   ext <- switch(os, linux = ".tar.gz", macOS = ,  windows = ".zip")
-  arch <- if (!is.null(arch)) paste0("-", arch)
+  arch <- if (!is.null(arch)) sprintf("(-%s)?", arch)
   regex <- paste0("pandoc-", version, "(-\\d)?", "-", os, arch, ext)
   gsub("\\.", "\\\\.", regex)
 }
