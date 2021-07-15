@@ -1,8 +1,4 @@
-
 pandoc_install <- function(version = "latest", force = FALSE) {
-  if (!rlang::is_installed("gh")) {
-    rlang::abort("`gh` package is required to install Pandoc from Gitub")
-  }
   if (!rlang::is_installed("gh")) {
     rlang::abort("`gh` package is required to install Pandoc from Gitub")
   }
