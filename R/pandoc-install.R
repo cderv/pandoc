@@ -5,7 +5,7 @@
 #' `pandoc_install_nightly()` is a wrapper for `pandoc_install("nightly")`.
 #' `pandoc_installed_versions()` will list all installed version.
 #'
-#' Pandoc versions are installed in `pandoc_home()` with one folder per version.
+#' Pandoc versions are installed in [pandoc_home_dir()] with one folder per version.
 #' All installed version can be list with `pandoc_installed_versions()`
 #'
 #' Only one nightly version is available at a time as there should be no need to
@@ -18,6 +18,7 @@
 #'   * A version number (e.g `"2.11.4"`) for a specific version
 #'   * `"nightly"` for the last pandoc devel built
 #' @param force To set to `TRUE` to force a reinstallation
+#' @seealso [pandoc_uninstall()]
 #' @export
 pandoc_install <- function(version = "latest", force = FALSE) {
   gh_required()
@@ -98,6 +99,30 @@ pandoc_install_nightly <- function() {
   utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
   rlang::inform(c(v = paste0("Last Pandoc nightly installed: ", pandoc_nightly_version())))
   invisible(install_dir)
+}
+
+#' Uninstall a Pandoc version
+#'
+#' You can run [pandoc_installed_versions()] to see which versions are
+#' currently installed on the system.
+#'
+#' @param version which version to uninstalled.
+#'
+#' @seealso [pandoc_install()]
+#'
+#' @export
+pandoc_uninstall <- function(version) {
+  if (rlang::is_missing(version)) {
+    rlang::abort(c(
+      "Provide a version to uninstall.",
+      "Run `pandoc_installed_versions()` to see installed versions."
+    ))
+  }
+  install_dir <- pandoc_home_dir(version)
+  if (!rlang::is_null(install_dir)) {
+    fs::dir_delete(install_dir)
+  }
+  invisible(TRUE)
 }
 
 pandoc_nightly_version <- function() {

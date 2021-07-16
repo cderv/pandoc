@@ -29,11 +29,14 @@ function will install the latest available version.
 \code{pandoc_installed_versions()} will list all installed version.
 }
 \details{
-Pandoc versions are installed in \code{pandoc_home()} with one folder per version.
+Pandoc versions are installed in \code{\link[=pandoc_home_dir]{pandoc_home_dir()}} with one folder per version.
 All installed version can be list with \code{pandoc_installed_versions()}
 
 Only one nightly version is available at a time as there should be no need to
 switch between them. The latest nightly will be installed over the current
 one if any. Installing nightly version is useful for example to test a bug
 against the very last available built version.
+}
+\seealso{
+\code{\link[=pandoc_uninstall]{pandoc_uninstall()}}
 }
