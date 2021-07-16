@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Install a pandoc binary for Github release page — pandoc_install • pandoc</title>
+<title>Uninstall a Pandoc version — pandoc_uninstall • pandoc</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,9 @@
 
 
 
-<meta property="og:title" content="Install a pandoc binary for Github release page — pandoc_install" />
-<meta property="og:description" content="Binary releases of Pandoc are available on its release page. By default, this
-function will install the latest available version.
-pandoc_install_nightly() is a wrapper for pandoc_install(&quot;nightly&quot;).
-pandoc_installed_versions() will list all installed version." />
+<meta property="og:title" content="Uninstall a Pandoc version — pandoc_uninstall" />
+<meta property="og:description" content="You can run pandoc_installed_versions() to see which versions are
+currently installed on the system." />
 
 
 
@@ -111,56 +109,30 @@ pandoc_installed_versions() will list all installed version." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Install a pandoc binary for Github release page</h1>
+    <h1>Uninstall a Pandoc version</h1>
     <small class="dont-index">Source: <a href='https://github.com/cderv/pandoc/blob/master/R/pandoc-install.R'><code>R/pandoc-install.R</code></a></small>
-    <div class="hidden name"><code>pandoc_install.Rd</code></div>
+    <div class="hidden name"><code>pandoc_uninstall.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Binary releases of Pandoc are available on its release page. By default, this
-function will install the latest available version.
-<code>pandoc_install_nightly()</code> is a wrapper for <code>pandoc_install("nightly")</code>.
-<code>pandoc_installed_versions()</code> will list all installed version.</p>
+    <p>You can run <code><a href='pandoc_install.html'>pandoc_installed_versions()</a></code> to see which versions are
+currently installed on the system.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pandoc_install</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"latest"</span>, force <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='fu'>pandoc_install_nightly</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>pandoc_installed_versions</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pandoc_uninstall</span><span class='op'>(</span><span class='va'>version</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>version</th>
-      <td><p>This can be either:</p><ul>
-<li><p><code>"latest"</code> for the latest release</p></li>
-<li><p>A version number (e.g <code>"2.11.4"</code>) for a specific version</p></li>
-<li><p><code>"nightly"</code> for the last pandoc devel built</p></li>
-</ul></td>
-    </tr>
-    <tr>
-      <th>force</th>
-      <td><p>To set to <code>TRUE</code> to force a reinstallation</p></td>
+      <td><p>which version to uninstalled.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>NULL</code> if already installed. The path where the binary is installed
-otherwise. For <code>pandoc_installed_versions()</code>, a character vector of all installed versions.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Pandoc versions are installed in <code><a href='pandoc_home_dir.html'>pandoc_home_dir()</a></code> with one folder per version.
-All installed version can be list with <code>pandoc_installed_versions()</code></p>
-<p>Only one nightly version is available at a time as there should be no need to
-switch between them. The latest nightly will be installed over the current
-one if any. Installing nightly version is useful for example to test a bug
-against the very last available built version.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='pandoc_uninstall.html'>pandoc_uninstall()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='pandoc_install.html'>pandoc_install()</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
