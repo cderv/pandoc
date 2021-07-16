@@ -23,6 +23,17 @@ test_that("Release information are cached", {
   expect_snapshot(x <- pandoc_releases())
 })
 
+test_that("Can retrieve asset information", {
+  skip_on_cran()
+  expect_identical(
+    pandoc_release_asset("2.11.4", "windows", "x86_64"),
+    list(version = "2.11.4", url = "https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-windows-x86_64.zip")
+  )
+
+  expect_error(pandoc_release_asset("1.2", "windows", "x86_64"), "can't be found", fixed = TRUE)
+  expect_error(pandoc_release_asset("1.19.2", "linux", "amd64"), "can't be found", fixed = TRUE)
+})
+
 test_that("Assets are correctly found on windows", {
   skip_on_cran()
   skip_if_offline()

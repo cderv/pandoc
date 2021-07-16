@@ -166,7 +166,7 @@ pandoc_release_asset <- function(version, os = pandoc_os(), arch = pandoc_arch(o
     versions <- map_chr(releases, "[[", "tag_name")
     i <- which(version == versions)
     if (length(i) == 0) {
-      rlang::abort(sprintf("Pandoc version %s can't found.", version))
+      rlang::abort(sprintf("Pandoc version %s can't be found.", version))
     }
   }
 
