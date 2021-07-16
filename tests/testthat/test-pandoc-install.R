@@ -67,11 +67,9 @@ test_that("Assets are correctly found on linux arm64", {
 test_that("Pandoc nightly can be installed", {
   skip_on_cran()
   skip_if_offline()
-  install_dir <- pandoc_home_dir("nightly")
-  if (!is.null(install_dir)) fs::dir_delete(install_dir)
-  install_dir <- suppressMessages(pandoc_install("nightly"))
-  bin <- paste0("pandoc", if (pandoc_os() == "windows") ".exe")
-  expect_true(fs::file_exists(fs::path(install_dir, bin)))
+  expect_pandoc_installed("nightly")
+  time <- fs::file_info(pandoc_home_dir("nightly"))$modification_time
+  expect_message(expect_message(pandoc_install("nightly")), "already installed", fixed = TRUE)
 })
 
 test_that("Pandoc specific release can be installed", {
