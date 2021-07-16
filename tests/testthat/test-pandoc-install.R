@@ -54,3 +54,29 @@ test_that("Assets are correctly found on linux arm64", {
     expect_match(asset_url, "https://github.com/jgm/pandoc/releases/download", fixed = TRUE)
   })
 })
+
+test_that("Pandoc nightly can be installed", {
+  skip_on_cran()
+  skip_if_offline()
+  install_dir <- pandoc_home_dir("nightly")
+  if (!is.null(install_dir)) fs::dir_delete(install_dir)
+  install_dir <- suppressMessages(pandoc_install("nightly"))
+  bin <- paste0("pandoc", if (pandoc_os() == "windows") ".exe")
+  expect_true(fs::file_exists(fs::path(install_dir, bin)))
+})
+
+test_that("Pandoc release can be installed", {
+  skip_on_cran()
+  skip_if_offline()
+  install_dir <- pandoc_home_dir("2.11.4")
+  if (!is.null(install_dir)) fs::dir_delete(install_dir)
+  install_dir <- suppressMessages(pandoc_install("2.11.4"))
+  bin <- paste0("pandoc", if (pandoc_os() == "windows") ".exe")
+  expect_true(fs::file_exists(fs::path(install_dir, bin)))
+  expect_message(expect_null(pandoc_install("2.11.4")), "already installed", fixed = TRUE)
+  expect_identical(
+    suppressMessages(pandoc_install("2.11.4", force = TRUE)),
+    install_dir
+  )
+  expect_error(pandoc_install("2.2.3"))
+})

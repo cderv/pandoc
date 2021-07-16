@@ -45,8 +45,9 @@ pandoc_install <- function(version = "latest", force = FALSE) {
   }
 
   # download bundle
+  rlang::inform(c(i = paste0("Downloading release ", release_bundle$url)))
   tmp_file <- fs::file_temp(ext = fs::path_ext(release_bundle$url))
-  download.file(release_bundle$url, destfile = tmp_file)
+  download.file(release_bundle$url, destfile = tmp_file, quiet = TRUE)
 
 
   # install bundle
