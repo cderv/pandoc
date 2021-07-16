@@ -1,5 +1,6 @@
 .get_assets_info <- function(os, arch) {
-  map(pandoc_available_versions(), ~ {
+  versions <- suppressMessages(pandoc_available_versions())
+  map(versions, ~ {
     tryCatch(pandoc_release_asset(.x, os = os, arch = arch),
              error = function(e) list(version = .x, url = NULL, error = e$message))
   })
