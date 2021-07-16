@@ -56,6 +56,13 @@ pandoc_install <- function(version = "latest", force = FALSE) {
     zip  = utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
   )
 
+  # For linux bundle, the pandoc binary can be in a nested bin folder
+  # create a simlink to make it available at pandoc_home_dir() level
+  bin_dir <- fs::dir_ls(install_dir, recurse = TRUE, regexp = "bin/pandoc$")
+  if (nzchar(bin_dir)) {
+    fs::link_create(bin_dir, fs::path(install_dir, fs::path_file(bin_dir)))
+  }
+
   install_dir
 
 }
