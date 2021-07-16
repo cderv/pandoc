@@ -22,6 +22,10 @@ pandoc_installed_versions()
 
 \item{force}{To set to \code{TRUE} to force a reinstallation}
 }
+\value{
+\code{NULL} if already installed. The path where the binary is installed
+otherwise. For \code{pandoc_installed_versions()}, a character vector of all installed versions.
+}
 \description{
 Binary releases of Pandoc are available on its release page. By default, this
 function will install the latest available version.

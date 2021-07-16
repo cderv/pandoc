@@ -18,6 +18,8 @@
 #'   * A version number (e.g `"2.11.4"`) for a specific version
 #'   * `"nightly"` for the last pandoc devel built
 #' @param force To set to `TRUE` to force a reinstallation
+#' @return `NULL` if already installed. The path where the binary is installed
+#'   otherwise. For `pandoc_installed_versions()`, a character vector of all installed versions.
 #' @seealso [pandoc_uninstall()]
 #' @export
 pandoc_install <- function(version = "latest", force = FALSE) {
@@ -101,6 +103,12 @@ pandoc_install_nightly <- function() {
   invisible(install_dir)
 }
 
+#' @rdname pandoc_install
+#' @export
+pandoc_installed_versions <- function() {
+  fs::path_file(fs::dir_ls(pandoc_home()))
+}
+
 #' Uninstall a Pandoc version
 #'
 #' You can run [pandoc_installed_versions()] to see which versions are
@@ -135,19 +143,14 @@ pandoc_nightly_version <- function() {
   gsub("^Built from ([^[:space:]]*)\\s*$", "\\1", x, perl = TRUE)
 }
 
-#' @rdname pandoc_install
-#' @export
-pandoc_installed_versions <- function() {
-  fs::path_file(fs::dir_ls(pandoc_home()))
-}
-
 #' Path where Pandoc binaries are installed
 #'
 #' @param version `"latest"` (the default) will return the path to directory of
 #'   the latest installed Pandoc version. If a version
 #'   is specified (e.g `"2.11.4"`), it will return the path for a specific
 #'   version if installed. If `NULL`, the main path to directory where all versions are stored.
-#' @return Path of install Pandoc binaries if installed.
+#' @return Path of Pandoc binaries root folder if installed.
+#' @seealso [pandoc_install()]
 #' @export
 pandoc_home_dir <- function(version = "latest") {
   if (version == "latest") {

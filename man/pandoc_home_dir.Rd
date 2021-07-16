@@ -13,8 +13,11 @@ is specified (e.g \code{"2.11.4"}), it will return the path for a specific
 version if installed. If \code{NULL}, the main path to directory where all versions are stored.}
 }
 \value{
-Path of install Pandoc binaries if installed.
+Path of Pandoc binaries root folder if installed.
 }
 \description{
 Path where Pandoc binaries are installed
+}
+\seealso{
+\code{\link[=pandoc_install]{pandoc_install()}}
 }
