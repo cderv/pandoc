@@ -4,3 +4,5 @@
 ^README\.Rmd$
 ^\.httr-oauth$
 ^inst/scripts$
+^codecov\.yml$
+^\.github$
