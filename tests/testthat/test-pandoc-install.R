@@ -23,7 +23,7 @@ test_that("Release information are cached", {
   expect_snapshot(x <- pandoc_releases())
 })
 
-test_that("Can retrieve asset information", {
+test_that("Can retrieve assets' informations", {
   skip_on_cran()
   expect_identical(
     pandoc_release_asset("2.11.4", "windows", "x86_64"),
@@ -31,7 +31,7 @@ test_that("Can retrieve asset information", {
   )
 
   expect_error(pandoc_release_asset("1.2", "windows", "x86_64"), "can't be found", fixed = TRUE)
-  expect_error(pandoc_release_asset("1.19.2", "linux", "amd64"), "can't be found", fixed = TRUE)
+  expect_error(pandoc_release_asset("1.19.2", "linux", "amd64"), "above 2.0.3", fixed = TRUE)
 })
 
 test_that("Assets are correctly found on windows", {
