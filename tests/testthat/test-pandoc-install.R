@@ -14,6 +14,15 @@ expect_pandoc_installed <- function(version) {
   expect_true(fs::file_exists(fs::path(install_dir, bin)))
 }
 
+test_that("Release information are cached", {
+  # clean cache
+  rlang::env_bind(pandocenv, pandoc_releases = rlang::zap())
+  # with message Fetching
+  expect_snapshot(x <- pandoc_releases())
+  # without message Fetching
+  expect_snapshot(x <- pandoc_releases())
+})
+
 test_that("Assets are correctly found on windows", {
   skip_on_cran()
   skip_if_offline()
