@@ -71,17 +71,53 @@
 <a href="#pandoc" class="anchor"></a>pandoc</h1></div>
 <!-- badges: start -->
 
-<p>The goal of pandoc is to …</p>
+<p><strong>pandoc</strong> R package is an experimental package aiming first to help maintainers of R Markdown ecosystem.</p>
+<p>The R Markdown ecosystem is highly dependent on Pandoc <a href="https://pandoc.org/" class="uri">https://pandoc.org/</a> and aims to be as version independent as possible. R Markdown is best used with the latest Pandoc version but any rmarkdown package version should work with previous version, and new change in Pandoc should not break any rmarkdown features.</p>
+<p>This explain the needs to some more focused tooling to:</p>
+<ul>
+<li>Install and manage several pandoc versions. This is useful for testing versions and comparing between them.</li>
+<li>Call pandoc directly without the layers added by <strong>rmarkdown</strong>. This is useful for debugging or quickly iterating and finding where a bug could be.</li>
+<li>Retreive information from Pandoc directly. Each version comes with changes and some of them are included into the binary. Being able to retrieve those information and compare between version is also important to help maintain the user exposed tooling.</li>
+</ul>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of pandoc from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>The development version can be install from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pandoc"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"cderv/pandoc"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"cderv/pandoc"</span><span class="op">)</span>
+
+<span class="co"># install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")</span>
+<span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pak.html">pak</a></span><span class="op">(</span><span class="st">"cderv/pandoc"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="main-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#main-features" class="anchor"></a>Main features</h2>
+<div id="installation-of-pandoc-version" class="section level3">
+<h3 class="hasAnchor">
+<a href="#installation-of-pandoc-version" class="anchor"></a>Installation of Pandoc version</h3>
+<ul>
+<li><p><code><a href="reference/pandoc_install.html">pandoc_install()</a></code> or <code><a href="reference/pandoc_install.html">pandoc_install("latest")</a></code>: install last available released version of Pandoc</p></li>
+<li><p><code><a href="reference/pandoc_install.html">pandoc_install("2.11.4")</a></code>: install Pandoc version 2.11.4</p></li>
+<li><p><code><a href="reference/pandoc_install.html">pandoc_install("nighlty")</a></code> or <code><a href="reference/pandoc_install.html">pandoc_install_nightly()</a></code>: install Pandoc devel version built daily</p></li>
+<li><p><code>pandoc_uninstall(&lt;ver&gt;)</code>: Uninstall one of the version</p></li>
+</ul>
+</div>
+<div id="finding-an-installed-version" class="section level3">
+<h3 class="hasAnchor">
+<a href="#finding-an-installed-version" class="anchor"></a>Finding an installed version</h3>
+<ul>
+<li>
+<code><a href="reference/pandoc_install.html">pandoc::pandoc_installed_versions()</a></code>: list installed version</li>
+</ul>
+<p>Pandoc versions are installed with one folder per version in user’s data directory.</p>
+<ul>
+<li>
+<code><a href="reference/pandoc_home_dir.html">pandoc::pandoc_home_dir()</a></code>: Where Pandoc versions are installed ?</li>
+<li>
+<code><a href="reference/pandoc_home_dir.html">pandoc::pandoc_home_dir("2.11.4")</a></code>: Path to the <code>2.11.4</code> pandoc version directory</li>
+</ul>
+</div>
 </div>
 </div>
   </div>
