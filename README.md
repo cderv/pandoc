@@ -10,7 +10,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![CRAN
 status](https://www.r-pkg.org/badges/version/pandoc)](https://CRAN.R-project.org/package=pandoc)
 [![Codecov test
-coverage](https://codecov.io/gh/cderv/pandoc/branch/main/graph/badge.svg)](https://codecov.io/gh/cderv/pandoc?branch=main)
+coverage](https://codecov.io/gh/cderv/pandoc/branch/main/graph/badge.svg?token=84QW1TDQPM)](https://codecov.io/gh/cderv/pandoc?branch=main)
 [![R-CMD-check](https://github.com/cderv/pandoc/workflows/R-CMD-check/badge.svg)](https://github.com/cderv/pandoc/actions)
 <!-- badges: end -->
 
