@@ -114,7 +114,9 @@ pandoc_install_nightly <- function() {
 #' @rdname pandoc_install
 #' @export
 pandoc_installed_versions <- function() {
-  versions <- fs::path_file(fs::dir_ls(pandoc_home(), type = "directory"))
+  pandoc_home <- pandoc_home()
+  if (!fs::dir_exists(pandoc_home)) return("")
+  versions <- fs::path_file(fs::dir_ls(pandoc_home, type = "directory"))
   if (rlang::is_empty(versions)) return("")
   is_nightly <- "nightly" %in% versions
   versions <- setdiff(versions, "nightly")
