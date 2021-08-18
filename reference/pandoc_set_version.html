@@ -134,11 +134,17 @@ the installed version (nightly version excluded.)</p>
 <li><p><code>"nightly"</code> for the last pandoc development built daily</p></li>
 </ul></td>
     </tr>
+    <tr>
+      <th>rmarkdown</th>
+      <td><p>if <code>TRUE</code> (the default) and <strong>rmarkdown</strong> is available, this
+will also set the pandoc version as the default one to use with
+<strong>rmarkdown</strong> by calling <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html'>rmarkdown::find_pandoc()</a></code></p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>invisibly, the previous active version</p>
+    <p>invisibly, the previous active version.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
