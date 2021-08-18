@@ -15,6 +15,8 @@ expect_pandoc_installed <- function(version) {
 }
 
 test_that("Release information are cached", {
+  skip_on_cran()
+  skip_if_offline()
   # clean cache
   rlang::env_bind(pandocenv, pandoc_releases = rlang::zap())
   # with message Fetching
@@ -85,6 +87,7 @@ test_that("Assets are correctly found on linux arm64", {
 })
 
 test_that("No versions are installed", {
+  skip_on_cran()
   expect_equal(pandoc_installed_versions(), "")
 })
 
@@ -113,13 +116,9 @@ test_that("Pandoc specific release can be installed", {
   expect_true(fs::file_exists(fs::path(pandoc_home_dir("2.7.3"), bin)))
 })
 
-test_that("Pandoc latest release can be installed", {
+test_that("Installed versions can be listed", {
   skip_on_cran()
   skip_if_offline()
-  expect_pandoc_installed("latest")
-})
-
-test_that("Installed versions can be listed", {
   suppressMessages(pandoc_install("2.11.4"))
   suppressMessages(pandoc_install("2.7.3"))
   suppressMessages(pandoc_install("nightly"))
@@ -133,4 +132,10 @@ test_that("Pandoc release can be uninstall", {
   expect_true(pandoc_uninstall("nightly"))
   expect_false(fs::dir_exists(pandoc_home("nigthly")))
   expect_equal(pandoc_installed_versions(), c("2.11.4", "2.7.3"))
+})
+
+test_that("Pandoc latest release can be installed", {
+  skip_on_cran()
+  skip_if_offline()
+  expect_pandoc_installed("latest")
 })
