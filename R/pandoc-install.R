@@ -124,22 +124,31 @@ pandoc_install_nightly <- function() {
 
 #' Check Pandoc versions already installed
 #'
-#' * `pandoc_installed_versions()` will list all versions already installed
+#' * `pandoc_installed_versions()` lists all versions already installed
+#' * `pandoc_installed_latest()` returns the most recent installed version
 #' * `pandoc_is_installed()` allows to check for a specific installed version
 #'
-#' @return A character vector of available installed versions or a logical for
-#'   `pandoc_is_installed()`
+#' @return A character vector of installed versions or a logical for
+#'   `pandoc_is_installed()`. It will return `NULL` is no versions are installed.
 #'
 #' @export
 pandoc_installed_versions <- function() {
   pandoc_home <- pandoc_home()
-  if (!fs::dir_exists(pandoc_home)) return("")
+  if (!fs::dir_exists(pandoc_home)) return(NULL)
   versions <- fs::path_file(fs::dir_ls(pandoc_home, type = "directory"))
-  if (rlang::is_empty(versions)) return("")
+  if (rlang::is_empty(versions)) return(NULL)
   is_nightly <- "nightly" %in% versions
   versions <- setdiff(versions, "nightly")
   sorted_versions <- sort(as.numeric_version(versions), TRUE)
   c(if (is_nightly) "nightly", as.character(sorted_versions))
+}
+
+#' @rdname pandoc_installed_versions
+#' @export
+pandoc_installed_latest <- function() {
+    installed_versions <- setdiff(pandoc_installed_versions(), "nightly")
+    if (is.null(installed_versions)) return(NULL)
+    max(numeric_version(installed_versions))
 }
 
 #' @rdname pandoc_installed_versions

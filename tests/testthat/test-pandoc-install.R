@@ -92,7 +92,8 @@ test_that("Assets are correctly found on linux arm64", {
 
 test_that("No versions are installed", {
   skip_on_cran()
-  expect_equal(pandoc_installed_versions(), "")
+  expect_null(pandoc_installed_versions())
+  expect_null(pandoc_installed_latest())
 })
 
 test_that("Pandoc nightly can be installed", {
@@ -133,6 +134,15 @@ test_that("Installed versions can be listed", {
   suppressMessages(pandoc_install("2.7.3"))
   suppressMessages(pandoc_install("nightly"))
   expect_equal(pandoc_installed_versions(), c("nightly", "2.11.4", "2.7.3"))
+})
+
+test_that("Most recent version installed can be identified", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.11.4"))
+  suppressMessages(pandoc_install("2.7.3"))
+  expect_equal(pandoc_installed_latest(), "2.11.4")
+
 })
 
 test_that("Is a version installed ?", {
