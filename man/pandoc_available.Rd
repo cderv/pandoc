@@ -10,6 +10,9 @@ pandoc_available(min = NULL, max = NULL, strict = FALSE)
 \item{min}{Minimum version expected.}
 
 \item{max}{Maximum version expected}
+
+\item{strict}{if \code{TRUE}, minimum and maximum requirement will be considered
+strict.}
 }
 \value{
 logical. \code{TRUE} if requirement is met, \code{FALSE} otherwise.

@@ -11,6 +11,9 @@
 #'
 #' @param min Minimum version expected.
 #' @param max Maximum version expected
+#' @param strict if `TRUE`, minimum and maximum requirement will be considered
+#'   strict.
+#'
 #' @return logical. `TRUE` if requirement is met, `FALSE` otherwise.
 #'
 #' @export

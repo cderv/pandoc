@@ -4,7 +4,7 @@
 \name{pandoc-package}
 \alias{pandoc}
 \alias{pandoc-package}
-\title{pandoc: Manage and Run Universal Converter Pandoc from R.}
+\title{pandoc: Manage and Run Universal Converter Pandoc from R}
 \description{
 What the package does (one paragraph).
 }
