@@ -66,6 +66,13 @@ pandoc_install <- function(version = "latest", force = FALSE) {
     bin <- bin[1]
     fs::link_create(bin, fs::path(install_dir, fs::path_file(bin)))
   }
+  # Before Pandoc 2.11, pandoc-citeproc was shipped with pandoc bundle
+  # On linux, we also need to create a simlink to make it available at pandoc_home_dir() level
+  bin <- fs::dir_ls(install_dir, recurse = TRUE, regexp = "bin/pandoc-citeproc$")
+  if (!rlang::is_empty(bin)) {
+    bin <- bin[1]
+    fs::link_create(bin, fs::path(install_dir, fs::path_file(bin)))
+  }
 
   install_dir
 

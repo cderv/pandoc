@@ -101,7 +101,12 @@ test_that("Pandoc specific release can be installed", {
     suppressMessages(pandoc_install("2.11.4", force = TRUE)),
     pandoc_home_dir("2.11.4")
   )
+  # does not exist
   expect_error(pandoc_install("2.2.3"))
+  # Before Pandoc 2.11, pandoc-citeproc is also shipped
+  expect_pandoc_installed("2.7.3")
+  bin <- paste0("pandoc-citeproc", if (pandoc_os() == "windows") ".exe")
+  expect_true(fs::file_exists(fs::path(pandoc_home_dir("2.7.3"), bin)))
 })
 
 test_that("Pandoc latest release can be installed", {
