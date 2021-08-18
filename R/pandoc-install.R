@@ -372,3 +372,13 @@ pandoc_active_set <- function(version) {
 pandoc_active_get <- function() {
   rlang::env_get(pandocenv, "active_version", default = "", inherit = FALSE)
 }
+
+#' Is a pandoc version active ?
+#'
+#' @inheritParams pandoc_install
+#'
+#' @export
+pandoc_is_active <- function(version) {
+  if (version == "latest") version <- pandoc_installed_latest()
+  version == pandoc_active_get()
+}

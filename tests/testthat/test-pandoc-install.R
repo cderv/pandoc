@@ -130,9 +130,9 @@ test_that("Active version can be changed", {
   suppressMessages(pandoc_install("2.11.4"))
   suppressMessages(pandoc_install("nightly"))
   expect_equal(pandoc_set_version("nightly"), "")
-  expect_equal(pandoc_active_get(), "nightly")
+  expect_true(pandoc_is_active("nightly"))
   expect_equal(pandoc_set_version("latest"), pandoc_home("nightly"))
-  expect_equal(pandoc_active_get(), "2.11.4")
+  expect_true(pandoc_is_active("2.11.4"))
 })
 
 test_that("pandoc-citeproc is correctly placed in root folder", {
