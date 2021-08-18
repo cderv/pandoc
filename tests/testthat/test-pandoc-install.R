@@ -15,6 +15,9 @@ expect_pandoc_installed <- function(version) {
   expect_true(fs::file_exists(bin))
 }
 
+skip_on_cran()
+skip_if_offline()
+
 test_that("Release information are cached", {
   skip_on_cran()
   skip_if_offline()
@@ -41,8 +44,8 @@ test_that("Assets are correctly found on windows", {
   skip_on_cran()
   skip_if_offline()
   assets <- .get_assets_info("windows", "x86_64")
-  pandoc_2.2.3 <- keep(assets, ~ .x$version == "2.2.3")[[1]]
-  expect_match(pandoc_2.2.3$error, "regression")
+  pandoc_223 <- keep(assets, ~ .x$version == "2.2.3")[[1]]
+  expect_match(pandoc_223$error, "regression")
   walk(discard(assets, ~ .x$version == "2.2.3"), ~ {
     asset_url <- .x[["url"]]
     expect_match(asset_url, "https://github.com/jgm/pandoc/releases/download", fixed = TRUE)
@@ -111,6 +114,11 @@ test_that("Pandoc specific release can be installed", {
   )
   # does not exist
   expect_error(pandoc_install("2.2.3"))
+})
+
+test_that("pandoc-citeproc is correctly placed in root folder", {
+  skip_on_cran()
+  skip_if_offline()
   # Before Pandoc 2.11, pandoc-citeproc is also shipped
   expect_pandoc_installed("2.7.3")
   bin <- fs::path(pandoc_home_dir("2.7.3"), "pandoc-citeproc",
