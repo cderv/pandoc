@@ -94,7 +94,7 @@ test_that("No versions are installed", {
   skip_on_cran()
   expect_null(pandoc_installed_versions())
   expect_null(pandoc_installed_latest())
-  expect_true(pandoc_active_get(), "")
+  expect_identical(pandoc_active_get(), "")
 })
 
 test_that("Pandoc nightly can be installed", {
