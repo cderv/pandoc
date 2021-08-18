@@ -15,7 +15,7 @@ pandoc_set_version(version, rmarkdown = TRUE)
 }}
 }
 \value{
-invisibly, the path to the previous active version
+invisibly, the previous active version
 }
 \description{
 This function will set the specified version as the default version for the
