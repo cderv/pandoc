@@ -135,8 +135,31 @@
 <p>By default, the most recent Pandoc version installed is used. When testing difference in versions, in can be interesting to switch the active version to run a different version.</p>
 <ul>
 <li>
-<code><a href="reference/pandoc_set_version.html">pandoc::pandoc_set_version("2.7.3")</a></code>: Use a specific version with the package.</li>
+<p><code><a href="reference/pandoc_set_version.html">pandoc::pandoc_set_version("2.7.3")</a></code>: Use a specific version with the package.</p>
+<p>By default, if <strong>rmarkdown</strong> is installed, it will also set the version active for all <strong>rmarkdown</strong> functions (using <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">rmarkdown::find_pandoc()</a></code>). This allows to use this package easily in order to test <strong>rmarkdown</strong> with different version of Pandoc.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">find_pandoc</a></span><span class="op">(</span>cache <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="co">#&gt; $version</span>
+<span class="co">#&gt; [1] '2.14.1'</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $dir</span>
+<span class="co">#&gt; [1] "C:/Users/chris/scoop/shims"</span>
+<span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_set_version.html">pandoc_set_version</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
+<span class="co">#&gt; v Version 2.7.3 is now the active one.</span>
+<span class="co">#&gt; i This is also true for using with rmarkdown functions.</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">find_pandoc</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; $version</span>
+<span class="co">#&gt; [1] '2.7.3'</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $dir</span>
+<span class="co">#&gt; [1] "C:\\Users\\chris\\AppData\\Local/r-pandoc/r-pandoc/2.7.3"</span></code></pre></div>
+<p>Setting <code>rmarkdown = TRUE</code> is equivalent to calling</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">find_pandoc</a></span><span class="op">(</span>cache <span class="op">=</span> <span class="cn">FALSE</span>, dir <span class="op">=</span> <span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</li>
+<li><p><code><a href="reference/pandoc_set_version.html">pandoc::pandoc_set_version("2.7.3", rmarkdown = FALSE)</a></code> will not activate the version to use with <strong>rmarkdown</strong></p></li>
 </ul>
+<p>Note: To reset default <strong>rmarkdown</strong> Pandoc version, you can use <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">rmarkdown::find_pandoc(cache = FALSE)</a></code></p>
 </div>
 </div>
 </div>
