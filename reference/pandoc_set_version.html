@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check Pandoc versions already installed — pandoc_installed_versions • pandoc</title>
+<title>Activate a specific Pandoc version to be used — pandoc_set_version • pandoc</title>
 
 
 <!-- jquery -->
@@ -39,14 +39,10 @@
 
 
 
-<meta property="og:title" content="Check Pandoc versions already installed — pandoc_installed_versions" />
-<meta property="og:description" content="
-
-pandoc_installed_versions() lists all versions already installed
-pandoc_installed_latest() returns the most recent installed version
-pandoc_is_installed() allows to check for a specific installed version
-
-" />
+<meta property="og:title" content="Activate a specific Pandoc version to be used — pandoc_set_version" />
+<meta property="og:description" content="This function will set the specified version as the default version for the
+session. By default, the default active version in the most recent one among
+the installed version (nightly version excluded.)" />
 
 
 
@@ -114,44 +110,23 @@ pandoc_is_installed() allows to check for a specific installed version
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check Pandoc versions already installed</h1>
+    <h1>Activate a specific Pandoc version to be used</h1>
     <small class="dont-index">Source: <a href='https://github.com/cderv/pandoc/blob/master/R/pandoc-install.R'><code>R/pandoc-install.R</code></a></small>
-    <div class="hidden name"><code>pandoc_installed_versions.Rd</code></div>
+    <div class="hidden name"><code>pandoc_set_version.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-<ul>
-<li><p><code>pandoc_installed_versions()</code> lists all versions already installed</p></li>
-<li><p><code>pandoc_installed_latest()</code> returns the most recent installed version</p></li>
-<li><p><code>pandoc_is_installed()</code> allows to check for a specific installed version</p></li>
-</ul>
-
+    <p>This function will set the specified version as the default version for the
+session. By default, the default active version in the most recent one among
+the installed version (nightly version excluded.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pandoc_installed_versions</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>pandoc_set_version</span><span class='op'>(</span><span class='va'>version</span><span class='op'>)</span></pre>
 
-<span class='fu'>pandoc_installed_latest</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>pandoc_is_installed</span><span class='op'>(</span><span class='va'>version</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>version</th>
-      <td><p>This can be either:</p><ul>
-<li><p><code>"latest"</code> for the latest release</p></li>
-<li><p>A version number (e.g <code>"2.11.4"</code>) for a specific version</p></li>
-<li><p><code>"nightly"</code> for the last pandoc development built daily</p></li>
-</ul></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector of installed versions or a logical for
-<code>pandoc_is_installed()</code>. It will return <code>NULL</code> is no versions are installed.</p>
+    <p>invisibly, the path to the previous active version</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

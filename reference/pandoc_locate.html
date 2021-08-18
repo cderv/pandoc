@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check Pandoc versions already installed — pandoc_installed_versions • pandoc</title>
+<title>Locate a specific installed Pandoc version — pandoc_locate • pandoc</title>
 
 
 <!-- jquery -->
@@ -39,14 +39,8 @@
 
 
 
-<meta property="og:title" content="Check Pandoc versions already installed — pandoc_installed_versions" />
-<meta property="og:description" content="
-
-pandoc_installed_versions() lists all versions already installed
-pandoc_installed_latest() returns the most recent installed version
-pandoc_is_installed() allows to check for a specific installed version
-
-" />
+<meta property="og:title" content="Locate a specific installed Pandoc version — pandoc_locate" />
+<meta property="og:description" content="Locate a specific installed Pandoc version" />
 
 
 
@@ -114,44 +108,36 @@ pandoc_is_installed() allows to check for a specific installed version
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check Pandoc versions already installed</h1>
+    <h1>Locate a specific installed Pandoc version</h1>
     <small class="dont-index">Source: <a href='https://github.com/cderv/pandoc/blob/master/R/pandoc-install.R'><code>R/pandoc-install.R</code></a></small>
-    <div class="hidden name"><code>pandoc_installed_versions.Rd</code></div>
+    <div class="hidden name"><code>pandoc_locate.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-<ul>
-<li><p><code>pandoc_installed_versions()</code> lists all versions already installed</p></li>
-<li><p><code>pandoc_installed_latest()</code> returns the most recent installed version</p></li>
-<li><p><code>pandoc_is_installed()</code> allows to check for a specific installed version</p></li>
-</ul>
-
+    <p>Locate a specific installed Pandoc version</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pandoc_installed_versions</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>pandoc_installed_latest</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>pandoc_is_installed</span><span class='op'>(</span><span class='va'>version</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pandoc_locate</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"default"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>version</th>
-      <td><p>This can be either:</p><ul>
-<li><p><code>"latest"</code> for the latest release</p></li>
-<li><p>A version number (e.g <code>"2.11.4"</code>) for a specific version</p></li>
-<li><p><code>"nightly"</code> for the last pandoc development built daily</p></li>
-</ul></td>
+      <td><p>By default, it will return the path to the active pandoc
+version. If a version is specified (e.g <code>"2.11.4"</code>), it will return the
+path for a specific version if installed. If <code>latest</code>, the path the most
+recent Pandoc version installed ('nightly' excluded). If <code>NULL</code>, the main
+path to directory where all versions are stored.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector of installed versions or a logical for
-<code>pandoc_is_installed()</code>. It will return <code>NULL</code> is no versions are installed.</p>
+    <p>Path of Pandoc binaries root folder if installed.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='pandoc_install.html'>pandoc_install()</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

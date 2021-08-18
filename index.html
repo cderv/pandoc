@@ -103,19 +103,39 @@
 <li><p><code>pandoc_uninstall(&lt;ver&gt;)</code>: Uninstall one of the version</p></li>
 </ul>
 </div>
-<div id="finding-an-installed-version" class="section level3">
+<div id="find-an-installed-version" class="section level3">
 <h3 class="hasAnchor">
-<a href="#finding-an-installed-version" class="anchor"></a>Finding an installed version</h3>
+<a href="#find-an-installed-version" class="anchor"></a>Find an installed version</h3>
 <ul>
 <li>
-<code><a href="reference/pandoc_installed_versions.html">pandoc::pandoc_installed_versions()</a></code>: list installed version</li>
+<code><a href="reference/pandoc_installed_versions.html">pandoc::pandoc_installed_versions()</a></code>: List installed version by most recent first.</li>
+<li>
+<code><a href="reference/pandoc_installed_versions.html">pandoc::pandoc_is_installed("2.14.1")</a></code>: Is version 2.14.1 installed already ?</li>
 </ul>
+</div>
+<div id="get-path-to-a-version" class="section level3">
+<h3 class="hasAnchor">
+<a href="#get-path-to-a-version" class="anchor"></a>Get path to a version</h3>
 <p>Pandoc versions are installed with one folder per version in user’s data directory.</p>
 <ul>
 <li>
-<code><a href="reference/pandoc_home_dir.html">pandoc::pandoc_home_dir()</a></code>: Where Pandoc versions are installed ?</li>
+<code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate()</a></code>: Path to active pandoc version directory</li>
 <li>
-<code><a href="reference/pandoc_home_dir.html">pandoc::pandoc_home_dir("2.11.4")</a></code>: Path to the <code>2.11.4</code> pandoc version directory</li>
+<code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate("latest")</a></code>: Path to the most recent installed version</li>
+<li>
+<code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate("2.11.4")</a></code>: Path to a specific version directory, e.g <code>2.11.4</code>
+</li>
+<li>
+<code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate("nightly")</a></code>: Path to the nightly version installed</li>
+</ul>
+</div>
+<div id="set-active-version" class="section level3">
+<h3 class="hasAnchor">
+<a href="#set-active-version" class="anchor"></a>Set active version</h3>
+<p>By default, the most recent Pandoc version installed is used. When testing difference in versions, in can be interesting to switch the active version to run a different version.</p>
+<ul>
+<li>
+<code><a href="reference/pandoc_set_version.html">pandoc::pandoc_set_version("2.7.3")</a></code>: Use a specific version with the package.</li>
 </ul>
 </div>
 </div>
