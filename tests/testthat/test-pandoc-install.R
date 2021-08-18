@@ -127,6 +127,13 @@ test_that("Installed versions can be listed", {
   expect_equal(pandoc_installed_versions(), c("nightly", "2.11.4", "2.7.3"))
 })
 
+test_that("Is a version installed ?", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.11.4"))
+  expect_true(pandoc_is_installed("2.11.4"), c("2.11.4"))
+})
+
 test_that("Pandoc release can be uninstall", {
   skip_on_cran()
   skip_if_offline()

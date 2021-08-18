@@ -3,11 +3,8 @@
 #' Binary releases of Pandoc are available on its release page. By default, this
 #' function will install the latest available version.
 #' `pandoc_install_nightly()` is a wrapper for `pandoc_install("nightly")`.
-#' `pandoc_installed_versions()` will list all installed versions by decreasing
-#' order.
 #'
 #' Pandoc versions are installed in [pandoc_home_dir()] with one folder per version.
-#' All installed version can be list with `pandoc_installed_versions()`
 #'
 #' Only one nightly version is available at a time as there should be no need to
 #' switch between them. The latest nightly will be installed over the current
@@ -17,10 +14,10 @@
 #' @param version This can be either:
 #'   * `"latest"` for the latest release
 #'   * A version number (e.g `"2.11.4"`) for a specific version
-#'   * `"nightly"` for the last pandoc devel built
-#' @param force To set to `TRUE` to force a reinstallation
-#' @return `NULL` if already installed. The path where the binary is installed
-#'   otherwise. For `pandoc_installed_versions()`, a character vector of all installed versions.
+#'   * `"nightly"` for the last pandoc development built daily
+#' @param force To set to `TRUE` to force a re-installation
+#' @return The path where the binary is installed otherwise. `NULL` if already
+#'   installed.
 #' @seealso [pandoc_uninstall()]
 #' @export
 pandoc_install <- function(version = "latest", force = FALSE) {
@@ -125,7 +122,14 @@ pandoc_install_nightly <- function() {
   invisible(install_dir)
 }
 
-#' @rdname pandoc_install
+#' Check Pandoc versions already installed
+#'
+#' * `pandoc_installed_versions()` will list all versions already installed
+#' * `pandoc_is_installed()` allows to check for a specific installed version
+#'
+#' @return A character vector of available installed versions or a logical for
+#'   `pandoc_is_installed()`
+#'
 #' @export
 pandoc_installed_versions <- function() {
   pandoc_home <- pandoc_home()
@@ -136,6 +140,13 @@ pandoc_installed_versions <- function() {
   versions <- setdiff(versions, "nightly")
   sorted_versions <- sort(as.numeric_version(versions), TRUE)
   c(if (is_nightly) "nightly", as.character(sorted_versions))
+}
+
+#' @rdname pandoc_installed_versions
+#' @inheritParams pandoc_install
+#' @export
+pandoc_is_installed <- function(version) {
+  version %in% pandoc_installed_versions()
 }
 
 #' Uninstall a Pandoc version

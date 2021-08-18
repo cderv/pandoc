@@ -3,39 +3,33 @@
 \name{pandoc_install}
 \alias{pandoc_install}
 \alias{pandoc_install_nightly}
-\alias{pandoc_installed_versions}
 \title{Install a pandoc binary for Github release page}
 \usage{
 pandoc_install(version = "latest", force = FALSE)
 
 pandoc_install_nightly()
-
-pandoc_installed_versions()
 }
 \arguments{
 \item{version}{This can be either:
 \itemize{
 \item \code{"latest"} for the latest release
 \item A version number (e.g \code{"2.11.4"}) for a specific version
-\item \code{"nightly"} for the last pandoc devel built
+\item \code{"nightly"} for the last pandoc development built daily
 }}
 
-\item{force}{To set to \code{TRUE} to force a reinstallation}
+\item{force}{To set to \code{TRUE} to force a re-installation}
 }
 \value{
-\code{NULL} if already installed. The path where the binary is installed
-otherwise. For \code{pandoc_installed_versions()}, a character vector of all installed versions.
+The path where the binary is installed otherwise. \code{NULL} if already
+installed.
 }
 \description{
 Binary releases of Pandoc are available on its release page. By default, this
 function will install the latest available version.
 \code{pandoc_install_nightly()} is a wrapper for \code{pandoc_install("nightly")}.
-\code{pandoc_installed_versions()} will list all installed versions by decreasing
-order.
 }
 \details{
 Pandoc versions are installed in \code{\link[=pandoc_home_dir]{pandoc_home_dir()}} with one folder per version.
-All installed version can be list with \code{pandoc_installed_versions()}
 
 Only one nightly version is available at a time as there should be no need to
 switch between them. The latest nightly will be installed over the current
