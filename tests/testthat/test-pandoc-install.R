@@ -98,6 +98,8 @@ test_that("Assets are correctly found on linux arm64", {
 
 test_that("No versions are installed", {
   skip_on_cran()
+  # clean state
+  walk(pandoc_installed_versions(), pandoc_uninstall)
   expect_null(pandoc_installed_versions())
   expect_null(pandoc_installed_latest())
   expect_identical(pandoc_active_get(), "")

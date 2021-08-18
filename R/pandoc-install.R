@@ -50,6 +50,7 @@ pandoc_install <- function(version = "latest", force = FALSE) {
   }
 
   # download bundle
+  # TODO: Cache the download for a session in a temp folder. This will be useful in tests.
   rlang::inform(c(i = paste0("Downloading release ", release_bundle$url)))
   tmp_file <- fs::file_temp(ext = fs::path_ext(release_bundle$url))
   utils::download.file(release_bundle$url, destfile = tmp_file, quiet = TRUE)
