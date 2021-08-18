@@ -42,9 +42,7 @@
 <meta property="og:title" content="Install a pandoc binary for Github release page — pandoc_install" />
 <meta property="og:description" content="Binary releases of Pandoc are available on its release page. By default, this
 function will install the latest available version.
-pandoc_install_nightly() is a wrapper for pandoc_install(&quot;nightly&quot;).
-pandoc_installed_versions() will list all installed versions by decreasing
-order." />
+pandoc_install_nightly() is a wrapper for pandoc_install(&quot;nightly&quot;)." />
 
 
 
@@ -120,16 +118,12 @@ order." />
     <div class="ref-description">
     <p>Binary releases of Pandoc are available on its release page. By default, this
 function will install the latest available version.
-<code>pandoc_install_nightly()</code> is a wrapper for <code>pandoc_install("nightly")</code>.
-<code>pandoc_installed_versions()</code> will list all installed versions by decreasing
-order.</p>
+<code>pandoc_install_nightly()</code> is a wrapper for <code>pandoc_install("nightly")</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pandoc_install</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"latest"</span>, force <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>pandoc_install_nightly</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>pandoc_installed_versions</span><span class='op'>(</span><span class='op'>)</span></pre>
+<span class='fu'>pandoc_install_nightly</span><span class='op'>(</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,23 +133,22 @@ order.</p>
       <td><p>This can be either:</p><ul>
 <li><p><code>"latest"</code> for the latest release</p></li>
 <li><p>A version number (e.g <code>"2.11.4"</code>) for a specific version</p></li>
-<li><p><code>"nightly"</code> for the last pandoc devel built</p></li>
+<li><p><code>"nightly"</code> for the last pandoc development built daily</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>force</th>
-      <td><p>To set to <code>TRUE</code> to force a reinstallation</p></td>
+      <td><p>To set to <code>TRUE</code> to force a re-installation</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>NULL</code> if already installed. The path where the binary is installed
-otherwise. For <code>pandoc_installed_versions()</code>, a character vector of all installed versions.</p>
+    <p>The path where the binary is installed otherwise. <code>NULL</code> if already
+installed.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Pandoc versions are installed in <code><a href='pandoc_home_dir.html'>pandoc_home_dir()</a></code> with one folder per version.
-All installed version can be list with <code>pandoc_installed_versions()</code></p>
+    <p>Pandoc versions are installed in <code><a href='pandoc_home_dir.html'>pandoc_home_dir()</a></code> with one folder per version.</p>
 <p>Only one nightly version is available at a time as there should be no need to
 switch between them. The latest nightly will be installed over the current
 one if any. Installing nightly version is useful for example to test a bug
