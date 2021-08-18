@@ -115,7 +115,7 @@ test_that("Pandoc specific release can be installed", {
   expect_pandoc_installed("2.7.3")
   bin <- fs::path(pandoc_home_dir("2.7.3"), "pandoc-citeproc",
                   ext = ifelse(pandoc_os() == "windows", "exe", ""))
-  expect_true(fs::file_exists(fs::path(, bin)))
+  expect_true(fs::file_exists(bin))
 })
 
 test_that("Installed versions can be listed", {
