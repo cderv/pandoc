@@ -30,7 +30,8 @@ otherwise. For \code{pandoc_installed_versions()}, a character vector of all ins
 Binary releases of Pandoc are available on its release page. By default, this
 function will install the latest available version.
 \code{pandoc_install_nightly()} is a wrapper for \code{pandoc_install("nightly")}.
-\code{pandoc_installed_versions()} will list all installed version.
+\code{pandoc_installed_versions()} will list all installed versions by decreasing
+order.
 }
 \details{
 Pandoc versions are installed in \code{\link[=pandoc_home_dir]{pandoc_home_dir()}} with one folder per version.

@@ -140,4 +140,5 @@ test_that("Pandoc latest release can be installed", {
   skip_on_cran()
   skip_if_offline()
   expect_pandoc_installed("latest")
+  expect_message(expect_message(pandoc_update()), "already installed", fixed = TRUE)
 })

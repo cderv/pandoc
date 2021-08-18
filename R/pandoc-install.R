@@ -79,6 +79,20 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 
 }
 
+#' Update to last Pandoc version available
+#'
+#' This function will check last version of Pandoc released, and install it if
+#' not already installed.
+#'
+#' @seealso [pandoc_install()]
+#'
+#' @return invisibly, path to installed pandoc version
+#' @export
+pandoc_update <- function() {
+  rlang::inform(c(i = "Updating to last available Pandoc release"))
+  invisible(pandoc_install(version = "latest"))
+}
+
 #' @rdname pandoc_install
 #' @export
 pandoc_install_nightly <- function() {
