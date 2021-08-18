@@ -13,9 +13,13 @@ pandoc_set_version(version, rmarkdown = TRUE)
 \item A version number (e.g \code{"2.11.4"}) for a specific version
 \item \code{"nightly"} for the last pandoc development built daily
 }}
+
+\item{rmarkdown}{if \code{TRUE} (the default) and \strong{rmarkdown} is available, this
+will also set the pandoc version as the default one to use with
+\strong{rmarkdown} by calling \code{\link[rmarkdown:find_pandoc]{rmarkdown::find_pandoc()}}}
 }
 \value{
-invisibly, the previous active version
+invisibly, the previous active version.
 }
 \description{
 This function will set the specified version as the default version for the

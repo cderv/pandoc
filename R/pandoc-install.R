@@ -348,7 +348,11 @@ pandoc_locate <- function(version = "default") {
 #' the installed version (nightly version excluded.)
 #'
 #' @inheritParams pandoc_install
-#' @return invisibly, the previous active version
+#' @param rmarkdown if `TRUE` (the default) and **rmarkdown** is available, this
+#'   will also set the pandoc version as the default one to use with
+#'   **rmarkdown** by calling [rmarkdown::find_pandoc()]
+#'
+#' @return invisibly, the previous active version.
 #' @export
 pandoc_set_version <- function(version, rmarkdown = TRUE) {
   old_active <- pandoc_active_get()
