@@ -4,7 +4,7 @@
 \alias{pandoc_set_version}
 \title{Activate a specific Pandoc version to be used}
 \usage{
-pandoc_set_version(version)
+pandoc_set_version(version, rmarkdown = TRUE)
 }
 \arguments{
 \item{version}{This can be either:
