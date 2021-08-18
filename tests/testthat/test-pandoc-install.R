@@ -10,8 +10,9 @@ expect_pandoc_installed <- function(version) {
   install_dir <- pandoc_home_dir(version)
   if (!is.null(install_dir)) fs::dir_delete(install_dir)
   install_dir <- suppressMessages(pandoc_install(version))
-  bin <- paste0("pandoc", if (pandoc_os() == "windows") ".exe")
-  expect_true(fs::file_exists(fs::path(install_dir, bin)))
+  bin <- fs::path(install_dir, "pandoc",
+                  ext = ifelse(pandoc_os() == "windows", "exe", ""))
+  expect_true(fs::file_exists(bin))
 }
 
 test_that("Release information are cached", {
@@ -112,8 +113,9 @@ test_that("Pandoc specific release can be installed", {
   expect_error(pandoc_install("2.2.3"))
   # Before Pandoc 2.11, pandoc-citeproc is also shipped
   expect_pandoc_installed("2.7.3")
-  bin <- paste0("pandoc-citeproc", if (pandoc_os() == "windows") ".exe")
-  expect_true(fs::file_exists(fs::path(pandoc_home_dir("2.7.3"), bin)))
+  bin <- fs::path(pandoc_home_dir("2.7.3"), "pandoc-citeproc",
+                  ext = ifelse(pandoc_os() == "windows", "exe", ""))
+  expect_true(fs::file_exists(fs::path(, bin)))
 })
 
 test_that("Installed versions can be listed", {
