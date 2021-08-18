@@ -29,7 +29,8 @@ function will install the latest available version.
 \code{pandoc_install_nightly()} is a wrapper for \code{pandoc_install("nightly")}.
 }
 \details{
-Pandoc versions are installed in \code{\link[=pandoc_home_dir]{pandoc_home_dir()}} with one folder per version.
+Pandoc versions are installed in user data directories with one folder per
+version. See \code{\link[=pandoc_locate]{pandoc_locate()}}.
 
 Only one nightly version is available at a time as there should be no need to
 switch between them. The latest nightly will be installed over the current

@@ -62,13 +62,31 @@ pak::pak("cderv/pandoc")
 
 -   `pandoc_uninstall(<ver>)`: Uninstall one of the version
 
-### Finding an installed version
+### Find an installed version
 
--   `pandoc::pandoc_installed_versions()`: list installed version
+-   `pandoc::pandoc_installed_versions()`: List installed version by
+    most recent first.
+-   `pandoc::pandoc_is_installed("2.14.1")`: Is version 2.14.1 installed
+    already ?
+
+### Get path to a version
 
 Pandoc versions are installed with one folder per version in user’s data
 directory.
 
--   `pandoc::pandoc_home_dir()`: Where Pandoc versions are installed ?
--   `pandoc::pandoc_home_dir("2.11.4")`: Path to the `2.11.4` pandoc
-    version directory
+-   `pandoc::pandoc_locate()`: Path to active pandoc version directory
+-   `pandoc::pandoc_locate("latest")`: Path to the most recent installed
+    version
+-   `pandoc::pandoc_locate("2.11.4")`: Path to a specific version
+    directory, e.g `2.11.4`
+-   `pandoc::pandoc_locate("nightly")`: Path to the nightly version
+    installed
+
+### Set active version
+
+By default, the most recent Pandoc version installed is used. When
+testing difference in versions, in can be interesting to switch the
+active version to run a different version.
+
+-   `pandoc::pandoc_set_version("2.7.3")`: Use a specific version with
+    the package.

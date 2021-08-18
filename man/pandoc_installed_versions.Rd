@@ -2,10 +2,13 @@
 % Please edit documentation in R/pandoc-install.R
 \name{pandoc_installed_versions}
 \alias{pandoc_installed_versions}
+\alias{pandoc_installed_latest}
 \alias{pandoc_is_installed}
 \title{Check Pandoc versions already installed}
 \usage{
 pandoc_installed_versions()
+
+pandoc_installed_latest()
 
 pandoc_is_installed(version)
 }
@@ -18,12 +21,13 @@ pandoc_is_installed(version)
 }}
 }
 \value{
-A character vector of available installed versions or a logical for
-\code{pandoc_is_installed()}
+A character vector of installed versions or a logical for
+\code{pandoc_is_installed()}. It will return \code{NULL} is no versions are installed.
 }
 \description{
 \itemize{
-\item \code{pandoc_installed_versions()} will list all versions already installed
+\item \code{pandoc_installed_versions()} lists all versions already installed
+\item \code{pandoc_installed_latest()} returns the most recent installed version
 \item \code{pandoc_is_installed()} allows to check for a specific installed version
 }
 }

@@ -7,7 +7,7 @@
 }
 
 expect_pandoc_installed <- function(version) {
-  install_dir <- pandoc_home_dir(version)
+  install_dir <- pandoc_locate(version)
   if (!is.null(install_dir)) fs::dir_delete(install_dir)
   install_dir <- suppressMessages(pandoc_install(version))
   bin <- fs::path(install_dir, "pandoc",
@@ -94,13 +94,14 @@ test_that("No versions are installed", {
   skip_on_cran()
   expect_null(pandoc_installed_versions())
   expect_null(pandoc_installed_latest())
+  expect_true(pandoc_active_get(), "")
 })
 
 test_that("Pandoc nightly can be installed", {
   skip_on_cran()
   skip_if_offline()
   expect_pandoc_installed("nightly")
-  time <- fs::file_info(pandoc_home_dir("nightly"))$modification_time
+  time <- fs::file_info(pandoc_locate("nightly"))$modification_time
   expect_message(expect_message(pandoc_install("nightly")), "already installed", fixed = TRUE)
 })
 
@@ -111,7 +112,7 @@ test_that("Pandoc specific release can be installed", {
   expect_message(expect_null(pandoc_install("2.11.4")), "already installed", fixed = TRUE)
   expect_identical(
     suppressMessages(pandoc_install("2.11.4", force = TRUE)),
-    pandoc_home_dir("2.11.4")
+    pandoc_locate("2.11.4")
   )
   # does not exist
   expect_error(pandoc_install("2.2.3"))
@@ -122,7 +123,7 @@ test_that("pandoc-citeproc is correctly placed in root folder", {
   skip_if_offline()
   # Before Pandoc 2.11, pandoc-citeproc is also shipped
   expect_pandoc_installed("2.7.3")
-  bin <- fs::path(pandoc_home_dir("2.7.3"), "pandoc-citeproc",
+  bin <- fs::path(pandoc_locate("2.7.3"), "pandoc-citeproc",
                   ext = ifelse(pandoc_os() == "windows", "exe", ""))
   expect_true(fs::file_exists(bin))
 })
@@ -167,3 +168,4 @@ test_that("Pandoc latest release can be installed", {
   expect_pandoc_installed("latest")
   expect_message(expect_message(pandoc_update()), "already installed", fixed = TRUE)
 })
+
