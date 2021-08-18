@@ -348,10 +348,10 @@ pandoc_locate <- function(version = "default") {
 #' the installed version (nightly version excluded.)
 #'
 #' @inheritParams pandoc_install
-#' @return invisibly, the path to the previous active version
+#' @return invisibly, the previous active version
 #' @export
 pandoc_set_version <- function(version, rmarkdown = TRUE) {
-  old_active <- pandoc_locate()
+  old_active <- pandoc_active_get()
   if (version == "latest") version <- pandoc_installed_latest()
   if (!pandoc_is_installed(version)) {
     rlang::abort(sprintf("Version %s is not yet installed", version))

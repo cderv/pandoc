@@ -131,7 +131,7 @@ test_that("Active version can be changed", {
   suppressMessages(pandoc_install("nightly"))
   expect_equal(pandoc_set_version("nightly"), "")
   expect_true(pandoc_is_active("nightly"))
-  expect_equal(pandoc_set_version("latest"), pandoc_home("nightly"))
+  expect_equal(pandoc_set_version("latest"), "nightly")
   expect_true(pandoc_is_active("2.11.4"))
 })
 
