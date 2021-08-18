@@ -3,7 +3,8 @@
 #' Binary releases of Pandoc are available on its release page. By default, this
 #' function will install the latest available version.
 #' `pandoc_install_nightly()` is a wrapper for `pandoc_install("nightly")`.
-#' `pandoc_installed_versions()` will list all installed version.
+#' `pandoc_installed_versions()` will list all installed versions by decreasing
+#' order.
 #'
 #' Pandoc versions are installed in [pandoc_home_dir()] with one folder per version.
 #' All installed version can be list with `pandoc_installed_versions()`
@@ -113,7 +114,12 @@ pandoc_install_nightly <- function() {
 #' @rdname pandoc_install
 #' @export
 pandoc_installed_versions <- function() {
-  fs::path_file(fs::dir_ls(pandoc_home()))
+  versions <- fs::path_file(fs::dir_ls(pandoc_home(), type = "directory"))
+  if (rlang::is_empty(versions)) return("")
+  is_nightly <- "nightly" %in% versions
+  versions <- setdiff(versions, "nightly")
+  sorted_versions <- sort(as.numeric_version(versions), TRUE)
+  c(if (is_nightly) "nightly", as.character(sorted_versions))
 }
 
 #' Uninstall a Pandoc version

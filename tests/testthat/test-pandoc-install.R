@@ -84,6 +84,10 @@ test_that("Assets are correctly found on linux arm64", {
   })
 })
 
+test_that("No versions are installed", {
+  expect_equal(pandoc_installed_versions(), "")
+})
+
 test_that("Pandoc nightly can be installed", {
   skip_on_cran()
   skip_if_offline()
@@ -115,10 +119,18 @@ test_that("Pandoc latest release can be installed", {
   expect_pandoc_installed("latest")
 })
 
+test_that("Installed versions can be listed", {
+  suppressMessages(pandoc_install("2.11.4"))
+  suppressMessages(pandoc_install("2.7.3"))
+  suppressMessages(pandoc_install("nightly"))
+  expect_equal(pandoc_installed_versions(), c("nightly", "2.11.4", "2.7.3"))
+})
+
 test_that("Pandoc release can be uninstall", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  expect_true(pandoc_uninstall("2.11.4"))
-  expect_false(fs::dir_exists(pandoc_home("2.11.4")))
+  suppressMessages(pandoc_install("nightly"))
+  expect_true(pandoc_uninstall("nightly"))
+  expect_false(fs::dir_exists(pandoc_home("nigthly")))
+  expect_equal(pandoc_installed_versions(), c("2.11.4", "2.7.3"))
 })
