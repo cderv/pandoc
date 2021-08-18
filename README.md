@@ -90,3 +90,38 @@ active version to run a different version.
 
 -   `pandoc::pandoc_set_version("2.7.3")`: Use a specific version with
     the package.
+
+    By default, if **rmarkdown** is installed, it will also set the
+    version active for all **rmarkdown** functions (using
+    `rmarkdown::find_pandoc()`). This allows to use this package easily
+    in order to test **rmarkdown** with different version of Pandoc.
+
+    ``` r
+    rmarkdown::find_pandoc(cache = FALSE)
+    #> $version
+    #> [1] '2.14.1'
+    #> 
+    #> $dir
+    #> [1] "C:/Users/chris/scoop/shims"
+    pandoc::pandoc_set_version("2.7.3")
+    #> v Version 2.7.3 is now the active one.
+    #> i This is also true for using with rmarkdown functions.
+    rmarkdown::find_pandoc()
+    #> $version
+    #> [1] '2.7.3'
+    #> 
+    #> $dir
+    #> [1] "C:\\Users\\chris\\AppData\\Local/r-pandoc/r-pandoc/2.7.3"
+    ```
+
+    Setting `rmarkdown = TRUE` is equivalent to calling
+
+    ``` r
+    rmarkdown::find_pandoc(cache = FALSE, dir = pandoc::pandoc_locate())
+    ```
+
+-   `pandoc::pandoc_set_version("2.7.3", rmarkdown = FALSE)` will not
+    activate the version to use with **rmarkdown**
+
+Note: To reset default **rmarkdown** Pandoc version, you can use
+`rmarkdown::find_pandoc(cache = FALSE)`
