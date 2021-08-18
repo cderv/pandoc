@@ -1,3 +1,8 @@
+# This file currently only works on CI where the environment is cleaned at each run.
+# This is because the order of installation matters (e.g latest version results)
+# Locally, it can conflict with the user's install folder pandoc_locate(NULL)
+# This may require a mocking mechanism.
+
 .get_assets_info <- function(os, arch) {
   versions <- suppressMessages(pandoc_available_versions())
   map(versions, ~ {
@@ -116,6 +121,17 @@ test_that("Pandoc specific release can be installed", {
   )
   # does not exist
   expect_error(pandoc_install("2.2.3"))
+})
+
+test_that("Active version can be changed", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.11.4"))
+  suppressMessages(pandoc_install("nightly"))
+  expect_equal(pandoc_set_version("nightly"), "")
+  expect_equal(pandoc_active_get(), "nightly")
+  expect_equal(pandoc_set_version("latest"), pandoc_home("nightly"))
+  expect_equal(pandoc_active_get(), "2.11.4")
 })
 
 test_that("pandoc-citeproc is correctly placed in root folder", {

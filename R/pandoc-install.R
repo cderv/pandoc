@@ -347,19 +347,21 @@ pandoc_locate <- function(version = "default") {
 #' session. By default, the default active version in the most recent one among
 #' the installed version (nightly version excluded.)
 #'
+#' @inheritParams pandoc_install
 #' @return invisibly, the path to the previous active version
 #' @export
 pandoc_set_version <- function(version) {
   old_active <- pandoc_locate()
+  if (version == "latest") version <- pandoc_installed_latest()
+  if (!pandoc_is_installed(version)) {
+    rlang::abort(sprintf("Version %s is not yet installed", version))
+  }
   pandoc_active_set(version)
   rlang::inform(sprintf("Version %s is now the active one.", pandoc_active_get()))
   invisible(old_active)
 }
 
 pandoc_active_set <- function(version) {
-  if (!pandoc_is_installed(version)) {
-    rlang::abort(sprintf("Version %s is not yet installed", version))
-  }
   rlang::env_poke(pandocenv, "active_version", version, inherit = FALSE)
 }
 

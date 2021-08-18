@@ -6,6 +6,14 @@
 \usage{
 pandoc_set_version(version)
 }
+\arguments{
+\item{version}{This can be either:
+\itemize{
+\item \code{"latest"} for the latest release
+\item A version number (e.g \code{"2.11.4"}) for a specific version
+\item \code{"nightly"} for the last pandoc development built daily
+}}
+}
 \value{
 invisibly, the path to the previous active version
 }
