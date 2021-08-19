@@ -1,0 +1,55 @@
+#' Get path to the pandoc binary
+#'
+#' @param version Version to use. Default will be the `"default"` version. Other possible value are
+#' * A version number e.g `"2.14.1"`
+#' * The nightly version e.g `"nightly"`
+#' * The latest installed version `"latest"`
+#'
+#' @return Absolute path to the pandoc binary of the requested version
+pandoc_bin <- function(version = "default") {
+  pandoc_path <- pandoc_locate(version)
+  fs::path(pandoc_path, "pandoc", ext = if (pandoc_os() == "windows") "exe")
+}
+
+#' Run the pandoc binary from R
+#'
+#' This function is a thin wrapper around the pandoc binary and allow to pass
+#' any arguments supported by the Pandoc binary.
+#'
+#' @param args Character vector, arguments to the pandoc CLI command
+#' @param bin Path to a pandoc binary. Default to the active version
+#' @param echo Whether to rpint the standard output and error to the screen.
+#'
+#' @return The output of [processx::run()] invisibly
+pandoc_run <- function(args, bin = pandoc_bin(), echo = TRUE) {
+  invisible(processx::run(bin, args, echo = echo))
+}
+
+#' Get Pandoc version
+#'
+#' This is equivalent to `pandoc --version`
+#'
+#' @inheritParams pandoc_run
+pandoc_get_version <- function(bin = pandoc_bin()) {
+  out <- pandoc_run("--version", bin = bin, echo = FALSE)[["stdout"]]
+  version <- strsplit(out, "\n")[[1]][1]
+  version <- gsub("^pandoc(?:\\.exe)? ([\\d.]+).*$", "\\1", version, perl = TRUE)
+  numeric_version(version)
+}
+
+#' Execute any code with a specific Pandoc version
+#'
+#' This function allows to run any R code by changing the active pandoc version to use
+#' without modifying the R session state.
+#'
+#' This is inspired from **withr** package.
+#'
+#' @inheritParams pandoc_set_version
+#' @param code Code to execute with the temporaty active Pandoc version.
+#'
+#' @return The results of the evaluation of the `code` argument.
+with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
+  old <- pandoc_set_version(version, rmarkdown = rmarkdown)
+  on.exit(pandoc_active_set(old))
+  force(code)
+}
