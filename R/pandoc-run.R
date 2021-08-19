@@ -34,7 +34,7 @@ pandoc_run <- function(args, bin = pandoc_bin(), echo = TRUE) {
 #'
 #' @inheritParams pandoc_run
 #' @export
-pandoc_get_version <- function(bin = pandoc_bin()) {
+pandoc_version <- function(bin = pandoc_bin()) {
   out <- pandoc_run("--version", bin = bin, echo = FALSE)[["stdout"]]
   version <- strsplit(out, "\n")[[1]][1]
   version <- gsub("^pandoc(?:\\.exe)? ([\\d.]+).*$", "\\1", version, perl = TRUE)
