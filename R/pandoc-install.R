@@ -300,7 +300,21 @@ pandoc_uninstall <- function(version) {
   }
   install_dir <- pandoc_locate(version)
   if (!rlang::is_null(install_dir)) {
+    # Remove installation folder
     fs::dir_delete(install_dir)
+    # Deal with active version
+    if (pandoc_is_active(version)) {
+      # Change the active version
+      latest <- pandoc_installed_latest()
+      if (is.null(latest)) {
+        # no more version installed
+        pandoc_active_unset()
+      } else {
+        # Change to the latest version
+        pandoc_active_set(latest)
+      }
+
+    }
   }
   invisible(TRUE)
 }
@@ -314,6 +328,60 @@ pandoc_available_versions <- function() {
   releases <- pandoc_releases()
   versions <- map_chr(releases, "[[", "tag_name")
   keep(versions, ~ numeric_version(.x) >= .min_supported_version)
+}
+
+pandoc_active_set <- function(version) {
+  rlang::env_poke(pandocenv, "active_version", version, inherit = FALSE)
+}
+
+pandoc_active_unset <- function(version) {
+  rlang::env_unbind(pandocenv, "active_version", inherit = FALSE)
+}
+
+pandoc_active_get <- function() {
+  rlang::env_get(pandocenv, "active_version", default = "", inherit = FALSE)
+}
+
+#' Activate a specific Pandoc version to be used
+#'
+#' This function will set the specified version as the default version for the
+#' session. By default, the default active version in the most recent one among
+#' the installed version (nightly version excluded.)
+#'
+#' @inheritParams pandoc_install
+#' @param rmarkdown if `TRUE` (the default) and **rmarkdown** is available, this
+#'   will also set the pandoc version as the default one to use with
+#'   **rmarkdown** by calling [rmarkdown::find_pandoc()]
+#'
+#' @return invisibly, the previous active version.
+#' @export
+pandoc_set_version <- function(version, rmarkdown = TRUE) {
+  old_active <- pandoc_active_get()
+  if (version == "latest") version <- pandoc_installed_latest()
+  if (is.null(version)) {
+    pandoc_active_set("")
+  } else {
+    if (!pandoc_is_installed(version)) {
+      rlang::abort(sprintf("Version %s is not yet installed", version))
+    }
+    pandoc_active_set(version)
+    rlang::inform(c(v = sprintf("Version %s is now the active one.", pandoc_active_get())))
+    if (rmarkdown && rlang::is_installed("rmarkdown")) {
+      rmarkdown::find_pandoc(cache = FALSE, dir = pandoc_locate())
+      rlang::inform(c(i = "This is also true for using with rmarkdown functions."))
+    }
+  }
+  invisible(old_active)
+}
+
+#' Is a pandoc version active ?
+#'
+#' @inheritParams pandoc_install
+#'
+#' @export
+pandoc_is_active <- function(version) {
+  if (version == "latest") version <- pandoc_installed_latest()
+  version == pandoc_active_get()
 }
 
 #' Locate a specific installed Pandoc version
@@ -340,50 +408,4 @@ pandoc_locate <- function(version = "default") {
   home_dir <- pandoc_home(version)
   if (!fs::dir_exists(home_dir)) return(NULL)
   home_dir
-}
-
-#' Activate a specific Pandoc version to be used
-#'
-#' This function will set the specified version as the default version for the
-#' session. By default, the default active version in the most recent one among
-#' the installed version (nightly version excluded.)
-#'
-#' @inheritParams pandoc_install
-#' @param rmarkdown if `TRUE` (the default) and **rmarkdown** is available, this
-#'   will also set the pandoc version as the default one to use with
-#'   **rmarkdown** by calling [rmarkdown::find_pandoc()]
-#'
-#' @return invisibly, the previous active version.
-#' @export
-pandoc_set_version <- function(version, rmarkdown = TRUE) {
-  old_active <- pandoc_active_get()
-  if (version == "latest") version <- pandoc_installed_latest()
-  if (!pandoc_is_installed(version)) {
-    rlang::abort(sprintf("Version %s is not yet installed", version))
-  }
-  pandoc_active_set(version)
-  rlang::inform(c(v = sprintf("Version %s is now the active one.", pandoc_active_get())))
-  if (rmarkdown && rlang::is_installed("rmarkdown")) {
-    rmarkdown::find_pandoc(cache = FALSE, dir = pandoc_locate())
-    rlang::inform(c(i = "This is also true for using with rmarkdown functions."))
-  }
-  invisible(old_active)
-}
-
-pandoc_active_set <- function(version) {
-  rlang::env_poke(pandocenv, "active_version", version, inherit = FALSE)
-}
-
-pandoc_active_get <- function() {
-  rlang::env_get(pandocenv, "active_version", default = "", inherit = FALSE)
-}
-
-#' Is a pandoc version active ?
-#'
-#' @inheritParams pandoc_install
-#'
-#' @export
-pandoc_is_active <- function(version) {
-  if (version == "latest") version <- pandoc_installed_latest()
-  version == pandoc_active_get()
 }

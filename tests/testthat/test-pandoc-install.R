@@ -181,6 +181,18 @@ test_that("Pandoc release can be uninstall", {
   expect_equal(pandoc_installed_versions(), c("2.11.4", "2.7.3"))
 })
 
+test_that("Pandoc release can be uninstall", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.11.4"))
+  suppressMessages(pandoc_install("2.7.3"))
+  pandoc_active_set("2.11.4")
+  expect_true(pandoc_uninstall("2.11.4"))
+  expect_equal(pandoc_active_get(), pandoc_installed_latest())
+  expect_true(pandoc_uninstall("2.7.3"))
+  expect_equal(pandoc_active_get(), "")
+})
+
 test_that("Pandoc latest release can be installed", {
   skip_on_cran()
   skip_if_offline()
