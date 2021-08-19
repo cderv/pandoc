@@ -6,6 +6,7 @@
 #' * The latest installed version `"latest"`
 #'
 #' @return Absolute path to the pandoc binary of the requested version
+#' @export
 pandoc_bin <- function(version = "default") {
   pandoc_path <- pandoc_locate(version)
   fs::path(pandoc_path, "pandoc", ext = if (pandoc_os() == "windows") "exe")
@@ -21,6 +22,7 @@ pandoc_bin <- function(version = "default") {
 #' @param echo Whether to rpint the standard output and error to the screen.
 #'
 #' @return The output of [processx::run()] invisibly
+#' @export
 pandoc_run <- function(args, bin = pandoc_bin(), echo = TRUE) {
   invisible(processx::run(bin, args, echo = echo))
 }
@@ -30,6 +32,7 @@ pandoc_run <- function(args, bin = pandoc_bin(), echo = TRUE) {
 #' This is equivalent to `pandoc --version`
 #'
 #' @inheritParams pandoc_run
+#' @export
 pandoc_get_version <- function(bin = pandoc_bin()) {
   out <- pandoc_run("--version", bin = bin, echo = FALSE)[["stdout"]]
   version <- strsplit(out, "\n")[[1]][1]
@@ -48,6 +51,7 @@ pandoc_get_version <- function(bin = pandoc_bin()) {
 #' @param code Code to execute with the temporaty active Pandoc version.
 #'
 #' @return The results of the evaluation of the `code` argument.
+#' @export
 with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
   old <- pandoc_set_version(version, rmarkdown = rmarkdown)
   on.exit(pandoc_active_set(old))
