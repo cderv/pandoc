@@ -9,7 +9,8 @@
 #' @export
 pandoc_bin <- function(version = "default") {
   pandoc_path <- pandoc_locate(version)
-  fs::path(pandoc_path, "pandoc", ext = if (pandoc_os() == "windows") "exe")
+  fs::path(pandoc_path, "pandoc",
+           ext = ifelse(pandoc_os() == "windows", "exe", ""))
 }
 
 #' Run the pandoc binary from R
