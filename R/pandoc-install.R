@@ -405,9 +405,9 @@ pandoc_locate <- function(version = "default") {
   }
   if (version == "default") version <- pandoc_active_get()
   if (version == "latest") version <- pandoc_installed_latest()
-  if (!nzchar(version)) {
-    rlang::warn("No installed pandoc version available.")
-    return("")
+  if (is.null(version) || !nzchar(version)) {
+    rlang::warn("No Pandoc version available.")
+    return(NULL)
   }
   home_dir <- pandoc_home(version)
   if (!fs::dir_exists(home_dir)) return(NULL)

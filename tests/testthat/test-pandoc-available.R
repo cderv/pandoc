@@ -13,5 +13,6 @@ test_that("pandoc_available() works", {
   # as if no active version
   pandoc_active_set("")
   expect_false(pandoc_available())
-  suppressMessages(pandoc_set_version(old, rmarkdown = FALSE))
+  suppressMessages(pandoc_active_set(old))
 })
+
