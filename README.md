@@ -66,6 +66,8 @@ pak::pak("cderv/pandoc")
 
 -   `pandoc::pandoc_installed_versions()`: List installed version by
     most recent first.
+-   `pandoc::pandoc_installed_latest()`: Get the most recent version
+    number installed.  
 -   `pandoc::pandoc_is_installed("2.14.1")`: Is version 2.14.1 installed
     already ?
 
