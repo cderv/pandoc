@@ -321,6 +321,10 @@ pandoc_uninstall <- function(version) {
 
 #' @importFrom rappdirs user_data_dir
 pandoc_home <- function(version = NULL) {
+  if (identical(Sys.getenv("TESTTHAT"), "true")) {
+    # during testing we don't want to mess with the environment user app dir
+    return(as.character(fs::path_temp("r-pandoc", version %||% "")))
+  }
   rappdirs::user_data_dir("r-pandoc", version = version)
 }
 
