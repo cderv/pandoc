@@ -40,6 +40,14 @@ pandoc_run <- function(args, bin = pandoc_bin(), echo = TRUE) {
   invisible(processx::run(bin, args, echo = echo))
 }
 
+pandoc_run_to_file <- function(..., echo = FALSE) {
+  res <- pandoc_run(..., echo = echo)
+  tmp_file <- tempfile()
+  on.exit(unlink(tmp_file))
+  brio::write_file(res$stdout, tmp_file)
+  brio::read_lines(tmp_file)
+}
+
 #' Get Pandoc version
 #'
 #' This is equivalent to `pandoc --version`

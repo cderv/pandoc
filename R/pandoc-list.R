@@ -70,3 +70,8 @@ pandoc_list_extensions <- function(format = "markdown", bin = pandoc_bin()) {
   if (rlang::is_installed('tibble')) return(tibble::as_tibble(extensions_tbl))
   extensions_tbl
 }
+
+pandoc_list_abbreviations <- function(bin = pandoc_bin()) {
+  args <- c("--print-default-data-file", "abbreviations")
+  pandoc_run_to_file(args, bin = bin)
+}

@@ -148,3 +148,19 @@
       ]
     }
 
+# pandoc_list_abbreviations
+
+    Code
+      pandoc_list_abbreviations()
+    Output
+       [1] "aet."   "aetat." "al."    "Apr."   "Aug."   "bk."    "Bros."  "c."    
+       [9] "Capt."  "cf."    "ch."    "chap."  "chs."   "Co."    "col."   "Corp." 
+      [17] "cp."    "d."     "Dec."   "Dr."    "e.g."   "ed."    "eds."   "esp."  
+      [25] "f."     "fasc."  "Feb."   "ff."    "fig."   "fl."    "fol."   "fols." 
+      [33] "Fr."    "Gen."   "Gov."   "Hon."   "i.e."   "ill."   "Inc."   "incl." 
+      [41] "Jan."   "Jr."    "Jul."   "Jun."   "Ltd."   "M.A."   "M.D."   "Mar."  
+      [49] "Mr."    "Mrs."   "Ms."    "n."     "n.b."   "nn."    "No."    "Nov."  
+      [57] "Oct."   "p."     "Ph.D."  "pp."    "Pres."  "Prof."  "pt."    "q.v."  
+      [65] "Rep."   "Rev."   "s.v."   "s.vv."  "saec."  "sec."   "Sen."   "Sep."  
+      [73] "Sept."  "Sgt."   "Sr."    "St."    "univ."  "viz."   "vol."   "vs."   
+
