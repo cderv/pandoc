@@ -20,7 +20,7 @@ pandoc_install_nightly()
 \item{force}{To set to \code{TRUE} to force a re-installation}
 }
 \value{
-The path where the binary is installed otherwise. \code{NULL} if already
+Invisibly, the path where the binary is installed otherwise. \code{NULL} if already
 installed.
 }
 \description{

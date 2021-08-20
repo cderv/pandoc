@@ -2,9 +2,12 @@
 % Please edit documentation in R/pandoc-run.R
 \name{pandoc_bin}
 \alias{pandoc_bin}
+\alias{pandoc_citeproc_bin}
 \title{Get path to the pandoc binary}
 \usage{
 pandoc_bin(version = "default")
+
+pandoc_citeproc_bin(version = "default")
 }
 \arguments{
 \item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
@@ -15,7 +18,11 @@ pandoc_bin(version = "default")
 }}
 }
 \value{
-Absolute path to the pandoc binary of the requested version
+Absolute path to the pandoc binary of the requested version.
+
+For \code{pandoc_citeproc_bin()}, it returns the path to \code{pandoc-citeproc} binary
+if it exists. Since Pandoc 2.11, the citeproc filter has been included into
+Pandoc itself and is no more shipped as a binary filter.
 }
 \description{
 Get path to the pandoc binary
