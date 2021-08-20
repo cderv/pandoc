@@ -1,6 +1,23 @@
 
 # About how to install version --------------------------------------------
 
+with_download_cache <- function(version, bundle_name, code) {
+  # download bundle
+  # Caching the download for a session in a temp folder.
+  # This is useful in tests suits
+  tmp_folder <- fs::path_temp("r-pandoc-download", version)
+  fs::dir_create(tmp_folder)
+  owd <- setwd(tmp_folder)
+  on.exit(setwd(owd), add = TRUE)
+  if (!fs::file_exists(bundle_name)) {
+    rlang::inform(c(" " = "Downloading bundle..."))
+    force(code)
+  } else {
+    rlang::inform(c(" " = "Using cached bundle."))
+  }
+  fs::path_abs(bundle_name)
+}
+
 #' Install a pandoc binary for Github release page
 #'
 #' Binary releases of Pandoc are available on its release page. By default, this
@@ -20,7 +37,7 @@
 #'   * A version number (e.g `"2.11.4"`) for a specific version
 #'   * `"nightly"` for the last pandoc development built daily
 #' @param force To set to `TRUE` to force a re-installation
-#' @return The path where the binary is installed otherwise. `NULL` if already
+#' @return Invisibly, the path where the binary is installed otherwise. `NULL` if already
 #'   installed.
 #' @seealso [pandoc_uninstall()]
 #' @export
@@ -41,28 +58,20 @@ pandoc_install <- function(version = "latest", force = FALSE) {
     is_empty <- length(fs::dir_ls(install_dir)) == 0L
     if (!is_empty && !force) {
       rlang::inform(c(
-        sprintf("Pandoc %s already installed.", version),
-        "Use 'force = TRUE' to overwrite."))
-      return(invisible())
+        v = sprintf("Pandoc %s already installed.", version),
+        " " = "Use 'force = TRUE' to overwrite."))
+      return(invisible(NULL))
     } else {
       # we remove existing installation
       fs::dir_delete(install_dir)
     }
   }
 
-  # download bundle
-  # Caching the download for a session in a temp folder.
-  # This is useful in tests suits
   rlang::inform(c(i = paste0("Installing Pandoc release ", version)))
-  tmp_folder <- fs::path_temp("r-pandoc-download", version)
-  fs::dir_create(tmp_folder)
-  tmp_file <- fs::path(tmp_folder, fs::path_file(release_bundle$url))
-  if (!fs::file_exists(tmp_file)) {
-    rlang::inform(c(" " = paste0("Downloading bundle ", release_bundle$url, ".")))
-    utils::download.file(release_bundle$url, destfile = tmp_file, quiet = TRUE)
-  } else {
-    rlang::inform(c(" " = "Using cached bundle."))
-  }
+  bundle_name <- fs::path_file(release_bundle$url)
+  tmp_file <- with_download_cache(version, bundle_name, {
+    utils::download.file(release_bundle$url, destfile = bundle_name, quiet = TRUE)
+  })
 
   # install bundle
   switch(fs::path_ext(release_bundle$url),
@@ -92,7 +101,7 @@ pandoc_install <- function(version = "latest", force = FALSE) {
     fs::file_chmod(bin, "u+x")
   }
 
-  install_dir
+  invisible(install_dir)
 
 }
 
@@ -136,19 +145,11 @@ pandoc_install_nightly <- function() {
     fs::dir_delete(install_dir)
   }
 
-  # download bundle
-  # Caching the download for a session in a temp folder.
-  # This is useful in tests suits
+  bundle_name <- fs::path_ext_set(head_sha, "zip")
   rlang::inform(c(i = "Installing last available nightly..."))
-  tmp_folder <- fs::path_temp("r-pandoc-download", version)
-  fs::dir_create(tmp_folder)
-  tmp_file <- fs::path(tmp_folder, head_sha, ext = ".zip")
-  if (!fs::file_exists(tmp_file)) {
-    rlang::inform(c(" " = "Downloading bundle..."))
-    gh::gh(artifact_url, .destfile = tmp_file)
-  } else {
-    rlang::inform(c(" " = "Using cached bundle."))
-  }
+  tmp_file <- with_download_cache("nightly", bundle_name, {
+    gh::gh(artifact_url, .destfile = bundle_name)
+  })
 
   utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
   rlang::inform(c(v = paste0("Last Pandoc nightly installed: ", pandoc_nightly_version())))
