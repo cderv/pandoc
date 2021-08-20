@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • pandoc</title>
+<title>Export Pandoc internal data file — pandoc_get_data_file • pandoc</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Export Pandoc internal data file — pandoc_get_data_file" />
+<meta property="og:description" content="This correspond to the --print-default-data-file CLI flag using
+also --output to write a export a data file build in Pandoc." />
 
 
 
@@ -58,7 +60,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -105,138 +107,40 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Export Pandoc internal data file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/cderv/pandoc/blob/master/R/pandoc-template.R'><code>R/pandoc-template.R</code></a></small>
+    <div class="hidden name"><code>pandoc_get_data_file.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This correspond to the <a href='https://pandoc.org/MANUAL.html#option--print-default-data-file'><code>--print-default-data-file</code> CLI flag</a> using
+also <code>--output</code> to write a export a data file build in Pandoc.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>pandoc_get_data_file</span><span class='op'>(</span><span class='va'>file</span>, output <span class='op'>=</span> <span class='va'>file</span>, bin <span class='op'>=</span> <span class='fu'><a href='pandoc_bin.html'>pandoc_bin</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="pandoc_available.html">pandoc_available()</a></code> </p>
-        </td>
-        <td><p>Check if active Pandoc version meet a requirement</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_bin.html">pandoc_bin()</a></code> <code><a href="pandoc_bin.html">pandoc_citeproc_bin()</a></code> </p>
-        </td>
-        <td><p>Get path to the pandoc binary</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_convert.html">pandoc_convert()</a></code> </p>
-        </td>
-        <td><p>Run Pandoc to convert a document or a text</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_get_data_file.html">pandoc_get_data_file()</a></code> </p>
-        </td>
-        <td><p>Export Pandoc internal data file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_get_template.html">pandoc_get_template()</a></code> </p>
-        </td>
-        <td><p>Retrieve Pandoc template for a format</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_install.html">pandoc_install()</a></code> <code><a href="pandoc_install.html">pandoc_install_nightly()</a></code> </p>
-        </td>
-        <td><p>Install a pandoc binary for Github release page</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_installed_versions.html">pandoc_installed_versions()</a></code> <code><a href="pandoc_installed_versions.html">pandoc_installed_latest()</a></code> <code><a href="pandoc_installed_versions.html">pandoc_is_installed()</a></code> </p>
-        </td>
-        <td><p>Check Pandoc versions already installed</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_is_active.html">pandoc_is_active()</a></code> </p>
-        </td>
-        <td><p>Is a pandoc version active ?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_list_extensions.html">pandoc_list_extensions()</a></code> </p>
-        </td>
-        <td><p>List supported extensions for a format</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_list_formats.html">pandoc_list_formats()</a></code> </p>
-        </td>
-        <td><p>List available supported formats</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_locate.html">pandoc_locate()</a></code> </p>
-        </td>
-        <td><p>Locate a specific installed Pandoc version</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_run.html">pandoc_run()</a></code> </p>
-        </td>
-        <td><p>Run the pandoc binary from R</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_set_version.html">pandoc_set_version()</a></code> </p>
-        </td>
-        <td><p>Activate a specific Pandoc version to be used</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_uninstall.html">pandoc_uninstall()</a></code> </p>
-        </td>
-        <td><p>Uninstall a Pandoc version</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_update.html">pandoc_update()</a></code> </p>
-        </td>
-        <td><p>Update to last Pandoc version available</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pandoc_version.html">pandoc_version()</a></code> </p>
-        </td>
-        <td><p>Get Pandoc version</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="with_pandoc_version.html">with_pandoc_version()</a></code> </p>
-        </td>
-        <td><p>Execute any code with a specific Pandoc version</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>One of data file name included in Pandoc (e.g <code>reference.pptx</code>, <code>styles.html</code>)</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>Path where to export the file. Default to working directory
+with the same file name.</p></td>
+    </tr>
+    <tr>
+      <th>bin</th>
+      <td><p>Path to a pandoc binary. Default to the active version.</p></td>
+    </tr>
     </table>
-  </div>
 
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
