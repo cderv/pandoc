@@ -5,8 +5,8 @@
 \title{Run Pandoc to convert a document or a text}
 \usage{
 pandoc_convert(
-  file,
-  text,
+  file = NULL,
+  text = NULL,
   from = "markdown",
   to,
   output = NULL,
