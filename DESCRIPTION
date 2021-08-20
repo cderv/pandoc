@@ -20,7 +20,8 @@ Suggests:
     gh,
     covr,
     testthat (>= 3.0.0),
-    rmarkdown
+    rmarkdown,
+    withr
 Remotes: 
     r-lib/rlang
 Config/testthat/edition: 3

@@ -58,3 +58,11 @@ with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
   on.exit(pandoc_active_set(old))
   force(code)
 }
+
+local_pandoc_version <- function(version, rmarkdown = FALSE,
+                                 .local_envir = parent.frame()) {
+  rlang::check_installed("withr")
+  old <- suppressMessages(pandoc_set_version(version, rmarkdown = rmarkdown))
+  withr::defer(pandoc_active_set(old), envir = .local_envir)
+  invisible(old)
+}
