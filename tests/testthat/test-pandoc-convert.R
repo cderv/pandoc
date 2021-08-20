@@ -1,0 +1,11 @@
+test_that("pandoc_convert()", {
+  expect_error(pandoc_convert(file = "a", text = "b", to = "html"))
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install())
+  local_pandoc_version("latest")
+  expect_s3_class(pandoc_convert(text = "dummy", to = "markdown_strict"), "pandoc_raw_result")
+  tmp_file <- withr::local_tempfile()
+  pandoc_convert(text = "dummy", to = "markdown_strict", output = tmp_file)
+  expect_snapshot_file(tmp_file, "convert-markdown-dummy.md", compare = compare_file_text)
+})
