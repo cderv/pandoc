@@ -31,8 +31,8 @@ pandoc_citeproc_bin <- function(version = "default") {
 #' any arguments supported by the Pandoc binary.
 #'
 #' @param args Character vector, arguments to the pandoc CLI command
-#' @param bin Path to a pandoc binary. Default to the active version
-#' @param echo Whether to rpint the standard output and error to the screen.
+#' @param bin Path to a pandoc binary. Default to the active version.
+#' @param echo Whether to print the standard output and error to the screen.
 #'
 #' @return The output of [processx::run()] invisibly
 #' @export

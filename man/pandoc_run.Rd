@@ -9,9 +9,9 @@ pandoc_run(args, bin = pandoc_bin(), echo = TRUE)
 \arguments{
 \item{args}{Character vector, arguments to the pandoc CLI command}
 
-\item{bin}{Path to a pandoc binary. Default to the active version}
+\item{bin}{Path to a pandoc binary. Default to the active version.}
 
-\item{echo}{Whether to rpint the standard output and error to the screen.}
+\item{echo}{Whether to print the standard output and error to the screen.}
 }
 \value{
 The output of \code{\link[processx:run]{processx::run()}} invisibly

@@ -7,7 +7,7 @@
 pandoc_version(bin = pandoc_bin())
 }
 \arguments{
-\item{bin}{Path to a pandoc binary. Default to the active version}
+\item{bin}{Path to a pandoc binary. Default to the active version.}
 }
 \description{
 This is equivalent to \code{pandoc --version}

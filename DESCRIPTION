@@ -12,6 +12,7 @@ License: MIT + file LICENSE
 URL: https://github.com/cderv/pandoc
 BugReports: https://github.com/cderv/pandoc/issues
 Imports: 
+    brio,
     fs,
     processx,
     rappdirs,
