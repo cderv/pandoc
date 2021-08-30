@@ -2,13 +2,13 @@
 % Please edit documentation in R/rstudio.R
 \name{rstudio_pandoc}
 \alias{rstudio_pandoc}
-\alias{pandoc_version_rstudio}
-\alias{pandoc_bin_rstudio}
+\alias{pandoc_rstudio_version}
+\alias{pandoc_rstudio_bin}
 \title{Retrieve path and version of Pandoc shipped with RStudio}
 \usage{
-pandoc_version_rstudio()
+pandoc_rstudio_version()
 
-pandoc_bin_rstudio()
+pandoc_rstudio_bin()
 }
 \description{
 RStudio IDE ships with a pandoc binary. The PATH is stored in \code{RSTUDIO_PANDOC}
