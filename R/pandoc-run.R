@@ -9,8 +9,12 @@
 #' @export
 pandoc_bin <- function(version = "default") {
   pandoc_path <- pandoc_locate(version)
-  fs::path(pandoc_path, "pandoc",
-           ext = ifelse(pandoc_os() == "windows", "exe", ""))
+  pandoc_bin_impl(pandoc_path)
+}
+
+# if Windows, add .exe extension
+pandoc_bin_impl <- function(path, exe = FALSE) {
+  fs::path(path, "pandoc", ext = ifelse(pandoc_os() == "windows", "exe", ""))
 }
 
 #' @rdname pandoc_bin
