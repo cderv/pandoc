@@ -63,7 +63,7 @@ pandoc_list_extensions <- function(format = "markdown", bin = pandoc_bin()) {
     extensions = gsub("^[-+]", "", extensions)
   )
   extensions_tbl$default <- ifelse(
-    gsub("^([-+]{1}).*", "\\1", extensions_tbl$extensions) == "+",
+    gsub("^([-+]{1}).*", "\\1", extensions) == "+",
     TRUE,
     FALSE
   )
