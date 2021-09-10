@@ -25,6 +25,6 @@ pandoc_available <- function(min = NULL, max = NULL) {
   active_version <- as.numeric_version(active_version)
   is_above <- is_below <- TRUE
   if (!is.null(min)) is_above <- active_version >= min
-  if (!is.null(max)) is_below <- active_version <= max)
+  if (!is.null(max)) is_below <- active_version <= max
   return(is_above && is_below)
 }
