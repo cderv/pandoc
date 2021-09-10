@@ -415,12 +415,8 @@ pandoc_is_active <- function(version) {
 #' This function helps with finding the path to thoses specific version of Pandoc.
 #' See [pandoc_bin()] for another way of getting paths to `pandoc` binaries
 #'
-#' @param version By default, it will return the path to the active pandoc
-#'   version. If a version is specified (e.g `"2.11.4"`), it will return the
-#'   path for a specific version if installed. If `latest`, the path the most
-#'   recent Pandoc version installed ('nightly' excluded). If `NULL`, the main
-#'   path to directory where all versions are stored.
-#' @return Path of Pandoc binaries root folder if installed.
+#' @inheritParams pandoc_bin
+#' @return Path of Pandoc binaries root folder if version is available.
 #' @seealso [pandoc_install()]
 #' @export
 pandoc_locate <- function(version = "default") {
@@ -428,6 +424,12 @@ pandoc_locate <- function(version = "default") {
   if (!is.character(version) && length(version) != 1L) {
     rlang::abort("version must be a length one character")
   }
+  # Special binaries not managed by this
+  if (version %in% c("rstudio", "system")) {
+    return(fs::path_dir(pandoc_which_bin(version)))
+  }
+
+  # Binaries installed and managed by this package
   if (version == "default") version <- the$active_version
   if (version == "latest") version <- pandoc_installed_latest()
   if (is.null(version) || !nzchar(version)) {

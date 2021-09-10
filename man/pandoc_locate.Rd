@@ -7,14 +7,17 @@
 pandoc_locate(version = "default")
 }
 \arguments{
-\item{version}{By default, it will return the path to the active pandoc
-version. If a version is specified (e.g \code{"2.11.4"}), it will return the
-path for a specific version if installed. If \code{latest}, the path the most
-recent Pandoc version installed ('nightly' excluded). If \code{NULL}, the main
-path to directory where all versions are stored.}
+\item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
+\itemize{
+\item A version number e.g \code{"2.14.1"}
+\item The nightly version called \code{"nightly"}
+\item The latest installed version with \code{"latest"}
+\item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
+\item Pandoc binary found in PATH with \code{"system"}
+}}
 }
 \value{
-Path of Pandoc binaries root folder if installed.
+Path of Pandoc binaries root folder if version is available.
 }
 \description{
 This package helps install and manage Pandoc binaries in a specific folder.
