@@ -343,7 +343,7 @@ pandoc_uninstall <- function(version) {
       latest <- pandoc_installed_latest()
       if (is.null(latest)) {
         # no more version installed
-        the$active_version <- NULL
+        the$active_version <- ""
       } else {
         # Change to the latest version
         the$active_version <- latest

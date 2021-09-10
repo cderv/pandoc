@@ -28,7 +28,7 @@ test_that("Release information are cached", {
   skip_on_cran()
   skip_if_offline()
   # clean cached values
-  the$pandoc_releases <- NULL
+  rlang::env_unbind(the, "pandoc_releases")
   # with message Fetching
   expect_snapshot(x <- pandoc_releases())
   # without message Fetching
