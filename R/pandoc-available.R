@@ -11,13 +11,11 @@
 #'
 #' @param min Minimum version expected.
 #' @param max Maximum version expected
-#' @param strict if `TRUE`, minimum and maximum requirement will be considered
-#'   strict.
 #'
 #' @return logical. `TRUE` if requirement is met, `FALSE` otherwise.
 #'
 #' @export
-pandoc_available <- function(min = NULL, max = NULL, strict = FALSE) {
+pandoc_available <- function(min = NULL, max = NULL) {
   # TODO: get the version from calling pandoc instead.
   active_version <- the$active_version
   # No active pandoc
@@ -26,13 +24,7 @@ pandoc_available <- function(min = NULL, max = NULL, strict = FALSE) {
   # compare active with requirement
   active_version <- as.numeric_version(active_version)
   is_above <- is_below <- TRUE
-  if (!is.null(min)) {
-    greater_than <- if (strict) base::`>` else base::`>=`
-    is_above <- greater_than(active_version, min)
-  }
-  if (!is.null(max)) {
-    lower_than <- if (strict) base::`<` else base::`<=`
-    is_below <- lower_than(active_version, max)
-  }
+  if (!is.null(min)) is_above <- active_version >= min
+  if (!is.null(max)) is_below <- active_version <= max)
   return(is_above && is_below)
 }

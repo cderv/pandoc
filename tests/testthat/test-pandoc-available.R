@@ -8,8 +8,6 @@ test_that("pandoc_available() works", {
   expect_false(pandoc_available(max = "2.7.3"))
   expect_true(pandoc_available(min = "2.7.3", max = "2.14.1"))
   expect_false(pandoc_available(min = "2.7.3", max = "2.10.1"))
-  expect_false(pandoc_available(max = "2.11.4", strict = TRUE))
-  expect_false(pandoc_available(min = "2.11.4", strict = TRUE))
   # as if no active version
   the$active_version <- ""
   expect_false(pandoc_available())
