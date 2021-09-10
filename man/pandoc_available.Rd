@@ -4,15 +4,12 @@
 \alias{pandoc_available}
 \title{Check if active Pandoc version meet a requirement}
 \usage{
-pandoc_available(min = NULL, max = NULL, strict = FALSE)
+pandoc_available(min = NULL, max = NULL)
 }
 \arguments{
 \item{min}{Minimum version expected.}
 
 \item{max}{Maximum version expected}
-
-\item{strict}{if \code{TRUE}, minimum and maximum requirement will be considered
-strict.}
 }
 \value{
 logical. \code{TRUE} if requirement is met, \code{FALSE} otherwise.
