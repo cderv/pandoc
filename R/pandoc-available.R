@@ -19,7 +19,7 @@
 #' @export
 pandoc_available <- function(min = NULL, max = NULL, strict = FALSE) {
   # TODO: get the version from calling pandoc instead.
-  active_version <- pandoc_active_get()
+  active_version <- the$active_version
   # No active pandoc
   if (active_version == "") return(FALSE)
 

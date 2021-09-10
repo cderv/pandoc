@@ -6,6 +6,3 @@
 ## usethis namespace: start
 ## usethis namespace: end
 NULL
-
-# internal environment acting as storage and cache
-pandocenv <- rlang::new_environment()

@@ -11,8 +11,8 @@ test_that("pandoc_available() works", {
   expect_false(pandoc_available(max = "2.11.4", strict = TRUE))
   expect_false(pandoc_available(min = "2.11.4", strict = TRUE))
   # as if no active version
-  pandoc_active_set("")
+  the$active_version <- ""
   expect_false(pandoc_available())
-  suppressMessages(pandoc_active_set(old))
+  the$active_version <- old
 })
 

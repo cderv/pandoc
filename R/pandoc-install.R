@@ -225,7 +225,7 @@ pandoc_bundle_name <- function(version, os = pandoc_os(), arch = pandoc_arch(os)
 }
 
 pandoc_releases <- function() {
-  rlang::env_cache(pandocenv, "pandoc_releases", fetch_gh_releases())
+  rlang::env_cache(the, "pandoc_releases", fetch_gh_releases())
 }
 
 fetch_gh_releases <- function() {
@@ -343,10 +343,10 @@ pandoc_uninstall <- function(version) {
       latest <- pandoc_installed_latest()
       if (is.null(latest)) {
         # no more version installed
-        pandoc_active_unset()
+        the$active_version <- NULL
       } else {
         # Change to the latest version
-        pandoc_active_set(latest)
+        the$active_version <- latest
       }
 
     }
@@ -369,18 +369,6 @@ pandoc_available_versions <- function() {
   keep(versions, ~ numeric_version(.x) >= .min_supported_version)
 }
 
-pandoc_active_set <- function(version) {
-  rlang::env_poke(pandocenv, "active_version", version, inherit = FALSE)
-}
-
-pandoc_active_unset <- function(version) {
-  rlang::env_unbind(pandocenv, "active_version", inherit = FALSE)
-}
-
-pandoc_active_get <- function() {
-  rlang::env_get(pandocenv, "active_version", default = "", inherit = FALSE)
-}
-
 #' Activate a specific Pandoc version to be used
 #'
 #' This function will set the specified version as the default version for the
@@ -395,16 +383,16 @@ pandoc_active_get <- function() {
 #' @return invisibly, the previous active version.
 #' @export
 pandoc_set_version <- function(version, rmarkdown = TRUE) {
-  old_active <- pandoc_active_get()
+  old_active <- the$active_version
   if (version == "latest") version <- pandoc_installed_latest()
   if (is.null(version)) {
-    pandoc_active_set("")
+    the$active_version <- ""
   } else {
     if (!pandoc_is_installed(version)) {
       rlang::abort(sprintf("Version %s is not yet installed", version))
     }
-    pandoc_active_set(version)
-    rlang::inform(c(v = sprintf("Version %s is now the active one.", pandoc_active_get())))
+    the$active_version <- version
+    rlang::inform(c(v = sprintf("Version %s is now the active one.", the$active_version)))
     if (rmarkdown && rlang::is_installed("rmarkdown")) {
       rmarkdown::find_pandoc(cache = FALSE, dir = pandoc_locate())
       rlang::inform(c(i = "This is also true for using with rmarkdown functions."))
@@ -420,7 +408,7 @@ pandoc_set_version <- function(version, rmarkdown = TRUE) {
 #' @export
 pandoc_is_active <- function(version) {
   if (version == "latest") version <- pandoc_installed_latest()
-  version == pandoc_active_get()
+  version == the$active_version
 }
 
 #' Locate a specific installed Pandoc version
@@ -438,7 +426,7 @@ pandoc_locate <- function(version = "default") {
   if (!is.character(version) && length(version) != 1L) {
     rlang::abort("version must be a length one character")
   }
-  if (version == "default") version <- pandoc_active_get()
+  if (version == "default") version <- the$active_version
   if (version == "latest") version <- pandoc_installed_latest()
   if (is.null(version) || !nzchar(version)) {
     rlang::warn("No Pandoc version available.")

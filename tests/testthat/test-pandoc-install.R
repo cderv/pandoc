@@ -27,8 +27,8 @@ skip_if_offline()
 test_that("Release information are cached", {
   skip_on_cran()
   skip_if_offline()
-  # clean cache
-  rlang::env_bind(pandocenv, pandoc_releases = rlang::zap())
+  # clean cached values
+  the$pandoc_releases <- NULL
   # with message Fetching
   expect_snapshot(x <- pandoc_releases())
   # without message Fetching
@@ -102,7 +102,7 @@ test_that("No versions are installed", {
   walk(pandoc_installed_versions(), pandoc_uninstall)
   expect_null(pandoc_installed_versions())
   expect_null(pandoc_installed_latest())
-  expect_identical(pandoc_active_get(), "")
+  expect_identical(the$active_version, "")
 })
 
 test_that("Pandoc nightly can be installed", {
@@ -186,11 +186,11 @@ test_that("Pandoc release can be uninstall", {
   skip_if_offline()
   suppressMessages(pandoc_install("2.11.4"))
   suppressMessages(pandoc_install("2.7.3"))
-  pandoc_active_set("2.11.4")
+  the$active_version <- "2.11.4"
   expect_true(pandoc_uninstall("2.11.4"))
-  expect_equal(pandoc_active_get(), pandoc_installed_latest())
+  expect_equal(the$active_version, pandoc_installed_latest())
   expect_true(pandoc_uninstall("2.7.3"))
-  expect_equal(pandoc_active_get(), "")
+  expect_equal(the$active_version, "")
 })
 
 test_that("Pandoc latest release can be installed", {
