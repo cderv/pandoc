@@ -35,12 +35,13 @@ jobs:
 
           matrix=$((
             echo '{ "config" : ['
-            echo '{"os": "windows-latest","r": "release"},'
+            echo '{"os": "windows-latest","r": "release"}'
             if [ $windowsonly == 'false' ]; then
+              echo ','
               echo '{"os": "macOS-latest","r": "release"},'
               echo '{"os": "ubuntu-18.04","r": "release"}'
             fi
-            echo "]}"
+            echo ']}'
           ) | jq -c .)
           echo $matrix
           echo $matrix | jq .
