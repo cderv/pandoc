@@ -31,7 +31,7 @@ jobs:
         run: |
           # Only run on windows unless triggered manually
           # https://www.cynkra.com/blog/2020-12-23-dynamic-gha/
-          windowsonly='${{ github.event_name != "workflow_dispatch"}}'
+          windowsonly=${{ github.event_name != 'workflow_dispatch' }}
           matrix=$((echo '{ "config" : ['
           echo '{"os": "windows-latest","r": "release"},'
           if [ $windowsonly == 'false' ]; then
