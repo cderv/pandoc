@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - Build matrix conditionnaly
+      - name: Build matrix conditionnaly
         id: set-matrix
         run: |
           # Only run on windows unless triggered manually
