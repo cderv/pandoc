@@ -28,3 +28,49 @@ pandoc_available <- function(min = NULL, max = NULL) {
   if (!is.null(max)) is_below <- active_version <= max
   return(is_above && is_below)
 }
+
+pandoc_which_bin <- function(which = c("rstudio", "system")) {
+  which <- rlang::arg_match(which)
+  bin <- switch(which,
+                rstudio = Sys.getenv("RSTUDIO_PANDOC"),
+                system = Sys.which("pandoc")
+  )
+  if (!nzchar(bin) || is.na(bin)) return(NULL)
+  pandoc_bin_impl(bin)
+}
+
+#' Retrieve path and version of Pandoc found on the system PATH
+#'
+#' Pandoc can also be installed on a system and available through the PATH.
+#' Theses function are helper to easily use this specific version.
+#'
+#' @export
+#' @name system_pandoc
+pandoc_system_version <- function() {
+  pandoc_which_bin("system")
+}
+
+#' @rdname system_pandoc
+pandoc_system_bin <- function() {
+  pandoc_system_bin <- Sys.which("pandoc")
+  if (!nzchar(pandoc_system_bin)) return(NULL)
+  pandoc_bin_impl(pandoc_system_bin)
+}
+
+#' Retrieve path and version of Pandoc shipped with RStudio
+#'
+#' RStudio IDE ships with a pandoc binary. The PATH is stored in `RSTUDIO_PANDOC`
+#' environment variable. Theses function are helper to easily use this specific version.
+#'
+#' @export
+#' @name rstudio_pandoc
+pandoc_rstudio_version <- function() {
+  path <- pandoc_rstudio_bin()
+  if (is.null(path)) return(NULL)
+  pandoc_version(bin = path)
+}
+
+#' @rdname rstudio_pandoc
+pandoc_rstudio_bin <- function() {
+  pandoc_which_bin("rstudio")
+}
