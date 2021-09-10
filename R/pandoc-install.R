@@ -44,9 +44,7 @@ with_download_cache <- function(version, bundle_name, code) {
 pandoc_install <- function(version = "latest", force = FALSE) {
   gh_required()
 
-  if (version == "nightly") {
-    return(pandoc_install_nightly())
-  }
+  if (version == "nightly") return(pandoc_install_nightly())
 
   # get bundle download url
   release_bundle <- pandoc_release_asset(version)
