@@ -32,14 +32,14 @@ jobs:
           # Only run on windows unless triggered manually
           # https://www.cynkra.com/blog/2020-12-23-dynamic-gha/
           windowsonly='${{ github.event_name != "workflow_dispatch"}}'
-          (echo '{ "config" : ['
+          matrix=$((echo '{ "config" : ['
           echo '{"os": "windows-latest","r": "release"},'
           if [ $windowsonly == 'false' ]; then
            echo '{"os": "macOS-latest","r": "release"},'
            echo '{"os": "ubuntu-18.04","r": "release"}'
           fi
           echo ']}'
-          ) | jq -c .
+          ) | jq -c .)
           echo $matrix
           echo $matrix | jq .
           echo "::set-output name=matrix::$matrix"
