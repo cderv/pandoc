@@ -411,7 +411,11 @@ pandoc_is_active <- function(version) {
   version == the$active_version
 }
 
-#' Locate a specific installed Pandoc version
+#' Locate a specific Pandoc version installed with this package
+#'
+#' This package helps install and manage Pandoc binaries in a specific folder.
+#' This function helps with finding the path to thoses specific version of Pandoc.
+#' See [pandoc_bin()] for another way of getting paths to `pandoc` binaries
 #'
 #' @param version By default, it will return the path to the active pandoc
 #'   version. If a version is specified (e.g `"2.11.4"`), it will return the

@@ -2,7 +2,7 @@
 % Please edit documentation in R/pandoc-install.R
 \name{pandoc_locate}
 \alias{pandoc_locate}
-\title{Locate a specific installed Pandoc version}
+\title{Locate a specific Pandoc version installed with this package}
 \usage{
 pandoc_locate(version = "default")
 }
@@ -17,7 +17,9 @@ path to directory where all versions are stored.}
 Path of Pandoc binaries root folder if installed.
 }
 \description{
-Locate a specific installed Pandoc version
+This package helps install and manage Pandoc binaries in a specific folder.
+This function helps with finding the path to thoses specific version of Pandoc.
+See \code{\link[=pandoc_bin]{pandoc_bin()}} for another way of getting paths to \code{pandoc} binaries
 }
 \seealso{
 \code{\link[=pandoc_install]{pandoc_install()}}
