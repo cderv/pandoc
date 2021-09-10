@@ -18,29 +18,61 @@ on:
 name: R-CMD-check
 
 jobs:
+  matrix:
+    name: Build matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - Build matrix conditionnaly
+        id: set-matrix
+        run: |
+          # Only run on windows unless triggered manually
+          # https://www.cynkra.com/blog/2020-12-23-dynamic-gha/
+          windowsonly='${{ github.event_name != "workflow_dispatch"}}'
+          (echo '{ "config" : ['
+          echo '{"os": "windows-latest","r": "release"},'
+          if [ $windowsonly == 'false' ]; then
+           echo '{"os": "macOS-latest","r": "release"},'
+           echo '{"os": "ubuntu-18.04","r": "release"}'
+          fi
+          echo ']}'
+          ) | jq -c .
+          echo $matrix
+          echo $matrix | jq .
+          echo "::set-output name=matrix::$matrix"
+
+  check-matrix:
+    runs-on: ubuntu-latest
+    name: Check Matrix
+    needs: matrix
+    steps:
+      - name: Install json2yaml
+        run: |
+          sudo npm install -g json2yaml
+
+      - name: Check matrix definition
+        run: |
+          matrix='${{ needs.matrix.outputs.matrix }}'
+          echo $matrix
+          echo $matrix | jq .
+          echo $matrix | json2yaml
+
+
   R-CMD-check:
-    runs-on: ${{ matrix.config.os }}
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    needs: matrix
     strategy:
       fail-fast: false
-      matrix:
-        config:
-          - {os: macOS-latest,   r: 'release'}
-          - {os: windows-latest, r: 'release'}
-          # - {os: windows-latest, r: '3.6'}
-          # Deliberately check on older ubuntu to maximise backward compatibility
-          # - {os: ubuntu-18.04,   r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-18.04,   r: 'release'}
-          # - {os: ubuntu-18.04,   r: 'oldrel/1'}
-          # - {os: ubuntu-18.04,   r: 'oldrel/2'}
-          # - {os: ubuntu-18.04,   r: 'oldrel/3'}
-          # - {os: ubuntu-18.04,   r: 'oldrel/4'}
+      matrix: ${{fromJson(needs.matrix.outputs.matrix)}}
+
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-
-    # only test on Windows unless triggered
-    if: runner.os == "Windows" || github.event_name == "workflow_dispatch"
 
     steps:
       - uses: actions/checkout@v2
