@@ -41,13 +41,13 @@ pandoc_version <- function(bin = pandoc_bin()) {
 #'
 #' This is inspired from **withr** package.
 #'
-#' @inheritParams pandoc_set_version
+#' @inheritParams pandoc_activate
 #' @param code Code to execute with the temporaty active Pandoc version.
 #'
 #' @return The results of the evaluation of the `code` argument.
 #' @export
 with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
-  old <- pandoc_set_version(version, rmarkdown = rmarkdown)
+  old <- pandoc_activate(version, rmarkdown = rmarkdown)
   on.exit(the$active_version <- old)
   force(code)
 }
@@ -58,7 +58,7 @@ with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
 local_pandoc_version <- function(version, rmarkdown = FALSE,
                                  .local_envir = parent.frame()) {
   rlang::check_installed("withr")
-  old <- suppressMessages(pandoc_set_version(version, rmarkdown = rmarkdown))
+  old <- suppressMessages(pandoc_activate(version, rmarkdown = rmarkdown))
   withr::defer(the$active_version <- old, envir = .local_envir)
   invisible(old)
 }

@@ -126,20 +126,20 @@ this search order:
 
 When testing difference between versions, it can be interesting to
 switch the active version to run a different version. This can be done
-with `pandoc_set_version(<version)`
+with `pandoc_activate(<version)`
 
 ``` r
 # Use a specific numbered version with the package
-pandoc::pandoc_set_version("2.7.3")
+pandoc::pandoc_activate("2.7.3")
 
 # Use the nightly version installed if available
-pandoc::pandoc_set_version("nighlty")
+pandoc::pandoc_activate("nighlty")
 
 # Use RStudio shipped Pandoc
-pandoc::pandoc_set_version("rstudio")
+pandoc::pandoc_activate("rstudio")
 
 # Use System Pandoc found in PATH
-pandoc::pandoc_set_version("system")
+pandoc::pandoc_activate("system")
 ```
 
 #### Working with **rmarkdown** functions
@@ -156,7 +156,7 @@ rmarkdown::find_pandoc(cache = FALSE)
 #> 
 #> $dir
 #> [1] "C:/Users/chris/scoop/shims"
-pandoc::pandoc_set_version("2.7.3")
+pandoc::pandoc_activate("2.7.3")
 #> v Version 2.7.3 is now the active one.
 #> i This is also true for using with rmarkdown functions.
 rmarkdown::find_pandoc()
@@ -173,8 +173,8 @@ Setting `rmarkdown = TRUE` is equivalent to calling
 rmarkdown::find_pandoc(cache = FALSE, dir = pandoc::pandoc_locate())
 ```
 
-`pandoc::pandoc_set_version("2.7.3", rmarkdown = FALSE)` will not
-activate the version to use with **rmarkdown**
+`pandoc::pandoc_activate("2.7.3", rmarkdown = FALSE)` will not activate
+the version to use with **rmarkdown**
 
 ##### Resetting **rmarkdown** default Pandoc version
 

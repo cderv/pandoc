@@ -113,7 +113,7 @@ pandoc_citeproc_bin <- function(version = "default") {
 #'
 #' @return invisibly, the previous active version.
 #' @export
-pandoc_set_version <- function(version, rmarkdown = TRUE) {
+pandoc_activate <- function(version, rmarkdown = TRUE) {
   old_active <- the$active_version
   version <- resolve_version(version)
   if (is.null(version)) {
@@ -138,7 +138,7 @@ pandoc_set_version <- function(version, rmarkdown = TRUE) {
 #' Check if active Pandoc version meet a requirement
 #'
 #' This function allows to test if an active Pandoc version meets a min, max or
-#' in between requirement. See [pandoc_set_version()] about active
+#' in between requirement. See [pandoc_activate()] about active
 #' version.
 #'
 #' If `min` and `max` are provided, this will check the active version is
