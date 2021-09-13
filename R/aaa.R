@@ -2,7 +2,7 @@
 # Using convention in https://github.com/tidyverse/design/issues/126
 the <- rlang::new_environment(
   list(
-    # contains the active pandoc version
+    # contains the active pandoc version (can be "nightly", "x.y.z", "rstudio", "system")
     active_version = "",
     # Possible pandoc installation not managed by this package directly
     external_versions = c("system", "rstudio")
