@@ -16,8 +16,8 @@ logical. \code{TRUE} if requirement is met, \code{FALSE} otherwise.
 }
 \description{
 This function allows to test if an active Pandoc version meets a min, max or
-in between requirement. This works for Pandoc binaries managed with this
-package.
+in between requirement. See \code{\link[=pandoc_set_version]{pandoc_set_version()}} about active
+version.
 }
 \details{
 If \code{min} and \code{max} are provided, this will check the active version is

@@ -138,8 +138,8 @@ pandoc_set_version <- function(version, rmarkdown = TRUE) {
 #' Check if active Pandoc version meet a requirement
 #'
 #' This function allows to test if an active Pandoc version meets a min, max or
-#' in between requirement. This works for Pandoc binaries managed with this
-#' package.
+#' in between requirement. See [pandoc_set_version()] about active
+#' version.
 #'
 #' If `min` and `max` are provided, this will check the active version is
 #' in-between two versions. If non is provided (keeping the default `NULL` for
@@ -153,13 +153,12 @@ pandoc_set_version <- function(version, rmarkdown = TRUE) {
 #'
 #' @export
 pandoc_available <- function(min = NULL, max = NULL) {
-  # TODO: get the version from calling pandoc instead.
-  active_version <- the$active_version
+  bin <- pandoc_bin("default")
   # No active pandoc
-  if (active_version == "") return(FALSE)
+  if (is.null(bin)) return(FALSE)
 
   # compare active with requirement
-  active_version <- as.numeric_version(active_version)
+  active_version <- pandoc_version(bin)
   is_above <- is_below <- TRUE
   if (!is.null(min)) is_above <- active_version >= min
   if (!is.null(max)) is_below <- active_version <= max

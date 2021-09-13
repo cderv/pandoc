@@ -180,3 +180,17 @@ activate the version to use with **rmarkdown**
 
 Note: To reset default **rmarkdown** Pandoc version, you can use
 `rmarkdown::find_pandoc(cache = FALSE)`
+
+### Is Pandoc available ?
+
+``` r
+# Is a pandoc version available (i.e a version is active), and if so what is the full path ? 
+if (pandoc_available()) pandoc_bin()
+
+# Is the active version above 2.10.1 ?
+pandoc_available(min = "2.10.1")
+# Is the active version below 2.11 ?
+pandoc_available(max = "2.11")
+# Is the active version between 2.10.1 and 2.11, both side include ?
+pandoc_available(min = "2.10.1, max = "2.11")
+```
