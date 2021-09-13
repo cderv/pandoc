@@ -6,3 +6,4 @@
 ^inst/scripts$
 ^codecov\.yml$
 ^\.github$
+^\.netlify$
