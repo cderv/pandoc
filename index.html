@@ -96,16 +96,18 @@
 <div id="installation-of-pandoc-version" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation-of-pandoc-version" class="anchor"></a>Installation of Pandoc version</h3>
+<p>These functions are useful to install and manage Pandoc binaries, independently of other installed versions (by others tools.)</p>
 <ul>
 <li><p><code><a href="reference/pandoc_install.html">pandoc_install()</a></code> or <code><a href="reference/pandoc_install.html">pandoc_install("latest")</a></code>: install last available released version of Pandoc</p></li>
 <li><p><code><a href="reference/pandoc_install.html">pandoc_install("2.11.4")</a></code>: install Pandoc version 2.11.4</p></li>
-<li><p><code><a href="reference/pandoc_install.html">pandoc_install("nighlty")</a></code> or <code><a href="reference/pandoc_install.html">pandoc_install_nightly()</a></code>: install Pandoc devel version built daily</p></li>
+<li><p><code><a href="reference/pandoc_install.html">pandoc_install("nightly")</a></code> or <code><a href="reference/pandoc_install.html">pandoc_install_nightly()</a></code>: install Pandoc devel version built daily</p></li>
 <li><p><code>pandoc_uninstall(&lt;ver&gt;)</code>: Uninstall one of the version</p></li>
 </ul>
 </div>
-<div id="find-an-installed-version" class="section level3">
+<div id="find-an-installed-version-by-this-package" class="section level3">
 <h3 class="hasAnchor">
-<a href="#find-an-installed-version" class="anchor"></a>Find an installed version</h3>
+<a href="#find-an-installed-version-by-this-package" class="anchor"></a>Find an installed version by this package</h3>
+<p>These functions can be used to check for a version installed by this package.</p>
 <ul>
 <li>
 <code><a href="reference/pandoc_installed_versions.html">pandoc::pandoc_installed_versions()</a></code>: List installed version by most recent first.</li>
@@ -119,35 +121,88 @@
 <div id="get-path-to-a-version" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-path-to-a-version" class="anchor"></a>Get path to a version</h3>
-<p>Pandoc versions are installed with one folder per version in user’s data directory.</p>
+<div id="get-directory-for-a-version-installed-by-pandoc_install" class="section level4">
+<h4 class="hasAnchor">
+<a href="#get-directory-for-a-version-installed-by-pandoc_install" class="anchor"></a>Get directory for a version installed by <code>pandoc_install()</code>
+</h4>
+<p>Pandoc versions installed by this package are located within one folder per version in a user’s data directory. <code><a href="reference/pandoc_locate.html">pandoc_locate(version)</a></code> will help find the directory in which a pandoc version is available:</p>
 <ul>
 <li>
 <code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate()</a></code>: Path to active pandoc version directory</li>
 <li>
-<code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate("latest")</a></code>: Path to the most recent installed version</li>
+<code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate("latest")</a></code>: Path to the most recent installed version directory</li>
 <li>
 <code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate("2.11.4")</a></code>: Path to a specific version directory, e.g <code>2.11.4</code>
 </li>
 <li>
-<code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate("nightly")</a></code>: Path to the nightly version installed</li>
+<code><a href="reference/pandoc_locate.html">pandoc::pandoc_locate("nightly")</a></code>: Path to the directory of the nightly version installed</li>
 </ul>
+</div>
+<div id="get-full-path-to-a-binary-pandoc-or-pandocexe-windows" class="section level4">
+<h4 class="hasAnchor">
+<a href="#get-full-path-to-a-binary-pandoc-or-pandocexe-windows" class="anchor"></a>Get full path to a binary: <code>pandoc</code> or <code>pandoc.exe</code> (windows)</h4>
+<p>To get full path to a pandoc binary, one can use</p>
+<ul>
+<li>
+<code><a href="reference/pandoc_bin.html">pandoc_bin()</a></code>: Path to active pandoc version binary</li>
+<li>
+<code><a href="reference/pandoc_bin.html">pandoc_bin("latest")</a></code>: Path to the most recent installed version binary</li>
+<li>
+<code><a href="reference/pandoc_bin.html">pandoc_bin("2.11.4")</a></code>: Path to a specific version binary</li>
+<li>
+<code><a href="reference/pandoc_bin.html">pandoc_bin("nightly")</a></code>: Path to binary of the nightly version installed</li>
+</ul>
+<p>This function will also support external Pandoc binaries, with two aliases</p>
+<ul>
+<li>the one shipped with RStudio IDE:
+<ul>
+<li><code><a href="reference/pandoc_bin.html">pandoc::pandoc_bin("rstudio")</a></code></li>
+<li><code><a href="reference/rstudio_pandoc.html">pandoc::pandoc_rstudio_bin()</a></code></li>
+</ul>
+</li>
+<li>the one set by default on the system (in PATH):
+<ul>
+<li><code><a href="reference/pandoc_bin.html">pandoc::pandoc_bin("system")</a></code></li>
+<li><code><a href="reference/system_pandoc.html">pandoc::pandoc_system_bin()</a></code></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="set-active-version" class="section level3">
 <h3 class="hasAnchor">
 <a href="#set-active-version" class="anchor"></a>Set active version</h3>
-<p>By default, the most recent Pandoc version installed is used. When testing difference in versions, in can be interesting to switch the active version to run a different version.</p>
+<p>When the package is loaded, a default active version is set following this search order:</p>
 <ul>
-<li>
-<p><code><a href="reference/pandoc_set_version.html">pandoc::pandoc_set_version("2.7.3")</a></code>: Use a specific version with the package.</p>
-<p>By default, if <strong>rmarkdown</strong> is installed, it will also set the version active for all <strong>rmarkdown</strong> functions (using <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">rmarkdown::find_pandoc()</a></code>). This allows to use this package easily in order to test <strong>rmarkdown</strong> with different version of Pandoc.</p>
+<li>Latest (i.e highest) version installed using <code><a href="reference/pandoc_install.html">pandoc_install()</a></code> found.</li>
+<li>RStudio version (usually set when used in RStudio IDE)</li>
+<li>System version found in PATH</li>
+</ul>
+<p>When testing difference between versions, it can be interesting to switch the active version to run a different version. This can be done with <code>pandoc_activate(&lt;version)</code></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Use a specific numbered version with the package</span>
+<span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
+
+<span class="co"># Use the nightly version installed if available</span>
+<span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"nighlty"</span><span class="op">)</span>
+
+<span class="co"># Use RStudio shipped Pandoc</span>
+<span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"rstudio"</span><span class="op">)</span>
+
+<span class="co"># Use System Pandoc found in PATH</span>
+<span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span></code></pre></div>
+<div id="working-with-rmarkdown-functions" class="section level4">
+<h4 class="hasAnchor">
+<a href="#working-with-rmarkdown-functions" class="anchor"></a>Working with <strong>rmarkdown</strong> functions</h4>
+<p>By default, if <strong>rmarkdown</strong> is installed, it will also set the version active for all <strong>rmarkdown</strong> functions (using <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">rmarkdown::find_pandoc()</a></code>). This allows to use this package easily in order to test <strong>rmarkdown</strong> with different version of Pandoc.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">find_pandoc</a></span><span class="op">(</span>cache <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; $version</span>
 <span class="co">#&gt; [1] '2.14.1'</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dir</span>
 <span class="co">#&gt; [1] "C:/Users/chris/scoop/shims"</span>
-<span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_set_version.html">pandoc_set_version</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
+<span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
 <span class="co">#&gt; v Version 2.7.3 is now the active one.</span>
 <span class="co">#&gt; i This is also true for using with rmarkdown functions.</span>
 <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">find_pandoc</a></span><span class="op">(</span><span class="op">)</span>
@@ -157,12 +212,59 @@
 <span class="co">#&gt; $dir</span>
 <span class="co">#&gt; [1] "C:\\Users\\chris\\AppData\\Local/r-pandoc/r-pandoc/2.7.3"</span></code></pre></div>
 <p>Setting <code>rmarkdown = TRUE</code> is equivalent to calling</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">find_pandoc</a></span><span class="op">(</span>cache <span class="op">=</span> <span class="cn">FALSE</span>, dir <span class="op">=</span> <span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-</li>
-<li><p><code><a href="reference/pandoc_set_version.html">pandoc::pandoc_set_version("2.7.3", rmarkdown = FALSE)</a></code> will not activate the version to use with <strong>rmarkdown</strong></p></li>
-</ul>
+<p><code><a href="reference/pandoc_activate.html">pandoc::pandoc_activate("2.7.3", rmarkdown = FALSE)</a></code> will not activate the version to use with <strong>rmarkdown</strong></p>
+<div id="resetting-rmarkdown-default-pandoc-version" class="section level5">
+<h5 class="hasAnchor">
+<a href="#resetting-rmarkdown-default-pandoc-version" class="anchor"></a>Resetting <strong>rmarkdown</strong> default Pandoc version</h5>
 <p>Note: To reset default <strong>rmarkdown</strong> Pandoc version, you can use <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html">rmarkdown::find_pandoc(cache = FALSE)</a></code></p>
+</div>
+</div>
+</div>
+<div id="is-pandoc-available-" class="section level3">
+<h3 class="hasAnchor">
+<a href="#is-pandoc-available-" class="anchor"></a>Is Pandoc available ?</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Is a pandoc version available (i.e a version is active), and if so what is the full path ? </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="cf">if</span> (<span class="kw">pandoc_available</span>()) <span class="kw">pandoc_bin</span>()</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Is the active version above 2.10.1 ?</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">pandoc_available</span>(<span class="dt">min =</span> <span class="st">"2.10.1"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># Is the active version below 2.11 ?</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="kw">pandoc_available</span>(<span class="dt">max =</span> <span class="st">"2.11"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co"># Is the active version between 2.10.1 and 2.11, both side include ?</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="kw">pandoc_available</span>(<span class="dt">min =</span> <span class="st">"2.10.1, max = "</span><span class="fl">2.11</span><span class="st">")</span></span></code></pre></div>
+</div>
+<div id="run-pandoc" class="section level3">
+<h3 class="hasAnchor">
+<a href="#run-pandoc" class="anchor"></a>Run Pandoc</h3>
+<div id="low-level-call-to-pandoc" class="section level4">
+<h4 class="hasAnchor">
+<a href="#low-level-call-to-pandoc" class="anchor"></a>Low level call to Pandoc</h4>
+<p><code><a href="reference/pandoc_run.html">pandoc_run()</a></code> is the function to call pandoc binary with some arguments. By default, it will use the active version (<code>version = "default"</code>, see <code><a href="reference/pandoc_activate.html">?pandoc_activate</a></code>)</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/pandoc_run.html">pandoc_run</a></span><span class="op">(</span><span class="st">"--version"</span><span class="op">)</span></code></pre></div>
+<p>equivalent to</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">pandoc</span> --version</span></code></pre></div>
+<p>Using the <code>version=</code> argument allows to run a specific version</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/pandoc_run.html">pandoc_run</a></span><span class="op">(</span><span class="st">"--version"</span>, version <span class="op">=</span> <span class="st">"system"</span><span class="op">)</span></code></pre></div>
+<p>will execute the pandoc command with pandoc binary on PATH.</p>
+</div>
+<div id="wrapper-functions" class="section level4">
+<h4 class="hasAnchor">
+<a href="#wrapper-functions" class="anchor"></a>Wrapper functions</h4>
+<p>All other included functions to run pandoc are wrapping <code><a href="reference/pandoc_run.html">pandoc_run()</a></code> with some command flags form <a href="https://pandoc.org/MANUAL.html">Pandoc MANUAL</a>. Each of these function can take the <code>version=</code> argument to run with a specific version of Pandoc instead of the current activated one.</p>
+<p>Available functions:</p>
+<ul>
+<li><code><a href="reference/pandoc_version.html">pandoc_version()</a></code></li>
+<li><code><a href="reference/pandoc_get_data_file.html">pandoc_get_data_file()</a></code></li>
+<li><code><a href="reference/pandoc_get_template.html">pandoc_get_template()</a></code></li>
+<li><code><a href="reference/pandoc_list_extensions.html">pandoc_list_extensions()</a></code></li>
+<li><code><a href="reference/pandoc_list_formats.html">pandoc_list_formats()</a></code></li>
+<li><code><a href="reference/pandoc_list_abbreviations.html">pandoc_list_abbreviations()</a></code></li>
+</ul>
+</div>
 </div>
 </div>
 </div>

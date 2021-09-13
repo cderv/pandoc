@@ -119,7 +119,9 @@ without modifying the R session state." />
 without modifying the R session state.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>with_pandoc_version</span><span class='op'>(</span><span class='va'>version</span>, <span class='va'>code</span>, rmarkdown <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>with_pandoc_version</span><span class='op'>(</span><span class='va'>version</span>, <span class='va'>code</span>, rmarkdown <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+
+<span class='fu'>local_pandoc_version</span><span class='op'>(</span><span class='va'>version</span>, rmarkdown <span class='op'>=</span> <span class='cn'>FALSE</span>, .local_envir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,6 +143,10 @@ without modifying the R session state.</p>
       <td><p>if <code>TRUE</code> (the default) and <strong>rmarkdown</strong> is available, this
 will also set the pandoc version as the default one to use with
 <strong>rmarkdown</strong> by calling <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html'>rmarkdown::find_pandoc()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>.local_envir</th>
+      <td><p>The environment to use for scoping.</p></td>
     </tr>
     </table>
 

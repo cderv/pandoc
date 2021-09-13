@@ -119,7 +119,7 @@ also --output to write a export a data file build in Pandoc." />
 also <code>--output</code> to write a export a data file build in Pandoc.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pandoc_get_data_file</span><span class='op'>(</span><span class='va'>file</span>, output <span class='op'>=</span> <span class='va'>file</span>, bin <span class='op'>=</span> <span class='fu'><a href='pandoc_bin.html'>pandoc_bin</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pandoc_get_data_file</span><span class='op'>(</span><span class='va'>file</span>, output <span class='op'>=</span> <span class='va'>file</span>, version <span class='op'>=</span> <span class='st'>"default"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,8 +134,14 @@ also <code>--output</code> to write a export a data file build in Pandoc.</p>
 with the same file name.</p></td>
     </tr>
     <tr>
-      <th>bin</th>
-      <td><p>Path to a pandoc binary. Default to the active version.</p></td>
+      <th>version</th>
+      <td><p>Version to use. Default will be the <code>"default"</code> version. Other possible value are</p><ul>
+<li><p>A version number e.g <code>"2.14.1"</code></p></li>
+<li><p>The nightly version called <code>"nightly"</code></p></li>
+<li><p>The latest installed version with <code>"latest"</code></p></li>
+<li><p>Pandoc binary shipped with RStudio IDE with <code>"rstudio"</code></p></li>
+<li><p>Pandoc binary found in PATH with <code>"system"</code></p></li>
+</ul></td>
     </tr>
     </table>
 

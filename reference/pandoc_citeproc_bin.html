@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get path to the pandoc binary — pandoc_bin • pandoc</title>
+<title>Get path to the pandoc-citeproc binary. — pandoc_citeproc_bin • pandoc</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Get path to the pandoc binary — pandoc_bin" />
-<meta property="og:description" content="Get path to the pandoc binary" />
+<meta property="og:title" content="Get path to the pandoc-citeproc binary. — pandoc_citeproc_bin" />
+<meta property="og:description" content="This function will return the path to pandoc-citeproc if available. It will
+only work with version of Pandoc installed by this package." />
 
 
 
@@ -108,16 +109,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get path to the pandoc binary</h1>
+    <h1>Get path to the pandoc-citeproc binary.</h1>
     <small class="dont-index">Source: <a href='https://github.com/cderv/pandoc/blob/master/R/pandoc-available.R'><code>R/pandoc-available.R</code></a></small>
-    <div class="hidden name"><code>pandoc_bin.Rd</code></div>
+    <div class="hidden name"><code>pandoc_citeproc_bin.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get path to the pandoc binary</p>
+    <p>This function will return the path to <code>pandoc-citeproc</code> if available. It will
+only work with <code>version</code> of Pandoc installed by this package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pandoc_bin</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"default"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pandoc_citeproc_bin</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"default"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,7 +138,9 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Absolute path to the pandoc binary of the requested version.</p>
+    <p>the path to <code>pandoc-citeproc</code> binary if it exists. Since Pandoc 2.11,
+the citeproc filter has been included into Pandoc itself and is no more
+shipped as a binary filter.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

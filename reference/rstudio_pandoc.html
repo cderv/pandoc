@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get path to the pandoc binary — pandoc_bin • pandoc</title>
+<title>Retrieve path and version of Pandoc shipped with RStudio — rstudio_pandoc • pandoc</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Get path to the pandoc binary — pandoc_bin" />
-<meta property="og:description" content="Get path to the pandoc binary" />
+<meta property="og:title" content="Retrieve path and version of Pandoc shipped with RStudio — rstudio_pandoc" />
+<meta property="og:description" content="RStudio IDE ships with a pandoc binary. The PATH is stored in RSTUDIO_PANDOC
+environment variable. Theses function are helper to easily use this specific version." />
 
 
 
@@ -108,35 +109,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get path to the pandoc binary</h1>
+    <h1>Retrieve path and version of Pandoc shipped with RStudio</h1>
     <small class="dont-index">Source: <a href='https://github.com/cderv/pandoc/blob/master/R/pandoc-available.R'><code>R/pandoc-available.R</code></a></small>
-    <div class="hidden name"><code>pandoc_bin.Rd</code></div>
+    <div class="hidden name"><code>rstudio_pandoc.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get path to the pandoc binary</p>
+    <p>RStudio IDE ships with a pandoc binary. The PATH is stored in <code>RSTUDIO_PANDOC</code>
+environment variable. Theses function are helper to easily use this specific version.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pandoc_bin</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"default"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pandoc_rstudio_version</span><span class='op'>(</span><span class='op'>)</span>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>version</th>
-      <td><p>Version to use. Default will be the <code>"default"</code> version. Other possible value are</p><ul>
-<li><p>A version number e.g <code>"2.14.1"</code></p></li>
-<li><p>The nightly version called <code>"nightly"</code></p></li>
-<li><p>The latest installed version with <code>"latest"</code></p></li>
-<li><p>Pandoc binary shipped with RStudio IDE with <code>"rstudio"</code></p></li>
-<li><p>Pandoc binary found in PATH with <code>"system"</code></p></li>
-</ul></td>
-    </tr>
-    </table>
+<span class='fu'>pandoc_rstudio_bin</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Absolute path to the pandoc binary of the requested version.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

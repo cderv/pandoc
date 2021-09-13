@@ -133,7 +133,7 @@ pandoc_is_installed() allows to check for a specific installed version
 
 <span class='fu'>pandoc_installed_latest</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>pandoc_is_installed</span><span class='op'>(</span><span class='va'>version</span><span class='op'>)</span></pre>
+<span class='fu'>pandoc_is_installed</span><span class='op'>(</span><span class='va'>version</span>, error <span class='op'>=</span> <span class='cn'>FALSE</span>, ask <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,12 +146,23 @@ pandoc_is_installed() allows to check for a specific installed version
 <li><p><code>"nightly"</code> for the last pandoc development built daily</p></li>
 </ul></td>
     </tr>
+    <tr>
+      <th>error</th>
+      <td><p>if <code>TRUE</code> an error will be raised if the result is <code>FALSE</code></p></td>
+    </tr>
+    <tr>
+      <th>ask</th>
+      <td><p>if <code>TRUE</code>, the user will be prompt in an interactive</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A character vector of installed versions or a logical for
 <code>pandoc_is_installed()</code>. It will return <code>NULL</code> is no versions are installed.</p>
+<p>For <code>pandoc_is_installed()</code>, <code>TRUE</code> if only the required version is
+installed. If <code>FALSE</code> and <code>ask</code> is <code>TRUE</code>, the user will be prompt for
+installing the version.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

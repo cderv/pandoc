@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get path to the pandoc binary — pandoc_bin • pandoc</title>
+<title>List system default abbreviations — pandoc_list_abbreviations • pandoc</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="Get path to the pandoc binary — pandoc_bin" />
-<meta property="og:description" content="Get path to the pandoc binary" />
+<meta property="og:title" content="List system default abbreviations — pandoc_list_abbreviations" />
+<meta property="og:description" content="Pandoc uses this list in the Markdown reader. Strings found in this list will
+be followed by a nonbreaking space, and the period will not produce
+sentence-ending space in formats like LaTeX. The strings may not contain
+spaces." />
 
 
 
@@ -108,16 +111,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get path to the pandoc binary</h1>
-    <small class="dont-index">Source: <a href='https://github.com/cderv/pandoc/blob/master/R/pandoc-available.R'><code>R/pandoc-available.R</code></a></small>
-    <div class="hidden name"><code>pandoc_bin.Rd</code></div>
+    <h1>List system default abbreviations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/cderv/pandoc/blob/master/R/pandoc-list.R'><code>R/pandoc-list.R</code></a></small>
+    <div class="hidden name"><code>pandoc_list_abbreviations.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get path to the pandoc binary</p>
+    <p>Pandoc uses this list in the Markdown reader. Strings found in this list will
+be followed by a nonbreaking space, and the period will not produce
+sentence-ending space in formats like LaTeX. The strings may not contain
+spaces.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pandoc_bin</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"default"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pandoc_list_abbreviations</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"default"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,7 +142,10 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Absolute path to the pandoc binary of the requested version.</p>
+    <p>a character version of system default abbreviation known by Pandoc</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This correspond to the option <a href='https://pandoc.org/MANUAL.html#option--abbreviations'><code>--abbreviations</code> as CLI flag</a>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
