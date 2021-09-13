@@ -24,7 +24,8 @@ Suggests:
     rmarkdown,
     withr,
     tibble,
-    mockery (>= 0.4.2)
+    mockery (>= 0.4.2),
+    cli
 Remotes: 
     r-lib/rlang,
     r-lib/mockery
