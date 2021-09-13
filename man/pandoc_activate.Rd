@@ -26,6 +26,11 @@ This function will set the specified version as the default version for the
 session. By default, the default active version in the most recent one among
 the installed version (nightly version excluded.)
 }
+\section{Special behavior in an interactive session}{
+If the \code{version} to activate is not yet installed, the user will be prompted
+to choose to install the version.
+}
+
 \section{Default active version}{
 When the package is loaded, an active version is set to the first Pandoc
 binary found between:

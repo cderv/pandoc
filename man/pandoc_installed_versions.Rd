@@ -10,7 +10,7 @@ pandoc_installed_versions()
 
 pandoc_installed_latest()
 
-pandoc_is_installed(version, error = FALSE)
+pandoc_is_installed(version, error = FALSE, ask = FALSE)
 }
 \arguments{
 \item{version}{This can be either:
@@ -19,10 +19,18 @@ pandoc_is_installed(version, error = FALSE)
 \item A version number (e.g \code{"2.11.4"}) for a specific version
 \item \code{"nightly"} for the last pandoc development built daily
 }}
+
+\item{error}{if \code{TRUE} an error will be raised if the result is \code{FALSE}}
+
+\item{ask}{if \code{TRUE}, the user will be prompt in an interactive}
 }
 \value{
 A character vector of installed versions or a logical for
 \code{pandoc_is_installed()}. It will return \code{NULL} is no versions are installed.
+
+For \code{pandoc_is_installed()}, \code{TRUE} if only the required version is
+installed. If \code{FALSE} and \code{ask} is \code{TRUE}, the user will be prompt for
+installing the version.
 }
 \description{
 \itemize{

@@ -310,11 +310,32 @@ pandoc_installed_latest <- function() {
 
 #' @rdname pandoc_installed_versions
 #' @inheritParams pandoc_install
+#' @param error if `TRUE` an error will be raised if the result is `FALSE`
+#' @param ask if `TRUE`, the user will be prompt in an interactive
+#' @return For `pandoc_is_installed()`, `TRUE` if only the required version is
+#'   installed. If `FALSE` and `ask` is `TRUE`, the user will be prompt for
+#'   installing the version.
 #' @export
-pandoc_is_installed <- function(version, error = FALSE) {
+pandoc_is_installed <- function(version, error = FALSE, ask = FALSE) {
+  if (pandoc_is_external_version(version)) {
+    rlang::abort("Only version install with this package can be checked, not external versions.")
+  }
   installed <- version %in% pandoc_installed_versions()
-  if (error && !installed) {
-    rlang::abort(sprintf("Version %s is not yet installed", version))
+  if (!installed) {
+    msg <- sprintf("Version '%s' is not yet installed", version)
+    if (ask) {
+      if (!rlang::is_interactive()) {
+        rlang::abort("User input required, but session is not interactive.")
+      }
+      rlang::inform(c(i = msg, '!' = "Would you like to install it ?"))
+      if (utils::menu(c("yes", "no")) == 1L) {
+        pandoc_install(version)
+        installed <- TRUE
+      }
+    }
+    if (error && !installed) {
+      rlang::abort(sprintf("Version '%s' is not yet installed", version))
+    }
   }
   installed
 }

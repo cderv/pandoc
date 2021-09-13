@@ -97,6 +97,11 @@ pandoc_citeproc_bin <- function(version = "default") {
 #' session. By default, the default active version in the most recent one among
 #' the installed version (nightly version excluded.)
 #'
+#' # Special behavior in an interactive session
+#'
+#' If the `version` to activate is not yet installed, the user will be prompted
+#' to choose to install the version.
+#'
 #' # Default active version
 #'
 #' When the package is loaded, an active version is set to the first Pandoc
@@ -121,7 +126,7 @@ pandoc_activate <- function(version, rmarkdown = TRUE) {
   } else {
     if (!pandoc_is_external_version(version)) {
       # check if a version is installed
-      pandoc_is_installed(version, error = TRUE)
+      pandoc_is_installed(version, error = TRUE, ask = rlang::is_interactive())
     }
     the$active_version <- version
     rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
