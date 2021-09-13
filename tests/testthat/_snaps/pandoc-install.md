@@ -1,4 +1,4 @@
-# Release information are cached [plain]
+# Release information are cached
 
     Code
       x <- pandoc_releases()

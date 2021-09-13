@@ -24,7 +24,7 @@ expect_pandoc_installed <- function(version) {
 skip_on_cran()
 skip_if_offline()
 
-cli::test_that_cli("Release information are cached", {
+test_that("Release information are cached", {
   skip_on_cran()
   skip_if_offline()
   # clean cached values
@@ -33,7 +33,7 @@ cli::test_that_cli("Release information are cached", {
   expect_snapshot(x <- pandoc_releases())
   # without message Fetching
   expect_snapshot(x <- pandoc_releases())
-}, configs = "plain")
+})
 
 test_that("Can retrieve assets' informations", {
   skip_on_cran()
