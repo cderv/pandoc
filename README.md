@@ -194,3 +194,45 @@ pandoc_available(max = "2.11")
 # Is the active version between 2.10.1 and 2.11, both side include ?
 pandoc_available(min = "2.10.1, max = "2.11")
 ```
+
+### Run Pandoc
+
+#### Low level call to Pandoc
+
+`pandoc_run()` is the function to call pandoc binary with some
+arguments. By default, it will use the active version
+(`version = "default"`, see `?pandoc_activate`)
+
+``` r
+pandoc_run("--version")
+```
+
+equivalent to
+
+``` bash
+pandoc --version
+```
+
+Using the `version=` argument allows to run a specific version
+
+``` r
+pandoc_run("--version", version = "system")
+```
+
+will execute the pandoc command with pandoc binary on PATH.
+
+#### Wrapper functions
+
+All other included functions to run pandoc are wrapping `pandoc_run()`
+with some command flags form [Pandoc
+MANUAL](https://pandoc.org/MANUAL.html). Each of these function can take
+the `version=` argument to run with a specific version of Pandoc instead
+of the current activated one.
+
+Available functions:
+
+-   `pandoc_version()`
+-   `pandoc_get_data_file()`
+-   `pandoc_get_template()`
+-   `pandoc_list_extensions()`
+-   `pandoc_list_formats()`
