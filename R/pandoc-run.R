@@ -10,6 +10,9 @@
 #' @return The output of [processx::run()] invisibly
 #' @export
 pandoc_run <- function(args, bin = pandoc_bin(), echo = TRUE) {
+  if (is.null(bin)) {
+    rlang::abort("Requested Pandoc binary is not available.")
+  }
   invisible(processx::run(bin, args, echo = echo))
 }
 
