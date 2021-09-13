@@ -52,17 +52,23 @@ pak::pak("cderv/pandoc")
 
 ### Installation of Pandoc version
 
+These functions are useful to install and manage Pandoc binaries,
+independently of other installed versions (by others tools.)
+
 -   `pandoc_install()` or `pandoc_install("latest")`: install last
     available released version of Pandoc
 
 -   `pandoc_install("2.11.4")`: install Pandoc version 2.11.4
 
--   `pandoc_install("nighlty")` or `pandoc_install_nightly()`: install
+-   `pandoc_install("nightly")` or `pandoc_install_nightly()`: install
     Pandoc devel version built daily
 
 -   `pandoc_uninstall(<ver>)`: Uninstall one of the version
 
-### Find an installed version
+### Find an installed version by this package
+
+These functions can be used to check for a version installed by this
+package.
 
 -   `pandoc::pandoc_installed_versions()`: List installed version by
     most recent first.
@@ -73,57 +79,104 @@ pak::pak("cderv/pandoc")
 
 ### Get path to a version
 
-Pandoc versions are installed with one folder per version in user’s data
-directory.
+#### Get directory for a version installed by `pandoc_install()`
+
+Pandoc versions installed by this package are located within one folder
+per version in a user’s data directory. `pandoc_locate(version)` will
+help find the directory in which a pandoc version is available:
 
 -   `pandoc::pandoc_locate()`: Path to active pandoc version directory
 -   `pandoc::pandoc_locate("latest")`: Path to the most recent installed
-    version
+    version directory
 -   `pandoc::pandoc_locate("2.11.4")`: Path to a specific version
     directory, e.g `2.11.4`
--   `pandoc::pandoc_locate("nightly")`: Path to the nightly version
+-   `pandoc::pandoc_locate("nightly")`: Path to the directory of the
+    nightly version installed
+
+#### Get full path to a binary: `pandoc` or `pandoc.exe` (windows)
+
+To get full path to a pandoc binary, one can use
+
+-   `pandoc_bin()`: Path to active pandoc version binary
+-   `pandoc_bin("latest")`: Path to the most recent installed version
+    binary
+-   `pandoc_bin("2.11.4")`: Path to a specific version binary
+-   `pandoc_bin("nightly")`: Path to binary of the nightly version
     installed
+
+This function will also support external Pandoc binaries, with two
+aliases
+
+-   the one shipped with RStudio IDE:
+    -   `pandoc::pandoc_bin("rstudio")`
+    -   `pandoc::pandoc_rstudio_bin()`
+-   the one set by default on the system (in PATH):
+    -   `pandoc::pandoc_bin("system")`
+    -   `pandoc::pandoc_system_bin()`
 
 ### Set active version
 
-By default, the most recent Pandoc version installed is used. When
-testing difference in versions, in can be interesting to switch the
-active version to run a different version.
+When the package is loaded, a default active version is set following
+this search order:
 
--   `pandoc::pandoc_set_version("2.7.3")`: Use a specific version with
-    the package.
+-   Latest (i.e highest) version installed using `pandoc_install()`
+    found.
+-   RStudio version (usually set when used in RStudio IDE)
+-   System version found in PATH
 
-    By default, if **rmarkdown** is installed, it will also set the
-    version active for all **rmarkdown** functions (using
-    `rmarkdown::find_pandoc()`). This allows to use this package easily
-    in order to test **rmarkdown** with different version of Pandoc.
+When testing difference between versions, it can be interesting to
+switch the active version to run a different version. This can be done
+with `pandoc_set_version(<version)`
 
-    ``` r
-    rmarkdown::find_pandoc(cache = FALSE)
-    #> $version
-    #> [1] '2.14.1'
-    #> 
-    #> $dir
-    #> [1] "C:/Users/chris/scoop/shims"
-    pandoc::pandoc_set_version("2.7.3")
-    #> v Version 2.7.3 is now the active one.
-    #> i This is also true for using with rmarkdown functions.
-    rmarkdown::find_pandoc()
-    #> $version
-    #> [1] '2.7.3'
-    #> 
-    #> $dir
-    #> [1] "C:\\Users\\chris\\AppData\\Local/r-pandoc/r-pandoc/2.7.3"
-    ```
+``` r
+# Use a specific numbered version with the package
+pandoc::pandoc_set_version("2.7.3")
 
-    Setting `rmarkdown = TRUE` is equivalent to calling
+# Use the nightly version installed if available
+pandoc::pandoc_set_version("nighlty")
 
-    ``` r
-    rmarkdown::find_pandoc(cache = FALSE, dir = pandoc::pandoc_locate())
-    ```
+# Use RStudio shipped Pandoc
+pandoc::pandoc_set_version("rstudio")
 
--   `pandoc::pandoc_set_version("2.7.3", rmarkdown = FALSE)` will not
-    activate the version to use with **rmarkdown**
+# Use System Pandoc found in PATH
+pandoc::pandoc_set_version("system")
+```
+
+#### Working with **rmarkdown** functions
+
+By default, if **rmarkdown** is installed, it will also set the version
+active for all **rmarkdown** functions (using
+`rmarkdown::find_pandoc()`). This allows to use this package easily in
+order to test **rmarkdown** with different version of Pandoc.
+
+``` r
+rmarkdown::find_pandoc(cache = FALSE)
+#> $version
+#> [1] '2.14.1'
+#> 
+#> $dir
+#> [1] "C:/Users/chris/scoop/shims"
+pandoc::pandoc_set_version("2.7.3")
+#> v Version 2.7.3 is now the active one.
+#> i This is also true for using with rmarkdown functions.
+rmarkdown::find_pandoc()
+#> $version
+#> [1] '2.7.3'
+#> 
+#> $dir
+#> [1] "C:\\Users\\chris\\AppData\\Local/r-pandoc/r-pandoc/2.7.3"
+```
+
+Setting `rmarkdown = TRUE` is equivalent to calling
+
+``` r
+rmarkdown::find_pandoc(cache = FALSE, dir = pandoc::pandoc_locate())
+```
+
+`pandoc::pandoc_set_version("2.7.3", rmarkdown = FALSE)` will not
+activate the version to use with **rmarkdown**
+
+##### Resetting **rmarkdown** default Pandoc version
 
 Note: To reset default **rmarkdown** Pandoc version, you can use
 `rmarkdown::find_pandoc(cache = FALSE)`
