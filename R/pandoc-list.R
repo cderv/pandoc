@@ -9,15 +9,15 @@
 #'    * `formats` (name of the formats that can be used as input or output)
 #'
 #' @export
-pandoc_list_formats <- function(type = c("input", "output"), bin = pandoc_bin()) {
-  if (pandoc_version(bin) < "1.18") {
+pandoc_list_formats <- function(type = c("input", "output"), version = "default") {
+  if (pandoc_version(version = version) < "1.18") {
     rlang::abort(c("x" = "This feature is only available for Pandoc 1.18 and above."))
   }
   type <- rlang::arg_match(type)
   args <- switch(type,
                  input = "--list-input-formats",
                  output = "--list-output-formats")
-  res <- pandoc_run(args, bin = bin, echo = FALSE)
+  res <- pandoc_run(args, version = version, echo = FALSE)
   tmp_file <- fs::file_temp()
   on.exit(unlink(tmp_file))
   brio::write_file(res$stdout, tmp_file)
@@ -48,12 +48,12 @@ pandoc_list_formats <- function(type = c("input", "output"), bin = pandoc_bin())
 #'    * `default`: Is the extensions activated by default or not ?
 #'
 #' @export
-pandoc_list_extensions <- function(format = "markdown", bin = pandoc_bin()) {
-  if (pandoc_version(bin) < "2.8") {
+pandoc_list_extensions <- function(format = "markdown", version = "default") {
+  if (pandoc_version(version = version) < "2.8") {
     rlang::abort(c("x" = "This feature is only available for Pandoc 2.8 and above."))
   }
   args <- c("--list-extensions", format)
-  res <- pandoc_run(args, bin = bin, echo = FALSE)
+  res <- pandoc_run(args, version = version, echo = FALSE)
   tmp_file <- tempfile()
   on.exit(unlink(tmp_file))
   brio::write_file(res$stdout, tmp_file)
@@ -71,7 +71,7 @@ pandoc_list_extensions <- function(format = "markdown", bin = pandoc_bin()) {
   extensions_tbl
 }
 
-pandoc_list_abbreviations <- function(bin = pandoc_bin()) {
+pandoc_list_abbreviations <- function(version = "default") {
   args <- c("--print-default-data-file", "abbreviations")
-  pandoc_run_to_file(args, bin = bin)
+  pandoc_run_to_file(args, version = version)
 }

@@ -41,15 +41,13 @@ pandoc_which_bin <- function(which = c("rstudio", "system")) {
 #' @export
 #' @name system_pandoc
 pandoc_system_version <- function() {
-  path <- pandoc_system_bin()
-  if (is.null(path)) return(NULL)
-  pandoc_version(bin = path)
+  pandoc_version(version = "system")
 
 }
 
 #' @rdname system_pandoc
 pandoc_system_bin <- function() {
-  pandoc_bin("system")
+  pandoc_bin(version = "system")
 }
 
 #' Retrieve path and version of Pandoc shipped with RStudio
@@ -60,14 +58,12 @@ pandoc_system_bin <- function() {
 #' @export
 #' @name rstudio_pandoc
 pandoc_rstudio_version <- function() {
-  path <- pandoc_rstudio_bin()
-  if (is.null(path)) return(NULL)
-  pandoc_version(bin = path)
+  pandoc_version(version = "rstudio")
 }
 
 #' @rdname rstudio_pandoc
 pandoc_rstudio_bin <- function() {
-  pandoc_bin("rstudio")
+  pandoc_bin(version = "rstudio")
 }
 
 #' Get path to the pandoc-citeproc binary.
@@ -158,12 +154,7 @@ pandoc_activate <- function(version, rmarkdown = TRUE) {
 #'
 #' @export
 pandoc_available <- function(min = NULL, max = NULL) {
-  bin <- pandoc_bin("default")
-  # No active pandoc
-  if (is.null(bin)) return(FALSE)
-
-  # compare active with requirement
-  active_version <- pandoc_version(bin)
+  active_version <- pandoc_version(version = "default")
   is_above <- is_below <- TRUE
   if (!is.null(min)) is_above <- active_version >= min
   if (!is.null(max)) is_below <- active_version <= max

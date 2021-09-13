@@ -4,12 +4,19 @@
 \alias{pandoc_run}
 \title{Run the pandoc binary from R}
 \usage{
-pandoc_run(args, bin = pandoc_bin(), echo = TRUE)
+pandoc_run(args, version = "default", echo = TRUE)
 }
 \arguments{
 \item{args}{Character vector, arguments to the pandoc CLI command}
 
-\item{bin}{Path to a pandoc binary. Default to the active version.}
+\item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
+\itemize{
+\item A version number e.g \code{"2.14.1"}
+\item The nightly version called \code{"nightly"}
+\item The latest installed version with \code{"latest"}
+\item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
+\item Pandoc binary found in PATH with \code{"system"}
+}}
 
 \item{echo}{Whether to print the standard output and error to the screen.}
 }

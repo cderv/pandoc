@@ -4,7 +4,7 @@
 \alias{pandoc_get_data_file}
 \title{Export Pandoc internal data file}
 \usage{
-pandoc_get_data_file(file, output = file, bin = pandoc_bin())
+pandoc_get_data_file(file, output = file, version = "default")
 }
 \arguments{
 \item{file}{One of data file name included in Pandoc (e.g \code{reference.pptx}, \code{styles.html})}
@@ -12,7 +12,14 @@ pandoc_get_data_file(file, output = file, bin = pandoc_bin())
 \item{output}{Path where to export the file. Default to working directory
 with the same file name.}
 
-\item{bin}{Path to a pandoc binary. Default to the active version.}
+\item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
+\itemize{
+\item A version number e.g \code{"2.14.1"}
+\item The nightly version called \code{"nightly"}
+\item The latest installed version with \code{"latest"}
+\item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
+\item Pandoc binary found in PATH with \code{"system"}
+}}
 }
 \description{
 This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-default-data-file}{\code{--print-default-data-file} CLI flag} using

@@ -4,10 +4,17 @@
 \alias{pandoc_version}
 \title{Get Pandoc version}
 \usage{
-pandoc_version(bin = pandoc_bin())
+pandoc_version(version = "default")
 }
 \arguments{
-\item{bin}{Path to a pandoc binary. Default to the active version.}
+\item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
+\itemize{
+\item A version number e.g \code{"2.14.1"}
+\item The nightly version called \code{"nightly"}
+\item The latest installed version with \code{"latest"}
+\item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
+\item Pandoc binary found in PATH with \code{"system"}
+}}
 }
 \description{
 This is equivalent to \code{pandoc --version}

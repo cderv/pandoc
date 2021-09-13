@@ -4,13 +4,20 @@
 \alias{pandoc_list_formats}
 \title{List available supported formats}
 \usage{
-pandoc_list_formats(type = c("input", "output"), bin = pandoc_bin())
+pandoc_list_formats(type = c("input", "output"), version = "default")
 }
 \arguments{
 \item{type}{Either list \code{input} or \code{output} formats. It corresponds to call
 \code{--list-input-formats} and \code{--list-output-formats} respectively.}
 
-\item{bin}{Path to a pandoc binary. Default to the active version.}
+\item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
+\itemize{
+\item A version number e.g \code{"2.14.1"}
+\item The nightly version called \code{"nightly"}
+\item The latest installed version with \code{"latest"}
+\item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
+\item Pandoc binary found in PATH with \code{"system"}
+}}
 }
 \value{
 a data.frame (or a tibble if available) with 2 colums:

@@ -4,12 +4,19 @@
 \alias{pandoc_list_extensions}
 \title{List supported extensions for a format}
 \usage{
-pandoc_list_extensions(format = "markdown", bin = pandoc_bin())
+pandoc_list_extensions(format = "markdown", version = "default")
 }
 \arguments{
 \item{format}{One for the supported  \code{input} or \code{output} formats. See \code{\link[=pandoc_list_formats]{pandoc_list_formats()}}. It corresponds to call}
 
-\item{bin}{Path to a pandoc binary. Default to the active version.}
+\item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
+\itemize{
+\item A version number e.g \code{"2.14.1"}
+\item The nightly version called \code{"nightly"}
+\item The latest installed version with \code{"latest"}
+\item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
+\item Pandoc binary found in PATH with \code{"system"}
+}}
 }
 \value{
 a data.frame (or a tibble if available) with 3 colums:

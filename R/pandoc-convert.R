@@ -31,7 +31,7 @@ pandoc_convert <- function(
     output = NULL,
     standalone = FALSE,
     args = c(),
-    bin = pandoc_bin()
+    version = "default"
 ) {
   if (!rlang::is_null(file) && !rlang::is_null(text)) {
     rlang::abort(c("x" = "Only 'file' or 'text' can be used."))
@@ -48,7 +48,7 @@ pandoc_convert <- function(
             args,
             file)
 
-  res <- pandoc_run(args, bin = bin, echo = FALSE)
+  res <- pandoc_run(args, version = version, echo = FALSE)
 
   if (res$status == 1L) {
     rlang::abort(c(x = "Conversion failed with error",

@@ -4,14 +4,15 @@
 #' any arguments supported by the Pandoc binary.
 #'
 #' @param args Character vector, arguments to the pandoc CLI command
-#' @param bin Path to a pandoc binary. Default to the active version.
 #' @param echo Whether to print the standard output and error to the screen.
+#' @inheritParams pandoc_bin
 #'
 #' @return The output of [processx::run()] invisibly
 #' @export
-pandoc_run <- function(args, bin = pandoc_bin(), echo = TRUE) {
+pandoc_run <- function(args, version = "default", echo = TRUE) {
+  bin <- pandoc_bin(version)
   if (is.null(bin)) {
-    rlang::abort("Requested Pandoc binary is not available.")
+    rlang::abort("Requested Pandoc binary is not available: %s", version)
   }
   invisible(processx::run(bin, args, echo = echo))
 }
@@ -30,8 +31,8 @@ pandoc_run_to_file <- function(..., echo = FALSE) {
 #'
 #' @inheritParams pandoc_run
 #' @export
-pandoc_version <- function(bin = pandoc_bin()) {
-  out <- pandoc_run("--version", bin = bin, echo = FALSE)[["stdout"]]
+pandoc_version <- function(version = "default") {
+  out <- pandoc_run("--version", version = version, echo = FALSE)[["stdout"]]
   version <- strsplit(out, "\n")[[1]][1]
   version <- gsub("^pandoc(?:\\.exe)? ([\\d.]+).*$", "\\1", version, perl = TRUE)
   numeric_version(version)

@@ -4,14 +4,21 @@
 \alias{pandoc_get_template}
 \title{Retrieve Pandoc template for a format}
 \usage{
-pandoc_get_template(format = "markdown", output = NULL, bin = pandoc_bin())
+pandoc_get_template(format = "markdown", output = NULL, version = "default")
 }
 \arguments{
 \item{format}{One of Pandoc format using a text template. (e.g html, latex, revealjs)}
 
 \item{output}{Path where to save the file. If not provided, the default, template content will be print to the console.}
 
-\item{bin}{Path to a pandoc binary. Default to the active version.}
+\item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
+\itemize{
+\item A version number e.g \code{"2.14.1"}
+\item The nightly version called \code{"nightly"}
+\item The latest installed version with \code{"latest"}
+\item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
+\item Pandoc binary found in PATH with \code{"system"}
+}}
 }
 \value{
 If \code{output} is not provided, the content of the template will be

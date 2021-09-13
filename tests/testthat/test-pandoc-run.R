@@ -1,4 +1,4 @@
-test_that("pandoc_get_version()", {
+test_that("pandoc_version()", {
   skip_on_cran()
   skip_if_offline()
   suppressMessages(pandoc_install("2.11.4"))

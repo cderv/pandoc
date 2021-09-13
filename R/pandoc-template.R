@@ -12,7 +12,7 @@
 #'   printed and return as one string (invisibly). If `output` is provided, the file path of
 #'   the output (invisibly).
 #' @export
-pandoc_get_template <- function(format = "markdown", output = NULL, bin = pandoc_bin()) {
+pandoc_get_template <- function(format = "markdown", output = NULL, version = "default") {
 
   preview <- FALSE
   if (rlang::is_null(output)) {
@@ -23,7 +23,7 @@ pandoc_get_template <- function(format = "markdown", output = NULL, bin = pandoc
   args <- c(
     "--output", output,
     "--print-default-template", format)
-  pandoc_run(args, bin = bin, echo = FALSE)
+  pandoc_run(args, version = version, echo = FALSE)
   if (preview) {
     content <- brio::read_file(output)
     cat(content)
@@ -44,14 +44,14 @@ pandoc_get_template <- function(format = "markdown", output = NULL, bin = pandoc
 #'   with the same file name.
 #' @inheritParams pandoc_run
 #' @export
-pandoc_get_data_file <- function(file, output = file, bin = pandoc_bin()) {
+pandoc_get_data_file <- function(file, output = file, version = "default") {
   if (rlang::is_missing(file)) {
     rlang::abort("Enter the data file from Pandoc you want to export.")
   }
   args <- c(
     "--output", output,
     "--print-default-data-file", file)
-  pandoc_run(args, bin = bin, echo = FALSE)
+  pandoc_run(args, version = version, echo = FALSE)
   rlang::inform(c(v = paste0("Template written to ", output)))
   invisible(output)
 }
