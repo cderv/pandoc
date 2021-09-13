@@ -17,6 +17,8 @@ pandoc_bin_impl <- function(path, exe = FALSE) {
 #' @return Absolute path to the pandoc binary of the requested version.
 #' @export
 pandoc_bin <- function(version = "default") {
+  if (pandoc_is_external_version(version)) return(pandoc_which_bin(version))
+
   pandoc_path <- pandoc_locate(version)
   pandoc_bin_impl(pandoc_path)
 }
