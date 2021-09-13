@@ -154,7 +154,9 @@ pandoc_activate <- function(version, rmarkdown = TRUE) {
 #'
 #' @export
 pandoc_available <- function(min = NULL, max = NULL) {
-  active_version <- pandoc_version(version = "default")
+  active_version <- tryCatch(pandoc_version(version = "default"),
+                             error = function(e) NULL)
+  if (is.null(active_version)) return(FALSE)
   is_above <- is_below <- TRUE
   if (!is.null(min)) is_above <- active_version >= min
   if (!is.null(max)) is_below <- active_version <= max
