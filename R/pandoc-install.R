@@ -269,9 +269,10 @@ pandoc_browse_release <- function(version = "latest") {
 }
 
 gh_required <- function() {
-  if (!rlang::is_installed("gh")) {
-    rlang::abort("`gh` package is required to install Pandoc from Github")
-  }
+  rlang::check_installed(
+    pkg = "gh",
+    reason = "to install Pandoc from Github."
+  )
 }
 # nocov end
 
