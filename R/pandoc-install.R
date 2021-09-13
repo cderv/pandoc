@@ -381,7 +381,7 @@ pandoc_is_external_version <- function(version) {
 #'
 #' @export
 pandoc_is_active <- function(version) {
-  if (version == "latest") version <- pandoc_installed_latest()
+  version <- resolve_version(version)
   version == the$active_version
 }
 
@@ -400,14 +400,12 @@ pandoc_locate <- function(version = "default") {
   if (!is.character(version) && length(version) != 1L) {
     rlang::abort("version must be a length one character")
   }
-  # Special binaries not managed by this
+  version <- resolve_version(version)
+  # Special binaries not managed by this package
   if (pandoc_is_external_version(version)) {
     rlang::abort("Use `pandoc_bin()` directly when using externally installed Pandoc version.")
   }
-
   # Binaries installed and managed by this package
-  if (version == "default") version <- the$active_version
-  if (version == "latest") version <- pandoc_installed_latest()
   if (is.null(version) || !nzchar(version)) {
     rlang::warn("No Pandoc version available.")
     return(NULL)

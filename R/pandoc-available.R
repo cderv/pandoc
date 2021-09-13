@@ -16,6 +16,7 @@ pandoc_bin_impl <- function(path, exe = FALSE) {
 #' @return Absolute path to the pandoc binary of the requested version.
 #' @export
 pandoc_bin <- function(version = "default") {
+  version <- resolve_version(version)
   if (pandoc_is_external_version(version)) return(pandoc_which_bin(version))
 
   pandoc_path <- pandoc_locate(version)
@@ -104,7 +105,7 @@ pandoc_citeproc_bin <- function(version = "default") {
 #' @export
 pandoc_set_version <- function(version, rmarkdown = TRUE) {
   old_active <- the$active_version
-  if (version == "latest") version <- pandoc_installed_latest()
+  version <- resolve_version(version)
   if (is.null(version)) {
     the$active_version <- ""
   } else {
@@ -113,8 +114,10 @@ pandoc_set_version <- function(version, rmarkdown = TRUE) {
     }
     the$active_version <- version
     rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
+
     if (rmarkdown && rlang::is_installed("rmarkdown")) {
-      rmarkdown::find_pandoc(cache = FALSE, dir = pandoc_locate())
+      bin_dir <- fs::path_dir(pandoc_bin(version))
+      rmarkdown::find_pandoc(cache = FALSE, dir = bin_dir)
       rlang::inform(c(i = "This is also true for using with rmarkdown functions."))
     }
   }

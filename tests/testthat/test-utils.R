@@ -1,4 +1,4 @@
-test_that("resolve_default_version()", {
+test_that("resolve_version()", {
   rlang::local_bindings(active_version = "nightly", .env = the)
   expect_equal(resolve_version("default"), "nightly")
   expect_equal(resolve_version("2.11.4"), "2.11.4")
