@@ -97,6 +97,15 @@ pandoc_citeproc_bin <- function(version = "default") {
 #' session. By default, the default active version in the most recent one among
 #' the installed version (nightly version excluded.)
 #'
+#' # Default active version
+#'
+#' When the package is loaded, an active version is set to the first Pandoc
+#' binary found between:
+#'
+#'  * the lastest Pandoc version installed with this package (e.g `"2.14.2"`)
+#'  * the version shipped with RStudio IDE. (`version = "rstudio"`)
+#'  * a version available in PATH (`version = "system"`)
+#'
 #' @inheritParams pandoc_install
 #' @param rmarkdown if `TRUE` (the default) and **rmarkdown** is available, this
 #'   will also set the pandoc version as the default one to use with

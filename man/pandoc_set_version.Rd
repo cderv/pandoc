@@ -26,3 +26,13 @@ This function will set the specified version as the default version for the
 session. By default, the default active version in the most recent one among
 the installed version (nightly version excluded.)
 }
+\section{Default active version}{
+When the package is loaded, an active version is set to the first Pandoc
+binary found between:
+\itemize{
+\item the lastest Pandoc version installed with this package (e.g \code{"2.14.2"})
+\item the version shipped with RStudio IDE. (\code{version = "rstudio"})
+\item a version available in PATH (\code{version = "system"})
+}
+}
+
