@@ -57,7 +57,7 @@ with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
 }
 
 #' @rdname with_pandoc_version
-#' @inheritParams withr::defer
+#' @param .local_envir The environment to use for scoping.
 #' @export
 local_pandoc_version <- function(version, rmarkdown = FALSE,
                                  .local_envir = parent.frame()) {

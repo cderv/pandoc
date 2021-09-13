@@ -22,6 +22,8 @@ local_pandoc_version(version, rmarkdown = FALSE, .local_envir = parent.frame())
 \item{rmarkdown}{if \code{TRUE} (the default) and \strong{rmarkdown} is available, this
 will also set the pandoc version as the default one to use with
 \strong{rmarkdown} by calling \code{\link[rmarkdown:find_pandoc]{rmarkdown::find_pandoc()}}}
+
+\item{.local_envir}{The environment to use for scoping.}
 }
 \value{
 The results of the evaluation of the \code{code} argument.
