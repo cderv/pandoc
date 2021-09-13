@@ -24,7 +24,7 @@ Suggests:
     rmarkdown,
     withr,
     tibble,
-    mockery (> 0.4.2)
+    mockery (>= 0.4.2)
 Remotes: 
     r-lib/rlang
 Config/testthat/edition: 3
