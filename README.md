@@ -236,3 +236,4 @@ Available functions:
 -   `pandoc_get_template()`
 -   `pandoc_list_extensions()`
 -   `pandoc_list_formats()`
+-   `pandoc_list_abbreviations()`

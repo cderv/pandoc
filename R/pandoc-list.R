@@ -17,11 +17,7 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
   args <- switch(type,
                  input = "--list-input-formats",
                  output = "--list-output-formats")
-  res <- pandoc_run(args, version = version, echo = FALSE)
-  tmp_file <- fs::file_temp()
-  on.exit(unlink(tmp_file))
-  brio::write_file(res$stdout, tmp_file)
-  formats <- brio::read_lines(tmp_file)
+  formats <- pandoc_run_to_file(args, version = version)
   formats_tbl <- data.frame(
     type = type,
     formats = formats
@@ -53,11 +49,7 @@ pandoc_list_extensions <- function(format = "markdown", version = "default") {
     rlang::abort(c("x" = "This feature is only available for Pandoc 2.8 and above."))
   }
   args <- c("--list-extensions", format)
-  res <- pandoc_run(args, version = version, echo = FALSE)
-  tmp_file <- tempfile()
-  on.exit(unlink(tmp_file))
-  brio::write_file(res$stdout, tmp_file)
-  extensions <- brio::read_lines(tmp_file)
+  extensions <- pandoc_run_to_file(args, version = version)
   extensions_tbl <- data.frame(
     format = format,
     extensions = gsub("^[-+]", "", extensions)
@@ -71,6 +63,20 @@ pandoc_list_extensions <- function(format = "markdown", version = "default") {
   extensions_tbl
 }
 
+#' List system default abbreviations
+#'
+#' Pandoc uses this list in the Markdown reader. Strings found in this list will
+#' be followed by a nonbreaking space, and the period will not produce
+#' sentence-ending space in formats like LaTeX. The strings may not contain
+#' spaces.
+#'
+#' This correspond to the option [`--abbreviations` as CLI
+#' flag](https://pandoc.org/MANUAL.html#option--abbreviations).
+#'
+#' @inheritParams pandoc_run
+#'
+#' @return a character version of system default abbreviation known by Pandoc
+#' @export
 pandoc_list_abbreviations <- function(version = "default") {
   args <- c("--print-default-data-file", "abbreviations")
   pandoc_run_to_file(args, version = version)
