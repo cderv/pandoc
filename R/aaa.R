@@ -3,7 +3,9 @@
 the <- rlang::new_environment(
   list(
     # contains the active pandoc version
-    active_version = ""
+    active_version = "",
+    # Possible pandoc installation not managed by this package directly
+    external_versions = c("system", "rstudio")
 
     # other possibles values in this env
 

@@ -310,8 +310,12 @@ pandoc_installed_latest <- function() {
 #' @rdname pandoc_installed_versions
 #' @inheritParams pandoc_install
 #' @export
-pandoc_is_installed <- function(version) {
-  version %in% pandoc_installed_versions()
+pandoc_is_installed <- function(version, error = FALSE) {
+  installed <- version %in% pandoc_installed_versions()
+  if (error && !installed) {
+    rlang::abort(sprintf("Version %s is not yet installed", version))
+  }
+  installed
 }
 
 #' Uninstall a Pandoc version
@@ -367,6 +371,10 @@ pandoc_available_versions <- function() {
   keep(versions, ~ numeric_version(.x) >= .min_supported_version)
 }
 
+pandoc_is_external_version <- function(version) {
+  version %in% the$external_versions
+}
+
 #' Activate a specific Pandoc version to be used
 #'
 #' This function will set the specified version as the default version for the
@@ -386,11 +394,11 @@ pandoc_set_version <- function(version, rmarkdown = TRUE) {
   if (is.null(version)) {
     the$active_version <- ""
   } else {
-    if (!pandoc_is_installed(version)) {
-      rlang::abort(sprintf("Version %s is not yet installed", version))
+    if (!pandoc_is_external_version(versions)) {
+      pandoc_is_installed(version, error = TRUE)
     }
     the$active_version <- version
-    rlang::inform(c(v = sprintf("Version %s is now the active one.", the$active_version)))
+    rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
     if (rmarkdown && rlang::is_installed("rmarkdown")) {
       rmarkdown::find_pandoc(cache = FALSE, dir = pandoc_locate())
       rlang::inform(c(i = "This is also true for using with rmarkdown functions."))
@@ -425,7 +433,7 @@ pandoc_locate <- function(version = "default") {
     rlang::abort("version must be a length one character")
   }
   # Special binaries not managed by this
-  if (version %in% c("rstudio", "system")) {
+  if (pandoc_is_external_version(version)) {
     return(fs::path_dir(pandoc_which_bin(version)))
   }
 
