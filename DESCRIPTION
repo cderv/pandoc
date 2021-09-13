@@ -26,9 +26,9 @@ Suggests:
     tibble,
     mockery (>= 0.4.2)
 Remotes: 
-    r-lib/rlang
+    r-lib/rlang,
+    r-lib/mockery
 Config/testthat/edition: 3
-Config/needs/tests: r-lib/mockery
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
