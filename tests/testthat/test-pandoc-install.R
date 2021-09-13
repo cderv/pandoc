@@ -126,17 +126,6 @@ test_that("Pandoc specific release can be installed", {
   expect_error(pandoc_install("2.2.3"))
 })
 
-test_that("Active version can be changed", {
-  skip_on_cran()
-  skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  suppressMessages(pandoc_install("nightly"))
-  expect_message(expect_equal(pandoc_set_version("nightly", FALSE), ""))
-  expect_true(pandoc_is_active("nightly"))
-  expect_message(expect_equal(pandoc_set_version("latest", FALSE), "nightly"))
-  expect_true(pandoc_is_active("2.11.4"))
-})
-
 test_that("pandoc-citeproc is correctly placed in root folder", {
   skip_on_cran()
   skip_if_offline()

@@ -54,3 +54,15 @@ test_that("pandoc_available() works", {
   the$active_version <- old
 })
 
+test_that("Active version can be changed", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.11.4"))
+  suppressMessages(pandoc_install("nightly"))
+  old <- the$active_version
+  expect_message(expect_equal(pandoc_set_version("nightly", FALSE), old))
+  expect_true(pandoc_is_active("nightly"))
+  expect_message(expect_equal(pandoc_set_version("latest", FALSE), "nightly"))
+  expect_true(pandoc_is_active(pandoc_installed_latest()))
+})
+
