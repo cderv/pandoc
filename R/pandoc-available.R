@@ -27,7 +27,7 @@ pandoc_which_bin <- function(which = c("rstudio", "system")) {
   which <- rlang::arg_match(which)
   bin <- switch(which,
                 rstudio = pandoc_bin_impl(Sys.getenv("RSTUDIO_PANDOC")),
-                system = fs::path_real(unname(Sys.which("pandoc")))
+                system = unname(Sys.which("pandoc"))
   )
   fs::as_fs_path(bin)
 }
