@@ -126,6 +126,12 @@ test_that("Pandoc specific release can be installed", {
   expect_error(pandoc_install("2.2.3"))
 })
 
+test_that("`pandoc_locate()` does not work with external pandoc", {
+  skip_on_cran()
+  expect_error(pandoc_locate("rstudio"), "pandoc_bin")
+  expect_error(pandoc_locate("system"), "pandoc_bin")
+})
+
 test_that("pandoc-citeproc is correctly placed in root folder", {
   skip_on_cran()
   skip_if_offline()

@@ -402,7 +402,7 @@ pandoc_locate <- function(version = "default") {
   }
   # Special binaries not managed by this
   if (pandoc_is_external_version(version)) {
-    return(fs::path_dir(pandoc_which_bin(version)))
+    rlang::abort("Use `pandoc_bin()` directly when using externally installed Pandoc version.")
   }
 
   # Binaries installed and managed by this package
