@@ -1,4 +1,4 @@
-test_that("pandoc_bin()", {
+test_that("pandoc_bin() for version installed by this package", {
   skip_on_cran()
   skip_if_offline()
   suppressMessages(pandoc_install("2.11.4"))
@@ -6,6 +6,24 @@ test_that("pandoc_bin()", {
   local_pandoc_version("2.7.3")
   expect_match(pandoc_bin(), "2.7.3", fixed = TRUE)
   expect_match(pandoc_bin("2.11.4"), "2.11.4", fixed = TRUE)
+})
+
+test_that("pandoc_bin() for external version", {
+  skip_on_cran()
+  skip_if_not_installed("mockery")
+  mocked <- function(version) {
+    bin <- switch(version,
+                  rstudio = "rstudio/path/pandoc",
+                  system = "system/path/pandoc")
+    fs::as_fs_path(bin)
+  }
+  mockery::stub(pandoc_bin, "pandoc_which_bin", mocked)
+  mockery::stub(pandoc_rstudio_bin, "pandoc_which_bin", mocked, 2)
+  mockery::stub(pandoc_system_bin, "pandoc_which_bin", mocked, 2)
+  expect_equal(pandoc_bin("rstudio"), fs::fs_path("rstudio/path/pandoc"))
+  expect_equal(pandoc_rstudio_bin(), pandoc_bin("rstudio"))
+  expect_equal(pandoc_bin("system"), fs::path("system/path/pandoc"))
+  expect_equal(pandoc_system_bin(), pandoc_bin("system"))
 })
 
 test_that("pandoc_citeproc_bin()", {

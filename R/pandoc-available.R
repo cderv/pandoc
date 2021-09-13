@@ -29,7 +29,7 @@ pandoc_which_bin <- function(which = c("rstudio", "system")) {
                 rstudio = pandoc_bin_impl(Sys.getenv("RSTUDIO_PANDOC")),
                 system = fs::path_real(unname(Sys.which("pandoc")))
   )
-  bin
+  fs::as_fs_path(bin)
 }
 
 #' Retrieve path and version of Pandoc found on the system PATH
@@ -48,7 +48,7 @@ pandoc_system_version <- function() {
 
 #' @rdname system_pandoc
 pandoc_system_bin <- function() {
-  pandoc_which_bin("system")
+  pandoc_bin("system")
 }
 
 #' Retrieve path and version of Pandoc shipped with RStudio
@@ -66,7 +66,7 @@ pandoc_rstudio_version <- function() {
 
 #' @rdname rstudio_pandoc
 pandoc_rstudio_bin <- function() {
-  pandoc_which_bin("rstudio")
+  pandoc_bin("rstudio")
 }
 
 #' @rdname pandoc_bin

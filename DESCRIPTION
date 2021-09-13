@@ -23,7 +23,8 @@ Suggests:
     testthat (>= 3.0.0),
     rmarkdown,
     withr,
-    tibble
+    tibble,
+    mockery
 Remotes: 
     r-lib/rlang
 Config/testthat/edition: 3
