@@ -394,7 +394,7 @@ pandoc_set_version <- function(version, rmarkdown = TRUE) {
   if (is.null(version)) {
     the$active_version <- ""
   } else {
-    if (!pandoc_is_external_version(versions)) {
+    if (!pandoc_is_external_version(version)) {
       pandoc_is_installed(version, error = TRUE)
     }
     the$active_version <- version
