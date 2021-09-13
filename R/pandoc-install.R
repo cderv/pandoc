@@ -401,14 +401,14 @@ pandoc_locate <- function(version = "default") {
     rlang::abort("version must be a length one character")
   }
   version <- resolve_version(version)
-  # Special binaries not managed by this package
-  if (pandoc_is_external_version(version)) {
-    rlang::abort("Use `pandoc_bin()` directly when using externally installed Pandoc version.")
-  }
   # Binaries installed and managed by this package
   if (is.null(version) || !nzchar(version)) {
     rlang::warn("No Pandoc version available.")
     return(NULL)
+  }
+  # Special binaries not managed by this package
+  if (pandoc_is_external_version(version)) {
+    rlang::abort("Use `pandoc_bin()` directly when using externally installed Pandoc version.")
   }
   home_dir <- pandoc_home(version)
   if (!fs::dir_exists(home_dir)) return(NULL)

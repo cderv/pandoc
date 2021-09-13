@@ -1,6 +1,6 @@
 # if Windows, add .exe extension
 pandoc_bin_impl <- function(path, exe = FALSE) {
-  if (!nzchar(path) || is.na(path)) return(NULL)
+  if (!nzchar(path) || is.na(path) || is.null(path)) return(NULL)
   fs::path(path, "pandoc", ext = ifelse(pandoc_os() == "windows", "exe", ""))
 }
 
