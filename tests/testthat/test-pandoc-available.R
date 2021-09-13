@@ -26,6 +26,14 @@ test_that("pandoc_bin() for external version", {
   expect_equal(pandoc_system_bin(), pandoc_bin("system"))
 })
 
+test_that("pandoc_which_bin() not found", {
+  skip_on_cran()
+  withr::with_envvar(
+    c(RSTUDIO_PANDOC = NA),
+    expect_null(pandoc_which_bin("rstudio"))
+  )
+})
+
 test_that("pandoc_citeproc_bin()", {
   skip_on_cran()
   skip_if_offline()

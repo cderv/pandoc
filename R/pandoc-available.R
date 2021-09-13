@@ -29,6 +29,7 @@ pandoc_which_bin <- function(which = c("rstudio", "system")) {
                 rstudio = pandoc_bin_impl(Sys.getenv("RSTUDIO_PANDOC")),
                 system = unname(Sys.which("pandoc"))
   )
+  if (!nzchar(bin) || is.na(bin) || is.null(bin)) return(NULL)
   fs::as_fs_path(bin)
 }
 
