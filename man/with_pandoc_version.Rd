@@ -2,9 +2,12 @@
 % Please edit documentation in R/pandoc-run.R
 \name{with_pandoc_version}
 \alias{with_pandoc_version}
+\alias{local_pandoc_version}
 \title{Execute any code with a specific Pandoc version}
 \usage{
 with_pandoc_version(version, code, rmarkdown = FALSE)
+
+local_pandoc_version(version, rmarkdown = FALSE, .local_envir = parent.frame())
 }
 \arguments{
 \item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are

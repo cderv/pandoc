@@ -52,6 +52,9 @@ with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
   force(code)
 }
 
+#' @rdname with_pandoc_version
+#' @inheritParams withr::defer
+#' @export
 local_pandoc_version <- function(version, rmarkdown = FALSE,
                                  .local_envir = parent.frame()) {
   rlang::check_installed("withr")
