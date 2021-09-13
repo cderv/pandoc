@@ -4,7 +4,6 @@ pandoc_bin_impl <- function(path, exe = FALSE) {
   fs::path(path, "pandoc", ext = ifelse(pandoc_os() == "windows", "exe", ""))
 }
 
-
 #' Get path to the pandoc binary
 #'
 #' @param version Version to use. Default will be the `"default"` version. Other possible value are
@@ -69,11 +68,20 @@ pandoc_rstudio_bin <- function() {
   pandoc_bin("rstudio")
 }
 
-#' @rdname pandoc_bin
-#' @return For `pandoc_citeproc_bin()`, it returns the path to `pandoc-citeproc` binary
-#'   if it exists. Since Pandoc 2.11, the citeproc filter has been included into
-#'   Pandoc itself and is no more shipped as a binary filter.
+#' Get path to the pandoc-citeproc binary.
+#'
+#' This function will return the path to `pandoc-citeproc` if available. It will
+#' only work with `version` of Pandoc installed by this package.
+#'
+#' @inheritParams pandoc_locate
+#' @return the path to `pandoc-citeproc` binary if it exists. Since Pandoc 2.11,
+#'   the citeproc filter has been included into Pandoc itself and is no more
+#'   shipped as a binary filter.
+#' @export
 pandoc_citeproc_bin <- function(version = "default") {
+  if (pandoc_is_external_version(version)) {
+    rlang::abort("This function does not work with externally installed version of Pandoc.")
+  }
   pandoc_path <- pandoc_locate(version)
   path <- fs::path(pandoc_path, "pandoc-citeproc",
                    ext = ifelse(pandoc_os() == "windows", "exe", ""))

@@ -10,7 +10,7 @@ pandoc_installed_versions()
 
 pandoc_installed_latest()
 
-pandoc_is_installed(version)
+pandoc_is_installed(version, error = FALSE)
 }
 \arguments{
 \item{version}{This can be either:
