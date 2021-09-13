@@ -7,13 +7,11 @@
 pandoc_set_version(version, rmarkdown = TRUE)
 }
 \arguments{
-\item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
+\item{version}{This can be either:
 \itemize{
-\item A version number e.g \code{"2.14.1"}
-\item The nightly version called \code{"nightly"}
-\item The latest installed version with \code{"latest"}
-\item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
-\item Pandoc binary found in PATH with \code{"system"}
+\item \code{"latest"} for the latest release
+\item A version number (e.g \code{"2.11.4"}) for a specific version
+\item \code{"nightly"} for the last pandoc development built daily
 }}
 
 \item{rmarkdown}{if \code{TRUE} (the default) and \strong{rmarkdown} is available, this

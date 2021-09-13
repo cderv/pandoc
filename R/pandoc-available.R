@@ -97,7 +97,7 @@ pandoc_citeproc_bin <- function(version = "default") {
 #' session. By default, the default active version in the most recent one among
 #' the installed version (nightly version excluded.)
 #'
-#' @inheritParams pandoc_bin
+#' @inheritParams pandoc_install
 #' @param rmarkdown if `TRUE` (the default) and **rmarkdown** is available, this
 #'   will also set the pandoc version as the default one to use with
 #'   **rmarkdown** by calling [rmarkdown::find_pandoc()]
