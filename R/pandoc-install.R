@@ -264,10 +264,6 @@ pandoc_os <- function() {
 }
 
 # nocov start
-pandoc_browse_release <- function(version = "latest") {
-  utils::browseURL(paste0("https://github.com/jgm/pandoc/releases/", version))
-}
-
 gh_required <- function() {
   rlang::check_installed(
     pkg = "gh",

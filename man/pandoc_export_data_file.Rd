@@ -2,9 +2,12 @@
 % Please edit documentation in R/pandoc-template.R
 \name{pandoc_export_data_file}
 \alias{pandoc_export_data_file}
+\alias{pandoc_export_reference_doc}
 \title{Export Pandoc internal data file}
 \usage{
 pandoc_export_data_file(file, output = file, version = "default")
+
+pandoc_export_reference_doc(type = c("docx", "pptx"), version = "default")
 }
 \arguments{
 \item{file}{One of data file name included in Pandoc (e.g \code{reference.pptx}, \code{styles.html})}
@@ -24,4 +27,8 @@ with the same file name.}
 \description{
 This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-default-data-file}{\code{--print-default-data-file} CLI flag} using
 also \code{--output} to write a export a data file built in Pandoc.
+}
+\details{
+\code{pandoc_export_reference_doc()} is a helper to quickly get the reference doc for
+Word document (\code{reference.docx}) or Powerpoint document (\code{reference.pptx})
 }
