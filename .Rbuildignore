@@ -7,3 +7,7 @@
 ^codecov\.yml$
 ^\.github$
 ^\.netlify$
+^_pkgdown\.yml$
+^pkgdown$
+^reference$
+^vignettes/articles$

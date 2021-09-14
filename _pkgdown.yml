@@ -1,0 +1,75 @@
+destination: reference
+
+url: https://confident-wright-0140d1.netlify.app/
+
+template:
+  bootstrap: 4
+  bootswatch: yeti
+  params:
+    noindex: true
+
+development:
+  version_label: danger
+  version_tooltip: "Experimental version"
+
+authors:
+  RStudio:
+    href: https://www.rstudio.com
+    html: <img src="https://www.tidyverse.org/rstudio-logo.svg" height="24" />
+
+navbar:
+  type: dark
+  bg: primary
+
+
+reference:
+- title: "Install & Manage Pandoc with this package"
+- subtitle: "Install / Update / Uninstall Pandoc"
+- contents:
+  - starts_with("pandoc_install")
+  - pandoc_update
+  - pandoc_uninstall
+- subtitle: "Manage versions installed by this package"
+  desc: >
+    Functions to find an installed version by this package
+- contents:
+  - starts_with("pandoc_installed")
+  - pandoc_is_installed
+  - pandoc_locate
+- title: "Get path to any pandoc binary"
+  desc: >
+    Functions to access pandoc binary path, including external ones.
+- contents:
+  - ends_with("_bin")
+- title: "Use externally installed Pandoc binary"
+- contents:
+  - pandoc_rstudio_bin
+  - pandoc_system_bin
+- title: "Handle Pandoc version"
+- subtitle: "Activate a pandoc version"
+  desc: >
+    Function to change active default version of Pandoc used
+- contents:
+  - pandoc_activate
+  - with_pandoc_version
+- subtitle: "Check pandoc (active) version"
+- contents:
+  - pandoc_is_active
+  - pandoc_available
+  - pandoc_version
+- title: "Run pandoc binary"
+- contents:
+  - pandoc_run
+  - pandoc_convert
+- subtitle: "List some informations built-in Pandoc binary"
+  desc: "Functions to access from R information usually accessible by command line only"
+- contents:
+  - starts_with("pandoc_list")
+- subtitle: "Export templates and other file content built-in Pandoc binary"
+  desc: "Functions to export to file templates, reference doc and other data file"
+- contents:
+  - starts_with("pandoc_export")
+- title: "Browse Pandoc's useful online resources"
+  desc: "Functions for quickly accessing relevant online fox."
+- contents:
+  - starts_with("pandoc_browse")
