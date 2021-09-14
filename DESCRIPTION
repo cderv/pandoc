@@ -1,12 +1,14 @@
 Package: pandoc
 Title: Manage and Run Universal Converter Pandoc from R
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "Christophe",
+Authors@R:
+    c(person(given = "Christophe",
            family = "Dervieux",
            role = c("aut", "cre"),
            email = "cderv@rstudio.com",
-           comment = c(ORCID = "0000-0003-4474-2498"))
+           comment = c(ORCID = "0000-0003-4474-2498")),
+     person(given = "RStudio",
+             role = c("cph", "fnd")))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 URL: https://github.com/cderv/pandoc
