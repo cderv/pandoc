@@ -44,13 +44,32 @@ pandoc_browse_manual <- function(id = NULL) {
 
 #' Open Pandoc's documentation about an extension
 #'
-#' @param extension One of the supported extension. As the Pandoc MANUAL only
-#'   concerns the last released Pandoc's version, if the URL is incorrect this
-#'   could mean the extensions has changed.
+#' @param extension One of the supported extension. See
+#'   [pandoc_list_extensions()]. As the Pandoc MANUAL only concerns the last
+#'   released Pandoc's version, if the URL is incorrect this could mean the
+#'   extensions has changed.
 #'
 #' @return Open the webpage at the place regarding the required extension.
 #' @export
 pandoc_browse_extension <- function(extension) {
   id <- paste0("extension-", extension)
+  pandoc_browse_manual(id)
+}
+
+#' Open Pandoc's documentation about a command line option
+#'
+#' @param option One of the supported **long form** command line option. As the
+#'   Pandoc MANUAL only concerns the last released Pandoc's version, if the URL
+#'   is incorrect this could mean the option has changed.
+#'
+#' @return Open the webpage at the place regarding the required option
+#' @export
+pandoc_browse_option <- function(option = NULL) {
+  if (is.null(option)) {
+    id <- "#options"
+  } else {
+    option <- gsub("^--(.*)$", "\\1", option)
+    id <- paste0("option--", option)
+  }
   pandoc_browse_manual(id)
 }

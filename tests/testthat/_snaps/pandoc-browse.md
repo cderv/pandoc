@@ -46,3 +46,27 @@
       i Open URL
       https://pandoc.org/MANUAL.html#extension-smart
 
+# pandoc_browse_option()
+
+    Code
+      pandoc_browse_option()
+    Message <message>
+      i Open URL
+      https://pandoc.org/MANUAL.html##options
+
+---
+
+    Code
+      pandoc_browse_option("quiet")
+    Message <message>
+      i Open URL
+      https://pandoc.org/MANUAL.html#option--quiet
+
+---
+
+    Code
+      pandoc_browse_option("--quiet")
+    Message <message>
+      i Open URL
+      https://pandoc.org/MANUAL.html#option--quiet
+

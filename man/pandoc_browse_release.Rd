@@ -15,3 +15,6 @@ Open the web page in browser in interactive mode or print the url
 \description{
 Open Pandoc's release page in browser
 }
+\references{
+\url{https://github.com/jgm/pandoc/releases}
+}
