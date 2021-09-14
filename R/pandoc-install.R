@@ -99,6 +99,8 @@ pandoc_install <- function(version = "latest", force = FALSE) {
     fs::file_chmod(bin, "u+x")
   }
 
+  rlang::inform(c(v = sprintf("Pandoc version %s installed.", version)))
+
   invisible(install_dir)
 
 }
