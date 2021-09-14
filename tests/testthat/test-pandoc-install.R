@@ -102,18 +102,20 @@ test_that("No versions are installed", {
   walk(pandoc_installed_versions(), pandoc_uninstall)
   expect_null(pandoc_installed_versions())
   expect_null(pandoc_installed_latest())
-  expect_identical(the$active_version, "")
+  expect_true(the$active_version %in% c("", the$external_versions))
 })
 
-test_that("Pandoc nightly can be installed", {
+test_that("Pandoc nightly can be installed and ran", {
   skip_on_cran()
   skip_if_offline()
   expect_pandoc_installed("nightly")
   time <- fs::file_info(pandoc_locate("nightly"))$modification_time
   expect_message(expect_message(pandoc_install("nightly")), "already installed", fixed = TRUE)
+  # installed version is working
+  expect_error(pandoc_version("nightly"), NA)
 })
 
-test_that("Pandoc specific release can be installed", {
+test_that("Pandoc specific release can be installed and ran", {
   skip_on_cran()
   skip_if_offline()
   expect_pandoc_installed("2.11.4")
@@ -122,6 +124,8 @@ test_that("Pandoc specific release can be installed", {
     suppressMessages(pandoc_install("2.11.4", force = TRUE)),
     pandoc_locate("2.11.4")
   )
+  # installed version is working
+  expect_equal(pandoc_version("2.11.4"), numeric_version("2.11.4"))
   # does not exist
   expect_error(pandoc_install("2.2.3"))
 })
