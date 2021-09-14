@@ -150,7 +150,52 @@
 
 # pandoc_list_highlight_style
 
-    ["pygments", "tango", "espresso", "zenburn", "kate", "monochrome", "breezedark", "haddock"]
+    Code
+      pandoc_list_highlight_style()
+    Output
+      [1] "pygments"   "tango"      "espresso"   "zenburn"    "kate"      
+      [6] "monochrome" "breezedark" "haddock"   
+
+# pandoc_list_highlight_languages
+
+    Code
+      pandoc_list_highlight_languages()
+    Output
+        [1] "abc"             "actionscript"    "ada"             "agda"           
+        [5] "apache"          "asn1"            "asp"             "ats"            
+        [9] "awk"             "bash"            "bibtex"          "boo"            
+       [13] "c"               "changelog"       "clojure"         "cmake"          
+       [17] "coffee"          "coldfusion"      "comments"        "commonlisp"     
+       [21] "cpp"             "cs"              "css"             "curry"          
+       [25] "d"               "default"         "diff"            "djangotemplate" 
+       [29] "dockerfile"      "dot"             "doxygen"         "doxygenlua"     
+       [33] "dtd"             "eiffel"          "elixir"          "elm"            
+       [37] "email"           "erlang"          "fasm"            "fortranfixed"   
+       [41] "fortranfree"     "fsharp"          "gcc"             "glsl"           
+       [45] "gnuassembler"    "go"              "graphql"         "groovy"         
+       [49] "hamlet"          "haskell"         "haxe"            "html"           
+       [53] "idris"           "ini"             "isocpp"          "j"              
+       [57] "java"            "javadoc"         "javascript"      "javascriptreact"
+       [61] "json"            "jsp"             "julia"           "kotlin"         
+       [65] "latex"           "lex"             "lilypond"        "literatecurry"  
+       [69] "literatehaskell" "llvm"            "lua"             "m4"             
+       [73] "makefile"        "mandoc"          "markdown"        "mathematica"    
+       [77] "matlab"          "maxima"          "mediawiki"       "metafont"       
+       [81] "mips"            "modelines"       "modula2"         "modula3"        
+       [85] "monobasic"       "mustache"        "nasm"            "nim"            
+       [89] "noweb"           "objectivec"      "objectivecpp"    "ocaml"          
+       [93] "octave"          "opencl"          "pascal"          "perl"           
+       [97] "php"             "pike"            "postscript"      "povray"         
+      [101] "powershell"      "prolog"          "protobuf"        "pure"           
+      [105] "purebasic"       "python"          "qml"             "r"              
+      [109] "relaxng"         "relaxngcompact"  "rest"            "rhtml"          
+      [113] "roff"            "ruby"            "rust"            "scala"          
+      [117] "scheme"          "sci"             "sed"             "sgml"           
+      [121] "sml"             "spdxcomments"    "sql"             "sqlmysql"       
+      [125] "sqlpostgresql"   "stata"           "tcl"             "tcsh"           
+      [129] "texinfo"         "toml"            "typescript"      "verilog"        
+      [133] "vhdl"            "xml"             "xorg"            "xslt"           
+      [137] "xul"             "yacc"            "yaml"            "zsh"            
 
 # pandoc_list_abbreviations
 

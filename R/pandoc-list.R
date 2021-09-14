@@ -81,6 +81,25 @@ pandoc_list_highlight_style <- function(version = "default") {
   pandoc_run_to_file(args, version = version)
 }
 
+#' List supported languages for Pandoc syntax highlighting
+#'
+#' This function is useful to retrieve the supported languages by Pandoc's
+#' syntax highlighter. These are the values that can be used as fenced code
+#' attributes to trigger the highlighting of the block for the requested
+#' language. See [`fenced_code_attributes` extensions
+#' flag](https://pandoc.org/MANUAL.html#extension-fenced_code_attributes).
+#'
+#' @inheritParams pandoc_run
+#'
+#' @return a character vector of supported languages to use as fenced code
+#'   attributes.
+#'
+#' @export
+pandoc_list_highlight_languages <- function(version = "default") {
+  args <- c("--list-highlight-languages")
+  pandoc_run_to_file(args, version = version)
+}
+
 #' List system default abbreviations
 #'
 #' Pandoc uses this list in the Markdown reader. Strings found in this list will
