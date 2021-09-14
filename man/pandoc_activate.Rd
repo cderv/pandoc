@@ -4,7 +4,7 @@
 \alias{pandoc_activate}
 \title{Activate a specific Pandoc version to be used}
 \usage{
-pandoc_activate(version, rmarkdown = TRUE)
+pandoc_activate(version = "latest", rmarkdown = TRUE)
 }
 \arguments{
 \item{version}{This can be either:
@@ -35,7 +35,7 @@ to choose to install the version.
 When the package is loaded, an active version is set to the first Pandoc
 binary found between:
 \itemize{
-\item the lastest Pandoc version installed with this package (e.g \code{"2.14.2"})
+\item the latest Pandoc version installed with this package (e.g \code{"2.14.2"})
 \item the version shipped with RStudio IDE. (\code{version = "rstudio"})
 \item a version available in PATH (\code{version = "system"})
 }

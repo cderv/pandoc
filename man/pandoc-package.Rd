@@ -19,5 +19,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Christophe Dervieux \email{cderv@rstudio.com} (\href{https://orcid.org/0000-0003-4474-2498}{ORCID})
 
+Other contributors:
+\itemize{
+  \item RStudio [copyright holder, funder]
+}
+
 }
 \keyword{internal}
