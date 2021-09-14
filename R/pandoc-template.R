@@ -92,7 +92,7 @@ pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "def
 #' flag](https://pandoc.org/MANUAL.html#option--print-highlight-style) using
 #' also `--output` to write a export a data file built in Pandoc.
 #'
-#' @param style One of the support highlighting style. (See [pandoc_list_highlight_styles()]).
+#' @param style One of the support highlighting style. (See [pandoc_list_highlight_style()]).
 #' @param output Path (without extension) where to export the JSON `.theme`
 #'   file. By default, the file will be located in working directory and named
 #'   based on the parameter `style` (i.e `<style>.theme`).

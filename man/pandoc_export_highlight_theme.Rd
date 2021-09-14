@@ -11,7 +11,7 @@ pandoc_export_highlight_theme(
 )
 }
 \arguments{
-\item{style}{One of the support highlighting style. (See \code{\link[=pandoc_list_highlight_styles]{pandoc_list_highlight_styles()}}).}
+\item{style}{One of the support highlighting style. (See \code{\link[=pandoc_list_highlight_style]{pandoc_list_highlight_style()}}).}
 
 \item{output}{Path (without extension) where to export the JSON \code{.theme}
 file. By default, the file will be located in working directory and named
