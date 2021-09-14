@@ -40,6 +40,9 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
 #' flag](https://pandoc.org/MANUAL.html#option--print-default-data-file) using
 #' also `--output` to write a export a data file built in Pandoc.
 #'
+#' `pandoc_export_reference_doc()` is a helper to quickly get the reference doc for
+#' Word document (`reference.docx`) or Powerpoint document (`reference.pptx`)
+#'
 #' @param file One of data file name included in Pandoc (e.g `reference.pptx`, `styles.html`)
 #' @param output Path where to export the file. Default to working directory
 #'   with the same file name.
@@ -63,6 +66,14 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
   pandoc_run(args, version = version, echo = FALSE)
   rlang::inform(c(v = paste0("Template written to ", output)))
   invisible(output)
+}
+
+#' @rdname pandoc_export_data_file
+#' @export
+pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "default") {
+  type <- rlang::arg_match(type)
+  ref_doc <- fs::path_ext_set("reference", type)
+  pandoc_export_data_file(ref_doc, ref_doc, version = version)
 }
 
 #' Export highlighting style as JSON file

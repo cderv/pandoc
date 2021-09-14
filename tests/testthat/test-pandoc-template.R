@@ -1,6 +1,8 @@
 test_that("pandoc_export_template() exports templates for a format", {
   skip_on_cran()
   skip_if_offline()
+  suppressMessages(pandoc_install("2.5"))
+  expect_error(pandoc_export_template(version = "2.5"))
   suppressMessages(pandoc_install("2.11.4"))
   local_pandoc_version("2.11.4")
   # default is to print in console
@@ -16,6 +18,8 @@ test_that("pandoc_export_template() exports templates for a format", {
 test_that("pandoc_export_data_file() exports data file", {
   skip_on_cran()
   skip_if_offline()
+  suppressMessages(pandoc_install("2.5"))
+  expect_error(pandoc_export_data_file("styles.html", version = "2.5"))
   suppressMessages(pandoc_install("2.11.4"))
   local_pandoc_version("2.11.4")
   # default file name
@@ -33,9 +37,31 @@ test_that("pandoc_export_data_file() exports data file", {
   expect_snapshot_file(theme_file, "styles-custom-path.html", compare = compare_file_text)
 })
 
+test_that("pandoc_export_data_file() exports data file", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.5"))
+  expect_error(pandoc_export_reference_doc(version = "2.5"))
+  suppressMessages(pandoc_install("2.11.4"))
+  local_pandoc_version("2.11.4")
+  # default file name
+  expect_message(
+    theme_file <- pandoc_export_reference_doc()
+  )
+  expect_match(theme_file, "reference.docx")
+  unlink(theme_file)
+  expect_message(
+    theme_file <- pandoc_export_reference_doc("pptx")
+  )
+  expect_match(theme_file, "reference.pptx")
+  unlink(theme_file)
+})
+
 test_that("pandoc_export_highlight_theme() exports .theme file", {
   skip_on_cran()
   skip_if_offline()
+  suppressMessages(pandoc_install("2.5"))
+  expect_error(pandoc_export_highlight_theme(version = "2.5"))
   suppressMessages(pandoc_install("2.11.4"))
   local_pandoc_version("2.11.4")
   # default file name
