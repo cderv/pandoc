@@ -42,3 +42,15 @@ pandoc_browse_manual <- function(id = NULL) {
   url_view("https://pandoc.org", path)
 }
 
+#' Open Pandoc's documentation about an extension
+#'
+#' @param extension One of the supported extension. As the Pandoc MANUAL only
+#'   concerns the last released Pandoc's version, if the URL is incorrect this
+#'   could mean the extensions has changed.
+#'
+#' @return Open the webpage at the place regarding the required extension.
+#' @export
+pandoc_browse_extension <- function(extension) {
+  id <- paste0("extension-", extension)
+  pandoc_browse_manual(id)
+}

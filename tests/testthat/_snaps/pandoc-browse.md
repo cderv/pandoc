@@ -38,3 +38,11 @@
       i Open URL
       https://pandoc.org/MANUAL.html#description
 
+# pandoc_browse_extension()
+
+    Code
+      pandoc_browse_extension("smart")
+    Message <message>
+      i Open URL
+      https://pandoc.org/MANUAL.html#extension-smart
+

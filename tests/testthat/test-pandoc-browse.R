@@ -15,3 +15,7 @@ test_that("pandoc_browse_manual()", {
   expect_snapshot(pandoc_browse_manual())
   expect_snapshot(pandoc_browse_manual("description"))
 })
+
+test_that("pandoc_browse_extension()", {
+  expect_snapshot(pandoc_browse_extension("smart"))
+})
