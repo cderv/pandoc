@@ -1,3 +1,23 @@
+test_that("pandoc_get_data_file() exports data file", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.11.4"))
+  local_pandoc_version("2.11.4")
+  # default file name
+  expect_message(
+    theme_file <- pandoc_get_data_file("styles.html")
+  )
+  expect_match(theme_file, "styles.html")
+  expect_snapshot_file(theme_file, "styles.html", compare = compare_file_text)
+  unlink(theme_file)
+  # other file name
+  tmp_file <- withr::local_tempfile(fileext = ".html")
+  expect_message(
+    theme_file <- pandoc_get_data_file("styles.html", output = tmp_file)
+  )
+  expect_snapshot_file(theme_file, "styles-custom-path.html", compare = compare_file_text)
+})
+
 test_that("pandoc_get_highlight_theme() exports .theme file", {
   skip_on_cran()
   skip_if_offline()

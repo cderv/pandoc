@@ -48,6 +48,12 @@ pandoc_get_data_file <- function(file, output = file, version = "default") {
   if (rlang::is_missing(file)) {
     rlang::abort("Enter the data file from Pandoc you want to export.")
   }
+  if (file == "styles.html") {
+    # Special handling for pandoc
+    # https://pandoc.org/MANUAL.html#option--print-default-template
+    force(output)
+    file <- "templates/styles.html"
+  }
   args <- c(
     "--output", output,
     "--print-default-data-file", file)
