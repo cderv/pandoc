@@ -1,3 +1,18 @@
+test_that("pandoc_get_template() exports templates for a format", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.11.4"))
+  local_pandoc_version("2.11.4")
+  # default is to print in console
+  expect_snapshot(suppressMessages(pandoc_get_template()))
+  # other file name
+  tmp_file <- withr::local_tempfile()
+  expect_message(
+    theme_file <- pandoc_get_template("jira", output = tmp_file)
+  )
+  expect_snapshot_file(theme_file, "default.jira", compare = compare_file_text)
+})
+
 test_that("pandoc_get_data_file() exports data file", {
   skip_on_cran()
   skip_if_offline()
