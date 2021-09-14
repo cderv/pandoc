@@ -154,8 +154,8 @@ pandoc_install_nightly <- function() {
   utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
   rlang::inform(c(v = paste0("Last Pandoc nightly installed: ", pandoc_nightly_version())))
   # check access right
-  # MacOS is missing the executable bit (#1)
-  if (pandoc_os() == "macOS" &&
+  # MacOS / Linux are missing the executable bit (#1)
+  if (pandoc_os() %in% c("macOS", "linux") &&
       !fs::file_access(pandoc_bin("nightly"), mode = "execute")) {
     fs::file_chmod(pandoc_bin("nightly"), "u+x")
   }

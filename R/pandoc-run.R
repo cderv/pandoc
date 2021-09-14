@@ -10,7 +10,7 @@
 #' @return The output of [processx::run()] invisibly
 #' @export
 pandoc_run <- function(args, version = "default", echo = TRUE) {
-  bin <- pandoc_bin(version)
+  bin <- fs::path_real(pandoc_bin(version))
   if (is.null(bin)) {
     rlang::abort("Requested Pandoc binary is not available: %s", version)
   }
