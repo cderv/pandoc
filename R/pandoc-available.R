@@ -103,7 +103,7 @@ pandoc_citeproc_bin <- function(version = "default") {
 #' When the package is loaded, an active version is set to the first Pandoc
 #' binary found between:
 #'
-#'  * the lastest Pandoc version installed with this package (e.g `"2.14.2"`)
+#'  * the latest Pandoc version installed with this package (e.g `"2.14.2"`)
 #'  * the version shipped with RStudio IDE. (`version = "rstudio"`)
 #'  * a version available in PATH (`version = "system"`)
 #'
@@ -114,7 +114,7 @@ pandoc_citeproc_bin <- function(version = "default") {
 #'
 #' @return invisibly, the previous active version.
 #' @export
-pandoc_activate <- function(version, rmarkdown = TRUE) {
+pandoc_activate <- function(version = "latest", rmarkdown = TRUE) {
   old_active <- the$active_version
   version <- resolve_version(version)
   if (is.null(version)) {
