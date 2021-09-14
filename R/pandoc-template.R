@@ -37,7 +37,7 @@ pandoc_get_template <- function(format = "markdown", output = NULL, version = "d
 #'
 #' This correspond to the [`--print-default-data-file` CLI
 #' flag](https://pandoc.org/MANUAL.html#option--print-default-data-file) using
-#' also `--output` to write a export a data file build in Pandoc.
+#' also `--output` to write a export a data file built in Pandoc.
 #'
 #' @param file One of data file name included in Pandoc (e.g `reference.pptx`, `styles.html`)
 #' @param output Path where to export the file. Default to working directory
@@ -53,5 +53,41 @@ pandoc_get_data_file <- function(file, output = file, version = "default") {
     "--print-default-data-file", file)
   pandoc_run(args, version = version, echo = FALSE)
   rlang::inform(c(v = paste0("Template written to ", output)))
+  invisible(output)
+}
+
+#' Export highlighting style as JSON file
+#'
+#' Pandoc highlighting can be customize using a JSON `.theme` file, passed to
+#' [`--highlight-style=`
+#' flag](https://pandoc.org/MANUAL.html#option--highlight-style). This function
+#' allows to generate the JSON version of one of the supported highlighting
+#' style (See [pandoc_list_highlight_styles()]).
+#'
+#' The `.theme` extension is required and it will be enforced in during the
+#' export by this function.
+#'
+#' @note This correspond to the [`--print-highlight-style` CLI
+#' flag](https://pandoc.org/MANUAL.html#option--print-highlight-style) using
+#' also `--output` to write a export a data file built in Pandoc.
+#'
+#' @param output Path (without extension) where to export the JSON `.theme`
+#'   file. By default, the file will be located in working directory and named
+#'   based on the parameter `style` (i.e `<style>.theme`).
+#' @inheritParams pandoc_run
+#'
+#' @export
+pandoc_get_highlight_theme <- function(style = "pygments", output = style, version = "default") {
+  pandoc_feature_requirement("2.0.4", version = version)
+  style <- rlang::arg_match(style, pandoc_list_highlight_style(version = version))
+  if (!fs::path_ext(output) %in% c("", "theme")) {
+    rlang::warn("`output` extension must be `.theme` and it will be enforced.")
+  }
+  output <- fs::path_ext_set(output, ".theme")
+  args <- c(
+    "--output", output,
+    "--print-highlight-style", style)
+  pandoc_run(args, version = version, echo = FALSE)
+  rlang::inform(c(v = paste0("Style written to ", output)))
   invisible(output)
 }

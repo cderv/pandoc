@@ -23,5 +23,5 @@ with the same file name.}
 }
 \description{
 This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-default-data-file}{\code{--print-default-data-file} CLI flag} using
-also \code{--output} to write a export a data file build in Pandoc.
+also \code{--output} to write a export a data file built in Pandoc.
 }
