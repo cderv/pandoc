@@ -45,9 +45,7 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
 #'
 #' @export
 pandoc_list_extensions <- function(format = "markdown", version = "default") {
-  if (pandoc_version(version = version) < "2.8") {
-    rlang::abort(c("x" = "This feature is only available for Pandoc 2.8 and above."))
-  }
+  pandoc_feature_requirement("2.8", version = version)
   args <- c("--list-extensions", format)
   extensions <- pandoc_run_to_file(args, version = version)
   extensions_tbl <- data.frame(
