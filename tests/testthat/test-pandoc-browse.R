@@ -10,3 +10,7 @@ test_that("pandoc_browse_release()", {
   skip_if_not_installed("gh")
   expect_error(pandoc_browse_release("0.1"))
 })
+
+test_that("pandoc_browse_manual()", {
+  expect_snapshot(pandoc_browse_manual())
+})

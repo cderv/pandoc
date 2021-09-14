@@ -22,3 +22,11 @@
       i Open URL
       https://github.com/jgm/pandoc/releases/2.7.3
 
+# pandoc_browse_manual()
+
+    Code
+      pandoc_browse_manual()
+    Message <message>
+      i Open URL
+      https://pandoc.org/MANUAL.html
+
