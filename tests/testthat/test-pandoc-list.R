@@ -18,6 +18,14 @@ test_that("pandoc_list_extensions", {
   expect_snapshot_value(pandoc_list_extensions("gfm"), "json2")
 })
 
+test_that("pandoc_list_highlight_style", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.11.4"))
+  local_pandoc_version("2.11.4")
+  expect_snapshot_value(pandoc_list_highlight_style())
+})
+
 test_that("pandoc_list_abbreviations", {
   skip_on_cran()
   skip_if_offline()

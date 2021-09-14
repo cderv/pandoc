@@ -63,6 +63,24 @@ pandoc_list_extensions <- function(format = "markdown", version = "default") {
   extensions_tbl
 }
 
+#' List supported styles for Pandoc syntax highlighting
+#'
+#' Pandoc includes a highlighter which offer a styling mechanism to specify the
+#' coloring style to be used in highlighted source code. This function returns
+#' the supported values which can be specify at `pandoc` command line using the
+#' [`--highlight-style=`
+#' flag](https://pandoc.org/MANUAL.html#option--highlight-style).
+#'
+#' @inheritParams pandoc_run
+#'
+#' @return a character vector of supported highligting style name to use.
+#'
+#' @export
+pandoc_list_highlight_style <- function(version = "default") {
+  args <- c("--list-highlight-styles")
+  pandoc_run_to_file(args, version = version)
+}
+
 #' List system default abbreviations
 #'
 #' Pandoc uses this list in the Markdown reader. Strings found in this list will
