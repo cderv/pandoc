@@ -14,14 +14,14 @@ coverage](https://codecov.io/gh/cderv/pandoc/branch/main/graph/badge.svg?token=8
 [![R-CMD-check](https://github.com/cderv/pandoc/workflows/R-CMD-check/badge.svg)](https://github.com/cderv/pandoc/actions)
 <!-- badges: end -->
 
-**pandoc** R package is an experimental package aiming first to help
-maintainers of R Markdown ecosystem.
+**pandoc** R package is currently an experimental package aiming mainly
+to help maintainers of R Markdown ecosystem.
 
 The R Markdown ecosystem is highly dependent on Pandoc
-<https://pandoc.org/> and aims to be as version independent as possible.
-R Markdown is best used with the latest Pandoc version but any rmarkdown
-package version should work with previous version, and new change in
-Pandoc should not break any rmarkdown features.
+<https://pandoc.org/> and it is designed to be as version independent as
+possible. R Markdown is best used with the latest Pandoc version but any
+**rmarkdown** package version should work with previous version, and new
+change in Pandoc should not break any rmarkdown features.
 
 This explain the needs to some more focused tooling to:
 
@@ -30,10 +30,13 @@ This explain the needs to some more focused tooling to:
 -   Call pandoc directly without the layers added by **rmarkdown**. This
     is useful for debugging or quickly iterating and finding where a bug
     could be.
--   Retreive information from Pandoc directly. Each version comes with
+-   Retrieve information from Pandoc directly. Each version comes with
     changes and some of them are included into the binary. Being able to
     retrieve those information and compare between version is also
     important to help maintain the user exposed tooling.
+
+This can also be useful to advanced developer that are working around
+pandoc through **rmarkdown** or not.
 
 ## Installation
 
@@ -48,7 +51,12 @@ remotes::install_github("cderv/pandoc")
 pak::pak("cderv/pandoc")
 ```
 
-## Main features
+> This repo is currently private and a Github PAT must be set for the
+> above function to work
+
+## Usage
+
+See [Get started]() for full details of the functions
 
 ### Installation of Pandoc version
 
