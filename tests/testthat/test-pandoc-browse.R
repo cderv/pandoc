@@ -13,4 +13,5 @@ test_that("pandoc_browse_release()", {
 
 test_that("pandoc_browse_manual()", {
   expect_snapshot(pandoc_browse_manual())
+  expect_snapshot(pandoc_browse_manual("description"))
 })

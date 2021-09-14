@@ -32,10 +32,13 @@ pandoc_browse_release <- function(version = "latest") {
 #'
 #' @references <https://pandoc.org/MANUAL.html>
 #'
+#' @param id One of the id available in the HTML page (usually for anchor link).
+#'
 #' @return Open the Pandoc's MANUAL
 #' @export
-pandoc_browse_manual <- function() {
-  # Don't offer to install gh here as it is not necessary
-  url_view("https://pandoc.org/MANUAL.html")
+pandoc_browse_manual <- function(id = NULL) {
+  path <- "MANUAL.html"
+  if (!is.null(id)) path <- paste0(path, "#", id)
+  url_view("https://pandoc.org", path)
 }
 

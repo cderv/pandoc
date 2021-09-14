@@ -30,3 +30,11 @@
       i Open URL
       https://pandoc.org/MANUAL.html
 
+---
+
+    Code
+      pandoc_browse_manual("description")
+    Message <message>
+      i Open URL
+      https://pandoc.org/MANUAL.html#description
+
