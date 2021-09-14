@@ -13,7 +13,8 @@
 #'   the output (invisibly).
 #' @export
 pandoc_export_template <- function(format = "markdown", output = NULL, version = "default") {
-
+  # https://pandoc.org/releases.html#pandoc-2.7.1-2019-03-14
+  pandoc_feature_requirement("2.7.1", version)
   preview <- FALSE
   if (rlang::is_null(output)) {
     output <- fs::file_temp()
@@ -48,6 +49,8 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
   if (rlang::is_missing(file)) {
     rlang::abort("Enter the data file from Pandoc you want to export.")
   }
+  # https://pandoc.org/releases.html#pandoc-2.7.1-2019-03-14
+  pandoc_feature_requirement("2.7.1", version)
   if (file == "styles.html") {
     # Special handling for pandoc
     # https://pandoc.org/MANUAL.html#option--print-default-template
@@ -84,7 +87,8 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
 #'
 #' @export
 pandoc_export_highlight_theme <- function(style = "pygments", output = style, version = "default") {
-  pandoc_feature_requirement("2.0.4", version = version)
+  # https://pandoc.org/releases.html#pandoc-2.7.1-2019-03-14
+  pandoc_feature_requirement("2.7.1", version)
   style <- rlang::arg_match(style, pandoc_list_highlight_style(version = version))
   if (!fs::path_ext(output) %in% c("", "theme")) {
     rlang::warn("`output` extension must be `.theme` and it will be enforced.")
