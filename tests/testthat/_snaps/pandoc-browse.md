@@ -46,6 +46,14 @@
       i Open URL
       https://pandoc.org/MANUAL.html#extension-smart
 
+# pandoc_browse_citation()
+
+    Code
+      pandoc_browse_citation()
+    Message <message>
+      i Open URL
+      https://pandoc.org/MANUAL.html#citations
+
 # pandoc_browse_option()
 
     Code

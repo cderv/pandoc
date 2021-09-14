@@ -73,3 +73,11 @@ pandoc_browse_option <- function(option = NULL) {
   }
   pandoc_browse_manual(id)
 }
+
+#' Open Pandoc's documentation about citation processing
+#'
+#' @return Open the webpage at the place regarding citation processing in Pandoc.
+#' @export
+pandoc_browse_citation <- function() {
+  pandoc_browse_manual("citations")
+}
