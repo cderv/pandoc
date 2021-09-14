@@ -81,3 +81,11 @@ pandoc_browse_option <- function(option = NULL) {
 pandoc_browse_citation <- function() {
   pandoc_browse_manual("citations")
 }
+
+#' Open Pandoc's documentation about exit codes
+#'
+#' @return Open the webpage at the place regarding exit code thrown by Pandoc.
+#' @export
+pandoc_browse_exit_code <- function() {
+  pandoc_browse_manual("exit-codes")
+}

@@ -24,6 +24,10 @@ test_that("pandoc_browse_citation()", {
   expect_snapshot(pandoc_browse_citation())
 })
 
+test_that("pandoc_browse_exit_code()", {
+  expect_snapshot(pandoc_browse_exit_code())
+})
+
 test_that("pandoc_browse_option()", {
   expect_snapshot(pandoc_browse_option())
   expect_snapshot(pandoc_browse_option("quiet"))

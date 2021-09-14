@@ -54,6 +54,14 @@
       i Open URL
       https://pandoc.org/MANUAL.html#citations
 
+# pandoc_browse_exit_code()
+
+    Code
+      pandoc_browse_exit_code()
+    Message <message>
+      i Open URL
+      https://pandoc.org/MANUAL.html#exit-codes
+
 # pandoc_browse_option()
 
     Code
