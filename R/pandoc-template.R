@@ -12,7 +12,7 @@
 #'   printed and return as one string (invisibly). If `output` is provided, the file path of
 #'   the output (invisibly).
 #' @export
-pandoc_get_template <- function(format = "markdown", output = NULL, version = "default") {
+pandoc_export_template <- function(format = "markdown", output = NULL, version = "default") {
 
   preview <- FALSE
   if (rlang::is_null(output)) {
@@ -44,7 +44,7 @@ pandoc_get_template <- function(format = "markdown", output = NULL, version = "d
 #'   with the same file name.
 #' @inheritParams pandoc_run
 #' @export
-pandoc_get_data_file <- function(file, output = file, version = "default") {
+pandoc_export_data_file <- function(file, output = file, version = "default") {
   if (rlang::is_missing(file)) {
     rlang::abort("Enter the data file from Pandoc you want to export.")
   }
@@ -83,7 +83,7 @@ pandoc_get_data_file <- function(file, output = file, version = "default") {
 #' @inheritParams pandoc_run
 #'
 #' @export
-pandoc_get_highlight_theme <- function(style = "pygments", output = style, version = "default") {
+pandoc_export_highlight_theme <- function(style = "pygments", output = style, version = "default") {
   pandoc_feature_requirement("2.0.4", version = version)
   style <- rlang::arg_match(style, pandoc_list_highlight_style(version = version))
   if (!fs::path_ext(output) %in% c("", "theme")) {

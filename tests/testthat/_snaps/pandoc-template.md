@@ -1,7 +1,7 @@
-# pandoc_get_template() exports templates for a format
+# pandoc_export_template() exports templates for a format
 
     Code
-      suppressMessages(pandoc_get_template())
+      suppressMessages(pandoc_export_template())
     Output
       $if(titleblock)$
       $titleblock$

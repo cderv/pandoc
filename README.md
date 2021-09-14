@@ -232,8 +232,8 @@ of the current activated one.
 Available functions:
 
 -   `pandoc_version()`
--   `pandoc_get_data_file()`
--   `pandoc_get_template()`
+-   `pandoc_export_data_file()`
+-   `pandoc_export_template()`
 -   `pandoc_list_extensions()`
 -   `pandoc_list_formats()`
 -   `pandoc_list_abbreviations()`
