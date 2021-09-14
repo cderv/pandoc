@@ -11,6 +11,8 @@ pandoc_export_highlight_theme(
 )
 }
 \arguments{
+\item{style}{One of the support highlighting style. (See \code{\link[=pandoc_list_highlight_styles]{pandoc_list_highlight_styles()}}).}
+
 \item{output}{Path (without extension) where to export the JSON \code{.theme}
 file. By default, the file will be located in working directory and named
 based on the parameter \code{style} (i.e \verb{<style>.theme}).}
@@ -28,7 +30,7 @@ based on the parameter \code{style} (i.e \verb{<style>.theme}).}
 Pandoc highlighting can be customize using a JSON \code{.theme} file, passed to
 \href{https://pandoc.org/MANUAL.html#option--highlight-style}{\verb{--highlight-style=} flag}. This function
 allows to generate the JSON version of one of the supported highlighting
-style (See \code{\link[=pandoc_list_highlight_styles]{pandoc_list_highlight_styles()}}).
+style.
 }
 \details{
 The \code{.theme} extension is required and it will be enforced in during the

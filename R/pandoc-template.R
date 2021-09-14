@@ -69,6 +69,7 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
 }
 
 #' @rdname pandoc_export_data_file
+#' @param type one of `docx` or `pptx` depending on the reference doc to export.
 #' @export
 pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "default") {
   type <- rlang::arg_match(type)
@@ -82,7 +83,7 @@ pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "def
 #' [`--highlight-style=`
 #' flag](https://pandoc.org/MANUAL.html#option--highlight-style). This function
 #' allows to generate the JSON version of one of the supported highlighting
-#' style (See [pandoc_list_highlight_styles()]).
+#' style.
 #'
 #' The `.theme` extension is required and it will be enforced in during the
 #' export by this function.
@@ -91,6 +92,7 @@ pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "def
 #' flag](https://pandoc.org/MANUAL.html#option--print-highlight-style) using
 #' also `--output` to write a export a data file built in Pandoc.
 #'
+#' @param style One of the support highlighting style. (See [pandoc_list_highlight_styles()]).
 #' @param output Path (without extension) where to export the JSON `.theme`
 #'   file. By default, the file will be located in working directory and named
 #'   based on the parameter `style` (i.e `<style>.theme`).

@@ -23,6 +23,8 @@ with the same file name.}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
 }}
+
+\item{type}{one of \code{docx} or \code{pptx} depending on the reference doc to export.}
 }
 \description{
 This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-default-data-file}{\code{--print-default-data-file} CLI flag} using
