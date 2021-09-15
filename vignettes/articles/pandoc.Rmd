@@ -240,17 +240,12 @@ Each of these function can take the `version=` argument to run with a specific v
 
 Some of those functions can only be used with specific pandoc versions and an error will be thrown if the version requirement is not met.
 
-```{r, include = FALSE}
-pandoc_activate("2.11.4")
-```
-
-
 #### List supported extensions for a format
 
 ```{r}
 pandoc_list_extensions()
 pandoc_list_extensions(format = "gfm")
-pandoc_list_extensions(format = "html", version = "system")
+pandoc_list_extensions(format = "html", version = "nightly")
 ```
 
 #### List available input or output formats
@@ -258,7 +253,7 @@ pandoc_list_extensions(format = "html", version = "system")
 ```{r}
 pandoc_list_formats("input")
 pandoc_list_formats("output")
-pandoc_list_formats("output", version = "system")
+pandoc_list_formats("output", version = "nightly")
 ```
 
 #### Export a data file
