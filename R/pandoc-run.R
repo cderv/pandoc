@@ -10,7 +10,9 @@
 #' @return The output of [processx::run()] invisibly
 #' @export
 pandoc_run <- function(args, version = "default", echo = TRUE) {
-  bin <- fs::path_real(pandoc_bin(version))
+  bin <- pandoc_bin(version)
+  # processx requires ~ to be expanded, at least on linux
+  if (pandoc_os() == "linux") bin <- fs::path_expand(bin)
   if (is.null(bin)) {
     rlang::abort("Requested Pandoc binary is not available: %s", version)
   }
