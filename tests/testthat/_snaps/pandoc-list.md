@@ -70,6 +70,13 @@
 
 # pandoc_list_extensions
 
+    Code
+      pandoc_list_extensions("markdown", version = "2.7.3")
+    Error <rlang_error>
+      This feature is only available for Pandoc `2.8` and above.
+
+---
+
     {
       "type": "list",
       "attributes": {
