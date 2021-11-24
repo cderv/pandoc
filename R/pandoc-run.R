@@ -14,7 +14,7 @@ pandoc_run <- function(args, version = "default", echo = TRUE) {
   # processx requires ~ to be expanded, at least on linux
   if (pandoc_os() == "linux") bin <- fs::path_expand(bin)
   if (is.null(bin)) {
-    rlang::abort("Requested Pandoc binary is not available: %s", version)
+    rlang::abort(sprintf("Requested Pandoc binary is not available: %s", version))
   }
   invisible(processx::run(bin, args, echo = echo))
 }
