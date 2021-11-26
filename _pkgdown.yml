@@ -3,7 +3,7 @@ destination: reference
 url: https://confident-wright-0140d1.netlify.app/
 
 template:
-  bootstrap: 4
+  bootstrap: 5
   bootswatch: yeti
   params:
     noindex: true
