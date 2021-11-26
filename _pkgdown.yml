@@ -9,6 +9,7 @@ template:
     noindex: true
 
 development:
+  destination: .
   version_label: danger
   version_tooltip: "Experimental version"
 
