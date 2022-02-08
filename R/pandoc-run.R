@@ -4,27 +4,23 @@
 #' any arguments supported by the Pandoc binary.
 #'
 #' @param args Character vector, arguments to the pandoc CLI command
-#' @param echo Whether to print the standard output and error to the screen.
 #' @inheritParams pandoc_bin
 #'
 #' @return The output of [processx::run()] invisibly
 #' @export
-pandoc_run <- function(args, version = "default", echo = TRUE) {
+pandoc_run <- function(args, version = "default") {
   bin <- pandoc_bin(version)
   # processx requires ~ to be expanded, at least on linux
   if (pandoc_os() == "linux") bin <- fs::path_expand(bin)
   if (is.null(bin)) {
     rlang::abort(sprintf("Requested Pandoc binary is not available: %s", version))
   }
-  invisible(processx::run(bin, args, echo = echo))
-}
-
-pandoc_run_to_file <- function(..., echo = FALSE) {
-  res <- pandoc_run(..., echo = echo)
-  tmp_file <- tempfile()
-  on.exit(unlink(tmp_file))
-  brio::write_file(res$stdout, tmp_file)
-  brio::read_lines(tmp_file)
+  res <- suppressWarnings(system2(bin, args, stdout = TRUE))
+  status <- attr(res, "status", TRUE)
+  if (length(status) > 0 && status > 0) {
+    rlang::abort(c("Running Pandoc failed with following error", res))
+  }
+  res
 }
 
 #' Get Pandoc version
@@ -34,9 +30,8 @@ pandoc_run_to_file <- function(..., echo = FALSE) {
 #' @inheritParams pandoc_run
 #' @export
 pandoc_version <- function(version = "default") {
-  out <- pandoc_run("--version", version = version, echo = FALSE)[["stdout"]]
-  version <- strsplit(out, "\n")[[1]][1]
-  version <- gsub("^pandoc(?:\\.exe)? ([\\d.]+).*$", "\\1", version, perl = TRUE)
+  out <- pandoc_run("--version", version = version)
+  version <- gsub("^pandoc(?:\\.exe)? ([\\d.]+).*$", "\\1", out[1], perl = TRUE)
   numeric_version(version)
 }
 

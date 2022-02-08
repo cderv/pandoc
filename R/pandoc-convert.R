@@ -48,18 +48,10 @@ pandoc_convert <- function(
             args,
             file)
 
-  res <- pandoc_run(args, version = version, echo = FALSE)
+  res <- pandoc_run(args, version = version)
 
-  if (res$status == 1L) {
-    rlang::abort(c(x = "Conversion failed with error",
-                   " " = res$stderr))
-  }
+  if (!is.null(output)) return(fs::path_abs(output))
 
-  if (!is.null(output)) {
-    return(fs::path_abs(output))
-  }
-
-  res <- res$stdout
   class(res) <- c("pandoc_raw_result", class(res))
   res
 }

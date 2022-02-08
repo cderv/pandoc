@@ -4,7 +4,7 @@
 \alias{pandoc_run}
 \title{Run the pandoc binary from R}
 \usage{
-pandoc_run(args, version = "default", echo = TRUE)
+pandoc_run(args, version = "default")
 }
 \arguments{
 \item{args}{Character vector, arguments to the pandoc CLI command}
@@ -17,8 +17,6 @@ pandoc_run(args, version = "default", echo = TRUE)
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
 }}
-
-\item{echo}{Whether to print the standard output and error to the screen.}
 }
 \value{
 The output of \code{\link[processx:run]{processx::run()}} invisibly

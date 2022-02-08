@@ -17,7 +17,7 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
   args <- switch(type,
                  input = "--list-input-formats",
                  output = "--list-output-formats")
-  formats <- pandoc_run_to_file(args, version = version)
+  formats <- pandoc_run(args, version = version)
   formats_tbl <- data.frame(
     type = type,
     formats = formats
@@ -47,7 +47,7 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
 pandoc_list_extensions <- function(format = "markdown", version = "default") {
   pandoc_feature_requirement("2.8", version = version)
   args <- c("--list-extensions", format)
-  extensions <- pandoc_run_to_file(args, version = version)
+  extensions <- pandoc_run(args, version = version)
   extensions_tbl <- data.frame(
     format = format,
     extensions = gsub("^[-+]", "", extensions)
@@ -76,7 +76,7 @@ pandoc_list_extensions <- function(format = "markdown", version = "default") {
 #' @export
 pandoc_list_highlight_style <- function(version = "default") {
   args <- c("--list-highlight-styles")
-  pandoc_run_to_file(args, version = version)
+  pandoc_run(args, version = version)
 }
 
 #' List supported languages for Pandoc syntax highlighting
@@ -95,7 +95,7 @@ pandoc_list_highlight_style <- function(version = "default") {
 #' @export
 pandoc_list_highlight_languages <- function(version = "default") {
   args <- c("--list-highlight-languages")
-  pandoc_run_to_file(args, version = version)
+  pandoc_run(args, version = version)
 }
 
 #' List system default abbreviations
@@ -114,5 +114,5 @@ pandoc_list_highlight_languages <- function(version = "default") {
 #' @export
 pandoc_list_abbreviations <- function(version = "default") {
   args <- c("--print-default-data-file", "abbreviations")
-  pandoc_run_to_file(args, version = version)
+  pandoc_run(args, version = version)
 }

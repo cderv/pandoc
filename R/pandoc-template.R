@@ -24,7 +24,7 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
   args <- c(
     "--output", output,
     "--print-default-template", format)
-  pandoc_run(args, version = version, echo = FALSE)
+  pandoc_run(args, version = version)
   if (preview) {
     content <- brio::read_file(output)
     cat(content)
@@ -63,7 +63,7 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
   args <- c(
     "--output", output,
     "--print-default-data-file", file)
-  pandoc_run(args, version = version, echo = FALSE)
+  pandoc_run(args, version = version)
   rlang::inform(c(v = paste0("Template written to ", output)))
   invisible(output)
 }
@@ -110,7 +110,7 @@ pandoc_export_highlight_theme <- function(style = "pygments", output = style, ve
   args <- c(
     "--output", output,
     "--print-highlight-style", style)
-  pandoc_run(args, version = version, echo = FALSE)
+  pandoc_run(args, version = version)
   rlang::inform(c(v = paste0("Style written to ", output)))
   invisible(output)
 }

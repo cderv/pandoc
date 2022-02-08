@@ -16,7 +16,6 @@ BugReports: https://github.com/cderv/pandoc/issues
 Imports: 
     brio,
     fs,
-    processx,
     rappdirs,
     rlang (>= 1.0.1)
 Suggests: 
