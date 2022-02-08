@@ -18,7 +18,7 @@ Imports:
     fs,
     processx,
     rappdirs,
-    rlang (>= 0.4.11.9000)
+    rlang (>= 1.0.1)
 Suggests: 
     gh,
     covr,
@@ -28,7 +28,6 @@ Suggests:
     tibble,
     mockery (>= 0.4.2)
 Remotes: 
-    r-lib/rlang,
     r-lib/mockery
 Config/testthat/edition: 3
 Encoding: UTF-8
