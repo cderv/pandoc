@@ -356,7 +356,7 @@ pandoc_uninstall <- function(version) {
     ))
   }
   install_dir <- pandoc_locate(version)
-  if (!rlang::is_null(install_dir)) {
+  if (!is.null(install_dir)) {
     # Remove installation folder
     fs::dir_delete(install_dir)
     # Deal with active version

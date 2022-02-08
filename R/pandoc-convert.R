@@ -33,10 +33,10 @@ pandoc_convert <- function(
     args = c(),
     version = "default"
 ) {
-  if (!rlang::is_null(file) && !rlang::is_null(text)) {
+  if (!is.null(file) && !is.null(text)) {
     rlang::abort(c("x" = "Only 'file' or 'text' can be used."))
   }
-  if (!rlang::is_null(text)) {
+  if (!is.null(text)) {
     file <- fs::file_temp()
     on.exit(unlink(file))
     brio::write_lines(text, file)
@@ -44,7 +44,7 @@ pandoc_convert <- function(
   args <- c("--from", from,
             "--to", to,
             if (standalone) "--standalone",
-            if (!rlang::is_null(output)) c("--output", output),
+            if (!is.null(output)) c("--output", output),
             args,
             file)
 

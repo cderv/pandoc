@@ -16,7 +16,7 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
   # https://pandoc.org/releases.html#pandoc-2.7.1-2019-03-14
   pandoc_feature_requirement("2.7.1", version)
   preview <- FALSE
-  if (rlang::is_null(output)) {
+  if (is.null(output)) {
     output <- fs::file_temp()
     on.exit(unlink(output))
     preview <- TRUE

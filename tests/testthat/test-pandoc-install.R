@@ -14,7 +14,7 @@
 
 expect_pandoc_installed <- function(version) {
   install_dir <- suppressWarnings(pandoc_locate(version))
-  if (!rlang::is_null(install_dir)) fs::dir_delete(install_dir)
+  if (!is.null(install_dir)) fs::dir_delete(install_dir)
   install_dir <- suppressMessages(pandoc_install(version))
   bin <- fs::path(install_dir, "pandoc",
                   ext = ifelse(pandoc_os() == "windows", "exe", ""))
