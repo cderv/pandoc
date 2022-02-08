@@ -1,3 +1,7 @@
+# @staticimports pkg:staticimports
+# read_utf8 write_utf8
+
+
 resolve_version <- function(version) {
   if (version == "default") return(the$active_version)
   if (version == "latest") return(pandoc_installed_latest())

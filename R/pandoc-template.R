@@ -26,7 +26,7 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
     "--print-default-template", format)
   pandoc_run(args, version = version)
   if (preview) {
-    content <- brio::read_file(output)
+    content <- read_utf8(output)
     cat(content)
     return(invisible(content))
   }

@@ -39,7 +39,7 @@ pandoc_convert <- function(
   if (!is.null(text)) {
     file <- fs::file_temp()
     on.exit(unlink(file))
-    brio::write_lines(text, file)
+    write_utf8(text, file)
   }
   args <- c("--from", from,
             "--to", to,
