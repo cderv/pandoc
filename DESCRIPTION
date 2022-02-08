@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-4474-2498")),
      person(given = "RStudio",
              role = c("cph", "fnd")))
-Description: What the package does (one paragraph).
+Description: Provides a set of tools to install, manage and run several Pandoc versions.
 License: MIT + file LICENSE
 URL: https://github.com/cderv/pandoc
 BugReports: https://github.com/cderv/pandoc/issues
