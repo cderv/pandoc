@@ -10,17 +10,14 @@ test_that("pandoc_bin() for version installed by this package", {
 
 test_that("pandoc_bin() for external version", {
   skip_on_cran()
-  # this test requires dev mockery as it needs to modify lock binding
-  skip_if_not_installed("mockery", minimum_version = "0.4.2.9000")
+  local_edition(2) # required for local_mock()
   mocked <- function(version) {
     bin <- switch(version,
                   rstudio = "rstudio/path/pandoc",
                   system = "system/path/pandoc")
     fs::as_fs_path(bin)
   }
-  mockery::stub(pandoc_bin, "pandoc_which_bin", mocked)
-  mockery::stub(pandoc_rstudio_bin, "pandoc_which_bin", mocked, 2)
-  mockery::stub(pandoc_system_bin, "pandoc_which_bin", mocked, 2)
+  local_mock(pandoc_bin = mocked)
   expect_equal(pandoc_bin("rstudio"), fs::fs_path("rstudio/path/pandoc"))
   expect_equal(pandoc_rstudio_bin(), pandoc_bin("rstudio"))
   expect_equal(pandoc_bin("system"), fs::path("system/path/pandoc"))

@@ -18,13 +18,11 @@ Imports:
 Suggests: 
     covr,
     gh,
-    mockery (>= 0.4.2),
     rmarkdown,
     testthat (>= 3.0.0),
     tibble,
     withr
 Config/testthat/edition: 3
-Config/needs/check: r-lib/mockery
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
