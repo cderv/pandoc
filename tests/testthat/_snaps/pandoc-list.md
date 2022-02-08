@@ -72,8 +72,9 @@
 
     Code
       pandoc_list_extensions("markdown", version = "2.7.3")
-    Error <rlang_error>
-      This feature is only available for Pandoc `2.8` and above.
+    Condition
+      Error in `pandoc_list_extensions()`:
+      ! This feature is only available for Pandoc `2.8` and above.
 
 ---
 

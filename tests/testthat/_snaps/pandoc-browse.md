@@ -2,7 +2,7 @@
 
     Code
       url_view("https://example.org/")
-    Message <rlang_message>
+    Message
       i Open URL
       https://example.org/
 
@@ -10,7 +10,7 @@
 
     Code
       pandoc_browse_release()
-    Message <rlang_message>
+    Message
       i Open URL
       https://github.com/jgm/pandoc/releases/latest
 
@@ -18,7 +18,7 @@
 
     Code
       pandoc_browse_release("2.7.3")
-    Message <rlang_message>
+    Message
       i Open URL
       https://github.com/jgm/pandoc/releases/2.7.3
 
@@ -26,7 +26,7 @@
 
     Code
       pandoc_browse_manual()
-    Message <rlang_message>
+    Message
       i Open URL
       https://pandoc.org/MANUAL.html
 
@@ -34,7 +34,7 @@
 
     Code
       pandoc_browse_manual("description")
-    Message <rlang_message>
+    Message
       i Open URL
       https://pandoc.org/MANUAL.html#description
 
@@ -42,7 +42,7 @@
 
     Code
       pandoc_browse_extension("smart")
-    Message <rlang_message>
+    Message
       i Open URL
       https://pandoc.org/MANUAL.html#extension-smart
 
@@ -50,7 +50,7 @@
 
     Code
       pandoc_browse_citation()
-    Message <rlang_message>
+    Message
       i Open URL
       https://pandoc.org/MANUAL.html#citations
 
@@ -58,7 +58,7 @@
 
     Code
       pandoc_browse_exit_code()
-    Message <rlang_message>
+    Message
       i Open URL
       https://pandoc.org/MANUAL.html#exit-codes
 
@@ -66,7 +66,7 @@
 
     Code
       pandoc_browse_option()
-    Message <rlang_message>
+    Message
       i Open URL
       https://pandoc.org/MANUAL.html##options
 
@@ -74,7 +74,7 @@
 
     Code
       pandoc_browse_option("quiet")
-    Message <rlang_message>
+    Message
       i Open URL
       https://pandoc.org/MANUAL.html#option--quiet
 
@@ -82,7 +82,7 @@
 
     Code
       pandoc_browse_option("--quiet")
-    Message <rlang_message>
+    Message
       i Open URL
       https://pandoc.org/MANUAL.html#option--quiet
 

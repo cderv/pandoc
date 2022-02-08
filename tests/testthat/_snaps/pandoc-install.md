@@ -2,7 +2,7 @@
 
     Code
       x <- pandoc_releases()
-    Message <rlang_message>
+    Message
       i Fetching Pandoc releases info from github...
 
 ---
