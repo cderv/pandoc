@@ -24,7 +24,7 @@ Suggests:
     tibble,
     withr
 Config/testthat/edition: 3
-Config/needs/check: rlib/mockery
+Config/needs/check: r-lib/mockery
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
