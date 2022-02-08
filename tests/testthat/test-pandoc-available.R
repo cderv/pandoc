@@ -10,7 +10,8 @@ test_that("pandoc_bin() for version installed by this package", {
 
 test_that("pandoc_bin() for external version", {
   skip_on_cran()
-  skip_if_not_installed("mockery", minimum_version = "0.4.2")
+  # this test requires dev mockery as it needs to modify lock binding
+  skip_if_not_installed("mockery", minimum_version = "0.4.2.9000")
   mocked <- function(version) {
     bin <- switch(version,
                   rstudio = "rstudio/path/pandoc",
