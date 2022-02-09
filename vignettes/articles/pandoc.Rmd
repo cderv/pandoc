@@ -256,6 +256,18 @@ pandoc_list_formats("output")
 pandoc_list_formats("output", version = "nightly")
 ```
 
+#### List available highlight style
+
+```{r}
+pandoc_list_highlight_style()
+```
+
+#### List supported highlight language
+
+```{r}
+pandoc_list_highlight_languages()
+```
+
 #### Export a data file
 
 ```{r}
