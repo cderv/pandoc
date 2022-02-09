@@ -42,6 +42,8 @@ reference:
     Functions to access pandoc binary path, including external ones.
 - contents:
   - ends_with("_bin")
+  - -ends_with("rstudio_bin")
+  - -ends_with("system_bin")
 - title: "Use externally installed Pandoc binary"
 - contents:
   - pandoc_rstudio_bin
