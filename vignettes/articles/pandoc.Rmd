@@ -72,12 +72,6 @@ pandoc_uninstall("2.7.3")
 pandoc_install("2.7.3")
 ```
 
-## Active Pandoc version
-
-With mltiple 
-
-
-
 ## Find where a pandoc binary is located
 
 For any version installed with this package, `pandoc_locate()` will return the folder where it was installed. 
@@ -137,6 +131,15 @@ A default active version will be set when the package is loaded (i.e using `onLo
 * Version shipped with RStudio IDE (found when run inside RStudio IDE)
 * pandoc binary found in system PATH  (i.e `Sys.which("pandoc")`)
 
+`pandoc_is_active()` allows to easily know if a specific version is active or not.
+
+```{r}
+pandoc_is_active("system")
+pandoc_is_active("2.7.3")
+pandoc_activate("2.7.3")
+pandoc_is_active("2.7.3")
+```
+
 ### Working with **rmarkdown** functions related to Pandoc
 
 By default, if **rmarkdown** is installed, `pandoc_activate()` will also set the version active for all **rmarkdown** functions (using `rmarkdown::find_pandoc()`). This allows to use this package easily in order to test **rmarkdown** with different version of Pandoc.
@@ -179,7 +182,7 @@ pandoc_available(max = "2.11")
 pandoc_available(min = "2.10.1", max = "2.11")
 ```
 
-Pandoc version can also easily be retrieve, including for external binaries
+Pandoc version can also easily be retrieved, including for external binaries
 
 ```{r}
 # Get version from current active one
@@ -189,7 +192,6 @@ pandoc_version("nightly")
 # Get version for a specific version
 pandoc_version("system") # equivalent to pandoc_system_version()
 ```
-
 
 ## Run Pandoc CLI
 
