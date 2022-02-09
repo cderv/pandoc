@@ -72,6 +72,8 @@ pandoc_uninstall("2.7.3")
 pandoc_install("2.7.3")
 ```
 
+To quickly install the last available release, run `pandoc_update()` (or equivalent `pandoc_install()`).
+
 ## Find where a pandoc binary is located
 
 For any version installed with this package, `pandoc_locate()` will return the folder where it was installed. 
