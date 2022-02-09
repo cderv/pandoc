@@ -163,6 +163,19 @@ pandoc::pandoc_activate("2.11.4", rmarkdown = FALSE)
 rmarkdown::pandoc_version()
 ```
 
+During testing, it also interesting to run a specific code with a specific version. `with_pandoc_version()` or `local_pandoc_version()` allows by running `pandoc_activate()` for the expression only (helper like [withr](https://withr.r-lib.org/)). 
+
+```{r}
+rmarkdown::pandoc_version()
+
+with_pandoc_version("2.11.4", {
+  rmarkdown::pandoc_version()
+})
+with_pandoc_version("2.7.3", {
+  rmarkdown::pandoc_version()
+})
+```
+
 ```{r, include=FALSE}
 # restore rmarkdown's pandoc
 rmarkdown::find_pandoc(cache = FALSE, dir = pandoc_default)
