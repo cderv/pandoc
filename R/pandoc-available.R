@@ -111,10 +111,11 @@ pandoc_citeproc_bin <- function(version = "default") {
 #' @param rmarkdown if `TRUE` (the default) and **rmarkdown** is available, this
 #'   will also set the pandoc version as the default one to use with
 #'   **rmarkdown** by calling [rmarkdown::find_pandoc()]
+#' @param quiet `TRUE` to suppress messages.
 #'
 #' @return invisibly, the previous active version.
 #' @export
-pandoc_activate <- function(version = "latest", rmarkdown = TRUE) {
+pandoc_activate <- function(version = "latest", rmarkdown = TRUE, quiet = FALSE) {
   old_active <- the$active_version
   version <- resolve_version(version)
   if (is.null(version)) {
@@ -125,12 +126,16 @@ pandoc_activate <- function(version = "latest", rmarkdown = TRUE) {
       pandoc_is_installed(version, error = TRUE, ask = rlang::is_interactive())
     }
     the$active_version <- version
-    rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
+    if (!quiet) {
+      rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
+    }
 
     if (rmarkdown && rlang::is_installed("rmarkdown")) {
       bin_dir <- fs::path_dir(pandoc_bin(version))
       rmarkdown::find_pandoc(cache = FALSE, dir = bin_dir)
-      rlang::inform(c(i = "This is also true for using with rmarkdown functions."))
+      if (!quiet) {
+        rlang::inform(c(i = "This is also true for using with rmarkdown functions."))
+      }
     }
   }
   invisible(old_active)
