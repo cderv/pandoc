@@ -120,6 +120,7 @@ pandoc_activate <- function(version = "latest", rmarkdown = TRUE, quiet = FALSE)
   version <- resolve_version(version)
   if (is.null(version) || version == "") {
     the$active_version <- ""
+    if (rmarkdown) pandoc_activate_rmarkdown(NULL, quiet)
   } else {
     if (!pandoc_is_external_version(version)) {
       # check if a version is installed
@@ -130,15 +131,23 @@ pandoc_activate <- function(version = "latest", rmarkdown = TRUE, quiet = FALSE)
       rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
     }
 
-    if (rmarkdown && rlang::is_installed("rmarkdown")) {
-      bin_dir <- fs::path_dir(pandoc_bin(version))
-      rmarkdown::find_pandoc(cache = FALSE, dir = bin_dir)
-      if (!quiet) {
-        rlang::inform(c(i = "This is also true for using with rmarkdown functions."))
-      }
-    }
+    if (rmarkdown) pandoc_activate_rmarkdown(version, quiet)
+
   }
   invisible(old_active)
+}
+
+pandoc_activate_rmarkdown <- function(version, quiet = TRUE) {
+  if (!rlang::is_installed("rmarkdown")) return(NULL)
+
+  res <- rmarkdown::find_pandoc(
+    cache = FALSE,
+    dir = if (!is.null(version)) fs::path_dir(pandoc_bin(version))
+  )
+  if (!quiet) {
+    rlang::inform(c(i = "Pandoc version also activated for rmarkdown functions."))
+  }
+  res
 }
 
 #' Check if active Pandoc version meet a requirement
