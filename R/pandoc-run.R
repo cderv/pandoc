@@ -46,8 +46,8 @@ pandoc_version <- function(version = "default") {
 #' @return The results of the evaluation of the `code` argument.
 #' @export
 with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
-  old <- pandoc_activate(version, rmarkdown = rmarkdown, quiet = TRUE)
-  on.exit(pandoc_activate(old, rmarkdown = rmarkdown, quiet = TRUE))
+  old <- pandoc_activate(version, rmarkdown = rmarkdown)
+  on.exit(the$active_version <- old)
   force(code)
 }
 
@@ -57,7 +57,7 @@ with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
 local_pandoc_version <- function(version, rmarkdown = FALSE,
                                  .local_envir = parent.frame()) {
   rlang::check_installed("withr")
-  old <- suppressMessages(pandoc_activate(version, rmarkdown = rmarkdown, quiet = TRUE))
-  withr::defer(pandoc_activate(old, rmarkdown = rmarkdown, quiet = TRUE), envir = .local_envir)
+  old <- suppressMessages(pandoc_activate(version, rmarkdown = rmarkdown))
+  withr::defer(the$active_version <- old, envir = .local_envir)
   invisible(old)
 }
