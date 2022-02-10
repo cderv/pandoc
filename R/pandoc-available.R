@@ -118,7 +118,7 @@ pandoc_citeproc_bin <- function(version = "default") {
 pandoc_activate <- function(version = "latest", rmarkdown = TRUE, quiet = FALSE) {
   old_active <- the$active_version
   version <- resolve_version(version)
-  if (is.null(version)) {
+  if (is.null(version) || version == "") {
     the$active_version <- ""
   } else {
     if (!pandoc_is_external_version(version)) {
