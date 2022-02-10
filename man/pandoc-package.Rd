@@ -6,7 +6,7 @@
 \alias{pandoc-package}
 \title{pandoc: Manage and Run Universal Converter Pandoc from R}
 \description{
-What the package does (one paragraph).
+Provides a set of tools to install, manage and run several Pandoc versions.
 }
 \seealso{
 Useful links:
