@@ -39,6 +39,7 @@ pandoc_convert <- function(
   if (!is.null(text)) {
     file <- fs::file_temp()
     on.exit(unlink(file))
+    text <- paste0(text, collapse = "\n")
     write_utf8(text, file)
   }
   args <- c("--from", from,
