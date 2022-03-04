@@ -1,8 +1,8 @@
 #' @keywords internal
-#' @import fs
-#' @import rlang
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @import rlang
+#' @import fs
 ## usethis namespace: end
 NULL
