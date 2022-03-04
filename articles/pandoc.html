@@ -154,16 +154,16 @@
 <p>For any version installed with this package, <code><a href="../reference/pandoc_locate.html">pandoc_locate()</a></code> will return the folder where it was installed.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.11.4"</span>
+<span class="co">#&gt; [1] "/tmp/Rtmpab7NM4/r-pandoc/2.11.4"</span>
 <span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/nightly"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/Rtmpab7NM4/r-pandoc/nightly"</span></code></pre></div>
 <p>For example purposes in this vignette, the path above is in a temp directory. Correct location is in user’s data directory computed with <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_data_dir()</a></code> (e.g on Windows <code>C:/Users/chris/AppData/Local/r-pandoc/r-pandoc</code>)</p>
 <p>To get the path to a pandoc binary, <code><a href="../reference/pandoc_bin.html">pandoc_bin()</a></code> can be used</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/2.11.4/pandoc</span></span>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/Rtmpab7NM4/r-pandoc/2.11.4/pandoc</span></span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/nightly/pandoc</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/tmp/Rtmpab7NM4/r-pandoc/nightly/pandoc</span></span></code></pre></div>
 <p>This function also brings support for external pandoc version, like</p>
 <ul>
 <li>the one shipped with RStudio IDE (<code>version = "rstudio")</code>:
@@ -193,27 +193,27 @@
 <span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.17.1.1' is now the active one.</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.17.1.1"</span>
+<span class="co">#&gt; [1] "/tmp/Rtmpab7NM4/r-pandoc/2.17.1.1"</span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/2.17.1.1/pandoc</span></span>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/Rtmpab7NM4/r-pandoc/2.17.1.1/pandoc</span></span>
 
 <span class="co"># Activate specific version</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.11.4' is now the active one.</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.11.4"</span>
+<span class="co">#&gt; [1] "/tmp/Rtmpab7NM4/r-pandoc/2.11.4"</span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/2.11.4/pandoc</span></span>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/Rtmpab7NM4/r-pandoc/2.11.4/pandoc</span></span>
 
 <span class="co"># including nightly</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version 'nightly' is now the active one.</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/nightly"</span>
+<span class="co">#&gt; [1] "/tmp/Rtmpab7NM4/r-pandoc/nightly"</span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/nightly/pandoc</span></span>
+<span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/tmp/Rtmpab7NM4/r-pandoc/nightly/pandoc</span></span>
 
 <span class="co"># Activate system version</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span>
@@ -255,7 +255,7 @@
 <span class="co">#&gt; [1] '2.7.3'</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dir</span>
-<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.7.3"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/Rtmpab7NM4/r-pandoc/2.7.3"</span></code></pre></div>
 <p>These calls are equivalent:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.7.3"</span>, rmarkdown <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -266,7 +266,7 @@
 <span class="co">#&gt; [1] '2.7.3'</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dir</span>
-<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.7.3"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/Rtmpab7NM4/r-pandoc/2.7.3"</span></code></pre></div>
 <p>If setting the default Pandoc version for <strong>rmarkdown</strong> is not desired, just run with <code>rmarkdown = FALSE</code></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, rmarkdown <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
@@ -293,7 +293,7 @@
 <p>Is a pandoc version available to use (i.e a version is active), and if so what is the full path ?</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/pandoc_available.html">pandoc_available</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/2.11.4/pandoc</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/Rtmpab7NM4/r-pandoc/2.11.4/pandoc</span></span></code></pre></div>
 <p>Is the pandoc activated meeting some requirements ?</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Is the active version above 2.10.1 ?</span>
@@ -608,7 +608,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Christophe Dervieux, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" height="24"></a>.</p>
+<p>Developed by Christophe Dervieux, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
