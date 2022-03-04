@@ -11,6 +11,8 @@ Description: Provides a set of tools to install, manage and run several
 License: MIT + file LICENSE
 URL: https://github.com/cderv/pandoc
 BugReports: https://github.com/cderv/pandoc/issues
+Depends: 
+    R (>= 3.4.0)
 Imports: 
     fs,
     rappdirs,
