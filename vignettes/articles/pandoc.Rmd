@@ -14,7 +14,7 @@ Sys.setenv(TESTTHAT = "true")
 pandoc_default <- rmarkdown::find_pandoc()$dir
 ```
 
-```{r child = "vignettes/articles/_about.Rmd"}
+```{r child = "_about.Rmd"}
 ```
 
 ```{r setup}
