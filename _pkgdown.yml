@@ -16,7 +16,7 @@ development:
 authors:
   RStudio:
     href: https://www.rstudio.com
-    html: <img src="https://www.tidyverse.org/rstudio-logo.svg" height="24" />
+    html: <img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' width='72' />
 
 navbar:
   type: dark
