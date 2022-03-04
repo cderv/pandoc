@@ -6,7 +6,8 @@ test_that("pandoc_convert()", {
   local_pandoc_version("latest")
   expect_s3_class(pandoc_convert(text = "dummy", to = "markdown_strict"), "pandoc_raw_result")
   tmp_file <- withr::local_tempfile()
-  expect_warning(regexp = NA,
+  expect_warning(
+    regexp = NA,
     pandoc_convert(text = c("# Head", "", "content"), to = "markdown_strict", output = tmp_file)
   )
   expect_snapshot_file(tmp_file, "convert-markdown-dummy.md", compare = compare_file_text)

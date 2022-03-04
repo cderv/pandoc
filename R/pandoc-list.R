@@ -15,14 +15,17 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
   }
   type <- rlang::arg_match(type)
   args <- switch(type,
-                 input = "--list-input-formats",
-                 output = "--list-output-formats")
+    input = "--list-input-formats",
+    output = "--list-output-formats"
+  )
   formats <- pandoc_run(args, version = version)
   formats_tbl <- data.frame(
     type = type,
     formats = formats
   )
-  if (rlang::is_installed('tibble')) return(tibble::as_tibble(formats_tbl))
+  if (rlang::is_installed("tibble")) {
+    return(tibble::as_tibble(formats_tbl))
+  }
   formats_tbl
 }
 
@@ -57,7 +60,9 @@ pandoc_list_extensions <- function(format = "markdown", version = "default") {
     TRUE,
     FALSE
   )
-  if (rlang::is_installed('tibble')) return(tibble::as_tibble(extensions_tbl))
+  if (rlang::is_installed("tibble")) {
+    return(tibble::as_tibble(extensions_tbl))
+  }
   extensions_tbl
 }
 

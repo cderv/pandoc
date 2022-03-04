@@ -23,7 +23,8 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
   }
   args <- c(
     "--output", output,
-    "--print-default-template", format)
+    "--print-default-template", format
+  )
   pandoc_run(args, version = version)
   if (preview) {
     content <- read_utf8(output)
@@ -62,7 +63,8 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
   }
   args <- c(
     "--output", output,
-    "--print-default-data-file", file)
+    "--print-default-data-file", file
+  )
   pandoc_run(args, version = version)
   rlang::inform(c(v = paste0("Template written to ", output)))
   invisible(output)
@@ -109,7 +111,8 @@ pandoc_export_highlight_theme <- function(style = "pygments", output = style, ve
   output <- fs::path_ext_set(output, ".theme")
   args <- c(
     "--output", output,
-    "--print-highlight-style", style)
+    "--print-highlight-style", style
+  )
   pandoc_run(args, version = version)
   rlang::inform(c(v = paste0("Style written to ", output)))
   invisible(output)

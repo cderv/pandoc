@@ -8,7 +8,8 @@
   versions <- suppressMessages(pandoc_available_versions())
   map(versions, ~ {
     tryCatch(pandoc_release_asset(.x, os = os, arch = arch),
-             error = function(e) list(version = .x, url = NULL, error = e$message))
+      error = function(e) list(version = .x, url = NULL, error = e$message)
+    )
   })
 }
 
@@ -17,7 +18,8 @@ expect_pandoc_installed <- function(version) {
   if (!is.null(install_dir)) fs::dir_delete(install_dir)
   install_dir <- suppressMessages(pandoc_install(version))
   bin <- fs::path(install_dir, "pandoc",
-                  ext = ifelse(pandoc_os() == "windows", "exe", ""))
+    ext = ifelse(pandoc_os() == "windows", "exe", "")
+  )
   expect_true(fs::file_exists(bin))
 }
 
@@ -142,7 +144,8 @@ test_that("pandoc-citeproc is correctly placed in root folder", {
   # Before Pandoc 2.11, pandoc-citeproc is also shipped
   expect_pandoc_installed("2.7.3")
   bin <- fs::path(pandoc_locate("2.7.3"), "pandoc-citeproc",
-                  ext = ifelse(pandoc_os() == "windows", "exe", ""))
+    ext = ifelse(pandoc_os() == "windows", "exe", "")
+  )
   expect_true(fs::file_exists(bin))
 })
 
@@ -161,7 +164,6 @@ test_that("Most recent version installed can be identified", {
   suppressMessages(pandoc_install("2.11.4"))
   suppressMessages(pandoc_install("2.7.3"))
   expect_equal(pandoc_installed_latest(), "2.11.4")
-
 })
 
 test_that("Is a version installed ?", {
@@ -198,4 +200,3 @@ test_that("Pandoc latest release can be installed", {
   expect_pandoc_installed("latest")
   expect_message(expect_message(pandoc_update()), "already installed", fixed = TRUE)
 })
-

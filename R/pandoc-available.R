@@ -1,6 +1,8 @@
 # if Windows, add .exe extension
 pandoc_bin_impl <- function(path, exe = FALSE) {
-  if (!nzchar(path) || is.na(path) || is.null(path)) return(NULL)
+  if (!nzchar(path) || is.na(path) || is.null(path)) {
+    return(NULL)
+  }
   fs::path(path, "pandoc", ext = ifelse(pandoc_os() == "windows", "exe", ""))
 }
 
@@ -17,7 +19,9 @@ pandoc_bin_impl <- function(path, exe = FALSE) {
 #' @export
 pandoc_bin <- function(version = "default") {
   version <- resolve_version(version)
-  if (pandoc_is_external_version(version)) return(pandoc_which_bin(version))
+  if (pandoc_is_external_version(version)) {
+    return(pandoc_which_bin(version))
+  }
 
   pandoc_path <- pandoc_locate(version)
   pandoc_bin_impl(pandoc_path)
@@ -26,10 +30,12 @@ pandoc_bin <- function(version = "default") {
 pandoc_which_bin <- function(which = c("rstudio", "system")) {
   which <- rlang::arg_match(which)
   bin <- switch(which,
-                rstudio = pandoc_bin_impl(Sys.getenv("RSTUDIO_PANDOC")),
-                system = unname(Sys.which("pandoc"))
+    rstudio = pandoc_bin_impl(Sys.getenv("RSTUDIO_PANDOC")),
+    system = unname(Sys.which("pandoc"))
   )
-  if (!nzchar(bin) || is.na(bin) || is.null(bin)) return(NULL)
+  if (!nzchar(bin) || is.na(bin) || is.null(bin)) {
+    return(NULL)
+  }
   fs::as_fs_path(bin)
 }
 
@@ -42,7 +48,6 @@ pandoc_which_bin <- function(which = c("rstudio", "system")) {
 #' @name system_pandoc
 pandoc_system_version <- function() {
   pandoc_version(version = "system")
-
 }
 
 #' @rdname system_pandoc
@@ -82,8 +87,11 @@ pandoc_citeproc_bin <- function(version = "default") {
   }
   pandoc_path <- pandoc_locate(version)
   path <- fs::path(pandoc_path, "pandoc-citeproc",
-                   ext = ifelse(pandoc_os() == "windows", "exe", ""))
-  if (!fs::file_exists(path)) return(NULL)
+    ext = ifelse(pandoc_os() == "windows", "exe", "")
+  )
+  if (!fs::file_exists(path)) {
+    return(NULL)
+  }
   path
 }
 
@@ -132,13 +140,14 @@ pandoc_activate <- function(version = "latest", rmarkdown = TRUE, quiet = FALSE)
     }
 
     if (rmarkdown) pandoc_activate_rmarkdown(version, quiet)
-
   }
   invisible(old_active)
 }
 
 pandoc_activate_rmarkdown <- function(version, quiet = TRUE) {
-  if (!rlang::is_installed("rmarkdown")) return(NULL)
+  if (!rlang::is_installed("rmarkdown")) {
+    return(NULL)
+  }
 
   res <- rmarkdown::find_pandoc(
     cache = FALSE,
@@ -169,11 +178,13 @@ pandoc_activate_rmarkdown <- function(version, quiet = TRUE) {
 #' @export
 pandoc_available <- function(min = NULL, max = NULL) {
   active_version <- tryCatch(pandoc_version(version = "default"),
-                             error = function(e) NULL)
-  if (is.null(active_version)) return(FALSE)
+    error = function(e) NULL
+  )
+  if (is.null(active_version)) {
+    return(FALSE)
+  }
   is_above <- is_below <- TRUE
   if (!is.null(min)) is_above <- active_version >= min
   if (!is.null(max)) is_below <- active_version <= max
   return(is_above && is_below)
 }
-

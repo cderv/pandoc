@@ -22,7 +22,7 @@ url_view <- function(...) {
 pandoc_browse_release <- function(version = "latest") {
   # Don't offer to install gh here as it is not necessary
   if (rlang::is_installed("gh") &&
-      !version %in% c("latest", pandoc_available_versions())) {
+    !version %in% c("latest", pandoc_available_versions())) {
     rlang::abort(sprintf("Version '%s' is not a valid pandoc version", version))
   }
   url_view("https://github.com/jgm/pandoc/releases", version)

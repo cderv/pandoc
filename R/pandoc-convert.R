@@ -23,16 +23,14 @@
 #' @inheritParams pandoc_run
 #'
 #' @export
-pandoc_convert <- function(
-    file = NULL,
-    text = NULL,
-    from = "markdown",
-    to,
-    output = NULL,
-    standalone = FALSE,
-    args = c(),
-    version = "default"
-) {
+pandoc_convert <- function(file = NULL,
+                           text = NULL,
+                           from = "markdown",
+                           to,
+                           output = NULL,
+                           standalone = FALSE,
+                           args = c(),
+                           version = "default") {
   if (!is.null(file) && !is.null(text)) {
     rlang::abort(c("x" = "Only 'file' or 'text' can be used."))
   }
@@ -42,16 +40,20 @@ pandoc_convert <- function(
     text <- paste0(text, collapse = "\n")
     write_utf8(text, file)
   }
-  args <- c("--from", from,
-            "--to", to,
-            if (standalone) "--standalone",
-            if (!is.null(output)) c("--output", output),
-            args,
-            file)
+  args <- c(
+    "--from", from,
+    "--to", to,
+    if (standalone) "--standalone",
+    if (!is.null(output)) c("--output", output),
+    args,
+    file
+  )
 
   res <- pandoc_run(args, version = version)
 
-  if (!is.null(output)) return(fs::path_abs(output))
+  if (!is.null(output)) {
+    return(fs::path_abs(output))
+  }
 
   class(res) <- c("pandoc_raw_result", class(res))
   res

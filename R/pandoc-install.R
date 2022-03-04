@@ -44,7 +44,9 @@ with_download_cache <- function(version, bundle_name, code) {
 pandoc_install <- function(version = "latest", force = FALSE) {
   gh_required()
 
-  if (version == "nightly") return(pandoc_install_nightly())
+  if (version == "nightly") {
+    return(pandoc_install_nightly())
+  }
 
   # get bundle download url
   release_bundle <- pandoc_release_asset(version)
@@ -57,7 +59,8 @@ pandoc_install <- function(version = "latest", force = FALSE) {
     if (!is_empty && !force) {
       rlang::inform(c(
         v = sprintf("Pandoc %s already installed.", version),
-        " " = "Use 'force = TRUE' to overwrite."))
+        " " = "Use 'force = TRUE' to overwrite."
+      ))
       return(invisible(NULL))
     } else {
       # we remove existing installation
@@ -74,7 +77,7 @@ pandoc_install <- function(version = "latest", force = FALSE) {
   # install bundle
   switch(fs::path_ext(release_bundle$url),
     gz = utils::untar(tmp_file, exdir = install_dir, tar = "internal"),
-    zip  = utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
+    zip = utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
   )
 
   # For linux bundle, the pandoc binary can be in a nested bin folder
@@ -102,7 +105,6 @@ pandoc_install <- function(version = "latest", force = FALSE) {
   rlang::inform(c(v = sprintf("Pandoc version %s installed.", version)))
 
   invisible(install_dir)
-
 }
 
 #' Update to last Pandoc version available
@@ -128,13 +130,14 @@ pandoc_install_nightly <- function() {
   version <- "nightly"
   install_dir <- pandoc_home(version)
   rlang::inform(c(i = "Retrieving last available nightly informations..."))
-  runs <- gh::gh('/repos/jgm/pandoc/actions/workflows/nightly.yml/runs',
-                 .params = list(status = "success"),
-                 .limit = 1L)
+  runs <- gh::gh("/repos/jgm/pandoc/actions/workflows/nightly.yml/runs",
+    .params = list(status = "success"),
+    .limit = 1L
+  )
   artifacts_url <- runs$workflow_runs[[1]][["artifacts_url"]]
   head_sha <- runs$workflow_runs[[1]][["head_sha"]]
   artifacts <- gh::gh(artifacts_url)
-  artifact_url <- keep(artifacts$artifacts, ~.x$name == bundle_name)[[1]][["archive_download_url"]]
+  artifact_url <- keep(artifacts$artifacts, ~ .x$name == bundle_name)[[1]][["archive_download_url"]]
   if (fs::dir_exists(install_dir)) {
     current_version <- pandoc_nightly_version()
     if (head_sha == current_version) {
@@ -156,7 +159,7 @@ pandoc_install_nightly <- function() {
   # check access right
   # MacOS / Linux are missing the executable bit (#1)
   if (pandoc_os() %in% c("macOS", "linux") &&
-      !fs::file_access(pandoc_bin("nightly"), mode = "execute")) {
+    !fs::file_access(pandoc_bin("nightly"), mode = "execute")) {
     fs::file_chmod(pandoc_bin("nightly"), "u+x")
   }
   invisible(install_dir)
@@ -187,7 +190,8 @@ pandoc_release_asset <- function(version, os = pandoc_os(), arch = pandoc_arch(o
     if (version == "2.2.3") {
       rlang::abort(c(
         "Pandoc 2.2.3 had a serious regression so binaries are no more available",
-        "Download 2.2.3.1 instead."))
+        "Download 2.2.3.1 instead."
+      ))
     }
 
     versions <- map_chr(releases, "[[", "tag_name")
@@ -218,7 +222,11 @@ pandoc_release_asset <- function(version, os = pandoc_os(), arch = pandoc_arch(o
 }
 
 pandoc_bundle_name <- function(version, os = pandoc_os(), arch = pandoc_arch(os)) {
-  ext <- switch(os, linux = ".tar.gz", macOS = ,  windows = ".zip")
+  ext <- switch(os,
+    linux = ".tar.gz",
+    macOS = ,
+    windows = ".zip"
+  )
   arch <- if (!is.null(arch)) sprintf("(-%s)?", arch)
   regex <- paste0("pandoc-", version, "(-\\d)?", "-", os, arch, ext)
   gsub("\\.", "\\\\.", regex)
@@ -244,10 +252,16 @@ pandoc_arch <- function(os = c("windows", "macOS", "linux")) {
   os <- rlang::arg_match(os)
   arch <- Sys.info()[["machine"]]
   if (os == "windows") {
-    if (arch == "x86-64") return("x86_64")
+    if (arch == "x86-64") {
+      return("x86_64")
+    }
   } else if (os == "linux") {
-    if (arch == "x86_64") return("amd64")
-    if (arch %in% c("aarch64", "arm64")) return("arm64")
+    if (arch == "x86_64") {
+      return("amd64")
+    }
+    if (arch %in% c("aarch64", "arm64")) {
+      return("arm64")
+    }
   } else if (os == "macOS") {
     return()
   }
@@ -256,8 +270,7 @@ pandoc_arch <- function(os = c("windows", "macOS", "linux")) {
 
 pandoc_os <- function() {
   os <- tolower(Sys.info()[["sysname"]])
-  switch(
-    os,
+  switch(os,
     darwin = "macOS",
     linux = "linux",
     windows = "windows",
@@ -289,9 +302,13 @@ gh_required <- function() {
 #' @export
 pandoc_installed_versions <- function() {
   pandoc_home <- pandoc_home()
-  if (!fs::dir_exists(pandoc_home)) return(NULL)
+  if (!fs::dir_exists(pandoc_home)) {
+    return(NULL)
+  }
   versions <- fs::path_file(fs::dir_ls(pandoc_home, type = "directory"))
-  if (rlang::is_empty(versions)) return(NULL)
+  if (rlang::is_empty(versions)) {
+    return(NULL)
+  }
   is_nightly <- "nightly" %in% versions
   versions <- setdiff(versions, "nightly")
   sorted_versions <- sort(as.numeric_version(versions), TRUE)
@@ -301,9 +318,11 @@ pandoc_installed_versions <- function() {
 #' @rdname pandoc_installed_versions
 #' @export
 pandoc_installed_latest <- function() {
-    installed_versions <- setdiff(pandoc_installed_versions(), "nightly")
-    if (is.null(installed_versions)) return(NULL)
-    as.character(max(as.numeric_version(installed_versions)))
+  installed_versions <- setdiff(pandoc_installed_versions(), "nightly")
+  if (is.null(installed_versions)) {
+    return(NULL)
+  }
+  as.character(max(as.numeric_version(installed_versions)))
 }
 
 #' @rdname pandoc_installed_versions
@@ -325,7 +344,7 @@ pandoc_is_installed <- function(version, error = FALSE, ask = FALSE) {
       if (!rlang::is_interactive()) {
         rlang::abort("User input required, but session is not interactive.")
       }
-      rlang::inform(c(i = msg, '!' = "Would you like to install it ?"))
+      rlang::inform(c(i = msg, "!" = "Would you like to install it ?"))
       if (utils::menu(c("yes", "no")) == 1L) {
         pandoc_install(version)
         installed <- TRUE
@@ -370,7 +389,6 @@ pandoc_uninstall <- function(version) {
         # Change to the latest version
         the$active_version <- latest
       }
-
     }
   }
   invisible(TRUE)
@@ -416,7 +434,9 @@ pandoc_is_active <- function(version) {
 #' @seealso [pandoc_install()]
 #' @export
 pandoc_locate <- function(version = "default") {
-  if (is.null(version)) return(pandoc_home(NULL))
+  if (is.null(version)) {
+    return(pandoc_home(NULL))
+  }
   if (!is.character(version) && length(version) != 1L) {
     rlang::abort("version must be a length one character")
   }
@@ -431,6 +451,8 @@ pandoc_locate <- function(version = "default") {
     rlang::abort("Use `pandoc_bin()` directly when using externally installed Pandoc version.")
   }
   home_dir <- pandoc_home(version)
-  if (!fs::dir_exists(home_dir)) return(NULL)
+  if (!fs::dir_exists(home_dir)) {
+    return(NULL)
+  }
   home_dir
 }
