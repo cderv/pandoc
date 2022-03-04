@@ -3,19 +3,21 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body>
-    <a href="#container" class="visually-hidden-focusable">Skip to contents</a>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    
     <a class="navbar-brand me-2" href="../index.html">pandoc</a>
 
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../articles/pandoc.html">Get started</a>
 </li>
@@ -32,11 +34,12 @@
   </a>
 </li>
       </ul></div>
+
+    
   </div>
-</nav><div class="container template-reference-index" id="container">
+</nav><div class="container template-reference-index">
 <div class="row">
-  <div class="contents col-md-9">
-    <div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Function reference</h1>
     </div>
 
@@ -72,6 +75,11 @@
           <code><a href="pandoc_update.html">pandoc_update()</a></code> 
         </dt>
         <dd>Update to last Pandoc version available</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_uninstall.html">pandoc_uninstall()</a></code> 
+        </dt>
+        <dd>Uninstall a Pandoc version</dd>
       </dl></div><div class="section level2">
       
       <h3 id="manage-versions-installed-by-this-package">Manage versions installed by this package<a class="anchor" aria-label="anchor" href="#manage-versions-installed-by-this-package"></a></h3>
@@ -124,6 +132,136 @@
           <code><a href="system_pandoc.html">pandoc_system_version()</a></code> <code><a href="system_pandoc.html">pandoc_system_bin()</a></code> 
         </dt>
         <dd>Retrieve path and version of Pandoc found on the system PATH</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_activate.html">pandoc_activate()</a></code> 
+        </dt>
+        <dd>Activate a specific Pandoc version to be used</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_available.html">pandoc_available()</a></code> 
+        </dt>
+        <dd>Check if active Pandoc version meet a requirement</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_browse_citation.html">pandoc_browse_citation()</a></code> 
+        </dt>
+        <dd>Open Pandoc's documentation about citation processing</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_browse_exit_code.html">pandoc_browse_exit_code()</a></code> 
+        </dt>
+        <dd>Open Pandoc's documentation about exit codes</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_browse_extension.html">pandoc_browse_extension()</a></code> 
+        </dt>
+        <dd>Open Pandoc's documentation about an extension</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_browse_manual.html">pandoc_browse_manual()</a></code> 
+        </dt>
+        <dd>Open Pandoc's MANUAL</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_browse_option.html">pandoc_browse_option()</a></code> 
+        </dt>
+        <dd>Open Pandoc's documentation about a command line option</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_browse_release.html">pandoc_browse_release()</a></code> 
+        </dt>
+        <dd>Open Pandoc's release page in browser</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_convert.html">pandoc_convert()</a></code> 
+        </dt>
+        <dd>Run Pandoc to convert a document or a text</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_export_data_file.html">pandoc_export_data_file()</a></code> <code><a href="pandoc_export_data_file.html">pandoc_export_reference_doc()</a></code> 
+        </dt>
+        <dd>Export Pandoc internal data file</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_export_highlight_theme.html">pandoc_export_highlight_theme()</a></code> 
+        </dt>
+        <dd>Export highlighting style as JSON file</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_export_template.html">pandoc_export_template()</a></code> 
+        </dt>
+        <dd>Retrieve Pandoc template for a format</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_install.html">pandoc_install()</a></code> <code><a href="pandoc_install.html">pandoc_install_nightly()</a></code> 
+        </dt>
+        <dd>Install a pandoc binary for Github release page</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_installed_versions.html">pandoc_installed_versions()</a></code> <code><a href="pandoc_installed_versions.html">pandoc_installed_latest()</a></code> <code><a href="pandoc_installed_versions.html">pandoc_is_installed()</a></code> 
+        </dt>
+        <dd>Check Pandoc versions already installed</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_is_active.html">pandoc_is_active()</a></code> 
+        </dt>
+        <dd>Is a pandoc version active ?</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_list_abbreviations.html">pandoc_list_abbreviations()</a></code> 
+        </dt>
+        <dd>List system default abbreviations</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_list_extensions.html">pandoc_list_extensions()</a></code> 
+        </dt>
+        <dd>List supported extensions for a format</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_list_formats.html">pandoc_list_formats()</a></code> 
+        </dt>
+        <dd>List available supported formats</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_list_highlight_languages.html">pandoc_list_highlight_languages()</a></code> 
+        </dt>
+        <dd>List supported languages for Pandoc syntax highlighting</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_list_highlight_style.html">pandoc_list_highlight_style()</a></code> 
+        </dt>
+        <dd>List supported styles for Pandoc syntax highlighting</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_locate.html">pandoc_locate()</a></code> 
+        </dt>
+        <dd>Locate a specific Pandoc version installed with this package</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_run.html">pandoc_run()</a></code> 
+        </dt>
+        <dd>Run the pandoc binary from R</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_uninstall.html">pandoc_uninstall()</a></code> 
+        </dt>
+        <dd>Uninstall a Pandoc version</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_update.html">pandoc_update()</a></code> 
+        </dt>
+        <dd>Update to last Pandoc version available</dd>
+      </dl><dl><dt>
+          
+          <code><a href="pandoc_version.html">pandoc_version()</a></code> 
+        </dt>
+        <dd>Get Pandoc version</dd>
+      </dl><dl><dt>
+          
+          <code><a href="with_pandoc_version.html">with_pandoc_version()</a></code> <code><a href="with_pandoc_version.html">local_pandoc_version()</a></code> 
+        </dt>
+        <dd>Execute any code with a specific Pandoc version</dd>
       </dl></div><div class="section level2">
       <h2 id="use-externally-installed-pandoc-binary">Use externally installed Pandoc binary<a class="anchor" aria-label="anchor" href="#use-externally-installed-pandoc-binary"></a></h2>
       
@@ -323,12 +461,8 @@
         </dt>
         <dd>Open Pandoc's release page in browser</dd>
       </dl></div>
-  </div>
-
-  <div class="col-md-3" id="pkgdown-sidebar">
-    <nav id="toc"><h2>On this page</h2>
-    </nav></div>
-</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
@@ -336,7 +470,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer></div>

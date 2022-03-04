@@ -1,120 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/404.html</loc>
+    <loc>https://cderv.github.io/pandoc/404.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/articles/index.html</loc>
+    <loc>https://cderv.github.io/pandoc/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/articles/pandoc.html</loc>
+    <loc>https://cderv.github.io/pandoc/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/authors.html</loc>
+    <loc>https://cderv.github.io/pandoc/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/index.html</loc>
+    <loc>https://cderv.github.io/pandoc/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/LICENSE-text.html</loc>
+    <loc>https://cderv.github.io/pandoc/articles/pandoc.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/LICENSE.html</loc>
+    <loc>https://cderv.github.io/pandoc/authors.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/index.html</loc>
+    <loc>https://cderv.github.io/pandoc/index.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc-package.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_activate.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc-package.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_available.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_activate.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_bin.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_available.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_browse_citation.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_bin.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_browse_exit_code.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_browse_citation.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_browse_extension.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_browse_exit_code.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_browse_manual.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_browse_extension.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_browse_option.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_browse_manual.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_browse_release.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_browse_option.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_citeproc_bin.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_browse_release.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_convert.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_citeproc_bin.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_export_data_file.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_convert.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_export_highlight_theme.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_export_data_file.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_export_template.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_export_highlight_theme.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_install.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_export_template.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_installed_versions.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_install.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_is_active.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_installed_versions.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_list_abbreviations.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_is_active.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_list_extensions.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_list_abbreviations.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_list_formats.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_list_extensions.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_list_highlight_languages.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_list_formats.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_list_highlight_style.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_list_highlight_languages.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_locate.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_list_highlight_style.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_run.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_locate.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_uninstall.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_run.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_update.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_uninstall.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/pandoc_version.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_update.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/rstudio_pandoc.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/pandoc_version.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/system_pandoc.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/rstudio_pandoc.html</loc>
   </url>
   <url>
-    <loc>https://confident-wright-0140d1.netlify.app/reference/with_pandoc_version.html</loc>
+    <loc>https://cderv.github.io/pandoc/reference/system_pandoc.html</loc>
+  </url>
+  <url>
+    <loc>https://cderv.github.io/pandoc/reference/with_pandoc_version.html</loc>
   </url>
 </urlset>

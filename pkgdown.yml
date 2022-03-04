@@ -1,10 +1,10 @@
-pandoc: 2.16.2
-pkgdown: 1.9000.9000.9000
-pkgdown_sha: a8a962ad53d1eddf17f3def2f839221c07c04a32
+pandoc: 2.14.2
+pkgdown: 2.0.2
+pkgdown_sha: ~
 articles:
   pandoc: pandoc.html
-last_built: 2021-11-26T14:40Z
+last_built: 2022-03-04T17:32Z
 urls:
-  reference: https://confident-wright-0140d1.netlify.app/reference
-  article: https://confident-wright-0140d1.netlify.app/articles
+  reference: https://cderv.github.io/pandoc/reference
+  article: https://cderv.github.io/pandoc/articles
 

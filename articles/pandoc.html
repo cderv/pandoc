@@ -20,19 +20,21 @@
 <![endif]-->
 </head>
 <body>
-    <a href="#container" class="visually-hidden-focusable">Skip to contents</a>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    
     <a class="navbar-brand me-2" href="../index.html">pandoc</a>
 
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="active nav-item">
   <a class="nav-link" href="../articles/pandoc.html">Get started</a>
@@ -54,12 +56,16 @@
 </li>
       </ul>
 </div>
+
+    
   </div>
-</nav><div class="container template-article" id="container">
+</nav><div class="container template-article">
+
+
+
 
 <div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header">
+  <main id="main"><div class="page-header">
       <img src="" class="logo" alt=""><h1>pandoc</h1>
             
       
@@ -69,103 +75,109 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cderv/pandoc" class="external-link">pandoc</a></span><span class="op">)</span></code></pre></div>
-<div class="section level2">
-<h2 id="about-this-package">About this package<a class="anchor" aria-label="anchor" href="#about-this-package"></a>
-</h2>
-<p>This is currently an experimental package aiming mainly to help maintainers of R Markdown ecosystem.</p>
-<p>The R Markdown ecosystem is highly dependent on Pandoc <a href="https://pandoc.org/" class="external-link uri">https://pandoc.org/</a> and it is designed to be as version independent as possible. R Markdown is best used with the latest Pandoc version but any <strong>rmarkdown</strong> package version should work with previous version, and new change in Pandoc should not break any rmarkdown features.</p>
-<p>This explain the needs to some more focused tooling to:</p>
+<p><strong>pandoc</strong> is currently an experimental R package primarily develop to help maintainers of R Markdown ecosystem.</p>
+<p>Indeed, the R Markdown ecosystem is highly dependent on Pandoc (<a href="https://pandoc.org/" class="external-link uri">https://pandoc.org/</a>) changes and it is designed to be as version independent as possible. R Markdown is best used with the latest Pandoc version but any <strong>rmarkdown</strong> package version should work with previous version of Pandoc, and new change in Pandoc should not break any <strong>rmarkdown</strong> features.</p>
+<p>This explains the needs for a more focused tooling to:</p>
 <ul>
-<li>Install and manage several pandoc versions. This is useful for testing versions and comparing between them.</li>
-<li>Call pandoc directly without the layers added by <strong>rmarkdown</strong>. This is useful for debugging or quickly iterating and finding where a bug could be.</li>
-<li>Retrieve information from Pandoc directly. Each version comes with changes and some of them are included into the binary. Being able to retrieve those information and compare between version is also important to help maintain the user exposed tooling.</li>
+<li>Install and manage several Pandoc versions. This is useful for testing versions and comparing between them.</li>
+<li>Call Pandoc’s command directly without the layers added by <strong>rmarkdown</strong>. This is useful for debugging or quickly iterating and finding where a bug comes from.</li>
+<li>Retrieve information from Pandoc directly. Each version comes with changes and some of them are included into the binary. Being able to retrieve those informationss and compare between versions is important to help maintain the user exposed tooling.</li>
 </ul>
-<p>This can also be useful to advanced developer that are working around pandoc through <strong>rmarkdown</strong> or not.</p>
+<p>This package can also be useful to advanced developers that are working around Pandoc through <strong>rmarkdown</strong> or not.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>The development version can be install from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"cderv/pandoc"</span><span class="op">)</span>
+
+<span class="co"># install.packages("pak")</span>
+<span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"cderv/pandoc"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cderv/pandoc" class="external-link">pandoc</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="install-pandoc">Install pandoc<a class="anchor" aria-label="anchor" href="#install-pandoc"></a>
 </h2>
-<p>Main usage is to install latest version of Pandoc. This requires the <code>gh</code> package as it will fetch information from Github and download the bundle from there.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Fetching Pandoc releases info from github...</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Installing Pandoc release 2.16.2</span>
-<span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Pandoc version 2.16.2 installed.</span></code></pre></div>
-<p>If a specific older Pandoc version is needed (e.g for testing differences between version), a version can be specified.</p>
+<p>Main usage is to install <strong>latest</strong> released version of Pandoc. This requires the <a href="https://github.com/r-lib/gh" class="external-link"><code>gh</code></a> package as it will fetch information from Github and download the bundle from there.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Installing Pandoc release 2.11.4</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Fetching Pandoc releases info from github...</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing Pandoc release 2.17.1.1</span>
 <span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Pandoc version 2.11.4 installed.</span></code></pre></div>
-<p>Informations fetched from Github are cached for the session.</p>
-<p>Sometimes, the dev version of Pandoc is required. Pandoc’s team is building a binary every day called <em>nightly</em></p>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc version 2.17.1.1 installed.</span></code></pre></div>
+<p>If a specific older Pandoc version is needed (e.g for testing differences between version), a version can be specified.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install_nightly</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># or pandoc_install("nightly")</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Retrieving last available nightly informations...</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Installing last available nightly...</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing Pandoc release 2.11.4</span>
 <span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Last Pandoc nightly installed: 0d25232bbf2998cccf6ca4b1dc6e8d6f36eb9c60</span></code></pre></div>
-<p>All those version can live together and are installed in an isolated directory in user’s data folders.</p>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc version 2.11.4 installed.</span></code></pre></div>
+<p>Information fetched from Github are cached for the duration of the session.</p>
+<p>Sometimes, the dev version of Pandoc is required. Pandoc’s team is building a binary every day called <em>nightly</em> in there CI.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install the nightly version (overwrites previous one)</span>
+<span class="fu"><a href="../reference/pandoc_install.html">pandoc_install_nightly</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># or pandoc_install("nightly")</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span>
+<span class="co">#&gt;   Downloading bundle...</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: bc7f74968e5feb1174ac048b5e97fee97e537ef8</span></code></pre></div>
+<p>All those versiosn can live together and are installed in an isolated directory in user’s data folders.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Which version are currently installed ? </span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_versions</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "nightly" "2.16.2"  "2.11.4"</span>
+<span class="co">#&gt; [1] "nightly"  "2.17.1.1" "2.11.4"</span>
 <span class="co"># Which is the latest version installed (nightly excluded)? </span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_latest</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "2.16.2"</span>
+<span class="co">#&gt; [1] "2.17.1.1"</span>
 <span class="co"># Is a specific version installed ? </span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_is_installed</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_is_installed</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 <p>Downloaded bundles are also cached to speed up further installation. This is useful into tests to quickly install and uninstall a pandoc version for a specific test.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Installing Pandoc release 2.7.3</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing Pandoc release 2.7.3</span>
 <span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Pandoc version 2.7.3 installed.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc version 2.7.3 installed.</span>
 <span class="fu"><a href="../reference/pandoc_uninstall.html">pandoc_uninstall</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> Installing Pandoc release 2.7.3</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing Pandoc release 2.7.3</span>
 <span class="co">#&gt;   Using cached bundle.</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Pandoc version 2.7.3 installed.</span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="active-pandoc-version">Active Pandoc version<a class="anchor" aria-label="anchor" href="#active-pandoc-version"></a>
-</h2>
-<p>With mltiple</p>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc version 2.7.3 installed.</span></code></pre></div>
+<p>To quickly install the last available release, run <code><a href="../reference/pandoc_update.html">pandoc_update()</a></code> (alias of <code><a href="../reference/pandoc_install.html">pandoc_install()</a></code>which already default to latest version).</p>
 </div>
 <div class="section level2">
 <h2 id="find-where-a-pandoc-binary-is-located">Find where a pandoc binary is located<a class="anchor" aria-label="anchor" href="#find-where-a-pandoc-binary-is-located"></a>
 </h2>
 <p>For any version installed with this package, <code><a href="../reference/pandoc_locate.html">pandoc_locate()</a></code> will return the folder where it was installed.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.11.4"</span>
-<span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/nightly"</span></code></pre></div>
-<p>For examples purposes in this vignette, the path above is in a temp directory. Correct location is in user’s data directory computed with <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_data_dir()</a></code> (e.g on Windows <code>C:/Users/chris/AppData/Local/r-pandoc/r-pandoc</code>)</p>
-<p>To the path to a pandoc binary, <code><a href="../reference/pandoc_bin.html">pandoc_bin()</a></code> can be used</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.11.4"</span>
+<span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/nightly"</span></code></pre></div>
+<p>For example purposes in this vignette, the path above is in a temp directory. Correct location is in user’s data directory computed with <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_data_dir()</a></code> (e.g on Windows <code>C:/Users/chris/AppData/Local/r-pandoc/r-pandoc</code>)</p>
+<p>To get the path to a pandoc binary, <code><a href="../reference/pandoc_bin.html">pandoc_bin()</a></code> can be used</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
-<span class="co">#&gt; C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.11.4/pandoc.exe</span>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/2.11.4/pandoc</span></span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/nightly/pandoc.exe</span></code></pre></div>
-<p>This function also bring support for external pandoc version. like</p>
+<span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/nightly/pandoc</span></span></code></pre></div>
+<p>This function also brings support for external pandoc version, like</p>
 <ul>
 <li>the one shipped with RStudio IDE (<code>version = "rstudio")</code>:
 <ul>
-<li><code>pandoc::pandoc_bin("rstudio")</code></li>
-<li><code><a href="../reference/rstudio_pandoc.html">pandoc::pandoc_rstudio_bin()</a></code></li>
+<li>
+<code>pandoc::pandoc_bin("rstudio")</code> or alias <code><a href="../reference/rstudio_pandoc.html">pandoc::pandoc_rstudio_bin()</a></code>
+</li>
 </ul>
 </li>
 <li>the one set by default on the system (in PATH) (<code>version = "system"</code>):
 <ul>
-<li><code>pandoc::pandoc_bin("system")</code></li>
-<li><code><a href="../reference/system_pandoc.html">pandoc::pandoc_system_bin()</a></code></li>
+<li>
+<code>pandoc::pandoc_bin("system")</code> or alias <code><a href="../reference/system_pandoc.html">pandoc::pandoc_system_bin()</a></code>
+</li>
 </ul>
 </li>
 </ul>
@@ -175,54 +187,65 @@
 </h2>
 <p>As multiple versions can be installed, a default active pandoc version will be used with any of the function. (<code>version = "default"</code>).</p>
 <p>A specific version can be made active using <code><a href="../reference/pandoc_activate.html">pandoc_activate()</a></code></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Default to latest version installed</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Version '2.16.2' is now the active one.</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> This is also true for using with rmarkdown functions.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.17.1.1' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.16.2"</span>
+<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.17.1.1"</span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.16.2/pandoc.exe</span>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/2.17.1.1/pandoc</span></span>
 
 <span class="co"># Activate specific version</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Version '2.11.4' is now the active one.</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> This is also true for using with rmarkdown functions.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.11.4' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.11.4"</span>
+<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.11.4"</span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.11.4/pandoc.exe</span>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/2.11.4/pandoc</span></span>
 
 <span class="co"># including nightly</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Version 'nightly' is now the active one.</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> This is also true for using with rmarkdown functions.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version 'nightly' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/nightly"</span>
+<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/nightly"</span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/nightly/pandoc.exe</span>
+<span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/nightly/pandoc</span></span>
 
 <span class="co"># Activate system version</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Version 'system' is now the active one.</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> This is also true for using with rmarkdown functions.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version 'system' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; C:/Users/chris/DOCUME~1/DEV_R/QUARTO~2/package/dist/bin/pandoc.exe</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/usr/bin/pandoc</span></span></code></pre></div>
 <p>A default active version will be set when the package is loaded (i.e using <code>onLoad</code>) following this search order:</p>
 <ul>
 <li>Latest version install by this package (i.e <code><a href="../reference/pandoc_installed_versions.html">pandoc_installed_latest()</a></code>)</li>
 <li>Version shipped with RStudio IDE (found when run inside RStudio IDE)</li>
 <li>pandoc binary found in system PATH (i.e <code>Sys.which("pandoc")</code>)</li>
 </ul>
+<p><code><a href="../reference/pandoc_is_active.html">pandoc_is_active()</a></code> allows to easily know if a specific version is active or not.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_is_active.html">pandoc_is_active</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fu"><a href="../reference/pandoc_is_active.html">pandoc_is_active</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.7.3' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
+<span class="fu"><a href="../reference/pandoc_is_active.html">pandoc_is_active</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <div class="section level3">
 <h3 id="working-with-rmarkdown-functions-related-to-pandoc">Working with <strong>rmarkdown</strong> functions related to Pandoc<a class="anchor" aria-label="anchor" href="#working-with-rmarkdown-functions-related-to-pandoc"></a>
 </h3>
 <p>By default, if <strong>rmarkdown</strong> is installed, <code><a href="../reference/pandoc_activate.html">pandoc_activate()</a></code> will also set the version active for all <strong>rmarkdown</strong> functions (using <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html" class="external-link">rmarkdown::find_pandoc()</a></code>). This allows to use this package easily in order to test <strong>rmarkdown</strong> with different version of Pandoc.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Version '2.7.3' is now the active one.</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> This is also true for using with rmarkdown functions.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.7.3' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_available</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
@@ -232,34 +255,48 @@
 <span class="co">#&gt; [1] '2.7.3'</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dir</span>
-<span class="co">#&gt; [1] "C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.7.3"</span></code></pre></div>
-<p>These calls are equivalent</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.7.3"</span></code></pre></div>
+<p>These calls are equivalent:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.7.3"</span>, rmarkdown <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Version '2.7.3' is now the active one.</span>
-<span class="co">#&gt; <span style="color: #0000BB;">i</span> This is also true for using with rmarkdown functions.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.7.3' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html" class="external-link">find_pandoc</a></span><span class="op">(</span>cache <span class="op">=</span> <span class="cn">FALSE</span>, dir <span class="op">=</span> <span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; $version</span>
 <span class="co">#&gt; [1] '2.7.3'</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $dir</span>
-<span class="co">#&gt; [1] "C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.7.3"</span></code></pre></div>
+<span class="co">#&gt; [1] "/tmp/RtmpWqGGOU/r-pandoc/2.7.3"</span></code></pre></div>
 <p>If setting the default Pandoc version for <strong>rmarkdown</strong> is not desired, just run with <code>rmarkdown = FALSE</code></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, rmarkdown <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Version '2.11.4' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.11.4' is now the active one.</span>
 <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; [1] '2.7.3'</span></code></pre></div>
+<p>During testing, it also interesting to run a specific code with a specific version. <code><a href="../reference/with_pandoc_version.html">with_pandoc_version()</a></code> or <code><a href="../reference/with_pandoc_version.html">local_pandoc_version()</a></code> allows by running <code><a href="../reference/pandoc_activate.html">pandoc_activate()</a></code> for the expression only (helper like <a href="https://withr.r-lib.org/" class="external-link">withr</a>).</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; [1] '2.7.3'</span>
+
+<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, <span class="op">{</span>
+  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; [1] '2.7.3'</span>
+<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.7.3"</span>, <span class="op">{</span>
+  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; [1] '2.7.3'</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="check-if-a-pandoc-version-is-available">Check if a pandoc version is available<a class="anchor" aria-label="anchor" href="#check-if-a-pandoc-version-is-available"></a>
 </h3>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Is a pandoc version available (i.e a version is active), and if so what is the full path ? </span>
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/pandoc_available.html">pandoc_available</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; C:/Users/chris/AppData/Local/Temp/Rtmp0m8Fn8/r-pandoc/2.11.4/pandoc.exe</span>
-
-<span class="co"># Is the active version above 2.10.1 ?</span>
+<p>Is a pandoc version available to use (i.e a version is active), and if so what is the full path ?</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/pandoc_available.html">pandoc_available</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">/tmp/RtmpWqGGOU/r-pandoc/2.11.4/pandoc</span></span></code></pre></div>
+<p>Is the pandoc activated meeting some requirements ?</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Is the active version above 2.10.1 ?</span>
 <span class="fu"><a href="../reference/pandoc_available.html">pandoc_available</a></span><span class="op">(</span>min <span class="op">=</span> <span class="st">"2.10.1"</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 <span class="co"># Is the active version below 2.11 ?</span>
@@ -268,40 +305,40 @@
 <span class="co"># Is the active version between 2.10.1 and 2.11, both side include ?</span>
 <span class="fu"><a href="../reference/pandoc_available.html">pandoc_available</a></span><span class="op">(</span>min <span class="op">=</span> <span class="st">"2.10.1"</span>, max <span class="op">=</span> <span class="st">"2.11"</span><span class="op">)</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
-<p>Pandoc version can also easily be retrieve, including for external binaries</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<p>Pandoc version can also easily be retrieved, including for external binaries</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Get version from current active one</span>
 <span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] '2.11.4'</span>
 <span class="co"># Get version for a specific version</span>
 <span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; [1] '2.16.2'</span>
+<span class="co">#&gt; [1] '2.17.1.1'</span>
 <span class="co"># Get version for a specific version</span>
 <span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span> <span class="co"># equivalent to pandoc_system_version()</span>
-<span class="co">#&gt; [1] '2.16.1'</span></code></pre></div>
+<span class="co">#&gt; [1] '2.14.2'</span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
-<h2 id="run-pandoc-cli">Run Pandoc CLI<a class="anchor" aria-label="anchor" href="#run-pandoc-cli"></a>
+<h2 id="run-pandoc-cli-from-r">Run Pandoc CLI from R<a class="anchor" aria-label="anchor" href="#run-pandoc-cli-from-r"></a>
 </h2>
 <div class="section level3">
 <h3 id="low-level-call-to-pandoc">Low level call to Pandoc<a class="anchor" aria-label="anchor" href="#low-level-call-to-pandoc"></a>
 </h3>
 <p><code><a href="../reference/pandoc_run.html">pandoc_run()</a></code> is the function to call pandoc binary with some arguments. By default, it will use the active version (<code>version = "default"</code>, see <code><a href="../reference/pandoc_activate.html">?pandoc_activate</a></code>)</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_run.html">pandoc_run</a></span><span class="op">(</span><span class="st">"--version"</span><span class="op">)</span>
-<span class="co">#&gt; pandoc.exe 2.11.4</span>
-<span class="co">#&gt; Compiled with pandoc-types 1.22, texmath 0.12.1, skylighting 0.10.2,</span>
-<span class="co">#&gt; citeproc 0.3.0.5, ipynb 0.1.0.1</span>
-<span class="co">#&gt; User data directory: C:\Users\chris\AppData\Roaming\pandoc</span>
-<span class="co">#&gt; Copyright (C) 2006-2021 John MacFarlane. Web:  https://pandoc.org</span>
-<span class="co">#&gt; This is free software; see the source for copying conditions. There is no</span>
-<span class="co">#&gt; warranty, not even for merchantability or fitness for a particular purpose.</span></code></pre></div>
+<span class="co">#&gt; [1] "pandoc 2.11.4"                                                                </span>
+<span class="co">#&gt; [2] "Compiled with pandoc-types 1.22, texmath 0.12.1, skylighting 0.10.2,"         </span>
+<span class="co">#&gt; [3] "citeproc 0.3.0.5, ipynb 0.1.0.1"                                              </span>
+<span class="co">#&gt; [4] "User data directory: /home/runner/.local/share/pandoc or /home/runner/.pandoc"</span>
+<span class="co">#&gt; [5] "Copyright (C) 2006-2021 John MacFarlane. Web:  https://pandoc.org"            </span>
+<span class="co">#&gt; [6] "This is free software; see the source for copying conditions. There is no"    </span>
+<span class="co">#&gt; [7] "warranty, not even for merchantability or fitness for a particular purpose."</span></code></pre></div>
 <p>equivalent to calling</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">--version</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">--version</span></span></code></pre></div>
 <p>with the correct binary.</p>
 <p>Using the <code>version=</code> argument allows to run a specific version</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_run.html">pandoc_run</a></span><span class="op">(</span><span class="st">"--version"</span>, version <span class="op">=</span> <span class="st">"system"</span><span class="op">)</span></code></pre></div>
 <p>will execute the pandoc command with pandoc binary on PATH.</p>
 </div>
@@ -309,10 +346,10 @@
 <h3 id="convert-a-document">Convert a document<a class="anchor" aria-label="anchor" href="#convert-a-document"></a>
 </h3>
 <blockquote>
-<p>This function is highly experimentatl and probability of API change is high.</p>
+<p>This function is highly experimental and probability of API change is high.</p>
 </blockquote>
-<p>Main usage of Pandoc is to convert a document. The <code><a href="../reference/pandoc_convert.html">pandoc::pandoc_convert()</a></code> is currently a thinner wrapper than <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_convert.html" class="external-link">rmarkdown::pandoc_convert()</a></code>. Both allow to convert a file but the former also allow to convert from text</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<p>Main usage of Pandoc is to convert a document. The <code><a href="../reference/pandoc_convert.html">pandoc::pandoc_convert()</a></code> is currently a thinner wrapper than <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_convert.html" class="external-link">rmarkdown::pandoc_convert()</a></code>. Both allow to convert a file but the former also allow to convert from text and not just a file.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># convert from text directly</span>
 <span class="fu"><a href="../reference/pandoc_convert.html">pandoc_convert</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"# A header"</span>, to <span class="op">=</span> <span class="st">"html"</span><span class="op">)</span>
 <span class="co">#&gt; &lt;h1 id="a-header"&gt;A header&lt;/h1&gt;</span>
@@ -337,14 +374,14 @@
 <div class="section level3">
 <h3 id="various-wrapper-functions-around-pandoc-cli">Various Wrapper functions around pandoc CLI<a class="anchor" aria-label="anchor" href="#various-wrapper-functions-around-pandoc-cli"></a>
 </h3>
-<p>All other included functions to run pandoc are wrapping <code><a href="../reference/pandoc_run.html">pandoc_run()</a></code> with some command flags form <a href="https://pandoc.org/MANUAL.html" class="external-link">Pandoc MANUAL</a>. Each of these function can take the <code>version=</code> argument to run with a specific version of Pandoc instead of the current activated one.</p>
+<p>All other included functions to run pandoc are wrapping <code><a href="../reference/pandoc_run.html">pandoc_run()</a></code> with some command flags from <a href="https://pandoc.org/MANUAL.html" class="external-link">Pandoc MANUAL</a>. Each of these functions can take the <code>version=</code> argument to run with a specific version of Pandoc instead of the current activated one.</p>
 <p>Some of those functions can only be used with specific pandoc versions and an error will be thrown if the version requirement is not met.</p>
 <div class="section level4">
 <h4 id="list-supported-extensions-for-a-format">List supported extensions for a format<a class="anchor" aria-label="anchor" href="#list-supported-extensions-for-a-format"></a>
 </h4>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_list_extensions.html">pandoc_list_extensions</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 80 x 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 80 × 3</span></span>
 <span class="co">#&gt;    format   extensions               default</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> markdown abbreviations            FALSE  </span>
@@ -357,9 +394,9 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> markdown backtick_code_blocks     TRUE   </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> markdown blank_before_blockquote  TRUE   </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> markdown blank_before_header      TRUE   </span>
-<span class="co">#&gt; <span style="color: #949494;"># ... with 70 more rows</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 70 more rows</span></span>
 <span class="fu"><a href="../reference/pandoc_list_extensions.html">pandoc_list_extensions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"gfm"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 80 x 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 80 × 3</span></span>
 <span class="co">#&gt;    format extensions               default</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> gfm    abbreviations            FALSE  </span>
@@ -372,9 +409,9 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> gfm    backtick_code_blocks     TRUE   </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> gfm    blank_before_blockquote  TRUE   </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> gfm    blank_before_header      TRUE   </span>
-<span class="co">#&gt; <span style="color: #949494;"># ... with 70 more rows</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 70 more rows</span></span>
 <span class="fu"><a href="../reference/pandoc_list_extensions.html">pandoc_list_extensions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"html"</span>, version <span class="op">=</span> <span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 82 x 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 82 × 3</span></span>
 <span class="co">#&gt;    format extensions               default</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> html   abbreviations            FALSE  </span>
@@ -387,14 +424,14 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> html   autolink_bare_uris       FALSE  </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> html   backtick_code_blocks     TRUE   </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> html   blank_before_blockquote  TRUE   </span>
-<span class="co">#&gt; <span style="color: #949494;"># ... with 72 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 72 more rows</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="list-available-input-or-output-formats">List available input or output formats<a class="anchor" aria-label="anchor" href="#list-available-input-or-output-formats"></a>
 </h4>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_list_formats.html">pandoc_list_formats</a></span><span class="op">(</span><span class="st">"input"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 38 x 2</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 38 × 2</span></span>
 <span class="co">#&gt;    type  formats     </span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> input biblatex    </span>
@@ -407,9 +444,9 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> input docbook     </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> input docx        </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> input dokuwiki    </span>
-<span class="co">#&gt; <span style="color: #949494;"># ... with 28 more rows</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 28 more rows</span></span>
 <span class="fu"><a href="../reference/pandoc_list_formats.html">pandoc_list_formats</a></span><span class="op">(</span><span class="st">"output"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 61 x 2</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 61 × 2</span></span>
 <span class="co">#&gt;    type   formats     </span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> output asciidoc    </span>
@@ -422,9 +459,9 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> output context     </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> output csljson     </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> output docbook     </span>
-<span class="co">#&gt; <span style="color: #949494;"># ... with 51 more rows</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 51 more rows</span></span>
 <span class="fu"><a href="../reference/pandoc_list_formats.html">pandoc_list_formats</a></span><span class="op">(</span><span class="st">"output"</span>, version <span class="op">=</span> <span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 61 x 2</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 62 × 2</span></span>
 <span class="co">#&gt;    type   formats     </span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> output asciidoc    </span>
@@ -437,14 +474,63 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> output context     </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> output csljson     </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> output docbook     </span>
-<span class="co">#&gt; <span style="color: #949494;"># ... with 51 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 52 more rows</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="list-available-highlight-style">List available highlight style<a class="anchor" aria-label="anchor" href="#list-available-highlight-style"></a>
+</h4>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_list_highlight_style.html">pandoc_list_highlight_style</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; [1] "pygments"   "tango"      "espresso"   "zenburn"    "kate"      </span>
+<span class="co">#&gt; [6] "monochrome" "breezedark" "haddock"</span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="list-supported-highlight-language">List supported highlight language<a class="anchor" aria-label="anchor" href="#list-supported-highlight-language"></a>
+</h4>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_list_highlight_languages.html">pandoc_list_highlight_languages</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt;   [1] "abc"             "actionscript"    "ada"             "agda"           </span>
+<span class="co">#&gt;   [5] "apache"          "asn1"            "asp"             "ats"            </span>
+<span class="co">#&gt;   [9] "awk"             "bash"            "bibtex"          "boo"            </span>
+<span class="co">#&gt;  [13] "c"               "changelog"       "clojure"         "cmake"          </span>
+<span class="co">#&gt;  [17] "coffee"          "coldfusion"      "comments"        "commonlisp"     </span>
+<span class="co">#&gt;  [21] "cpp"             "cs"              "css"             "curry"          </span>
+<span class="co">#&gt;  [25] "d"               "default"         "diff"            "djangotemplate" </span>
+<span class="co">#&gt;  [29] "dockerfile"      "dot"             "doxygen"         "doxygenlua"     </span>
+<span class="co">#&gt;  [33] "dtd"             "eiffel"          "elixir"          "elm"            </span>
+<span class="co">#&gt;  [37] "email"           "erlang"          "fasm"            "fortranfixed"   </span>
+<span class="co">#&gt;  [41] "fortranfree"     "fsharp"          "gcc"             "glsl"           </span>
+<span class="co">#&gt;  [45] "gnuassembler"    "go"              "graphql"         "groovy"         </span>
+<span class="co">#&gt;  [49] "hamlet"          "haskell"         "haxe"            "html"           </span>
+<span class="co">#&gt;  [53] "idris"           "ini"             "isocpp"          "j"              </span>
+<span class="co">#&gt;  [57] "java"            "javadoc"         "javascript"      "javascriptreact"</span>
+<span class="co">#&gt;  [61] "json"            "jsp"             "julia"           "kotlin"         </span>
+<span class="co">#&gt;  [65] "latex"           "lex"             "lilypond"        "literatecurry"  </span>
+<span class="co">#&gt;  [69] "literatehaskell" "llvm"            "lua"             "m4"             </span>
+<span class="co">#&gt;  [73] "makefile"        "mandoc"          "markdown"        "mathematica"    </span>
+<span class="co">#&gt;  [77] "matlab"          "maxima"          "mediawiki"       "metafont"       </span>
+<span class="co">#&gt;  [81] "mips"            "modelines"       "modula2"         "modula3"        </span>
+<span class="co">#&gt;  [85] "monobasic"       "mustache"        "nasm"            "nim"            </span>
+<span class="co">#&gt;  [89] "noweb"           "objectivec"      "objectivecpp"    "ocaml"          </span>
+<span class="co">#&gt;  [93] "octave"          "opencl"          "pascal"          "perl"           </span>
+<span class="co">#&gt;  [97] "php"             "pike"            "postscript"      "povray"         </span>
+<span class="co">#&gt; [101] "powershell"      "prolog"          "protobuf"        "pure"           </span>
+<span class="co">#&gt; [105] "purebasic"       "python"          "qml"             "r"              </span>
+<span class="co">#&gt; [109] "relaxng"         "relaxngcompact"  "rest"            "rhtml"          </span>
+<span class="co">#&gt; [113] "roff"            "ruby"            "rust"            "scala"          </span>
+<span class="co">#&gt; [117] "scheme"          "sci"             "sed"             "sgml"           </span>
+<span class="co">#&gt; [121] "sml"             "spdxcomments"    "sql"             "sqlmysql"       </span>
+<span class="co">#&gt; [125] "sqlpostgresql"   "stata"           "tcl"             "tcsh"           </span>
+<span class="co">#&gt; [129] "texinfo"         "toml"            "typescript"      "verilog"        </span>
+<span class="co">#&gt; [133] "vhdl"            "xml"             "xorg"            "xslt"           </span>
+<span class="co">#&gt; [137] "xul"             "yacc"            "yaml"            "zsh"</span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="export-a-data-file">Export a data file<a class="anchor" aria-label="anchor" href="#export-a-data-file"></a>
 </h4>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">outfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pandoc_export_data_file.html">pandoc_export_data_file</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"styles.html"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Template written to styles.html</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Template written to styles.html</span>
 <span class="va">outfile</span>
 <span class="co">#&gt; [1] "styles.html"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">outfile</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
@@ -455,22 +541,37 @@
 <span class="co">#&gt; [5] "  font-size: $if(fontsize)$$fontsize$$else$20px$endif$;"</span></code></pre></div>
 </div>
 <div class="section level4">
+<h4 id="export-a-highlight-style-json-file">Export a highlight style JSON file<a class="anchor" aria-label="anchor" href="#export-a-highlight-style-json-file"></a>
+</h4>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">outfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pandoc_export_highlight_theme.html">pandoc_export_highlight_theme</a></span><span class="op">(</span>style <span class="op">=</span> <span class="st">"zenburn"</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Style written to zenburn.theme</span>
+<span class="va">outfile</span>
+<span class="co">#&gt; zenburn.theme</span>
+<span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">outfile</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="co">#&gt; [1] "{"                                          </span>
+<span class="co">#&gt; [2] "    \"text-color\": \"#cccccc\","           </span>
+<span class="co">#&gt; [3] "    \"background-color\": \"#303030\","     </span>
+<span class="co">#&gt; [4] "    \"line-number-color\": null,"           </span>
+<span class="co">#&gt; [5] "    \"line-number-background-color\": null,"</span></code></pre></div>
+</div>
+<div class="section level4">
 <h4 id="export-a-docx-or-pttx-reference-doc">Export a DOCX or PTTX reference doc<a class="anchor" aria-label="anchor" href="#export-a-docx-or-pttx-reference-doc"></a>
 </h4>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ref_docx</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pandoc_export_data_file.html">pandoc_export_reference_doc</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"docx"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Template written to reference.docx</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Template written to reference.docx</span>
 <span class="va">ref_docx</span>
 <span class="co">#&gt; reference.docx</span>
 <span class="va">ref_pptx</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pandoc_export_data_file.html">pandoc_export_reference_doc</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"pptx"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Template written to reference.pptx</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Template written to reference.pptx</span>
 <span class="va">ref_pptx</span>
 <span class="co">#&gt; reference.pptx</span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="export-a-template-for-a-format">Export a template for a format<a class="anchor" aria-label="anchor" href="#export-a-template-for-a-format"></a>
 </h4>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_export_template.html">pandoc_export_template</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"jira"</span><span class="op">)</span>
 <span class="co">#&gt; $for(include-before)$</span>
 <span class="co">#&gt; $include-before$</span>
@@ -482,7 +583,7 @@
 <span class="co">#&gt; $include-after$</span>
 <span class="co">#&gt; $endfor$</span>
 <span class="va">outfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pandoc_export_template.html">pandoc_export_template</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"latex"</span>,output <span class="op">=</span> <span class="st">"default.latex"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">v</span> Template written to default.latex</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Template written to default.latex</span>
 <span class="va">outfile</span>
 <span class="co">#&gt; [1] "default.latex"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">outfile</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
@@ -499,12 +600,8 @@
 </h2>
 <p><code>pandoc_browse_*()</code> helpers are included to quickly open an online document like the Pandoc MANUAL (<code><a href="../reference/pandoc_browse_manual.html">pandoc_browse_manual()</a></code>) or a documentation for an extensions (<code>pandoc_browse_extension("smart")</code>). See <a href="reference/dev/reference/index.html#section-browse-pandoc-s-useful-online-resources">reference doc</a> for more.</p>
 </div>
-  </div>
-  <div class="col-md-3" id="pkgdown-sidebar">
-    <nav id="toc"><h2>On this page</h2>
-    </nav>
-</div>
-  
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
@@ -516,7 +613,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>
