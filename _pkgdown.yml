@@ -1,6 +1,6 @@
 destination: reference
 
-url: https://r-pkg-pandoc.netlify.app/
+url: https://cderv.github.io/pandoc/
 
 template:
   bootstrap: 5

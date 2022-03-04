@@ -11,3 +11,4 @@
 ^pkgdown$
 ^reference$
 ^vignettes/articles$
+^docs$
