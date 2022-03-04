@@ -1,0 +1,23 @@
+**pandoc** is currently an experimental R package primarily develop to help maintainers of R Markdown ecosystem.
+
+Indeed, the R Markdown ecosystem is highly dependent on Pandoc (<https://pandoc.org/>) changes and it is designed to be as version independent as possible. R Markdown is best used with the latest Pandoc version but any **rmarkdown** package version should work with previous version of Pandoc, and new change in Pandoc should not break any **rmarkdown** features.
+
+This explains the needs for a more focused tooling to:
+
+-   Install and manage several Pandoc versions. This is useful for testing versions and comparing between them.
+-   Call Pandoc's command directly without the layers added by **rmarkdown**. This is useful for debugging or quickly iterating and finding where a bug comes from.
+-   Retrieve information from Pandoc directly. Each version comes with changes and some of them are included into the binary. Being able to retrieve those informationss and compare between versions is important to help maintain the user exposed tooling.
+
+This package can also be useful to advanced developers that are working around Pandoc through **rmarkdown** or not.
+
+## Installation
+
+The development version can be install from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("cderv/pandoc")
+
+# install.packages("pak")
+pak::pak("cderv/pandoc")
+```

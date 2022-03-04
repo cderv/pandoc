@@ -14,45 +14,37 @@ Sys.setenv(TESTTHAT = "true")
 pandoc_default <- rmarkdown::find_pandoc()$dir
 ```
 
+```{r child = "vignettes/articles/_about.Rmd"}
+```
+
 ```{r setup}
 library(pandoc)
 ```
 
-## About this package
-
-This is currently an experimental package aiming mainly to help maintainers of R Markdown ecosystem. 
-
-The R Markdown ecosystem is highly dependent on Pandoc <https://pandoc.org/> and it is designed to be as version independent as possible. R Markdown is best used with the latest Pandoc version but any **rmarkdown** package version should work with previous version, and new change in Pandoc should not break any rmarkdown features.
-
-This explain the needs to some more focused tooling to:
-
-* Install and manage several pandoc versions. This is useful for testing versions and comparing between them.
-* Call pandoc directly without the layers added by **rmarkdown**. This is useful for debugging or quickly iterating and finding where a bug could be. 
-* Retrieve information from Pandoc directly. Each version comes with changes and some of them are included into the binary. Being able to retrieve those information and compare between version is also important to help maintain the user exposed tooling.
-
-This can also be useful to advanced developer that are working around pandoc through **rmarkdown** or not. 
-
 ## Install pandoc
 
-Main usage is to install latest version of Pandoc. This requires the `gh` package as it will fetch information from Github and download the bundle from there.
+Main usage is to install **latest** released version of Pandoc. This requires the [`gh`](https://github.com/r-lib/gh) package as it will fetch information from Github and download the bundle from there.
 
 ```{r}
 pandoc_install()
 ```
 
-If a specific older Pandoc version is needed (e.g for testing differences between version), a version can be specified. 
+If a specific older Pandoc version is needed (e.g for testing differences between version), a version can be specified.
+
 ```{r}
 pandoc_install("2.11.4")
 ```
 
-Informations fetched from Github are cached for the session.
+Information fetched from Github are cached for the duration of the session.
 
-Sometimes, the dev version of Pandoc is required. Pandoc's team is building a binary every day called _nightly_
+Sometimes, the dev version of Pandoc is required. Pandoc's team is building a binary every day called *nightly* in there CI.
+
 ```{r}
+# install the nightly version (overwrites previous one)
 pandoc_install_nightly() # or pandoc_install("nightly")
 ```
 
-All those version can live together and are installed in an isolated directory in user's data folders.
+All those versiosn can live together and are installed in an isolated directory in user's data folders.
 
 ```{r}
 # Which version are currently installed ? 
@@ -64,7 +56,7 @@ pandoc_is_installed("2.11.4")
 pandoc_is_installed("2.7.3")
 ```
 
-Downloaded bundles are also cached to speed up further installation. This is useful into tests to quickly install and uninstall a pandoc version for a specific test. 
+Downloaded bundles are also cached to speed up further installation. This is useful into tests to quickly install and uninstall a pandoc version for a specific test.
 
 ```{r}
 pandoc_install("2.7.3")
@@ -72,37 +64,36 @@ pandoc_uninstall("2.7.3")
 pandoc_install("2.7.3")
 ```
 
-To quickly install the last available release, run `pandoc_update()` (or equivalent `pandoc_install()`).
+To quickly install the last available release, run `pandoc_update()` (alias of `pandoc_install()`which already default to latest version).
 
 ## Find where a pandoc binary is located
 
-For any version installed with this package, `pandoc_locate()` will return the folder where it was installed. 
+For any version installed with this package, `pandoc_locate()` will return the folder where it was installed.
 
 ```{r}
 pandoc_locate("2.11.4")
 pandoc_locate("nightly")
 ```
 
-For examples purposes in this vignette, the path above is in a temp directory. Correct location is in user's data directory computed with `rappdirs::user_data_dir()` (e.g on Windows `C:/Users/chris/AppData/Local/r-pandoc/r-pandoc`)
+For example purposes in this vignette, the path above is in a temp directory. Correct location is in user's data directory computed with `rappdirs::user_data_dir()` (e.g on Windows `C:/Users/chris/AppData/Local/r-pandoc/r-pandoc`)
 
-To the path to a pandoc binary, `pandoc_bin()` can be used
+To get the path to a pandoc binary, `pandoc_bin()` can be used
+
 ```{r}
 pandoc_bin("2.11.4")
 pandoc_bin("nightly")
 ```
 
-This function also bring support for external pandoc version.  like 
+This function also brings support for external pandoc version, like
 
-* the one shipped with RStudio IDE (`version = "rstudio")`: 
-  * `pandoc::pandoc_bin("rstudio")`
-  * `pandoc::pandoc_rstudio_bin()` 
-* the one set by default on the system (in PATH) (`version = "system"`):
-  * `pandoc::pandoc_bin("system")`
-  * `pandoc::pandoc_system_bin()`
-  
+-   the one shipped with RStudio IDE (`version = "rstudio")`:
+    -   `pandoc::pandoc_bin("rstudio")` or alias `pandoc::pandoc_rstudio_bin()`
+-   the one set by default on the system (in PATH) (`version = "system"`):
+    -   `pandoc::pandoc_bin("system")` or alias `pandoc::pandoc_system_bin()`
+
 ## Activate a Pandoc version
 
-As multiple versions can be installed, a default active pandoc version will be used with any of the function. (`version = "default"`). 
+As multiple versions can be installed, a default active pandoc version will be used with any of the function. (`version = "default"`).
 
 A specific version can be made active using `pandoc_activate()`
 
@@ -127,11 +118,11 @@ pandoc_activate("system")
 pandoc_bin()
 ```
 
-A default active version will be set when the package is loaded (i.e using `onLoad`) following this search order: 
+A default active version will be set when the package is loaded (i.e using `onLoad`) following this search order:
 
-* Latest version install by this package (i.e `pandoc_installed_latest()`)
-* Version shipped with RStudio IDE (found when run inside RStudio IDE)
-* pandoc binary found in system PATH  (i.e `Sys.which("pandoc")`)
+-   Latest version install by this package (i.e `pandoc_installed_latest()`)
+-   Version shipped with RStudio IDE (found when run inside RStudio IDE)
+-   pandoc binary found in system PATH (i.e `Sys.which("pandoc")`)
 
 `pandoc_is_active()` allows to easily know if a specific version is active or not.
 
@@ -153,19 +144,21 @@ rmarkdown::pandoc_version()
 rmarkdown::find_pandoc()
 ```
 
-These calls are equivalent
+These calls are equivalent:
+
 ```{r}
 pandoc_activate("2.7.3", rmarkdown = TRUE)
 rmarkdown::find_pandoc(cache = FALSE, dir = pandoc::pandoc_locate("2.7.3"))
 ```
 
 If setting the default Pandoc version for **rmarkdown** is not desired, just run with `rmarkdown = FALSE`
+
 ```{r}
 pandoc::pandoc_activate("2.11.4", rmarkdown = FALSE)
 rmarkdown::pandoc_version()
 ```
 
-During testing, it also interesting to run a specific code with a specific version. `with_pandoc_version()` or `local_pandoc_version()` allows by running `pandoc_activate()` for the expression only (helper like [withr](https://withr.r-lib.org/)). 
+During testing, it also interesting to run a specific code with a specific version. `with_pandoc_version()` or `local_pandoc_version()` allows by running `pandoc_activate()` for the expression only (helper like [withr](https://withr.r-lib.org/)).
 
 ```{r}
 rmarkdown::pandoc_version()
@@ -185,10 +178,15 @@ rmarkdown::find_pandoc(cache = FALSE, dir = pandoc_default)
 
 ### Check if a pandoc version is available
 
-```{r}
-# Is a pandoc version available (i.e a version is active), and if so what is the full path ? 
-if (pandoc_available()) pandoc_bin()
+Is a pandoc version available to use (i.e a version is active), and if so what is the full path ?
 
+```{r}
+if (pandoc_available()) pandoc_bin()
+```
+
+Is the pandoc activated meeting some requirements ?
+
+```{r}
 # Is the active version above 2.10.1 ?
 pandoc_available(min = "2.10.1")
 # Is the active version below 2.11 ?
@@ -208,7 +206,7 @@ pandoc_version("nightly")
 pandoc_version("system") # equivalent to pandoc_system_version()
 ```
 
-## Run Pandoc CLI
+## Run Pandoc CLI from R
 
 ### Low level call to Pandoc
 
@@ -217,23 +215,28 @@ pandoc_version("system") # equivalent to pandoc_system_version()
 ```{r}
 pandoc_run("--version")
 ```
+
 equivalent to calling
-```bash
+
+``` bash
 pandoc --version
 ```
+
 with the correct binary.
 
 Using the `version=` argument allows to run a specific version
-```r
+
+``` r
 pandoc_run("--version", version = "system")
 ```
+
 will execute the pandoc command with pandoc binary on PATH.
 
 ### Convert a document
 
-> This function is highly experimentatl and probability of API change is high.
+> This function is highly experimental and probability of API change is high.
 
-Main usage of Pandoc is to convert a document. The `pandoc::pandoc_convert()` is currently a thinner wrapper than `rmarkdown::pandoc_convert()`. Both allow to convert a file but the former also allow to convert from text
+Main usage of Pandoc is to convert a document. The `pandoc::pandoc_convert()` is currently a thinner wrapper than `rmarkdown::pandoc_convert()`. Both allow to convert a file but the former also allow to convert from text and not just a file.
 
 ```{r}
 # convert from text directly
@@ -252,8 +255,7 @@ readLines(outfile, n = 5)
 
 ### Various Wrapper functions around pandoc CLI
 
-All other included functions to run pandoc are wrapping `pandoc_run()` with some command flags form [Pandoc MANUAL](https://pandoc.org/MANUAL.html).
-Each of these function can take the `version=` argument to run with a specific version of Pandoc instead of the current activated one.
+All other included functions to run pandoc are wrapping `pandoc_run()` with some command flags from [Pandoc MANUAL](https://pandoc.org/MANUAL.html). Each of these functions can take the `version=` argument to run with a specific version of Pandoc instead of the current activated one.
 
 Some of those functions can only be used with specific pandoc versions and an error will be thrown if the version requirement is not met.
 
@@ -335,6 +337,6 @@ readLines(outfile, n = 5)
 unlink(c(outfile))
 ```
 
-## Helpers to easily browse Pandoc's online resources 
+## Helpers to easily browse Pandoc's online resources
 
 `pandoc_browse_*()` helpers are included to quickly open an online document like the Pandoc MANUAL (`pandoc_browse_manual()`) or a documentation for an extensions (`pandoc_browse_extension("smart")`). See [reference doc](reference/dev/reference/index.html#section-browse-pandoc-s-useful-online-resources) for more.
