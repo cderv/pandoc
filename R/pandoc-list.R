@@ -21,7 +21,8 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
   formats <- pandoc_run(args, version = version)
   formats_tbl <- data.frame(
     type = type,
-    formats = formats
+    formats = formats,
+    stringsAsFactors = FALSE
   )
   if (rlang::is_installed("tibble")) {
     return(tibble::as_tibble(formats_tbl))
@@ -53,7 +54,8 @@ pandoc_list_extensions <- function(format = "markdown", version = "default") {
   extensions <- pandoc_run(args, version = version)
   extensions_tbl <- data.frame(
     format = format,
-    extensions = gsub("^[-+]", "", extensions)
+    extensions = gsub("^[-+]", "", extensions),
+    stringsAsFactors = FALSE
   )
   extensions_tbl$default <- ifelse(
     gsub("^([-+]{1}).*", "\\1", extensions) == "+",
