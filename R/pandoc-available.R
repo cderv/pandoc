@@ -20,11 +20,13 @@ pandoc_bin_impl <- function(path, exe = FALSE) {
 pandoc_bin <- function(version = "default") {
   version <- resolve_version(version)
   if (pandoc_is_external_version(version)) {
-    return(pandoc_which_bin(version))
+    pandoc_path <- pandoc_which_bin(version)
+    return(fs::path_expand(pandoc_path))
   }
 
   pandoc_path <- pandoc_locate(version)
-  pandoc_bin_impl(pandoc_path)
+  pandoc_path <- pandoc_bin_impl(pandoc_path)
+  fs::path_expand(pandoc_path)
 }
 
 pandoc_which_bin <- function(which = c("rstudio", "system")) {
