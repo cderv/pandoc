@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   pandoc: pandoc.html
-last_built: 2022-03-11T15:14Z
+last_built: 2022-03-11T17:22Z
 urls:
   reference: https://cderv.github.io/pandoc/reference
   article: https://cderv.github.io/pandoc/articles
