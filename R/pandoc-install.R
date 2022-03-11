@@ -410,12 +410,16 @@ pandoc_uninstall <- function(version) {
 
 #' @importFrom rappdirs user_data_dir
 pandoc_home <- function(version = NULL) {
-  if (identical(Sys.getenv("TESTTHAT"), "true") || is_devmode()) {
-    # during testing we don't want to mess with the environment user app dir
-    return(as.character(fs::path_temp("r-pandoc", version %||% "")))
-  }
   rappdirs::user_data_dir("r-pandoc", version = version)
 }
+
+on_load({
+  if (is_devmode() || (!on_ci() && (on_testthat() || on_rcmd_check()))) {
+    # Change user data dir to tempdir in that case
+    # for pandoc_home() using rappdirs::user_data_dir()
+    Sys.setenv(R_USER_DATA_DIR = tempdir())
+  }
+})
 
 pandoc_available_versions <- function() {
   releases <- pandoc_releases()
