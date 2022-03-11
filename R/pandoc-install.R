@@ -48,24 +48,34 @@ pandoc_install <- function(version = "latest", force = FALSE) {
     return(pandoc_install_nightly())
   }
 
-  # get bundle download url
-  release_bundle <- pandoc_release_asset(version)
-
-  # where to install
-  version <- release_bundle$version
-  install_dir <- pandoc_home(version)
-  if (fs::dir_exists(install_dir)) {
-    is_empty <- length(fs::dir_ls(install_dir)) == 0L
-    if (!is_empty && !force) {
+  # check if already installed while avoiding a gh request
+  .is_already_installed <- function(version, call = caller_env()) {
+    install_dir <- pandoc_home(version)
+    if (fs::dir_exists(install_dir) && !length(fs::dir_ls(install_dir)) == 0L) {
       rlang::inform(c(
         v = sprintf("Pandoc %s already installed.", version),
         " " = "Use 'force = TRUE' to overwrite."
       ))
-      return(invisible(NULL))
-    } else {
-      # we remove existing installation
-      fs::dir_delete(install_dir)
+      return(invisible(TRUE))
     }
+    invisible(FALSE)
+  }
+  if (!force && version != "latest" && .is_already_installed(version)) {
+    return(invisible(NULL))
+  }
+
+  # get bundle download url
+  release_bundle <- pandoc_release_asset(version)
+
+  # Check if already installed now that "latest" is resolved
+  if (!force && version == "latest" && .is_already_installed(release_bundle$version)) {
+    return(invisible(NULL))
+  }
+
+  version <- release_bundle$version
+  install_dir <- pandoc_home(version)
+  if (force && fs::dir_exists(install_dir)) {
+    fs::dir_delete(install_dir)
   }
 
   rlang::inform(c(i = paste0("Installing Pandoc release ", version)))
@@ -106,6 +116,8 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 
   invisible(install_dir)
 }
+
+
 
 #' Update to last Pandoc version available
 #'
@@ -339,12 +351,14 @@ pandoc_is_installed <- function(version, error = FALSE, ask = FALSE) {
   }
   installed <- version %in% pandoc_installed_versions()
   if (!installed) {
-    msg <- sprintf("Version '%s' is not yet installed", version)
     if (ask) {
       if (!rlang::is_interactive()) {
         rlang::abort("User input required, but session is not interactive.")
       }
-      rlang::inform(c(i = msg, "!" = "Would you like to install it ?"))
+      rlang::inform(c(
+        "i" = sprintf("Version '%s' is not yet installed", version),
+        "!" = "Would you like to install it ?"
+      ))
       if (utils::menu(c("yes", "no")) == 1L) {
         pandoc_install(version)
         installed <- TRUE
