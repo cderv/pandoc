@@ -22,16 +22,23 @@ pandoc_feature_requirement <- function(min, version = "default") {
   invisible(TRUE)
 }
 
-is_rcmd_check <- function() {
-  Sys.getenv("_R_CHECK_PACKAGE_NAME_", "") != ""
-}
-
 # use to activate feature during dev
 devmode <- function(devmode = getOption("pandoc.devmode", TRUE)) {
   options(pandoc.devmode = devmode)
 }
 
-is_devmode <- function() {
-  getOption("pandoc.devmode", FALSE)
+on_rcmd_check <- function() {
+  Sys.getenv("_R_CHECK_PACKAGE_NAME_", "") != ""
 }
 
+on_testthat <- function() {
+  identical(Sys.getenv("TESTTHAT"), "true")
+}
+
+on_ci <- function() {
+  isTRUE(as.logical(Sys.getenv("CI")))
+}
+
+is_devmode <- function() {
+  getOption("pandoc.temp_home", FALSE)
+}

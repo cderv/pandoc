@@ -107,11 +107,4 @@ on_load({
   } else if (!is.null(system_bin)) {
     the$active_version <- "system"
   }
-
-  # When testing from R CMD check, don't write into standard config directories
-  if (is_rcmd_check()) {
-    if (identical(Sys.getenv("R_USER_DATA_DIR"), "")) {
-      Sys.setenv(R_USER_DATA_DIR = tempfile())
-    }
-  }
 })
