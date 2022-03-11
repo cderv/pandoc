@@ -25,3 +25,13 @@ pandoc_feature_requirement <- function(min, version = "default") {
 is_rcmd_check <- function() {
   Sys.getenv("_R_CHECK_PACKAGE_NAME_", "") != ""
 }
+
+# use to activate feature during dev
+devmode <- function(devmode = getOption("pandoc.devmode", TRUE)) {
+  options(pandoc.devmode = devmode)
+}
+
+is_devmode <- function() {
+  getOption("pandoc.devmode", FALSE)
+}
+

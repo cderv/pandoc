@@ -121,7 +121,7 @@ test_that("Pandoc specific release can be installed and ran", {
   skip_on_cran()
   skip_if_offline()
   expect_pandoc_installed("2.11.4")
-  expect_message(expect_null(pandoc_install("2.11.4")), "already installed", fixed = TRUE)
+  expect_snapshot(expect_null(pandoc_install("2.11.4")))
   expect_identical(
     suppressMessages(pandoc_install("2.11.4", force = TRUE)),
     pandoc_locate("2.11.4")
