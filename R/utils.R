@@ -27,6 +27,10 @@ devmode <- function(devmode = getOption("pandoc.devmode", TRUE)) {
   options(pandoc.devmode = devmode)
 }
 
+is_devmode <- function() {
+  getOption("pandoc.devmode", FALSE)
+}
+
 on_rcmd_check <- function() {
   Sys.getenv("_R_CHECK_PACKAGE_NAME_", "") != ""
 }
@@ -39,6 +43,4 @@ on_ci <- function() {
   isTRUE(as.logical(Sys.getenv("CI")))
 }
 
-is_devmode <- function() {
-  getOption("pandoc.temp_home", FALSE)
-}
+
