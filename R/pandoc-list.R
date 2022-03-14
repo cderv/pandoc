@@ -50,7 +50,7 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
 #' @export
 pandoc_list_extensions <- function(format = "markdown", version = "default") {
   pandoc_feature_requirement("2.8", version = version)
-  args <- c("--list-extensions", format)
+  args <- sprintf("--list-extensions=%s", format)
   extensions <- pandoc_run(args, version = version)
   extensions_tbl <- data.frame(
     format = format,
