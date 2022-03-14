@@ -421,7 +421,16 @@ on_load({
   }
 })
 
-pandoc_available_versions <- function() {
+#' Fetch all versions available to install
+#'
+#' This function will fetch information from Github
+#' <https://github.com/jgm/pandoc> about available Pandoc versions released.
+#'
+#' @return character vector of all available release.
+#'
+#' @seealso [pandoc_install()], [pandoc_installed_version()]
+#' @export
+pandoc_available_releases <- function() {
   releases <- pandoc_releases()
   versions <- map_chr(releases, "[[", "tag_name")
   keep(versions, ~ numeric_version(.x) >= .min_supported_version)

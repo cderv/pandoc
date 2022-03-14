@@ -5,7 +5,7 @@
 # For now it is useful to test that everything is working on different OS.
 
 .get_assets_info <- function(os, arch) {
-  versions <- suppressMessages(pandoc_available_versions())
+  versions <- suppressMessages(pandoc_available_releases())
   map(versions, ~ {
     tryCatch(pandoc_release_asset(.x, os = os, arch = arch),
       error = function(e) list(version = .x, url = NULL, error = e$message)

@@ -52,7 +52,7 @@ Most functions follows these following rules:
 Available functions allows:
 
 -   Installing / Uninstalling specific Pandoc version from
-    `r knitr::combine_words(range(as.numeric_version(pandoc:::pandoc_available_versions())), sep = ", ", and = " to ", before = "'")`
+    `r knitr::combine_words(range(as.numeric_version(pandoc::pandoc_available_releases())), sep = ", ", and = " to ", before = "'")`
     , including development version of Pandoc.
     -   `pandoc_install()`, `pandoc_install_nightly()`,
         `pandoc_uninstall()`, ...

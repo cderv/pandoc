@@ -106,10 +106,10 @@ Available functions allows:
 library(pandoc)
 # Install version
 pandoc_install("2.7.3")
-#> v Pandoc 2.7.3 already installed.
+#> √ Pandoc 2.7.3 already installed.
 #>   Use 'force = TRUE' to overwrite.
 pandoc_install("2.11.4")
-#> v Pandoc 2.11.4 already installed.
+#> √ Pandoc 2.11.4 already installed.
 #>   Use 'force = TRUE' to overwrite.
 # Highest install is used
 pandoc_version()

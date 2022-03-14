@@ -30,6 +30,7 @@ reference:
   - starts_with("pandoc_install")
   - pandoc_update
   - pandoc_uninstall
+  - pandoc_available_releases
 - subtitle: "Manage versions installed by this package"
   desc: >
     Functions to find an installed version by this package
