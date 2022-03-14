@@ -44,7 +44,7 @@ Sometimes, the dev version of Pandoc is required. Pandoc's team is building a bi
 pandoc_install_nightly() # or pandoc_install("nightly")
 ```
 
-All those versiosn can live together and are installed in an isolated directory in user's data folders.
+All those versions can live together and are installed in an isolated directory in user's data folders.
 
 ```{r}
 # Which version are currently installed ? 
