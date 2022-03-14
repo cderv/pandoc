@@ -121,7 +121,7 @@
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span>
 <span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: a7d94dba43bee13f9d021760625d45c3b86c3229</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 307a4e25b2a03e6704fcda9ac91289911764b5d1</span></code></pre></div>
 <p>All those versiosn can live together and are installed in an isolated directory in user’s data folders.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Which version are currently installed ? </span>
@@ -381,50 +381,56 @@
 </h4>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_list_extensions.html">pandoc_list_extensions</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 80 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 68 × 3</span></span>
 <span class="co">#&gt;    format   extensions               default</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> markdown abbreviations            FALSE  </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> markdown all_symbols_escapable    TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> markdown amuse                    FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> markdown angle_brackets_escapable FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> markdown ascii_identifiers        FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> markdown auto_identifiers         TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> markdown autolink_bare_uris       FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> markdown backtick_code_blocks     TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> markdown blank_before_blockquote  TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> markdown blank_before_header      TRUE   </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 70 more rows</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> markdown angle_brackets_escapable FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> markdown ascii_identifiers        FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> markdown auto_identifiers         TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> markdown autolink_bare_uris       FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> markdown backtick_code_blocks     TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> markdown blank_before_blockquote  TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> markdown blank_before_header      TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> markdown bracketed_spans          TRUE   </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 58 more rows</span></span>
 <span class="fu"><a href="../reference/pandoc_list_extensions.html">pandoc_list_extensions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"gfm"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 80 × 3</span></span>
-<span class="co">#&gt;    format extensions               default</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> gfm    abbreviations            FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> gfm    all_symbols_escapable    TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> gfm    amuse                    FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> gfm    angle_brackets_escapable FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> gfm    ascii_identifiers        FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> gfm    auto_identifiers         TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> gfm    autolink_bare_uris       FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> gfm    backtick_code_blocks     TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> gfm    blank_before_blockquote  TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> gfm    blank_before_header      TRUE   </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 70 more rows</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 26 × 3</span></span>
+<span class="co">#&gt;    format extensions             default</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> gfm    ascii_identifiers      FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> gfm    autolink_bare_uris     TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> gfm    bracketed_spans        FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> gfm    definition_lists       FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> gfm    east_asian_line_breaks FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> gfm    emoji                  TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> gfm    fancy_lists            FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> gfm    fenced_code_attributes FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> gfm    fenced_divs            FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> gfm    footnotes              FALSE  </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 16 more rows</span></span>
 <span class="fu"><a href="../reference/pandoc_list_extensions.html">pandoc_list_extensions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"html"</span>, version <span class="op">=</span> <span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 82 × 3</span></span>
-<span class="co">#&gt;    format extensions               default</span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> html   abbreviations            FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> html   all_symbols_escapable    TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> html   amuse                    FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> html   angle_brackets_escapable FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> html   ascii_identifiers        FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> html   attributes               FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> html   auto_identifiers         TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> html   autolink_bare_uris       FALSE  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> html   backtick_code_blocks     TRUE   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> html   blank_before_blockquote  TRUE   </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 72 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 3</span></span>
+<span class="co">#&gt;    format extensions                default</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> html   ascii_identifiers         FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> html   auto_identifiers          TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> html   east_asian_line_breaks    FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> html   empty_paragraphs          FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> html   epub_html_exts            FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> html   gfm_auto_identifiers      FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> html   line_blocks               TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> html   literate_haskell          FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> html   native_divs               TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> html   native_spans              TRUE   </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> html   raw_html                  FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> html   raw_tex                   FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> html   smart                     FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> html   task_lists                FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> html   tex_math_dollars          FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> html   tex_math_double_backslash FALSE  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> html   tex_math_single_backslash FALSE</span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="list-available-input-or-output-formats">List available input or output formats<a class="anchor" aria-label="anchor" href="#list-available-input-or-output-formats"></a>
