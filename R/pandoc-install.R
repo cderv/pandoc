@@ -428,7 +428,7 @@ on_load({
 #'
 #' @return character vector of all available release.
 #'
-#' @seealso [pandoc_install()], [pandoc_installed_version()]
+#' @seealso [pandoc_install()], [pandoc_installed_versions()]
 #' @export
 pandoc_available_releases <- function() {
   releases <- pandoc_releases()

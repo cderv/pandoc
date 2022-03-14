@@ -14,5 +14,5 @@ This function will fetch information from Github
 \url{https://github.com/jgm/pandoc} about available Pandoc versions released.
 }
 \seealso{
-\code{\link[=pandoc_install]{pandoc_install()}}, \code{\link[=pandoc_installed_version]{pandoc_installed_version()}}
+\code{\link[=pandoc_install]{pandoc_install()}}, \code{\link[=pandoc_installed_versions]{pandoc_installed_versions()}}
 }
