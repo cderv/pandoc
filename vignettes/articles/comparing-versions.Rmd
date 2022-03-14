@@ -1,0 +1,86 @@
+---
+title: "Comparing Pandoc versions"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+knitr::opts_template$set(quiet.rlang = list(
+  R.options = list(rlib_message_verbosity = "quiet")
+))
+```
+
+## Why compare Pandoc versions ? 
+
+One of the aim for this package is to help dealing with Pandoc changes over time. Pandoc is a project which has often some breaking change between versions. However, tools like R Markdown aims to work with any Pandoc versions, and hide those changes for the user by insure backward compatibility and adjustement toward new features. 
+
+Dealing with this can require to compare versions and now when a change occurs. 
+
+## Use Case 1: Finding which version introduced a change
+
+Let's take the example of a change in Pandoc regaring `gfm` format: It appears at some point that raw HTML `<span></span>` was removed during conversion. When does this happened ? Let's take a look. 
+
+For that, we want to convert `"This is a <span>Span</span>."` to `gfm` format and look for the max version that keep the raw HTML `<span>` in its markdown output.
+
+```{r setup}
+library(pandoc)
+```
+
+As a prerequisite to the analysis, all available pandoc versions needs to be installed.
+
+```{r, opts.label = "quiet.rlang"}
+purrr::walk(pandoc_available_releases(), purrr::safely(pandoc_install))
+```
+
+Once this is done, it is easy to iterate over versions to do an analysis over an hypothesis.
+
+First, we use each Pandoc version to convert `"This is a <span>Span</span>."` to Github Markdown
+
+```{r}
+# Get the available versions
+versions <- pandoc_installed_versions()
+versions <- purrr::set_names(versions)
+
+# Do conversion for each version
+res <- purrr::map(
+  versions, 
+  ~ pandoc_convert(text = "This is a <span>Span</span>.", to = "gfm", version = .x)
+)
+```
+
+With the result, we can build a tibble to filter out which is the maximum version that preserve the raw `<span>`
+
+```{r}
+library(dplyr)
+tab <- res %>%
+  purrr::map_chr(as.character) %>%
+  tibble::enframe("ver", "string")
+
+tab %>%
+  # No nightly
+  filter(ver != "nightly") %>%
+  # converting to numeric version for easier ordering
+  mutate(num_ver = as.numeric_version(ver)) %>%
+  # Which version does keep <span> ?
+  filter(grepl("<span>", string, fixed = TRUE)) %>%
+  # Order version
+  arrange(num_ver) %>%
+  # which is the max one ? 
+  slice_tail(n = 1)
+```
+We can confirm looking at 2.10 and 2.10.1, that `<span>` is indeed not preserve.
+
+```{r}
+tab %>%
+  filter(ver %in% c("2.10", "2.10.1"))
+```
+From there, it is easier to know how to adapt, by first looking into the changes in Pandoc's release not 
+
+```{r}
+pandoc_browse_release("2.10.1")
+```
+
+
+
