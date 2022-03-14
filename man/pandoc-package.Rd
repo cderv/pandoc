@@ -12,6 +12,7 @@ Provides a set of tools to install, manage and run several Pandoc versions.
 Useful links:
 \itemize{
   \item \url{https://github.com/cderv/pandoc}
+  \item \url{https://cderv.github.io/pandoc/}
   \item Report bugs at \url{https://github.com/cderv/pandoc/issues}
 }
 
