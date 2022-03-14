@@ -35,7 +35,7 @@ jobs:
 
       - name: Gets Pandoc installed folder
         id: pandoc-install-dir
-        run: cat("::set-output name=path::", normalizePath(pandoc:::pandoc_home(), "/"), "\n", sep = "")
+        run: cat("::set-output name=path::", normalizePath(pandoc:::pandoc_home(), "/", FALSE), "\n", sep = "")
         shell: Rscript {0}
 
       - name: Cache Pandoc installed versions
