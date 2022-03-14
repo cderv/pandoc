@@ -89,7 +89,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]
+          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68]
         },
         "names": {
           "type": "character",
@@ -101,17 +101,17 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown"]
+          "value": ["markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown", "markdown"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["abbreviations", "all_symbols_escapable", "amuse", "angle_brackets_escapable", "ascii_identifiers", "auto_identifiers", "autolink_bare_uris", "backtick_code_blocks", "blank_before_blockquote", "blank_before_header", "bracketed_spans", "citations", "compact_definition_lists", "definition_lists", "east_asian_line_breaks", "element_citations", "emoji", "empty_paragraphs", "epub_html_exts", "escaped_line_breaks", "example_lists", "fancy_lists", "fenced_code_attributes", "fenced_code_blocks", "fenced_divs", "footnotes", "four_space_rule", "gfm_auto_identifiers", "grid_tables", "hard_line_breaks", "header_attributes", "ignore_line_breaks", "implicit_figures", "implicit_header_references", "inline_code_attributes", "inline_notes", "intraword_underscores", "latex_macros", "line_blocks", "link_attributes", "lists_without_preceding_blankline", "literate_haskell", "markdown_attribute", "markdown_in_html_blocks", "mmd_header_identifiers", "mmd_link_attributes", "mmd_title_block", "multiline_tables", "native_divs", "native_spans", "native_numbering", "ntb", "old_dashes", "pandoc_title_block", "pipe_tables", "raw_attribute", "raw_html", "raw_tex", "raw_markdown", "shortcut_reference_links", "simple_tables", "smart", "space_in_atx_header", "spaced_reference_links", "startnum", "strikeout", "subscript", "superscript", "styles", "task_lists", "table_captions", "tex_math_dollars", "tex_math_double_backslash", "tex_math_single_backslash", "xrefs_name", "xrefs_number", "yaml_metadata_block", "gutenberg", "attributes", "sourcepos"]
+          "value": ["abbreviations", "all_symbols_escapable", "angle_brackets_escapable", "ascii_identifiers", "auto_identifiers", "autolink_bare_uris", "backtick_code_blocks", "blank_before_blockquote", "blank_before_header", "bracketed_spans", "citations", "compact_definition_lists", "definition_lists", "east_asian_line_breaks", "emoji", "escaped_line_breaks", "example_lists", "fancy_lists", "fenced_code_attributes", "fenced_code_blocks", "fenced_divs", "footnotes", "four_space_rule", "gfm_auto_identifiers", "grid_tables", "hard_line_breaks", "header_attributes", "ignore_line_breaks", "implicit_figures", "implicit_header_references", "inline_code_attributes", "inline_notes", "intraword_underscores", "latex_macros", "line_blocks", "link_attributes", "lists_without_preceding_blankline", "literate_haskell", "markdown_attribute", "markdown_in_html_blocks", "mmd_header_identifiers", "mmd_link_attributes", "mmd_title_block", "multiline_tables", "native_divs", "native_spans", "old_dashes", "pandoc_title_block", "pipe_tables", "raw_attribute", "raw_html", "raw_tex", "shortcut_reference_links", "simple_tables", "smart", "space_in_atx_header", "spaced_reference_links", "startnum", "strikeout", "subscript", "superscript", "task_lists", "table_captions", "tex_math_dollars", "tex_math_double_backslash", "tex_math_single_backslash", "yaml_metadata_block", "gutenberg"]
         },
         {
           "type": "logical",
           "attributes": {},
-          "value": [false, true, false, false, false, true, false, true, true, true, true, true, false, true, false, false, false, false, false, true, true, true, true, true, true, true, false, false, true, false, true, false, true, true, true, true, true, true, true, true, false, false, false, true, false, false, false, true, true, true, false, false, false, true, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, false, false, false, false, true, false, false, false]
+          "value": [false, true, false, false, true, false, true, true, true, true, true, false, true, false, false, true, true, true, true, true, true, true, false, false, true, false, true, false, true, true, true, true, true, true, true, true, false, false, false, true, false, false, false, true, true, true, false, true, true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, false, false, true, false]
         }
       ]
     }
@@ -129,7 +129,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]
+          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
         },
         "names": {
           "type": "character",
@@ -141,17 +141,17 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm"]
+          "value": ["gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm", "gfm"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["abbreviations", "all_symbols_escapable", "amuse", "angle_brackets_escapable", "ascii_identifiers", "auto_identifiers", "autolink_bare_uris", "backtick_code_blocks", "blank_before_blockquote", "blank_before_header", "bracketed_spans", "citations", "compact_definition_lists", "definition_lists", "east_asian_line_breaks", "element_citations", "emoji", "empty_paragraphs", "epub_html_exts", "escaped_line_breaks", "example_lists", "fancy_lists", "fenced_code_attributes", "fenced_code_blocks", "fenced_divs", "footnotes", "four_space_rule", "gfm_auto_identifiers", "grid_tables", "hard_line_breaks", "header_attributes", "ignore_line_breaks", "implicit_figures", "implicit_header_references", "inline_code_attributes", "inline_notes", "intraword_underscores", "latex_macros", "line_blocks", "link_attributes", "lists_without_preceding_blankline", "literate_haskell", "markdown_attribute", "markdown_in_html_blocks", "mmd_header_identifiers", "mmd_link_attributes", "mmd_title_block", "multiline_tables", "native_divs", "native_spans", "native_numbering", "ntb", "old_dashes", "pandoc_title_block", "pipe_tables", "raw_attribute", "raw_html", "raw_tex", "raw_markdown", "shortcut_reference_links", "simple_tables", "smart", "space_in_atx_header", "spaced_reference_links", "startnum", "strikeout", "subscript", "superscript", "styles", "task_lists", "table_captions", "tex_math_dollars", "tex_math_double_backslash", "tex_math_single_backslash", "xrefs_name", "xrefs_number", "yaml_metadata_block", "gutenberg", "attributes", "sourcepos"]
+          "value": ["ascii_identifiers", "autolink_bare_uris", "bracketed_spans", "definition_lists", "east_asian_line_breaks", "emoji", "fancy_lists", "fenced_code_attributes", "fenced_divs", "footnotes", "gfm_auto_identifiers", "hard_line_breaks", "implicit_figures", "implicit_header_references", "pipe_tables", "raw_attribute", "raw_html", "raw_tex", "smart", "strikeout", "subscript", "superscript", "task_lists", "tex_math_dollars", "attributes", "sourcepos"]
         },
         {
           "type": "logical",
           "attributes": {},
-          "value": [false, true, false, false, false, true, false, true, true, true, true, true, false, true, false, false, false, false, false, true, true, true, true, true, true, true, false, false, true, false, true, false, true, true, true, true, true, true, true, true, false, false, false, true, false, false, false, true, true, true, false, false, false, true, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, false, false, false, false, true, false, false, false]
+          "value": [false, true, false, false, false, true, false, false, false, false, true, false, false, false, true, false, true, false, false, true, false, false, true, false, false, false]
         }
       ]
     }
