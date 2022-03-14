@@ -82,5 +82,46 @@ From there, it is easier to know how to adapt, by first looking into the changes
 pandoc_browse_release("2.10.1")
 ```
 
+# Use Case 2: Which output formats has `--autolink_bare_uris` extensions available ?
 
+To answer this question, it is interesting to be able to iterate over all
+available formats, for a specific version. Let's take version "2.17" as example. 
+
+```{r, opts.label = "quiet.rlang"}
+library(pandoc)
+pandoc_install("2.17")
+```
+
+```{r}
+# Activating Pandoc version to use
+pandoc_activate("2.17", rmarkdown = FALSE)
+
+library(dplyr)
+library(tidyr)
+format_extensions <- pandoc_list_formats("output") %>%
+  filter(!formats %in% c("pdf")) %>%
+  group_by(formats) %>%
+  mutate(exts = list(pandoc_list_extensions(formats))) %>%
+  ungroup()
+
+has_smart <- format_extensions %>%
+  hoist(exts, "extensions", "default") %>%
+  select(-exts) %>%
+  unnest_longer(c("extensions", "default")) %>%
+  filter(extensions == "smart")
+```
+
+Which has it by default ? 
+
+```{r}
+has_smart %>%
+  filter(default)
+```
+
+Which does not ? 
+
+```{r}
+has_smart %>%
+  filter(!default)
+```
 
