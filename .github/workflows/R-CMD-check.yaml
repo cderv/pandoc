@@ -56,12 +56,6 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - name: Get GH cached info for Pandoc release
-        uses: ./.github/actions/setup-cached-gh-info
-
       - uses: r-lib/actions/check-r-package@v2
-        env:
-          # Use a cached version of API request
-          PANDOC_CACHE_GITHUB: "~/github-cache.rds"
         with:
           upload-snapshots: true
