@@ -69,7 +69,7 @@ jobs:
         id: cache-release
         with:
           path: ${{ env.GITHUB_WORKSPACE }}/github-cache.rds
-          key: pandoc-releases-infos-from-2-${{ steps.pandoc-release.outputs.version}}-
+          key: pandoc-releases-infos-from-3-${{ steps.pandoc-release.outputs.version}}-
 
       - name: Use cache file if found
         if: steps.cache-release.outputs.cache-hit == 'true'
