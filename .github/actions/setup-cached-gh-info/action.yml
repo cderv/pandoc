@@ -4,6 +4,8 @@ runs:
   using: "composite"
   steps:
       - name: Get last release version to cache fetched information
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: pandoc-release
         run: |
           echo "::set-output name=version::$(gh release view -R jgm/pandoc --json tagName -q .tagName)"
