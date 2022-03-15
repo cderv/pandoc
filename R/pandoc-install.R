@@ -250,7 +250,6 @@ pandoc_releases <- function() {
     cached <- Sys.getenv("PANDOC_CACHE_GITHUB", NA_character_)
     if (!is.na(cached)) {
       # use same ~ on all OS
-      cached <- fs::path_expand(cached)
       if (fs::path_ext(cached) == "rds" && fs::file_exists(cached)) {
       rlang::inform(c(
         "i" = sprintf(
