@@ -26,12 +26,27 @@ expect_pandoc_installed <- function(version) {
 skip_on_cran()
 skip_if_offline()
 
-test_that("Release information are cached", {
+test_that("Release information are cached - fetch Github", {
   skip_on_cran()
   skip_if_offline()
+  skip_if_not(is.na(Sys.getenv("PANDOC_CACHE_GITHUB", NA_character_)))
+  # don't use specific file cache for this test
+  withr::local_envvar(list(PANDOC_CACHE_GITHUB = NA))
   # clean cached values
   rlang::env_unbind(the, "pandoc_releases")
   # with message Fetching
+  expect_snapshot(x <- pandoc_releases())
+  # without message Fetching
+  expect_snapshot(x <- pandoc_releases())
+})
+
+test_that("Release information are cached - cached file", {
+  skip_on_cran()
+  # only run when specific file cached is set
+  skip_if(is.na(Sys.getenv("PANDOC_CACHE_GITHUB", NA_character_)))
+  # clean cached values
+  rlang::env_unbind(the, "pandoc_releases")
+  # Use specific file cached
   expect_snapshot(x <- pandoc_releases())
   # without message Fetching
   expect_snapshot(x <- pandoc_releases())
