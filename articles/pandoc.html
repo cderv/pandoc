@@ -42,6 +42,12 @@
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/comparing-versions.html">Comparing Pandoc versions</a>
+  </div>
+</li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
@@ -104,15 +110,13 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Fetching Pandoc releases info from github...</span>
-<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing Pandoc release 2.17.1.1</span>
-<span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc version 2.17.1.1 installed.</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 2.17.1.1 already installed.</span>
+<span class="co">#&gt;   Use 'force = TRUE' to overwrite.</span></code></pre></div>
 <p>If a specific older Pandoc version is needed (e.g for testing differences between version), a version can be specified.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing Pandoc release 2.11.4</span>
-<span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc version 2.11.4 installed.</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 2.11.4 already installed.</span>
+<span class="co">#&gt;   Use 'force = TRUE' to overwrite.</span></code></pre></div>
 <p>Information fetched from Github are cached for the duration of the session.</p>
 <p>Sometimes, the dev version of Pandoc is required. Pandoc’s team is building a binary every day called <em>nightly</em> in there CI.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -121,12 +125,22 @@
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span>
 <span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 307a4e25b2a03e6704fcda9ac91289911764b5d1</span></code></pre></div>
-<p>All those versiosn can live together and are installed in an isolated directory in user’s data folders.</p>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 54f6e1be9b12635c8c3b1d3581ff5f51167d54d7</span></code></pre></div>
+<p>All those versions can live together and are installed in an isolated directory in user’s data folders.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Which version are currently installed ? </span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_versions</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "nightly"  "2.17.1.1" "2.11.4"</span>
+<span class="co">#&gt;  [1] "nightly"  "2.17.1.1" "2.17.1"   "2.17.0.1" "2.17"     "2.16.2"  </span>
+<span class="co">#&gt;  [7] "2.16.1"   "2.16"     "2.15"     "2.14.2"   "2.14.1"   "2.14.0.3"</span>
+<span class="co">#&gt; [13] "2.14.0.2" "2.14.0.1" "2.14"     "2.13"     "2.12"     "2.11.4"  </span>
+<span class="co">#&gt; [19] "2.11.3.2" "2.11.3.1" "2.11.3"   "2.11.2"   "2.11.1.1" "2.11.1"  </span>
+<span class="co">#&gt; [25] "2.11.0.4" "2.11.0.2" "2.11.0.1" "2.11"     "2.10.1"   "2.10"    </span>
+<span class="co">#&gt; [31] "2.9.2.1"  "2.9.2"    "2.9.1.1"  "2.9.1"    "2.9"      "2.8.1"   </span>
+<span class="co">#&gt; [37] "2.8.0.1"  "2.8"      "2.7.3"    "2.7.2"    "2.7.1"    "2.7"     </span>
+<span class="co">#&gt; [43] "2.6"      "2.5"      "2.4"      "2.3.1"    "2.3"      "2.2.3.2" </span>
+<span class="co">#&gt; [49] "2.2.3.1"  "2.2.2.1"  "2.2.2"    "2.2.1"    "2.2"      "2.1.3"   </span>
+<span class="co">#&gt; [55] "2.1.2"    "2.1.1"    "2.1"      "2.0.6"    "2.0.5"    "2.0.4"   </span>
+<span class="co">#&gt; [61] "2.0.3"</span>
 <span class="co"># Which is the latest version installed (nightly excluded)? </span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_latest</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] "2.17.1.1"</span>
@@ -134,17 +148,16 @@
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_is_installed</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_is_installed</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
-<span class="co">#&gt; [1] FALSE</span></code></pre></div>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <p>Downloaded bundles are also cached to speed up further installation. This is useful into tests to quickly install and uninstall a pandoc version for a specific test.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing Pandoc release 2.7.3</span>
-<span class="co">#&gt;   Downloading bundle...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc version 2.7.3 installed.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 2.7.3 already installed.</span>
+<span class="co">#&gt;   Use 'force = TRUE' to overwrite.</span>
 <span class="fu"><a href="../reference/pandoc_uninstall.html">pandoc_uninstall</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing Pandoc release 2.7.3</span>
-<span class="co">#&gt;   Using cached bundle.</span>
+<span class="co">#&gt;   Downloading bundle...</span>
 <span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc version 2.7.3 installed.</span></code></pre></div>
 <p>To quickly install the last available release, run <code><a href="../reference/pandoc_update.html">pandoc_update()</a></code> (alias of <code><a href="../reference/pandoc_install.html">pandoc_install()</a></code>which already default to latest version).</p>
 </div>
@@ -275,14 +288,28 @@
 <span class="co">#&gt; [1] '2.7.3'</span></code></pre></div>
 <p>During testing, it also interesting to run a specific code with a specific version. <code><a href="../reference/with_pandoc_version.html">with_pandoc_version()</a></code> or <code><a href="../reference/with_pandoc_version.html">local_pandoc_version()</a></code> allows by running <code><a href="../reference/pandoc_activate.html">pandoc_activate()</a></code> for the expression only (helper like <a href="https://withr.r-lib.org/" class="external-link">withr</a>).</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="co"># with pandoc package functions</span>
+<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, <span class="op">{</span>
+  <span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; [1] '2.11.4'</span>
+
+<span class="co"># with rmarkdown package functions</span>
+<span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; [1] '2.7.3'</span>
 
+<span class="co"># won't work by default as ...</span>
 <span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, <span class="op">{</span>
   <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; [1] '2.7.3'</span>
-<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.7.3"</span>, <span class="op">{</span>
+
+<span class="co"># ...rmarkdown = TRUE needs to be  set to use with rmarkdown package functions</span>
+<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, rmarkdown <span class="op">=</span> <span class="cn">TRUE</span>, <span class="op">{</span>
+  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+<span class="co">#&gt; [1] '2.11.4'</span>
+<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.7.3"</span>, rmarkdown <span class="op">=</span> <span class="cn">TRUE</span>, <span class="op">{</span>
   <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; [1] '2.7.3'</span></code></pre></div>
