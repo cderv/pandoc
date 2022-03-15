@@ -45,6 +45,8 @@ jobs:
           key: ${{github.workflow}}-1-${{ runner.os }}-${{runner.arch}}-
 
       - name: Get GH cached info for Pandoc release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: ./.github/actions/setup-cached-gh-info
 
       - name: Build site

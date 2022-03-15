@@ -57,6 +57,8 @@ jobs:
           needs: check
 
       - name: Get GH cached info for Pandoc release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: ./.github/actions/setup-cached-gh-info
 
       - uses: r-lib/actions/check-r-package@v2
