@@ -57,11 +57,11 @@ jobs:
         id: cache-release
         with:
           path: ~/github-cache.rds
-          key: pandoc-releases-infos-from-1-${{ steps.pandoc-release.outputs.version}}-
+          key: pandoc-releases-infos-from-2-${{ steps.pandoc-release.outputs.version}}-
 
       - name: Fetch new release info from github
         if: steps.cache-release.outputs.cache-hit != 'true'
-        run: saveRDS(pandoc:::fetch_gh_releases(), "~/github-cache.rds")
+        run: saveRDS(pandoc:::fetch_gh_releases(), "~/github-cache.rds", version = 2)
         shell: Rscript {0}
 
       - name: Build site
