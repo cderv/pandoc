@@ -44,25 +44,8 @@ jobs:
           path: ${{ steps.pandoc-install-dir.outputs.path}}
           key: ${{github.workflow}}-1-${{ runner.os }}-${{runner.arch}}-
 
-      - name: Get last release version to cache fetched information
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: pandoc-release
-        run: |
-          echo "::set-output name=version::$(gh release view -R jgm/pandoc --json tagName -q .tagName)"
-        shell: bash
-
-      - name: Cache Pandoc release information
-        uses: actions/cache@v2
-        id: cache-release
-        with:
-          path: ~/github-cache.rds
-          key: pandoc-releases-infos-from-1-${{ steps.pandoc-release.outputs.version}}-
-
-      - name: Fetch new release info from github
-        if: steps.cache-release.outputs.cache-hit != 'true'
-        run: saveRDS(pandoc:::fetch_gh_releases(), "~/github-cache.rds")
-        shell: Rscript {0}
+      - name: Get GH cached info for Pandoc release
+        uses: ./.github/actions/setup-cached-gh-info
 
       - name: Build site
         env:
