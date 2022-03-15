@@ -73,7 +73,7 @@ jobs:
 
       - name: Use cache file if found
         if: steps.cache-release.outputs.cache-hit == 'true'
-        run: echo "PANDOC_CACHE_GITHUB=~/github-cache.rds" >> $GITHUB_ENV"
+        run: echo "PANDOC_CACHE_GITHUB=~/github-cache.rds" >> $GITHUB_ENV
         shell: bash
 
       - uses: r-lib/actions/check-r-package@v2
