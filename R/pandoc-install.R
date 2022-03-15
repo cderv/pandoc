@@ -248,7 +248,10 @@ pandoc_releases <- function() {
   default_cache <- function() {
     # set this option to use a cached version
     cached <- Sys.getenv("PANDOC_CACHE_GITHUB", NA_character_)
-    if (!is.na(cached) && fs::path_ext(cached) == "rds" && fs::file_exists(cached)) {
+    if (!is.na(cached)) {
+      # use same ~ on all OS
+      cached <- fs::path_expand(cached)
+      if (fs::path_ext(cached) == "rds" && fs::file_exists(cached)) {
       rlang::inform(c(
         "i" = sprintf(
           "Using cached version '%s' in instead of fetching GH",
@@ -256,6 +259,7 @@ pandoc_releases <- function() {
         )
       ))
       readRDS(cached)
+      }
     } else {
       fetch_gh_releases()
     }
