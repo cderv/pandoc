@@ -33,6 +33,17 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
+      - name: Gets Pandoc installed folder
+        id: pandoc-install-dir
+        run: cat("::set-output name=path::", normalizePath(pandoc:::pandoc_home(), "/", FALSE), "\n", sep = "")
+        shell: Rscript {0}
+
+      - name: Cache Pandoc installed versions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.pandoc-install-dir.outputs.path}}
+          key: ${{github.workflow}}-1-${{ runner.os }}-${{runner.arch}}-
+
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
