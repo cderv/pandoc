@@ -74,7 +74,7 @@ jobs:
       - name: Use cache file if found
         if: steps.cache-release.outputs.cache-hit == 'true'
         run: |
-          ls -lisa ${{ github.workspace }}
+          ls -lisa
           echo "PANDOC_CACHE_GITHUB=${{ github.workspace }}/github-cache.rds" >> $GITHUB_ENV
         shell: bash
 

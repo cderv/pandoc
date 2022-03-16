@@ -59,7 +59,7 @@ jobs:
           path: github-cache.rds
           key: pandoc-releases-infos-from-3-${{ steps.pandoc-release.outputs.version}}-
 
-      - run: ls -lisa ${{ github.workspace }}
+      - run: ls -lisa
         shell: bash
 
       # - name: Fetch new release info from github
