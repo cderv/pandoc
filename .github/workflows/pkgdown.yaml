@@ -56,21 +56,21 @@ jobs:
         uses: actions/cache@v2
         id: cache-release
         with:
-          path: github-cache.rds
+          path: ${{ runner.temp }}/github-cache.rds
           key: pandoc-releases-infos-from-4-${{ steps.pandoc-release.outputs.version}}-
 
-      - run: ls -lisa
+      - run: ls -lisa ${{ runner.temp }}
         shell: bash
 
       - name: Fetch new release info from github
         if: steps.cache-release.outputs.cache-hit != 'true'
-        run: saveRDS(pandoc:::fetch_gh_releases(), "github-cache.rds", version = 2)
+        run: saveRDS(pandoc:::fetch_gh_releases(), file.path(Sys.getenv("RUNNER_TEMP"), "github-cache.rds", version = 2)
         shell: Rscript {0}
 
       - name: Build site
         env:
          # Use a cached version of API request
-         PANDOC_CACHE_GITHUB: ${{ github.workspace }}/github-cache.rds
+         PANDOC_CACHE_GITHUB: ${{ runner.temp }}/github-cache.rds
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
 
