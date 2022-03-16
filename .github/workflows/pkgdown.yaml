@@ -64,7 +64,7 @@ jobs:
 
       - name: Fetch new release info from github
         if: steps.cache-release.outputs.cache-hit != 'true'
-        run: saveRDS(pandoc:::fetch_gh_releases(), file.path(Sys.getenv("RUNNER_TEMP"), "github-cache.rds", version = 2)
+        run: saveRDS(pandoc:::fetch_gh_releases(), file.path(Sys.getenv("RUNNER_TEMP"), "github-cache.rds"), version = 2)
         shell: Rscript {0}
 
       - name: Build site
