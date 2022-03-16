@@ -57,7 +57,7 @@ jobs:
         id: cache-release
         with:
           path: ${{ runner.temp }}/github-cache.rds
-          key: pandoc-releases-infos-from-4-${{ steps.pandoc-release.outputs.version}}-
+          key: pandoc-releases-infos-from-5-${{ steps.pandoc-release.outputs.version}}-
 
       - run: ls -lisa ${{ runner.temp }}
         shell: bash
