@@ -69,7 +69,7 @@ jobs:
         id: cache-release
         with:
           path: github-cache.rds
-          key: pandoc-releases-infos-${{ steps.pandoc-release.outputs.version}}-1
+          key: gh-info-${{ steps.pandoc-release.outputs.version}}-1
 
       - name: Fetch new release info from github
         if: steps.cache-release.outputs.cache-hit != 'true'
