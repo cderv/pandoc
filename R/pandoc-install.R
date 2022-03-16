@@ -245,17 +245,36 @@ pandoc_bundle_name <- function(version, os = pandoc_os(), arch = pandoc_arch(os)
 }
 
 pandoc_releases <- function() {
-  rlang::env_cache(the, "pandoc_releases", fetch_gh_releases())
+  default_cache <- function() {
+    # set this option to use a cached version
+    cached <- Sys.getenv("PANDOC_CACHE_GITHUB", NA_character_)
+    if (!is.na(cached)) {
+      # use same ~ on all OS
+      if (fs::path_ext(cached) == "rds" && fs::file_exists(cached)) {
+      rlang::inform(c(
+        "i" = sprintf(
+          "Using cached version '%s' in instead of fetching GH",
+          fs::path_file(cached)
+        )
+      ))
+      readRDS(cached)
+      }
+    } else {
+      fetch_gh_releases()
+    }
+  }
+
+  rlang::env_cache(the, "pandoc_releases", default_cache())
 }
 
-fetch_gh_releases <- function() {
+fetch_gh_releases <- function(limit = Inf) {
   gh_required()
   rlang::inform(c(i = "Fetching Pandoc releases info from github..."))
   gh::gh(
     "GET /repos/:owner/:repo/releases",
     owner = "jgm",
     repo = "pandoc",
-    .limit = Inf,
+    .limit = limit,
     .progress = FALSE
   )
 }

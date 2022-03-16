@@ -53,9 +53,39 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck, local::.
           needs: check
 
+      - name: Get last release version to cache fetched information
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: pandoc-release
+        run: |
+          echo "::set-output name=version::$(gh release view -R jgm/pandoc --json tagName -q .tagName)"
+        shell: bash
+
+      - name: Cache Pandoc release information
+        uses: actions/cache@v2
+        id: cache-release
+        with:
+          path: github-cache.rds
+          key: gh-info-${{ steps.pandoc-release.outputs.version}}-1
+
+      - name: Fetch new release info from github
+        if: steps.cache-release.outputs.cache-hit != 'true'
+        run: saveRDS(pandoc:::fetch_gh_releases(), "github-cache.rds", version = 2)
+        shell: Rscript {0}
+
       - uses: r-lib/actions/check-r-package@v2
+        env:
+         # Use a cached version of API request
+         PANDOC_CACHE_GITHUB: ${{ github.workspace }}/github-cache.rds
         with:
           upload-snapshots: true
+
+      - name: Test coverage
+        if: success() && runner.os == 'Linux' && matrix.config.r == 'release'
+        run: |
+          pak::pkg_install('covr')
+          covr::codecov()
+        shell: Rscript {0}
