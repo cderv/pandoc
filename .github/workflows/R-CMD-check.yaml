@@ -53,7 +53,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck, local::.
           needs: check
 
       - name: Get last release version to cache fetched information
@@ -69,16 +69,17 @@ jobs:
         id: cache-release
         with:
           path: github-cache.rds
-          key: pandoc-releases-infos-from-6-${{ steps.pandoc-release.outputs.version}}-
+          key: pandoc-releases-infos-${{ steps.pandoc-release.outputs.version}}-1
 
-      - name: Use cache file if found
-        if: steps.cache-release.outputs.cache-hit == 'true'
-        run: |
-          ls -lisa
-          echo "PANDOC_CACHE_GITHUB=${{ github.workspace }}/github-cache.rds" >> $GITHUB_ENV
-        shell: bash
+      - name: Fetch new release info from github
+        if: steps.cache-release.outputs.cache-hit != 'true'
+        run: saveRDS(pandoc:::fetch_gh_releases(), "github-cache.rds", version = 2)
+        shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
+        env:
+         # Use a cached version of API request
+         PANDOC_CACHE_GITHUB: ${{ github.workspace }}/github-cache.rds
         with:
           upload-snapshots: true
 

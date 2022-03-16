@@ -57,7 +57,7 @@ jobs:
         id: cache-release
         with:
           path: github-cache.rds
-          key: pandoc-releases-infos-from-6-${{ steps.pandoc-release.outputs.version}}-
+          key: gh-info-${{ steps.pandoc-release.outputs.version}}-1
 
       - run: ls -lisa
         shell: bash
