@@ -68,14 +68,14 @@ jobs:
         uses: actions/cache@v2
         id: cache-release
         with:
-          path: ${{ runner.temp }}/github-cache.rds
-          key: pandoc-releases-infos-from-5-${{ steps.pandoc-release.outputs.version}}-
+          path: github-cache.rds
+          key: pandoc-releases-infos-from-6-${{ steps.pandoc-release.outputs.version}}-
 
       - name: Use cache file if found
         if: steps.cache-release.outputs.cache-hit == 'true'
         run: |
-          ls -lisa ${{ runner.temp }}
-          echo "PANDOC_CACHE_GITHUB=${{ runner.temp }}/github-cache.rds" >> $GITHUB_ENV
+          ls -lisa
+          echo "PANDOC_CACHE_GITHUB=${{ github.workspace }}/github-cache.rds" >> $GITHUB_ENV
         shell: bash
 
       - uses: r-lib/actions/check-r-package@v2

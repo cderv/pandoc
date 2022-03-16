@@ -12,3 +12,4 @@
 ^reference$
 ^vignettes/articles$
 ^docs$
+^github-cache\.rds$
