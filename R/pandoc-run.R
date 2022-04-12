@@ -33,6 +33,7 @@ pandoc_run <- function(args, version = "default") {
 pandoc_version <- function(version = "default") {
   out <- pandoc_run("--version", version = version)
   version <- gsub("^pandoc(?:\\.exe)? ([\\d.]+).*$", "\\1", out[1], perl = TRUE)
+  if (grepl("-nightly-", out[1])) version <- paste(version, "9999", sep = ".")
   numeric_version(version)
 }
 
