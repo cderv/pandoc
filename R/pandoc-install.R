@@ -429,7 +429,7 @@ pandoc_uninstall <- function(version) {
 
 #' @importFrom rappdirs user_data_dir
 pandoc_home <- function(version = NULL) {
-  if (is_devmode() || on_rcmd_check() || !on_ci() && on_testthat()) {
+  if (is_devmode() || on_rcmd_check()) {
     old <- Sys.getenv("R_USER_DATA_DIR")
     Sys.setenv(R_USER_DATA_DIR = tempdir())
     on.exit(Sys.setenv(R_USER_DATA_DIR = old))
