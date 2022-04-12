@@ -7,7 +7,7 @@
 \usage{
 pandoc_install(version = "latest", force = FALSE)
 
-pandoc_install_nightly()
+pandoc_install_nightly(n_last = 1L)
 }
 \arguments{
 \item{version}{This can be either:
@@ -18,6 +18,9 @@ pandoc_install_nightly()
 }}
 
 \item{force}{To set to \code{TRUE} to force a re-installation}
+
+\item{n_last}{Set to \code{n} as integer to install the n-th from last nightly
+build. Default is last available build (1L)}
 }
 \value{
 Invisibly, the path where the binary is installed otherwise. \code{NULL} if already
