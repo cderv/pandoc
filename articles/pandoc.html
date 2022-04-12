@@ -110,7 +110,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Using cached version 'github-cache.rds' in instead of fetching GH</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 2.17.1.1 already installed.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 2.18 already installed.</span>
 <span class="co">#&gt;   Use 'force = TRUE' to overwrite.</span></code></pre></div>
 <p>If a specific older Pandoc version is needed (e.g for testing differences between version), a version can be specified.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -123,25 +123,27 @@
 <code class="sourceCode R"><span class="co"># install the nightly version (overwrites previous one)</span>
 <span class="fu"><a href="../reference/pandoc_install.html">pandoc_install_nightly</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># or pandoc_install("nightly")</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last version already installed: 54f6e1be9b12635c8c3b1d3581ff5f51167d54d7</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span>
+<span class="co">#&gt;   Downloading bundle...</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 30f4f85f91d7fa8719d315a9045fb82ff9b0f032</span></code></pre></div>
 <p>All those versions can live together and are installed in an isolated directory in user’s data folders.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Which version are currently installed ? </span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_versions</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "nightly"  "2.17.1.1" "2.17.1"   "2.17.0.1" "2.17"     "2.16.2"  </span>
-<span class="co">#&gt;  [7] "2.16.1"   "2.16"     "2.15"     "2.14.2"   "2.14.1"   "2.14.0.3"</span>
-<span class="co">#&gt; [13] "2.14.0.2" "2.14.0.1" "2.14"     "2.13"     "2.12"     "2.11.4"  </span>
-<span class="co">#&gt; [19] "2.11.3.2" "2.11.3.1" "2.11.3"   "2.11.2"   "2.11.1.1" "2.11.1"  </span>
-<span class="co">#&gt; [25] "2.11.0.4" "2.11.0.2" "2.11.0.1" "2.11"     "2.10.1"   "2.10"    </span>
-<span class="co">#&gt; [31] "2.9.2.1"  "2.9.2"    "2.9.1.1"  "2.9.1"    "2.9"      "2.8.1"   </span>
-<span class="co">#&gt; [37] "2.8.0.1"  "2.8"      "2.7.3"    "2.7.2"    "2.7.1"    "2.7"     </span>
-<span class="co">#&gt; [43] "2.6"      "2.5"      "2.4"      "2.3.1"    "2.3"      "2.2.3.2" </span>
-<span class="co">#&gt; [49] "2.2.3.1"  "2.2.2.1"  "2.2.2"    "2.2.1"    "2.2"      "2.1.3"   </span>
-<span class="co">#&gt; [55] "2.1.2"    "2.1.1"    "2.1"      "2.0.6"    "2.0.5"    "2.0.4"   </span>
-<span class="co">#&gt; [61] "2.0.3"</span>
+<span class="co">#&gt;  [1] "nightly"  "2.18"     "2.17.1.1" "2.17.1"   "2.17.0.1" "2.17"    </span>
+<span class="co">#&gt;  [7] "2.16.2"   "2.16.1"   "2.16"     "2.15"     "2.14.2"   "2.14.1"  </span>
+<span class="co">#&gt; [13] "2.14.0.3" "2.14.0.2" "2.14.0.1" "2.14"     "2.13"     "2.12"    </span>
+<span class="co">#&gt; [19] "2.11.4"   "2.11.3.2" "2.11.3.1" "2.11.3"   "2.11.2"   "2.11.1.1"</span>
+<span class="co">#&gt; [25] "2.11.1"   "2.11.0.4" "2.11.0.2" "2.11.0.1" "2.11"     "2.10.1"  </span>
+<span class="co">#&gt; [31] "2.10"     "2.9.2.1"  "2.9.2"    "2.9.1.1"  "2.9.1"    "2.9"     </span>
+<span class="co">#&gt; [37] "2.8.1"    "2.8.0.1"  "2.8"      "2.7.3"    "2.7.2"    "2.7.1"   </span>
+<span class="co">#&gt; [43] "2.7"      "2.6"      "2.5"      "2.4"      "2.3.1"    "2.3"     </span>
+<span class="co">#&gt; [49] "2.2.3.2"  "2.2.3.1"  "2.2.2.1"  "2.2.2"    "2.2.1"    "2.2"     </span>
+<span class="co">#&gt; [55] "2.1.3"    "2.1.2"    "2.1.1"    "2.1"      "2.0.6"    "2.0.5"   </span>
+<span class="co">#&gt; [61] "2.0.4"    "2.0.3"</span>
 <span class="co"># Which is the latest version installed (nightly excluded)? </span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_latest</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "2.17.1.1"</span>
+<span class="co">#&gt; [1] "2.18"</span>
 <span class="co"># Is a specific version installed ? </span>
 <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_is_installed</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
@@ -201,12 +203,12 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Default to latest version installed</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.17.1.1' is now the active one.</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.18' is now the active one.</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span>
 <span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "~/.local/share/r-pandoc/2.17.1.1"</span>
+<span class="co">#&gt; [1] "~/.local/share/r-pandoc/2.18"</span>
 <span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">~/.local/share/r-pandoc/2.17.1.1/pandoc</span></span>
+<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">~/.local/share/r-pandoc/2.18/pandoc</span></span>
 
 <span class="co"># Activate specific version</span>
 <span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
@@ -337,7 +339,7 @@
 <span class="co">#&gt; [1] '2.11.4'</span>
 <span class="co"># Get version for a specific version</span>
 <span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span>
-<span class="co">#&gt; [1] '2.17.1.1'</span>
+<span class="co">#&gt; [1] '2.18.9999'</span>
 <span class="co"># Get version for a specific version</span>
 <span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span> <span class="co"># equivalent to pandoc_system_version()</span>
 <span class="co">#&gt; [1] '2.14.2'</span></code></pre></div>
