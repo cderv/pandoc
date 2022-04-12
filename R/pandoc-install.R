@@ -429,16 +429,13 @@ pandoc_uninstall <- function(version) {
 
 #' @importFrom rappdirs user_data_dir
 pandoc_home <- function(version = NULL) {
+  if (is_devmode() || on_rcmd_check() || !on_ci() && on_testthat()) {
+    old <- Sys.getenv("R_USER_DATA_DIR")
+    Sys.setenv(R_USER_DATA_DIR = tempdir())
+    on.exit(Sys.setenv(R_USER_DATA_DIR = old))
+  }
   rappdirs::user_data_dir("r-pandoc", version = version)
 }
-
-on_load({
-  if (is_devmode() || (!on_ci() && (on_testthat() || on_rcmd_check()))) {
-    # Change user data dir to tempdir in that case
-    # for pandoc_home() using rappdirs::user_data_dir()
-    Sys.setenv(R_USER_DATA_DIR = tempdir())
-  }
-})
 
 #' Fetch all versions available to install
 #'
