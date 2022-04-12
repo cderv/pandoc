@@ -143,11 +143,11 @@ pandoc_install_nightly <- function() {
   install_dir <- pandoc_home(version)
   rlang::inform(c(i = "Retrieving last available nightly informations..."))
   runs <- gh::gh("/repos/jgm/pandoc/actions/workflows/nightly.yml/runs",
-    .params = list(status = "success"),
-    .limit = 1L
+    .limit = 15L
   )
-  artifacts_url <- runs$workflow_runs[[1]][["artifacts_url"]]
-  head_sha <- runs$workflow_runs[[1]][["head_sha"]]
+  runs <- keep(runs$workflow_runs, ~ .x$conclusion == "success")
+  artifacts_url <- runs[[1]][["artifacts_url"]]
+  head_sha <- runs[[1]][["head_sha"]]
   artifacts <- gh::gh(artifacts_url)
   artifact_url <- keep(artifacts$artifacts, ~ .x$name == bundle_name)[[1]][["archive_download_url"]]
   if (fs::dir_exists(install_dir)) {
