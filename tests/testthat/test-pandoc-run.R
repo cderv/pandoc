@@ -7,7 +7,6 @@ test_that("pandoc_version()", {
 })
 
 test_that("pandoc_version() deals with nightly version", {
-  skip("pandoc devel reverted the change for now")
   skip_on_cran()
   skip_if_offline()
   suppressMessages(pandoc_install_nightly())
