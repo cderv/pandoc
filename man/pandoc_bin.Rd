@@ -2,9 +2,12 @@
 % Please edit documentation in R/pandoc-bin.R
 \name{pandoc_bin}
 \alias{pandoc_bin}
+\alias{pandoc_bin_browse}
 \title{Get path to the pandoc binary}
 \usage{
 pandoc_bin(version = "default")
+
+pandoc_bin_browse(version = "default")
 }
 \arguments{
 \item{version}{Version to use. Default will be the \code{"default"} version. Other possible value are
@@ -21,4 +24,8 @@ Absolute path to the pandoc binary of the requested version.
 }
 \description{
 Get path to the pandoc binary
+}
+\details{
+\code{pandoc_bin_browse()} allows to open in OS explorer the folder where
+\code{pandoc_bin()} is at, when in interactive mode only.
 }

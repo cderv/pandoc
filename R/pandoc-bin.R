@@ -39,6 +39,28 @@ pandoc_which_bin <- function(which = c("rstudio", "system")) {
   fs::as_fs_path(bin)
 }
 
+
+#' @details `pandoc_bin_browse()` allows to open in OS explorer the folder where
+#'   `pandoc_bin()` is at, when in interactive mode only.
+#'
+#' @rdname pandoc_bin
+pandoc_bin_browse <- function(version = "default") {
+  if (!rlang::is_interactive()) {
+    return(NULL)
+  }
+  bin <- pandoc_bin(version)
+  if (is.null(bin)) rlang::abort(paste0("Version ", version, " does not seem to be installed."))
+  bin_dir <- fs::path_dir(bin)
+  if (pandoc_os() == "windows") {
+    try(shell.exec(bin_dir))
+  } else if (pandoc_os() == "macOS") {
+    system(paste("open ", shQuote(bin_dir)))
+  } else {
+    system(paste("xdg-open ", shQuote(bin_dir)))
+  }
+  return(invisible(TRUE))
+}
+
 #' Retrieve path and version of Pandoc found on the system PATH
 #'
 #' Pandoc can also be installed on a system and available through the PATH.

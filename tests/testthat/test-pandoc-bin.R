@@ -44,3 +44,11 @@ test_that("pandoc_citeproc_bin()", {
   expect_match(pandoc_citeproc_bin("2.2.1"), "2.2.1", fixed = TRUE)
   expect_null(pandoc_citeproc_bin("2.11.4"))
 })
+
+test_that("pandoc_bin_browse()", {
+  expect_null(pandoc_bin_browse())
+  withr::with_options(
+    c(rlang_interactive = TRUE),
+    expect_error(pandoc_bin_browse("0.0.1"))
+  )
+})
