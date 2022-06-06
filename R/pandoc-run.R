@@ -6,7 +6,7 @@
 #' @param args Character vector, arguments to the pandoc CLI command
 #' @inheritParams pandoc_bin
 #'
-#' @return The output of [processx::run()] invisibly
+#' @return The output of running `pandoc` binary
 #' @export
 pandoc_run <- function(args, version = "default") {
   bin <- pandoc_bin(version)

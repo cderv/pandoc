@@ -19,7 +19,7 @@ pandoc_run(args, version = "default")
 }}
 }
 \value{
-The output of \code{\link[processx:run]{processx::run()}} invisibly
+The output of running \code{pandoc} binary
 }
 \description{
 This function is a thin wrapper around the pandoc binary and allow to pass
