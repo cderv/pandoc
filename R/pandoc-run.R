@@ -45,23 +45,33 @@ pandoc_version <- function(version = "default") {
 #' This is inspired from **withr** package.
 #'
 #' @inheritParams pandoc_activate
-#' @param code Code to execute with the temporaty active Pandoc version.
+#' @param code Code to execute with the temporary active Pandoc version.
 #'
 #' @return The results of the evaluation of the `code` argument.
 #' @export
-with_pandoc_version <- function(version, code, rmarkdown = FALSE) {
+with_pandoc_version <- function(version, code, rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE)) {
   old <- pandoc_activate(version, rmarkdown = rmarkdown, quiet = TRUE)
-  on.exit(pandoc_activate(old, rmarkdown = rmarkdown, quiet = TRUE))
+  on.exit({
+    pandoc_activate(old, rmarkdown = rmarkdown, quiet = TRUE)
+    if (rmarkdown) reset_rmarkdown_pandoc_version()
+  })
   force(code)
 }
 
 #' @rdname with_pandoc_version
 #' @param .local_envir The environment to use for scoping.
 #' @export
-local_pandoc_version <- function(version, rmarkdown = FALSE,
+local_pandoc_version <- function(version, rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE),
                                  .local_envir = parent.frame()) {
   rlang::check_installed("withr")
+
   old <- pandoc_activate(version, rmarkdown = rmarkdown, quiet = TRUE)
-  withr::defer(pandoc_activate(old, rmarkdown = rmarkdown, quiet = TRUE), envir = .local_envir)
+  withr::defer(
+    {
+      pandoc_activate(old, rmarkdown = rmarkdown, quiet = TRUE)
+      if (rmarkdown) reset_rmarkdown_pandoc_version()
+    },
+    envir = .local_envir
+  )
   invisible(old)
 }

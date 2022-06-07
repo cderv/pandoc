@@ -5,9 +5,17 @@
 \alias{local_pandoc_version}
 \title{Execute any code with a specific Pandoc version}
 \usage{
-with_pandoc_version(version, code, rmarkdown = FALSE)
+with_pandoc_version(
+  version,
+  code,
+  rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE)
+)
 
-local_pandoc_version(version, rmarkdown = FALSE, .local_envir = parent.frame())
+local_pandoc_version(
+  version,
+  rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE),
+  .local_envir = parent.frame()
+)
 }
 \arguments{
 \item{version}{This can be either:
@@ -17,11 +25,12 @@ local_pandoc_version(version, rmarkdown = FALSE, .local_envir = parent.frame())
 \item \code{"nightly"} for the last pandoc development built daily
 }}
 
-\item{code}{Code to execute with the temporaty active Pandoc version.}
+\item{code}{Code to execute with the temporary active Pandoc version.}
 
 \item{rmarkdown}{if \code{TRUE} (the default) and \strong{rmarkdown} is available, this
 will also set the pandoc version as the default one to use with
-\strong{rmarkdown} by calling \code{\link[rmarkdown:find_pandoc]{rmarkdown::find_pandoc()}}}
+\strong{rmarkdown} by calling \code{\link[rmarkdown:find_pandoc]{rmarkdown::find_pandoc()}}. Default behavior can
+be changed globally by setting option \code{pandoc.activate_rmarkdown}.}
 
 \item{.local_envir}{The environment to use for scoping.}
 }

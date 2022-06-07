@@ -4,7 +4,11 @@
 \alias{pandoc_activate}
 \title{Activate a specific Pandoc version to be used}
 \usage{
-pandoc_activate(version = "latest", rmarkdown = TRUE, quiet = FALSE)
+pandoc_activate(
+  version = "latest",
+  rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE),
+  quiet = FALSE
+)
 }
 \arguments{
 \item{version}{This can be either:
@@ -16,7 +20,8 @@ pandoc_activate(version = "latest", rmarkdown = TRUE, quiet = FALSE)
 
 \item{rmarkdown}{if \code{TRUE} (the default) and \strong{rmarkdown} is available, this
 will also set the pandoc version as the default one to use with
-\strong{rmarkdown} by calling \code{\link[rmarkdown:find_pandoc]{rmarkdown::find_pandoc()}}}
+\strong{rmarkdown} by calling \code{\link[rmarkdown:find_pandoc]{rmarkdown::find_pandoc()}}. Default behavior can
+be changed globally by setting option \code{pandoc.activate_rmarkdown}.}
 
 \item{quiet}{\code{TRUE} to suppress messages.}
 }
