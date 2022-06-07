@@ -31,7 +31,7 @@ pandoc_activate <- function(version = "latest", rmarkdown = TRUE, quiet = FALSE)
   version <- resolve_version(version)
   if (is.null(version) || version == "") {
     the$active_version <- ""
-    if (rmarkdown) pandoc_activate_rmarkdown(NULL, quiet)
+    version <- NULL
   } else {
     if (!pandoc_is_external_version(version)) {
       # check if a version is installed
@@ -42,8 +42,8 @@ pandoc_activate <- function(version = "latest", rmarkdown = TRUE, quiet = FALSE)
       rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
     }
 
-    if (rmarkdown) pandoc_activate_rmarkdown(version, quiet)
   }
+  if (rmarkdown) pandoc_activate_rmarkdown(version, quiet)
   invisible(old_active)
 }
 
