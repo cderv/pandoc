@@ -21,12 +21,13 @@
 #' @inheritParams pandoc_install
 #' @param rmarkdown if `TRUE` (the default) and **rmarkdown** is available, this
 #'   will also set the pandoc version as the default one to use with
-#'   **rmarkdown** by calling [rmarkdown::find_pandoc()]
+#'   **rmarkdown** by calling [rmarkdown::find_pandoc()]. Default behavior can
+#'   be changed globally by setting option `pandoc.activate_rmarkdown`.
 #' @param quiet `TRUE` to suppress messages.
 #'
 #' @return invisibly, the previous active version.
 #' @export
-pandoc_activate <- function(version = "latest", rmarkdown = TRUE, quiet = FALSE) {
+pandoc_activate <- function(version = "latest", rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE), quiet = FALSE) {
   old_active <- the$active_version
   version <- resolve_version(version)
   if (is.null(version) || version == "") {

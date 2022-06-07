@@ -49,8 +49,7 @@ pandoc_version <- function(version = "default") {
 #'
 #' @return The results of the evaluation of the `code` argument.
 #' @export
-with_pandoc_version <- function(version, code, rmarkdown = TRUE) {
-
+with_pandoc_version <- function(version, code, rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE)) {
   old <- pandoc_activate(version, rmarkdown = rmarkdown, quiet = TRUE)
   on.exit({
     pandoc_activate(old, rmarkdown = rmarkdown, quiet = TRUE)
@@ -62,7 +61,7 @@ with_pandoc_version <- function(version, code, rmarkdown = TRUE) {
 #' @rdname with_pandoc_version
 #' @param .local_envir The environment to use for scoping.
 #' @export
-local_pandoc_version <- function(version, rmarkdown = TRUE,
+local_pandoc_version <- function(version, rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE),
                                  .local_envir = parent.frame()) {
   rlang::check_installed("withr")
 
