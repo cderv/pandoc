@@ -26,9 +26,15 @@ pandoc_run <- function(args, version = "default") {
 
 #' Get Pandoc version
 #'
-#' This is equivalent to `pandoc --version`
+#' This is calling `pandoc --version` to retrieve the version of Pandoc used. A
+#' special treatment is done for _nightly_ version as Pandoc project does not
+#' use a development version scheme between released versions. This function
+#' will add a `.9999` suffix to the version reported by Pandoc.
 #'
 #' @inheritParams pandoc_run
+#'
+#' @return The version number for `pandoc` binary as a [base::numeric_version()] object.
+#'
 #' @export
 pandoc_version <- function(version = "default") {
   out <- pandoc_run("--version", version = version)

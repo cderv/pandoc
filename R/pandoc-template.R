@@ -48,6 +48,9 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
 #' @param output Path where to export the file. Default to working directory
 #'   with the same file name.
 #' @inheritParams pandoc_run
+#'
+#' @return the `output` (invisibly) where export has been done
+#'
 #' @export
 pandoc_export_data_file <- function(file, output = file, version = "default") {
   if (rlang::is_missing(file)) {
@@ -99,6 +102,8 @@ pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "def
 #'   file. By default, the file will be located in working directory and named
 #'   based on the parameter `style` (i.e `<style>.theme`).
 #' @inheritParams pandoc_run
+#'
+#' @return the filename where the theme has been exported.
 #'
 #' @export
 pandoc_export_highlight_theme <- function(style = "pygments", output = style, version = "default") {

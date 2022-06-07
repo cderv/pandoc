@@ -78,7 +78,7 @@ pandoc_list_extensions <- function(format = "markdown", version = "default") {
 #'
 #' @inheritParams pandoc_run
 #'
-#' @return a character vector of supported highligting style name to use.
+#' @return a character vector of supported highlighting style name to use.
 #'
 #' @export
 pandoc_list_highlight_style <- function(version = "default") {

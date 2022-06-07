@@ -42,6 +42,10 @@ This corresponds to \href{https://pandoc.org/MANUAL.html#option--standalone}{\co
 \item Pandoc binary found in PATH with \code{"system"}
 }}
 }
+\value{
+\code{output} is provided, the absolute file path. If not, the output of
+\code{pandoc} binary run.
+}
 \description{
 Main usage of Pandoc is to convert some text from a format into another.
 This function will do just that:

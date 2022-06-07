@@ -16,6 +16,12 @@ pandoc_version(version = "default")
 \item Pandoc binary found in PATH with \code{"system"}
 }}
 }
+\value{
+The version number for \code{pandoc} binary as a \code{\link[base:numeric_version]{base::numeric_version()}} object.
+}
 \description{
-This is equivalent to \code{pandoc --version}
+This is calling \code{pandoc --version} to retrieve the version of Pandoc used. A
+special treatment is done for \emph{nightly} version as Pandoc project does not
+use a development version scheme between released versions. This function
+will add a \code{.9999} suffix to the version reported by Pandoc.
 }

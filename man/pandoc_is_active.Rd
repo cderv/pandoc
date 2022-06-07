@@ -14,6 +14,12 @@ pandoc_is_active(version)
 \item \code{"nightly"} for the last pandoc development built daily
 }}
 }
+\value{
+\code{TRUE} is the \code{version} provided is currently the active one (i.e the one used when special \code{"default"} keyword is used).
+}
 \description{
 Is a pandoc version active ?
+}
+\seealso{
+\code{\link[=pandoc_bin]{pandoc_bin()}}
 }
