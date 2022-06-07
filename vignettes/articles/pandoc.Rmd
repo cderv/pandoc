@@ -169,19 +169,18 @@ with_pandoc_version("2.11.4", {
 # with rmarkdown package functions
 rmarkdown::pandoc_version()
 
-# won't work by default as ...
+# It will also activate version for rmarkdown
 with_pandoc_version("2.11.4", {
   rmarkdown::pandoc_version()
 })
 
-# ...rmarkdown = TRUE needs to be  set to use with rmarkdown package functions
-with_pandoc_version("2.11.4", rmarkdown = TRUE, {
-  rmarkdown::pandoc_version()
-})
-with_pandoc_version("2.7.3", rmarkdown = TRUE, {
+# rmarkdown = FALSE can be set if not desired
+with_pandoc_version("2.11.4", rmarkdown = FALSE, {
   rmarkdown::pandoc_version()
 })
 ```
+
+Default behavior for `local_pandoc_version()` and `with_pandoc_version()` is determined by option `pandoc.activate_rmarkdown`.
 
 ```{r, include=FALSE}
 # restore rmarkdown's pandoc
