@@ -12,6 +12,12 @@ This package can also be useful to advanced developers that are working around P
 
 ## Installation
 
+Install from CRAN:
+
+``` r
+install.packages("pandoc")
+```
+
 The development version can be install from [GitHub](https://github.com/) with:
 
 ``` r

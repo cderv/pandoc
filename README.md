@@ -42,6 +42,12 @@ around Pandoc through **rmarkdown** or not.
 
 ## Installation
 
+Install from CRAN:
+
+``` r
+install.packages("pandoc")
+```
+
 The development version can be install from
 [GitHub](https://github.com/) with:
 
@@ -72,7 +78,7 @@ Most functions follows these following rules:
 Available functions allows:
 
 -   Installing / Uninstalling specific Pandoc version from ‘2.0.3’ to
-    ‘2.17.1.1’ , including development version of Pandoc.
+    ‘2.18’ , including development version of Pandoc.
     -   `pandoc_install()`, `pandoc_install_nightly()`,
         `pandoc_uninstall()`, …
 -   Switching Pandoc version by activating a specific one or running any
@@ -106,14 +112,14 @@ Available functions allows:
 library(pandoc)
 # Install version
 pandoc_install("2.7.3")
-#> √ Pandoc 2.7.3 already installed.
+#> ✔ Pandoc 2.7.3 already installed.
 #>   Use 'force = TRUE' to overwrite.
 pandoc_install("2.11.4")
-#> √ Pandoc 2.11.4 already installed.
+#> ✔ Pandoc 2.11.4 already installed.
 #>   Use 'force = TRUE' to overwrite.
 # Highest install is used
 pandoc_version()
-#> [1] '2.17.1.1'
+#> [1] '2.18'
 ```
 
 See detailed examples in [Get started](articles/pandoc.html).
