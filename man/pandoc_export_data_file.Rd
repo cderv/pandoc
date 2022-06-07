@@ -26,6 +26,9 @@ with the same file name.}
 
 \item{type}{one of \code{docx} or \code{pptx} depending on the reference doc to export.}
 }
+\value{
+the \code{output} (invisibly) where export has been done
+}
 \description{
 This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-default-data-file}{\code{--print-default-data-file} CLI flag} using
 also \code{--output} to write a export a data file built in Pandoc.

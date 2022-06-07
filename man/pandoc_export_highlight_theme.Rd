@@ -26,6 +26,9 @@ based on the parameter \code{style} (i.e \verb{<style>.theme}).}
 \item Pandoc binary found in PATH with \code{"system"}
 }}
 }
+\value{
+the filename where the theme has been exported.
+}
 \description{
 Pandoc highlighting can be customize using a JSON \code{.theme} file, passed to
 \href{https://pandoc.org/MANUAL.html#option--highlight-style}{\verb{--highlight-style=} flag}. This function

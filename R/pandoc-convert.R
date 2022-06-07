@@ -22,6 +22,9 @@
 #'   <https://pandoc.org/MANUAL.html#options>
 #' @inheritParams pandoc_run
 #'
+#' @return `output` is provided, the absolute file path. If not, the output of
+#'   `pandoc` binary run.
+#'
 #' @export
 pandoc_convert <- function(file = NULL,
                            text = NULL,

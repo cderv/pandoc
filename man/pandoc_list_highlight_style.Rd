@@ -17,7 +17,7 @@ pandoc_list_highlight_style(version = "default")
 }}
 }
 \value{
-a character vector of supported highligting style name to use.
+a character vector of supported highlighting style name to use.
 }
 \description{
 Pandoc includes a highlighter which offer a styling mechanism to specify the

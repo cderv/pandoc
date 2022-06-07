@@ -400,6 +400,8 @@ pandoc_is_installed <- function(version, error = FALSE, ask = FALSE) {
 #'
 #' @param version which version to uninstalled.
 #'
+#' @return `TRUE` (invisibly) if uninstallation is sucesfull.
+#'
 #' @seealso [pandoc_install()]
 #'
 #' @export
@@ -462,6 +464,10 @@ pandoc_is_external_version <- function(version) {
 #' Is a pandoc version active ?
 #'
 #' @inheritParams pandoc_install
+#'
+#' @return `TRUE` is the `version` provided is currently the active one (i.e the one used when special `"default"` keyword is used).
+#'
+#' @seealso [`pandoc_bin()`]
 #'
 #' @export
 pandoc_is_active <- function(version) {
