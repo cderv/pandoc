@@ -123,7 +123,10 @@
 <code class="sourceCode R"><span class="co"># install the nightly version (overwrites previous one)</span>
 <span class="fu"><a href="../reference/pandoc_install.html">pandoc_install_nightly</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># or pandoc_install("nightly")</span>
 <span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last version already installed: 9d268e56ed85249b002b6afed4af944e9e89348d</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Removing old Pandoc nightly version 9d268e56ed85249b002b6afed4af944e9e89348d</span>
+<span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span>
+<span class="co">#&gt;   Downloading bundle...</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 39fdf08fccc2ddea31423161f98865c5ace83749</span></code></pre></div>
 <p>All those versions can live together and are installed in an isolated directory in user’s data folders.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Which version are currently installed ? </span>
@@ -294,23 +297,20 @@
 
 <span class="co"># with rmarkdown package functions</span>
 <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] '2.7.3'</span>
+<span class="co">#&gt; [1] '2.11.4'</span>
 
-<span class="co"># won't work by default as ...</span>
+<span class="co"># It will also activate version for rmarkdown</span>
 <span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, <span class="op">{</span>
   <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; [1] '2.7.3'</span>
-
-<span class="co"># ...rmarkdown = TRUE needs to be  set to use with rmarkdown package functions</span>
-<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, rmarkdown <span class="op">=</span> <span class="cn">TRUE</span>, <span class="op">{</span>
-  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">}</span><span class="op">)</span>
 <span class="co">#&gt; [1] '2.11.4'</span>
-<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.7.3"</span>, rmarkdown <span class="op">=</span> <span class="cn">TRUE</span>, <span class="op">{</span>
+
+<span class="co"># rmarkdown = FALSE can be set if not desired</span>
+<span class="fu"><a href="../reference/with_pandoc_version.html">with_pandoc_version</a></span><span class="op">(</span><span class="st">"2.11.4"</span>, rmarkdown <span class="op">=</span> <span class="cn">FALSE</span>, <span class="op">{</span>
   <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
-<span class="co">#&gt; [1] '2.7.3'</span></code></pre></div>
+<span class="co">#&gt; [1] '2.11.4'</span></code></pre></div>
+<p>Default behavior for <code><a href="../reference/with_pandoc_version.html">local_pandoc_version()</a></code> and <code><a href="../reference/with_pandoc_version.html">with_pandoc_version()</a></code> is determined by option <code>pandoc.activate_rmarkdown</code>.</p>
 </div>
 <div class="section level3">
 <h3 id="check-if-a-pandoc-version-is-available">Check if a pandoc version is available<a class="anchor" aria-label="anchor" href="#check-if-a-pandoc-version-is-available"></a>
