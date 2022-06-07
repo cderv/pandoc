@@ -13,3 +13,4 @@
 ^vignettes/articles$
 ^docs$
 ^github-cache\.rds$
+^cran-comments\.md$
