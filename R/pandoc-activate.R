@@ -51,15 +51,18 @@ pandoc_activate_rmarkdown <- function(version, quiet = TRUE) {
   if (!rlang::is_installed("rmarkdown")) {
     return(NULL)
   }
-
-  res <- rmarkdown::find_pandoc(
+  current <- rmarkdown::find_pandoc()
+  new <- rmarkdown::find_pandoc(
     cache = FALSE,
     dir = if (!is.null(version)) fs::path_dir(pandoc_bin(version))
   )
   if (!quiet) {
     rlang::inform(c(i = "Pandoc version also activated for rmarkdown functions."))
   }
-  res
+  list(
+    old = current,
+    new = new
+  )
 }
 
 #' Check if active Pandoc version meet a requirement
