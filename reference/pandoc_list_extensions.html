@@ -70,6 +70,8 @@ extensions than can be activated.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>format</dt>
 <dd><p>One for the supported  <code>input</code> or <code>output</code> formats. See <code><a href="pandoc_list_formats.html">pandoc_list_formats()</a></code>. It corresponds to call</p></dd>
+
+
 <dt>version</dt>
 <dd><p>Version to use. Default will be the <code>"default"</code> version. Other possible value are</p><ul><li><p>A version number e.g <code>"2.14.1"</code></p></li>
 <li><p>The nightly version called <code>"nightly"</code></p></li>
@@ -77,10 +79,13 @@ extensions than can be activated.</p>
 <li><p>Pandoc binary shipped with RStudio IDE with <code>"rstudio"</code></p></li>
 <li><p>Pandoc binary found in PATH with <code>"system"</code></p></li>
 </ul></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a data.frame (or a tibble if available) with 3 colums:</p><ul><li><p><code>format</code>: One of the Pandoc format</p></li>
+    
+
+<p>a data.frame (or a tibble if available) with 3 colums:</p><ul><li><p><code>format</code>: One of the Pandoc format</p></li>
 <li><p><code>extensions</code> : name of the extensions</p></li>
 <li><p><code>default</code>: Is the extensions activated by default or not ?</p></li>
 </ul></div>
@@ -99,7 +104,7 @@ extensions than can be activated.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>

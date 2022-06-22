@@ -70,12 +70,17 @@ version.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>min</dt>
 <dd><p>Minimum version expected.</p></dd>
+
+
 <dt>max</dt>
 <dd><p>Maximum version expected</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>logical. <code>TRUE</code> if requirement is met, <code>FALSE</code> otherwise.</p>
+    
+
+<p>logical. <code>TRUE</code> if requirement is met, <code>FALSE</code> otherwise.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -85,6 +90,23 @@ both), it will check for an active version and return <code>FALSE</code> if none
 active.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Is there an active version available ?</span></span>
+<span class="r-in"><span class="fu">pandoc_available</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
+<span class="r-in"><span class="co"># check for a minimum requirement</span></span>
+<span class="r-in"><span class="fu">pandoc_available</span><span class="op">(</span>min <span class="op">=</span> <span class="st">"2.11"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
+<span class="r-in"><span class="co"># check for a maximum version</span></span>
+<span class="r-in"><span class="fu">pandoc_available</span><span class="op">(</span>max <span class="op">=</span> <span class="st">"2.18"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
+<span class="r-in"><span class="co"># only returns TRUE if Pandoc version is between two bounds</span></span>
+<span class="r-in"><span class="fu">pandoc_available</span><span class="op">(</span>min <span class="op">=</span> <span class="st">"2.11"</span>, max <span class="op">=</span> <span class="st">"2.12"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-in"></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
@@ -94,7 +116,7 @@ active.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>
