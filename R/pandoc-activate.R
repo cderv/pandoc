@@ -26,6 +26,15 @@
 #' @param quiet `TRUE` to suppress messages.
 #'
 #' @return invisibly, the previous active version.
+#'
+#' @examples
+#' \dontrun{
+#' # activate version 2.18, including for use with rmarkdown package
+#' pandoc_activate("2.18")
+#'
+#' # activate only for this package functions
+#' pandoc_activate("2.18", rmarkdown = FALSE)
+#' }
 #' @export
 pandoc_activate <- function(version = "latest", rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE), quiet = FALSE) {
   old_active <- the$active_version
@@ -102,6 +111,16 @@ reset_rmarkdown_pandoc_version <- function() {
 #' @param max Maximum version expected
 #'
 #' @return logical. `TRUE` if requirement is met, `FALSE` otherwise.
+#'
+#' @examples
+#' # Is there an active version available ?
+#' pandoc_available()
+#' # check for a minimum requirement
+#' pandoc_available(min = "2.11")
+#' # check for a maximum version
+#' pandoc_available(max = "2.18")
+#' # only returns TRUE if Pandoc version is between two bounds
+#' pandoc_available(min = "2.11", max = "2.12")
 #'
 #' @export
 pandoc_available <- function(min = NULL, max = NULL) {

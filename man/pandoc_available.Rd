@@ -25,3 +25,14 @@ in-between two versions. If non is provided (keeping the default \code{NULL} for
 both), it will check for an active version and return \code{FALSE} if none is
 active.
 }
+\examples{
+# Is there an active version available ?
+pandoc_available()
+# check for a minimum requirement
+pandoc_available(min = "2.11")
+# check for a maximum version
+pandoc_available(max = "2.18")
+# only returns TRUE if Pandoc version is between two bounds
+pandoc_available(min = "2.11", max = "2.12")
+
+}

@@ -48,3 +48,12 @@ binary found between:
 }
 }
 
+\examples{
+\dontrun{
+# activate version 2.18, including for use with rmarkdown package
+pandoc_activate("2.18")
+
+# activate only for this package functions
+pandoc_activate("2.18", rmarkdown = FALSE)
+}
+}

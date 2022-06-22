@@ -14,3 +14,6 @@ pandoc_system_bin()
 Pandoc can also be installed on a system and available through the PATH.
 Theses function are helper to easily use this specific version.
 }
+\seealso{
+\code{\link[=pandoc_version]{pandoc_version()}}, \code{\link[=pandoc_bin]{pandoc_bin()}}
+}

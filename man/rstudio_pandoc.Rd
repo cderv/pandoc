@@ -14,3 +14,6 @@ pandoc_rstudio_bin()
 RStudio IDE ships with a pandoc binary. The PATH is stored in \code{RSTUDIO_PANDOC}
 environment variable. Theses function are helper to easily use this specific version.
 }
+\seealso{
+\code{\link[=pandoc_version]{pandoc_version()}}, \code{\link[=pandoc_bin]{pandoc_bin()}}
+}
