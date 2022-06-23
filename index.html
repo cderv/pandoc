@@ -85,8 +85,11 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>The development version can be install from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>Install from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pandoc"</span><span class="op">)</span></code></pre></div>
+<p>The development version can be install from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"cderv/pandoc"</span><span class="op">)</span>
 
@@ -105,7 +108,7 @@
 </ul>
 <p>Available functions allows:</p>
 <ul>
-<li>Installing / Uninstalling specific Pandoc version from ‘2.0.3’ to ‘2.17.1.1’ , including development version of Pandoc.<ul><li>
+<li>Installing / Uninstalling specific Pandoc version from ‘2.0.3’ to ‘2.18’ , including development version of Pandoc.<ul><li>
 <code><a href="reference/pandoc_install.html">pandoc_install()</a></code>, <code><a href="reference/pandoc_install.html">pandoc_install_nightly()</a></code>, <code><a href="reference/pandoc_uninstall.html">pandoc_uninstall()</a></code>, …</li></ul>
 </li>
 <li>Switching Pandoc version by activating a specific one or running any function with a specific Pandoc version using <code>version=</code> argument.<ul><li>
@@ -131,18 +134,18 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cderv/pandoc" class="external-link">pandoc</a></span><span class="op">)</span>
 <span class="co"># Install version</span>
 <span class="fu"><a href="reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.7.3"</span><span class="op">)</span>
-<span class="co">#&gt; √ Pandoc 2.7.3 already installed.</span>
+<span class="co">#&gt; ✔ Pandoc 2.7.3 already installed.</span>
 <span class="co">#&gt;   Use 'force = TRUE' to overwrite.</span>
 <span class="fu"><a href="reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span>
-<span class="co">#&gt; √ Pandoc 2.11.4 already installed.</span>
+<span class="co">#&gt; ✔ Pandoc 2.11.4 already installed.</span>
 <span class="co">#&gt;   Use 'force = TRUE' to overwrite.</span>
 <span class="co"># Highest install is used</span>
 <span class="fu"><a href="reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] '2.17.1.1'</span></code></pre></div>
+<span class="co">#&gt; [1] '2.18'</span></code></pre></div>
 <p>See detailed examples in <a href="articles/pandoc.html">Get started</a>.</p>
 </div>
 <div class="section level2">
