@@ -122,7 +122,8 @@ pandoc_version()
 #> [1] '2.18'
 ```
 
-See detailed examples in [Get started](articles/pandoc.html).
+See detailed examples in [Get
+started](https://cderv.github.io/pandoc/articles/pandoc.html).
 
 ## Code of Conduct
 

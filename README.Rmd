@@ -92,7 +92,7 @@ pandoc_install("2.11.4")
 pandoc_version()
 ```
 
-See detailed examples in [Get started](articles/pandoc.html).
+See detailed examples in [Get started](https://cderv.github.io/pandoc/articles/pandoc.html).
 
 ## Code of Conduct
 
