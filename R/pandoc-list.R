@@ -4,7 +4,7 @@
 #'   `--list-input-formats` and `--list-output-formats` respectively.
 #' @inheritParams pandoc_run
 #'
-#' @return a data.frame (or a tibble if available) with 2 colums:
+#' @return a data.frame (or a tibble if available) with 2 column:
 #'    * `type` (input or output)
 #'    * `formats` (name of the formats that can be used as input or output)
 #'
@@ -42,7 +42,7 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
 #' @param format One for the supported  `input` or `output` formats. See [pandoc_list_formats()]. It corresponds to call
 #' @inheritParams pandoc_run
 #'
-#' @return a data.frame (or a tibble if available) with 3 colums:
+#' @return a data.frame (or a tibble if available) with 3 columns:
 #'    * `format`: One of the Pandoc format
 #'    * `extensions` : name of the extensions
 #'    * `default`: Is the extensions activated by default or not ?
@@ -108,7 +108,7 @@ pandoc_list_highlight_languages <- function(version = "default") {
 #' List system default abbreviations
 #'
 #' Pandoc uses this list in the Markdown reader. Strings found in this list will
-#' be followed by a nonbreaking space, and the period will not produce
+#' be followed by a non-breaking space, and the period will not produce
 #' sentence-ending space in formats like LaTeX. The strings may not contain
 #' spaces.
 #'

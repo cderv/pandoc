@@ -10,7 +10,7 @@ pandoc_uninstall(version)
 \item{version}{which version to uninstalled.}
 }
 \value{
-\code{TRUE} (invisibly) if uninstallation is sucesfull.
+\code{TRUE} (invisibly) if uninstalling is successful.
 }
 \description{
 You can run \code{\link[=pandoc_installed_versions]{pandoc_installed_versions()}} to see which versions are

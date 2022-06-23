@@ -21,7 +21,7 @@ Path of Pandoc binaries root folder if version is available.
 }
 \description{
 This package helps install and manage Pandoc binaries in a specific folder.
-This function helps with finding the path to thoses specific version of Pandoc.
+This function helps with finding the path to those specific versions of Pandoc.
 See \code{\link[=pandoc_bin]{pandoc_bin()}} for another way of getting paths to \code{pandoc} binaries
 }
 \seealso{

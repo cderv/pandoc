@@ -12,15 +12,14 @@ knitr::opts_template$set(quiet.rlang = list(
 ))
 ```
 
-## Why compare Pandoc versions ? 
 
-One of the aim for this package is to help dealing with Pandoc changes over time. Pandoc is a project which has often some breaking change between versions. However, tools like R Markdown aims to work with any Pandoc versions, and hide those changes for the user by insure backward compatibility and adjustement toward new features. 
+One of the aim for this package is to help dealing with Pandoc changes over time. Pandoc is a project which has often some breaking change between versions. However, tools like R Markdown aims to work with any Pandoc versions, and hide those changes for the user by insure backward compatibility and adjustment toward new features. 
 
 Dealing with this can require to compare versions and now when a change occurs. 
 
 ## Use Case 1: Finding which version introduced a change
 
-Let's take the example of a change in Pandoc regaring `gfm` format: It appears at some point that raw HTML `<span></span>` was removed during conversion. When does this happened ? Let's take a look. 
+Let's take the example of a change in Pandoc regarding `gfm` format: It appears at some point that raw HTML `<span></span>` was removed during conversion. When does this happened ? Let's take a look. 
 
 For that, we want to convert `"This is a <span>Span</span>."` to `gfm` format and look for the max version that keep the raw HTML `<span>` in its markdown output.
 

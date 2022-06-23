@@ -34,8 +34,8 @@ This explains the needs for a more focused tooling to:
     finding where a bug comes from.
 -   Retrieve information from Pandoc directly. Each version comes with
     changes and some of them are included into the binary. Being able to
-    retrieve those informationss and compare between versions is
-    important to help maintain the user exposed tooling.
+    retrieve those information and compare between versions is important
+    to help maintain the user exposed tooling.
 
 This package can also be useful to advanced developers that are working
 around Pandoc through **rmarkdown** or not.

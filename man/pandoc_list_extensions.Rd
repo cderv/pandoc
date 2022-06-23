@@ -19,7 +19,7 @@ pandoc_list_extensions(format = "markdown", version = "default")
 }}
 }
 \value{
-a data.frame (or a tibble if available) with 3 colums:
+a data.frame (or a tibble if available) with 3 columns:
 \itemize{
 \item \code{format}: One of the Pandoc format
 \item \code{extensions} : name of the extensions

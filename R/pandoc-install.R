@@ -400,7 +400,7 @@ pandoc_is_installed <- function(version, error = FALSE, ask = FALSE) {
 #'
 #' @param version which version to uninstalled.
 #'
-#' @return `TRUE` (invisibly) if uninstallation is sucesfull.
+#' @return `TRUE` (invisibly) if uninstalling is successful.
 #'
 #' @seealso [pandoc_install()]
 #'
@@ -433,6 +433,7 @@ pandoc_uninstall <- function(version) {
 }
 
 #' @importFrom rappdirs user_data_dir
+#' @noRd
 pandoc_home <- function(version = NULL) {
   if (is_devmode() || on_rcmd_check()) {
     old <- Sys.getenv("R_USER_DATA_DIR")
@@ -478,7 +479,7 @@ pandoc_is_active <- function(version) {
 #' Locate a specific Pandoc version installed with this package
 #'
 #' This package helps install and manage Pandoc binaries in a specific folder.
-#' This function helps with finding the path to thoses specific version of Pandoc.
+#' This function helps with finding the path to those specific versions of Pandoc.
 #' See [pandoc_bin()] for another way of getting paths to `pandoc` binaries
 #'
 #' @inheritParams pandoc_bin

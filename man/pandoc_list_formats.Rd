@@ -20,7 +20,7 @@ pandoc_list_formats(type = c("input", "output"), version = "default")
 }}
 }
 \value{
-a data.frame (or a tibble if available) with 2 colums:
+a data.frame (or a tibble if available) with 2 column:
 \itemize{
 \item \code{type} (input or output)
 \item \code{formats} (name of the formats that can be used as input or output)

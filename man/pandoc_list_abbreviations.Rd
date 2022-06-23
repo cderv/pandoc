@@ -21,7 +21,7 @@ a character version of system default abbreviation known by Pandoc
 }
 \description{
 Pandoc uses this list in the Markdown reader. Strings found in this list will
-be followed by a nonbreaking space, and the period will not produce
+be followed by a non-breaking space, and the period will not produce
 sentence-ending space in formats like LaTeX. The strings may not contain
 spaces.
 }

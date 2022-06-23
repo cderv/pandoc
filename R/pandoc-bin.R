@@ -80,6 +80,10 @@ pandoc_bin_browse <- function(version = "default") {
 #' Pandoc can also be installed on a system and available through the PATH.
 #' Theses function are helper to easily use this specific version.
 #'
+#'
+#' @return `pandoc_system_version()` returns the version number for `pandoc` binary found in PATH as a [base::numeric_version()] object.
+#'
+#'
 #' @seealso [pandoc_version()], [pandoc_bin()]
 #' @name system_pandoc
 #' @export
@@ -88,14 +92,18 @@ pandoc_system_version <- function() {
 }
 
 #' @rdname system_pandoc
+#' @return `pandoc_system_bin()` returns absolute path to the `pandoc` binary found in PATH.
+#' @export
 pandoc_system_bin <- function() {
   pandoc_bin(version = "system")
 }
 
 #' Retrieve path and version of Pandoc shipped with RStudio
 #'
-#' RStudio IDE ships with a pandoc binary. The PATH is stored in `RSTUDIO_PANDOC`
+#' RStudio IDE ships with a pandoc binary. The path is stored in `RSTUDIO_PANDOC`
 #' environment variable. Theses function are helper to easily use this specific version.
+#'
+#' @return `pandoc_rstudio_version()` returns the version number for `pandoc` binary used by RStudio IDE as a [base::numeric_version()] object.
 #'
 #' @seealso [pandoc_version()], [pandoc_bin()]
 #' @export
@@ -105,6 +113,8 @@ pandoc_rstudio_version <- function() {
 }
 
 #' @rdname rstudio_pandoc
+#' @return `pandoc_system_bin()` returns absolute path to the `pandoc` binary used by RStudio IDE.
+#' @export
 pandoc_rstudio_bin <- function() {
   pandoc_bin(version = "rstudio")
 }

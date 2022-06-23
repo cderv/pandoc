@@ -10,6 +10,11 @@ pandoc_system_version()
 
 pandoc_system_bin()
 }
+\value{
+\code{pandoc_system_version()} returns the version number for \code{pandoc} binary found in PATH as a \code{\link[base:numeric_version]{base::numeric_version()}} object.
+
+\code{pandoc_system_bin()} returns absolute path to the \code{pandoc} binary found in PATH.
+}
 \description{
 Pandoc can also be installed on a system and available through the PATH.
 Theses function are helper to easily use this specific version.

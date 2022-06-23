@@ -10,8 +10,13 @@ pandoc_rstudio_version()
 
 pandoc_rstudio_bin()
 }
+\value{
+\code{pandoc_rstudio_version()} returns the version number for \code{pandoc} binary used by RStudio IDE as a \code{\link[base:numeric_version]{base::numeric_version()}} object.
+
+\code{pandoc_system_bin()} returns absolute path to the \code{pandoc} binary used by RStudio IDE.
+}
 \description{
-RStudio IDE ships with a pandoc binary. The PATH is stored in \code{RSTUDIO_PANDOC}
+RStudio IDE ships with a pandoc binary. The path is stored in \code{RSTUDIO_PANDOC}
 environment variable. Theses function are helper to easily use this specific version.
 }
 \seealso{
