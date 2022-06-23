@@ -7,7 +7,7 @@ Authors@R: c(
     person("RStudio", role = c("cph", "fnd"))
   )
 Description: Provides a set of tools to install, manage and run several
-    Pandoc versions.
+    'Pandoc' versions.
 License: MIT + file LICENSE
 URL: https://github.com/cderv/pandoc,
     https://cderv.github.io/pandoc/
