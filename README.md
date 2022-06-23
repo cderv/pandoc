@@ -62,9 +62,11 @@ pak::pak("cderv/pandoc")
 ## Usage
 
 All functions are prefixed with `pandoc_` and you will find below their
-main usage. See [Get started](articles/pandoc.html) for usage examples
-and [Reference](reference/index.html) page for full details of
-functions.
+main usage. See [Get
+started](https://cderv.github.io/pandoc/articles/pandoc.html) for usage
+examples and
+[Reference](https://cderv.github.io/pandoc/reference/index.html) page
+for full details of functions.
 
 Most functions follows these following rules:
 
