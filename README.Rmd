@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/pandoc)](https://CRAN.R-project.org/package=pandoc)
+status](https://www.r-pkg.org/badges/version/pandoc)](https://github.com/cderv/pandoc)
 [![R-CMD-check](https://github.com/cderv/pandoc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cderv/pandoc/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/cderv/pandoc/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cderv/pandoc?branch=main)
@@ -61,7 +61,7 @@ Available functions allows:
     -   `pandoc_activate()` , `with_pandoc()` , ....
 -   Managing locally installed version of Pandoc as versions installed
     by this package are located within one folder per version in a
-    user’s data directory.
+    user's data directory.
     -   `pandoc_installed_versions()` , `pandoc_installed_latest` ,
         `pandoc::pandoc_is_installed()` , `pandoc_locate()`,
         `pandoc_available()`, ...

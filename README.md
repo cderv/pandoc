@@ -8,7 +8,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/pandoc)](https://CRAN.R-project.org/package=pandoc)
+status](https://www.r-pkg.org/badges/version/pandoc)](https://github.com/cderv/pandoc)
 [![R-CMD-check](https://github.com/cderv/pandoc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cderv/pandoc/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/cderv/pandoc/branch/main/graph/badge.svg)](https://app.codecov.io/gh/cderv/pandoc?branch=main)
