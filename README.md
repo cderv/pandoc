@@ -127,5 +127,5 @@ See detailed examples in [Get started](articles/pandoc.html).
 ## Code of Conduct
 
 Please note that the **pandoc** project is released with a [Contributor
-Code of Conduct](https://r-pkg-pandoc.netlify.app/CODE_OF_CONDUCT.html).
+Code of Conduct](https://cderv.github.io/pandoc/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
