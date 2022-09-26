@@ -45,6 +45,7 @@ also \code{--output} to write a export a data file built in Pandoc.
 }
 \examples{
 \dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{withr::local_dir(withr::local_tempdir())}
 # export tango theme used by Pandoc highlighting to `tango.theme` file
 pandoc_export_highlight_theme("tango")
 pandoc_export_highlight_theme("pygments", output = "my_theme.theme")
