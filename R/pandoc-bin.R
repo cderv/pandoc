@@ -52,6 +52,7 @@ pandoc_which_bin <- function(which = c("rstudio", "system")) {
 #' @examples
 #' pandoc_bin_browse("2.18")
 #' @rdname pandoc_bin
+#' @export
 pandoc_bin_browse <- function(version = "default") {
   if (!rlang::is_interactive()) {
     return(NULL)
