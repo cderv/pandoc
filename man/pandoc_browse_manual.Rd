@@ -16,6 +16,7 @@ Open the Pandoc's MANUAL
 Open Pandoc's MANUAL
 }
 \examples{
+\dontshow{withr::local_options(list(rlang_interactive = FALSE))}
 # open MANUAL home page
 pandoc_browse_manual()
 # open MANUAL at math part

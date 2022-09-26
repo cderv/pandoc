@@ -18,6 +18,7 @@ Open the webpage at the place regarding the required option
 Open Pandoc's documentation about a command line option
 }
 \examples{
+\dontshow{withr::local_options(list(rlang_interactive = FALSE))}
 pandoc_browse_option()
 pandoc_browse_option("embed-resources")
 }

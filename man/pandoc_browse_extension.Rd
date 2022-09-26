@@ -19,6 +19,7 @@ Open the webpage at the place regarding the required extension.
 Open Pandoc's documentation about an extension
 }
 \examples{
+\dontshow{withr::local_options(list(rlang_interactive = FALSE))}
 pandoc_browse_extension()
 pandoc_browse_extension("auto_identifiers")
 }
