@@ -51,8 +51,12 @@ pandoc_browse_manual <- function(id = NULL) {
 #'
 #' @return Open the webpage at the place regarding the required extension.
 #' @export
-pandoc_browse_extension <- function(extension) {
-  id <- paste0("extension-", extension)
+pandoc_browse_extension <- function(extension = NULL) {
+  id <- if (is.null(extension)) {
+    "extensions"
+  } else {
+    paste0("extension-", extension)
+  }
   pandoc_browse_manual(id)
 }
 
