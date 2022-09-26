@@ -29,3 +29,11 @@ the output (invisibly).
 This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-default-template}{\code{--print-default-template} CLI flag}. With
 this function, one can easily export default LaTeX template for example.
 }
+\examples{
+\dontshow{if (pandoc::pandoc_available("2.7.1")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_export_template()
+\dontshow{\}) # examplesIf}
+\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_export_template("latex", output = "default.tex", version = "system")
+\dontshow{\}) # examplesIf}
+}

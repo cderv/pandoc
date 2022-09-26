@@ -40,6 +40,13 @@ with_download_cache <- function(version, bundle_name, code) {
 #' @return Invisibly, the path where the binary is installed otherwise. `NULL` if already
 #'   installed.
 #' @seealso [pandoc_uninstall()]
+#' @examplesIf FALSE
+#' # Install the latest pandoc version
+#' pandoc_install()
+#' # Install a specific pandoc version
+#' pandoc_install("2.11.4")
+#' # Install last nightly build of pandoc
+#' pandoc_install_nightly()
 #' @export
 pandoc_install <- function(version = "latest", force = FALSE) {
   gh_required()
@@ -127,6 +134,8 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 #' @seealso [pandoc_install()]
 #'
 #' @return invisibly, path to installed pandoc version
+#' @examplesIf FALSE
+#' pandoc_update()
 #' @export
 pandoc_update <- function() {
   rlang::inform(c(i = "Updating to last available Pandoc release"))
@@ -136,6 +145,8 @@ pandoc_update <- function() {
 #' @rdname pandoc_install
 #' @param n_last Set to `n` as integer to install the n-th from last nightly
 #'   build. Default is last available build (1L)
+#' @examplesIf FALSE
+#' pandoc_install_nightly()
 #' @export
 pandoc_install_nightly <- function(n_last = 1L) {
   gh_required()
@@ -332,7 +343,10 @@ gh_required <- function() {
 #'
 #' @return A character vector of installed versions or a logical for
 #'   `pandoc_is_installed()`. It will return `NULL` is no versions are installed.
-#'
+#' @examples
+#' pandoc_installed_versions()
+#' pandoc_installed_latest()
+#' pandoc_is_installed("2.19.2")
 #' @export
 pandoc_installed_versions <- function() {
   pandoc_home <- pandoc_home()
@@ -350,6 +364,8 @@ pandoc_installed_versions <- function() {
 }
 
 #' @rdname pandoc_installed_versions
+#' @examplesIf FALSE
+#' pandoc_installed_latest()
 #' @export
 pandoc_installed_latest <- function() {
   installed_versions <- setdiff(pandoc_installed_versions(), "nightly")
@@ -403,7 +419,10 @@ pandoc_is_installed <- function(version, error = FALSE, ask = FALSE) {
 #' @return `TRUE` (invisibly) if uninstalling is successful.
 #'
 #' @seealso [pandoc_install()]
-#'
+#' @examplesIf FALSE
+#' pandoc_install("2.19.2")
+#' pandoc_is_installed("2.19.2")
+#' pandoc_uninstall("2.19.2")
 #' @export
 pandoc_uninstall <- function(version) {
   if (rlang::is_missing(version)) {
@@ -451,6 +470,7 @@ pandoc_home <- function(version = NULL) {
 #' @return character vector of all available release.
 #'
 #' @seealso [pandoc_install()], [pandoc_installed_versions()]
+#' @examplesIf rlang::is_installed("gh") && attr(curlGetHeaders("https://github.com"), "status") == "200"
 #' @export
 pandoc_available_releases <- function() {
   releases <- pandoc_releases()
@@ -470,6 +490,11 @@ pandoc_is_external_version <- function(version) {
 #'
 #' @seealso [`pandoc_bin()`]
 #'
+#' @examples
+#' # is Pandoc 2.19.2 active ?
+#' pandoc_is_active("2.19.2")
+#' # is it the Pandoc in PATH which is active ?
+#' pandoc_is_active("system")
 #' @export
 pandoc_is_active <- function(version) {
   version <- resolve_version(version)
@@ -485,6 +510,13 @@ pandoc_is_active <- function(version) {
 #' @inheritParams pandoc_bin
 #' @return Path of Pandoc binaries root folder if version is available.
 #' @seealso [pandoc_install()]
+#' @examples
+#' # where is the default active version located ?
+#' pandoc_locate()
+#' # where is a specific installed version located
+#' pandoc_locate("2.19.2")
+#' # return root folder of installed versions
+#' pandoc_locate(NULL)
 #' @export
 pandoc_locate <- function(version = "default") {
   if (is.null(version)) {

@@ -7,6 +7,11 @@
 #' @inheritParams pandoc_bin
 #'
 #' @return The output of running `pandoc` binary
+#' @examplesIf pandoc::pandoc_available()
+#' # Run any command line argument (prefer `pandoc_convert()` for conversion )
+#' pandoc::pandoc_run(c("--version"))
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18
+#' pandoc::pandoc_run(c("--list-input-formats"), version = "system")
 #' @export
 pandoc_run <- function(args, version = "default") {
   bin <- pandoc_bin(version)
@@ -34,7 +39,10 @@ pandoc_run <- function(args, version = "default") {
 #' @inheritParams pandoc_run
 #'
 #' @return The version number for `pandoc` binary as a [base::numeric_version()] object.
-#'
+#' @examplesIf pandoc::pandoc_available()
+#' pandoc::pandoc_version()
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18
+#' pandoc::pandoc_version(version = "system")
 #' @export
 pandoc_version <- function(version = "default") {
   out <- pandoc_run("--version", version = version)
@@ -54,6 +62,14 @@ pandoc_version <- function(version = "default") {
 #' @param code Code to execute with the temporary active Pandoc version.
 #'
 #' @return The results of the evaluation of the `code` argument.
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18
+#' # Run with pandoc without activating the version for rmarkdown::render()
+#' with_pandoc_version("system",
+#'    pandoc_bin(),
+#'    rmarkdown = FALSE
+#' )
+#' @examplesIf pandoc::pandoc_is_installed("2.11.4") && rlang::is_installed("rmarkdown")
+#' with_pandoc_version("2.11.4", rmarkdown::find_pandoc(), rmarkdown = TRUE)
 #' @export
 with_pandoc_version <- function(version, code, rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE)) {
   old <- pandoc_activate(version, rmarkdown = rmarkdown, quiet = TRUE)
@@ -66,6 +82,13 @@ with_pandoc_version <- function(version, code, rmarkdown = getOption("pandoc.act
 
 #' @rdname with_pandoc_version
 #' @param .local_envir The environment to use for scoping.
+#' @examplesIf rlang::is_interactive() && pandoc::pandoc_is_installed("2.11.4")
+#' local({
+#'   local_pandoc_version("2.11.4")
+#'   pandoc::pandoc_locate()
+#'   rmarkdown::find_pandoc()
+#' })
+#' rmarkdown::find_pandoc()
 #' @export
 local_pandoc_version <- function(version, rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE),
                                  .local_envir = parent.frame()) {

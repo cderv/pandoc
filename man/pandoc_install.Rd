@@ -40,6 +40,19 @@ switch between them. The latest nightly will be installed over the current
 one if any. Installing nightly version is useful for example to test a bug
 against the very last available built version.
 }
+\examples{
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Install the latest pandoc version
+pandoc_install()
+# Install a specific pandoc version
+pandoc_install("2.11.4")
+# Install last nightly build of pandoc
+pandoc_install_nightly()
+\dontshow{\}) # examplesIf}
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_install_nightly()
+\dontshow{\}) # examplesIf}
+}
 \seealso{
 \code{\link[=pandoc_uninstall]{pandoc_uninstall()}}
 }

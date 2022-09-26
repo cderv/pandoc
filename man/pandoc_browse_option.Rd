@@ -17,3 +17,7 @@ Open the webpage at the place regarding the required option
 \description{
 Open Pandoc's documentation about a command line option
 }
+\examples{
+pandoc_browse_option()
+pandoc_browse_option("embed-resources")
+}

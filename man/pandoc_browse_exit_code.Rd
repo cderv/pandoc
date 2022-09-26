@@ -12,3 +12,6 @@ Open the webpage at the place regarding exit code thrown by Pandoc.
 \description{
 Open Pandoc's documentation about exit codes
 }
+\examples{
+pandoc_browse_exit_code()
+}

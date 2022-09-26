@@ -15,6 +15,10 @@ Open the web page in browser in interactive mode or print the url
 \description{
 Open Pandoc's release page in browser
 }
+\examples{
+pandoc_browse_release()
+pandoc_browse_release("2.14")
+}
 \references{
 \url{https://github.com/jgm/pandoc/releases}
 }

@@ -28,3 +28,12 @@ spaces.
 \details{
 This correspond to the option \href{https://pandoc.org/MANUAL.html#option--abbreviations}{\code{--abbreviations} as CLI flag}.
 }
+\examples{
+\dontshow{if (pandoc::pandoc_available("2.0")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_list_abbreviations()
+\dontshow{\}) # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# check abbreviations available in a specific Pandoc's version
+pandoc_list_abbreviations("2.11.4")
+\dontshow{\}) # examplesIf}
+}

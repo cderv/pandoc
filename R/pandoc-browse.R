@@ -18,6 +18,9 @@ url_view <- function(...) {
 #' @references <https://github.com/jgm/pandoc/releases>
 #'
 #' @return Open the web page in browser in interactive mode or print the url
+#' @examples
+#' pandoc_browse_release()
+#' pandoc_browse_release("2.14")
 #' @export
 pandoc_browse_release <- function(version = "latest") {
   # Don't offer to install gh here as it is not necessary
@@ -35,6 +38,11 @@ pandoc_browse_release <- function(version = "latest") {
 #' @param id One of the id available in the HTML page (usually for anchor link).
 #'
 #' @return Open the Pandoc's MANUAL
+#' @examples
+#' # open MANUAL home page
+#' pandoc_browse_manual()
+#' # open MANUAL at math part
+#' pandoc_browse_manual("math")
 #' @export
 pandoc_browse_manual <- function(id = NULL) {
   path <- "MANUAL.html"
@@ -50,6 +58,9 @@ pandoc_browse_manual <- function(id = NULL) {
 #'   extensions has changed.
 #'
 #' @return Open the webpage at the place regarding the required extension.
+#' @examples
+#' pandoc_browse_extension()
+#' pandoc_browse_extension("auto_identifiers")
 #' @export
 pandoc_browse_extension <- function(extension = NULL) {
   id <- if (is.null(extension)) {
@@ -67,6 +78,9 @@ pandoc_browse_extension <- function(extension = NULL) {
 #'   is incorrect this could mean the option has changed.
 #'
 #' @return Open the webpage at the place regarding the required option
+#' @examples
+#' pandoc_browse_option()
+#' pandoc_browse_option("embed-resources")
 #' @export
 pandoc_browse_option <- function(option = NULL) {
   if (is.null(option)) {
@@ -81,6 +95,8 @@ pandoc_browse_option <- function(option = NULL) {
 #' Open Pandoc's documentation about citation processing
 #'
 #' @return Open the webpage at the place regarding citation processing in Pandoc.
+#' @examples
+#' pandoc_browse_citation()
 #' @export
 pandoc_browse_citation <- function() {
   pandoc_browse_manual("citations")
@@ -89,6 +105,8 @@ pandoc_browse_citation <- function() {
 #' Open Pandoc's documentation about exit codes
 #'
 #' @return Open the webpage at the place regarding exit code thrown by Pandoc.
+#' @examples
+#' pandoc_browse_exit_code()
 #' @export
 pandoc_browse_exit_code <- function() {
   pandoc_browse_manual("exit-codes")

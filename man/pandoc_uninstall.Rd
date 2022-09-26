@@ -16,6 +16,13 @@ pandoc_uninstall(version)
 You can run \code{\link[=pandoc_installed_versions]{pandoc_installed_versions()}} to see which versions are
 currently installed on the system.
 }
+\examples{
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_install("2.19.2")
+pandoc_is_installed("2.19.2")
+pandoc_uninstall("2.19.2")
+\dontshow{\}) # examplesIf}
+}
 \seealso{
 \code{\link[=pandoc_install]{pandoc_install()}}
 }

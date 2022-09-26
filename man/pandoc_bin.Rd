@@ -30,16 +30,10 @@ Get path to the pandoc binary
 \code{pandoc_bin()} is at, when in interactive mode only.
 }
 \examples{
-\dontrun{
 pandoc_bin()
 pandoc_bin("2.18")
 pandoc_bin("nightly")
 pandoc_bin("rstudio")
 pandoc_bin("system")
-}
-
-\dontrun{
 pandoc_bin_browse("2.18")
-}
-
 }

@@ -4,7 +4,7 @@
 \alias{pandoc_browse_extension}
 \title{Open Pandoc's documentation about an extension}
 \usage{
-pandoc_browse_extension(extension)
+pandoc_browse_extension(extension = NULL)
 }
 \arguments{
 \item{extension}{One of the supported extension. See
@@ -17,4 +17,8 @@ Open the webpage at the place regarding the required extension.
 }
 \description{
 Open Pandoc's documentation about an extension
+}
+\examples{
+pandoc_browse_extension()
+pandoc_browse_extension("auto_identifiers")
 }

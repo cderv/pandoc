@@ -13,6 +13,11 @@ invisibly, path to installed pandoc version
 This function will check last version of Pandoc released, and install it if
 not already installed.
 }
+\examples{
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_update()
+\dontshow{\}) # examplesIf}
+}
 \seealso{
 \code{\link[=pandoc_install]{pandoc_install()}}
 }

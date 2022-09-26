@@ -20,6 +20,12 @@ pandoc_is_active(version)
 \description{
 Is a pandoc version active ?
 }
+\examples{
+# is Pandoc 2.19.2 active ?
+pandoc_is_active("2.19.2")
+# is it the Pandoc in PATH which is active ?
+pandoc_is_active("system")
+}
 \seealso{
 \code{\link[=pandoc_bin]{pandoc_bin()}}
 }

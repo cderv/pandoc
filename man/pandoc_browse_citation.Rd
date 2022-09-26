@@ -12,3 +12,6 @@ Open the webpage at the place regarding citation processing in Pandoc.
 \description{
 Open Pandoc's documentation about citation processing
 }
+\examples{
+pandoc_browse_citation()
+}

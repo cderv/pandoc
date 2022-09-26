@@ -25,3 +25,12 @@ coloring style to be used in highlighted source code. This function returns
 the supported values which can be specify at \code{pandoc} command line using the
 \href{https://pandoc.org/MANUAL.html#option--highlight-style}{\verb{--highlight-style=} flag}.
 }
+\examples{
+\dontshow{if (pandoc::pandoc_available("2.0")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_list_highlight_style()
+\dontshow{\}) # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# check style available in a specific Pandoc's version
+pandoc_list_highlight_style("2.11.4")
+\dontshow{\}) # examplesIf}
+}

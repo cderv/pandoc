@@ -25,6 +25,10 @@
 #' @return `output` is provided, the absolute file path. If not, the output of
 #'   `pandoc` binary run.
 #'
+#' @examplesIf pandoc::pandoc_available()
+#' pandoc::pandoc_convert(text = "_This will be emphasize_", to = "latex")
+#' @examplesIf pandoc::pandoc_available("2.19.2")
+#' pandoc::pandoc_convert(text = "**This will be bold**", to = "html", version = "2.19.2")
 #' @export
 pandoc_convert <- function(file = NULL,
                            text = NULL,

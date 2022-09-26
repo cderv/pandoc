@@ -13,6 +13,10 @@ character vector of all available release.
 This function will fetch information from Github
 \url{https://github.com/jgm/pandoc} about available Pandoc versions released.
 }
+\examples{
+\dontshow{if (rlang::is_installed("gh") && attr(curlGetHeaders("https://github.com"), "status") == "200") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{\}) # examplesIf}
+}
 \seealso{
 \code{\link[=pandoc_install]{pandoc_install()}}, \code{\link[=pandoc_installed_versions]{pandoc_installed_versions()}}
 }

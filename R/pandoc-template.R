@@ -11,6 +11,10 @@
 #' @return If `output` is not provided, the content of the template will be
 #'   printed and return as one string (invisibly). If `output` is provided, the file path of
 #'   the output (invisibly).
+#' @examplesIf pandoc::pandoc_available("2.7.1")
+#' pandoc_export_template()
+#' @examplesIf rlang::is_interactive()
+#' pandoc_export_template("latex", output = "default.tex", version = "system")
 #' @export
 pandoc_export_template <- function(format = "markdown", output = NULL, version = "default") {
   # https://pandoc.org/releases.html#pandoc-2.7.1-2019-03-14
@@ -51,6 +55,12 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
 #'
 #' @return the `output` (invisibly) where export has been done
 #'
+#' @examplesIf rlang::is_interactive()
+#' # export style.html file included in Pandoc HTML template
+#' pandoc_export_data_file("styles.html", output = "html")
+#' # export css file used for epub by default
+#' pandoc_export_data_file("epub.css")
+#'
 #' @export
 pandoc_export_data_file <- function(file, output = file, version = "default") {
   if (rlang::is_missing(file)) {
@@ -75,6 +85,11 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
 
 #' @rdname pandoc_export_data_file
 #' @param type one of `docx` or `pptx` depending on the reference doc to export.
+#' @examplesIf pandoc::pandoc_available() && rlang::is_interactive()
+#' pandoc_export_reference_doc("docx")
+#' pandoc_export_reference_doc("pptx")
+#' @examplesIf pandoc::pandoc_is_installed("2.11.4") && rlang::is_interactive()
+#' pandoc_export_reference_doc("pptx", version = "2.11.4")
 #' @export
 pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "default") {
   type <- rlang::arg_match(type)
@@ -104,7 +119,11 @@ pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "def
 #' @inheritParams pandoc_run
 #'
 #' @return the filename where the theme has been exported.
-#'
+#' @examplesIf rlang::is_interactive()
+#' # export tango theme used by Pandoc highlighting to `tango.theme` file
+#' pandoc_export_highlight_theme("tango")
+#' pandoc_export_highlight_theme("pygments", output = "my_theme.theme")
+#' pandoc_export_highlight_theme("zenburn", version = "system")
 #' @export
 pandoc_export_highlight_theme <- function(style = "pygments", output = style, version = "default") {
   # https://pandoc.org/releases.html#pandoc-2.7.1-2019-03-14

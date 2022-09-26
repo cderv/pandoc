@@ -25,3 +25,13 @@ shipped as a binary filter.
 This function will return the path to \code{pandoc-citeproc} if available. It will
 only work with \code{version} of Pandoc installed by this package.
 }
+\examples{
+\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Look into current active version
+pandoc_citeproc_bin()
+\dontshow{\}) # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.9.2")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Look into a specific version
+pandoc_citeproc_bin("2.9.2")
+\dontshow{\}) # examplesIf}
+}

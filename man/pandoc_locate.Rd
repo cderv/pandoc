@@ -24,6 +24,14 @@ This package helps install and manage Pandoc binaries in a specific folder.
 This function helps with finding the path to those specific versions of Pandoc.
 See \code{\link[=pandoc_bin]{pandoc_bin()}} for another way of getting paths to \code{pandoc} binaries
 }
+\examples{
+# where is the default active version located ?
+pandoc_locate()
+# where is a specific installed version located
+pandoc_locate("2.19.2")
+# return root folder of installed versions
+pandoc_locate(NULL)
+}
 \seealso{
 \code{\link[=pandoc_install]{pandoc_install()}}
 }

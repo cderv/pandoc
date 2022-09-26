@@ -37,3 +37,18 @@ also \code{--output} to write a export a data file built in Pandoc.
 \code{pandoc_export_reference_doc()} is a helper to quickly get the reference doc for
 Word document (\code{reference.docx}) or Powerpoint document (\code{reference.pptx})
 }
+\examples{
+\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# export style.html file included in Pandoc HTML template
+pandoc_export_data_file("styles.html", output = "html")
+# export css file used for epub by default
+pandoc_export_data_file("epub.css")
+\dontshow{\}) # examplesIf}
+\dontshow{if (pandoc::pandoc_available() && rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_export_reference_doc("docx")
+pandoc_export_reference_doc("pptx")
+\dontshow{\}) # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4") && rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_export_reference_doc("pptx", version = "2.11.4")
+\dontshow{\}) # examplesIf}
+}

@@ -26,3 +26,12 @@ syntax highlighter. These are the values that can be used as fenced code
 attributes to trigger the highlighting of the block for the requested
 language. See \href{https://pandoc.org/MANUAL.html#extension-fenced_code_attributes}{\code{fenced_code_attributes} extensions flag}.
 }
+\examples{
+\dontshow{if (pandoc::pandoc_available("2.0")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_list_highlight_languages()
+\dontshow{\}) # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# check languages available in a specific Pandoc's version
+pandoc_list_highlight_languages("2.11.4")
+\dontshow{\}) # examplesIf}
+}

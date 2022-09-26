@@ -15,6 +15,12 @@ Open the Pandoc's MANUAL
 \description{
 Open Pandoc's MANUAL
 }
+\examples{
+# open MANUAL home page
+pandoc_browse_manual()
+# open MANUAL at math part
+pandoc_browse_manual("math")
+}
 \references{
 \url{https://pandoc.org/MANUAL.html}
 }

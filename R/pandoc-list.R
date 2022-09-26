@@ -7,7 +7,14 @@
 #' @return a data.frame (or a tibble if available) with 2 column:
 #'    * `type` (input or output)
 #'    * `formats` (name of the formats that can be used as input or output)
-#'
+#' @examplesIf pandoc_available("1.18")
+#' # which input formats are available
+#' pandoc_list_formats()
+#' # which output formats are available
+#' pandoc_list_formats()
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "1.18"
+#' # target a specific version
+#' pandoc_list_formats("input", version = "system")
 #' @export
 pandoc_list_formats <- function(type = c("input", "output"), version = "default") {
   if (pandoc_version(version = version) < "1.18") {
@@ -46,7 +53,12 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
 #'    * `format`: One of the Pandoc format
 #'    * `extensions` : name of the extensions
 #'    * `default`: Is the extensions activated by default or not ?
-#'
+#' @examplesIf pandoc_available("2.8")
+#' pandoc_list_extensions("markdown")
+#' pandoc_list_extensions("gfm")
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 2.8
+#' # target a specific version
+#' pandoc_list_extensions("html", version = "system")
 #' @export
 pandoc_list_extensions <- function(format = "markdown", version = "default") {
   pandoc_feature_requirement("2.8", version = version)
@@ -80,6 +92,12 @@ pandoc_list_extensions <- function(format = "markdown", version = "default") {
 #'
 #' @return a character vector of supported highlighting style name to use.
 #'
+#' @examplesIf pandoc::pandoc_available("2.0")
+#' pandoc_list_highlight_style()
+#' @examplesIf pandoc::pandoc_is_installed("2.11.4")
+#' # check style available in a specific Pandoc's version
+#' pandoc_list_highlight_style("2.11.4")
+#'
 #' @export
 pandoc_list_highlight_style <- function(version = "default") {
   args <- c("--list-highlight-styles")
@@ -98,7 +116,11 @@ pandoc_list_highlight_style <- function(version = "default") {
 #'
 #' @return a character vector of supported languages to use as fenced code
 #'   attributes.
-#'
+#' @examplesIf pandoc::pandoc_available("2.0")
+#' pandoc_list_highlight_languages()
+#' @examplesIf pandoc::pandoc_is_installed("2.11.4")
+#' # check languages available in a specific Pandoc's version
+#' pandoc_list_highlight_languages("2.11.4")
 #' @export
 pandoc_list_highlight_languages <- function(version = "default") {
   args <- c("--list-highlight-languages")
@@ -118,6 +140,11 @@ pandoc_list_highlight_languages <- function(version = "default") {
 #' @inheritParams pandoc_run
 #'
 #' @return a character version of system default abbreviation known by Pandoc
+#' @examplesIf pandoc::pandoc_available("2.0")
+#' pandoc_list_abbreviations()
+#' @examplesIf pandoc::pandoc_is_installed("2.11.4")
+#' # check abbreviations available in a specific Pandoc's version
+#' pandoc_list_abbreviations("2.11.4")
 #' @export
 pandoc_list_abbreviations <- function(version = "default") {
   args <- c("--print-default-data-file", "abbreviations")

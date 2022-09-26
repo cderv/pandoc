@@ -43,3 +43,11 @@ export by this function.
 This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-highlight-style}{\code{--print-highlight-style} CLI flag} using
 also \code{--output} to write a export a data file built in Pandoc.
 }
+\examples{
+\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# export tango theme used by Pandoc highlighting to `tango.theme` file
+pandoc_export_highlight_theme("tango")
+pandoc_export_highlight_theme("pygments", output = "my_theme.theme")
+pandoc_export_highlight_theme("zenburn", version = "system")
+\dontshow{\}) # examplesIf}
+}

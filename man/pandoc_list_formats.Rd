@@ -29,3 +29,15 @@ a data.frame (or a tibble if available) with 2 column:
 \description{
 List available supported formats
 }
+\examples{
+\dontshow{if (pandoc_available("1.18")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# which input formats are available
+pandoc_list_formats()
+# which output formats are available
+pandoc_list_formats()
+\dontshow{\}) # examplesIf}
+\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "1.18") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# target a specific version
+pandoc_list_formats("input", version = "system")
+\dontshow{\}) # examplesIf}
+}

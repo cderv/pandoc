@@ -19,6 +19,11 @@ pandoc_rstudio_bin()
 RStudio IDE ships with a pandoc binary. The path is stored in \code{RSTUDIO_PANDOC}
 environment variable. Theses function are helper to easily use this specific version.
 }
+\examples{
+\dontshow{if (!is.null(pandoc::pandoc_rstudio_bin())) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{\}) # examplesIf}
+pandoc_rstudio_bin()
+}
 \seealso{
 \code{\link[=pandoc_version]{pandoc_version()}}, \code{\link[=pandoc_bin]{pandoc_bin()}}
 }

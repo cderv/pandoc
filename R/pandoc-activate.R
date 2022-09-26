@@ -27,14 +27,12 @@
 #'
 #' @return invisibly, the previous active version.
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf pandoc::pandoc_is_installed("2.18")
 #' # activate version 2.18, including for use with rmarkdown package
 #' pandoc_activate("2.18")
 #'
-#' # activate only for this package functions
+#' # activate only for this package functions and not rmarkdown
 #' pandoc_activate("2.18", rmarkdown = FALSE)
-#' }
 #' @export
 pandoc_activate <- function(version = "latest", rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE), quiet = FALSE) {
   old_active <- the$active_version

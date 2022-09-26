@@ -17,14 +17,11 @@ pandoc_bin_impl <- function(path, exe = FALSE) {
 #'
 #' @return Absolute path to the pandoc binary of the requested version.
 #' @examples
-#' \dontrun{
 #' pandoc_bin()
 #' pandoc_bin("2.18")
 #' pandoc_bin("nightly")
 #' pandoc_bin("rstudio")
 #' pandoc_bin("system")
-#' }
-#'
 #' @export
 pandoc_bin <- function(version = "default") {
   version <- resolve_version(version)
@@ -53,10 +50,7 @@ pandoc_which_bin <- function(which = c("rstudio", "system")) {
 #'   `pandoc_bin()` is at, when in interactive mode only.
 #'
 #' @examples
-#' \dontrun{
 #' pandoc_bin_browse("2.18")
-#' }
-#'
 #' @rdname pandoc_bin
 pandoc_bin_browse <- function(version = "default") {
   if (!rlang::is_interactive()) {
@@ -86,6 +80,7 @@ pandoc_bin_browse <- function(version = "default") {
 #'
 #' @seealso [pandoc_version()], [pandoc_bin()]
 #' @name system_pandoc
+#' @examplesIf !is.null(pandoc::pandoc_system_bin())
 #' @export
 pandoc_system_version <- function() {
   pandoc_version(version = "system")
@@ -93,6 +88,8 @@ pandoc_system_version <- function() {
 
 #' @rdname system_pandoc
 #' @return `pandoc_system_bin()` returns absolute path to the `pandoc` binary found in PATH.
+#' @examples
+#' pandoc_system_bin()
 #' @export
 pandoc_system_bin <- function() {
   pandoc_bin(version = "system")
@@ -106,6 +103,7 @@ pandoc_system_bin <- function() {
 #' @return `pandoc_rstudio_version()` returns the version number for `pandoc` binary used by RStudio IDE as a [base::numeric_version()] object.
 #'
 #' @seealso [pandoc_version()], [pandoc_bin()]
+#' @examplesIf !is.null(pandoc::pandoc_rstudio_bin())
 #' @export
 #' @name rstudio_pandoc
 pandoc_rstudio_version <- function() {
@@ -114,6 +112,8 @@ pandoc_rstudio_version <- function() {
 
 #' @rdname rstudio_pandoc
 #' @return `pandoc_system_bin()` returns absolute path to the `pandoc` binary used by RStudio IDE.
+#' @examples
+#' pandoc_rstudio_bin()
 #' @export
 pandoc_rstudio_bin <- function() {
   pandoc_bin(version = "rstudio")
@@ -128,6 +128,12 @@ pandoc_rstudio_bin <- function() {
 #' @return the path to `pandoc-citeproc` binary if it exists. Since Pandoc 2.11,
 #'   the citeproc filter has been included into Pandoc itself and is no more
 #'   shipped as a binary filter.
+#' @examplesIf rlang::is_interactive()
+#' # Look into current active version
+#' pandoc_citeproc_bin()
+#' @examplesIf pandoc::pandoc_is_installed("2.9.2")
+#' # Look into a specific version
+#' pandoc_citeproc_bin("2.9.2")
 #' @export
 pandoc_citeproc_bin <- function(version = "default") {
   if (pandoc_is_external_version(version)) {

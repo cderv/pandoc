@@ -35,3 +35,13 @@ extensions than can be activated.
 All the extensions for the last Pandoc version released are available in
 \url{https://pandoc.org/MANUAL.html}.
 }
+\examples{
+\dontshow{if (pandoc_available("2.8")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_list_extensions("markdown")
+pandoc_list_extensions("gfm")
+\dontshow{\}) # examplesIf}
+\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 2.8) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# target a specific version
+pandoc_list_extensions("html", version = "system")
+\dontshow{\}) # examplesIf}
+}

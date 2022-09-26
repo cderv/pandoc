@@ -39,3 +39,11 @@ installing the version.
 \item \code{pandoc_is_installed()} allows to check for a specific installed version
 }
 }
+\examples{
+pandoc_installed_versions()
+pandoc_installed_latest()
+pandoc_is_installed("2.19.2")
+\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc_installed_latest()
+\dontshow{\}) # examplesIf}
+}
