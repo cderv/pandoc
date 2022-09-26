@@ -16,9 +16,10 @@ Open the web page in browser in interactive mode or print the url
 Open Pandoc's release page in browser
 }
 \examples{
-\dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 pandoc_browse_release()
 pandoc_browse_release("2.14")
+\dontshow{\}) # examplesIf}
 }
 \references{
 \url{https://github.com/jgm/pandoc/releases}

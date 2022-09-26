@@ -18,8 +18,7 @@ url_view <- function(...) {
 #' @references <https://github.com/jgm/pandoc/releases>
 #'
 #' @return Open the web page in browser in interactive mode or print the url
-#' @examples
-#' \dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+#' @examplesIf rlang::is_interactive()
 #' pandoc_browse_release()
 #' pandoc_browse_release("2.14")
 #' @export
