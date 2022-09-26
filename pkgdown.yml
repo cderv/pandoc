@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   comparing-versions: comparing-versions.html
   pandoc: pandoc.html
-last_built: 2022-09-26T15:30Z
+last_built: 2022-09-26T15:42Z
 urls:
   reference: https://cderv.github.io/pandoc/reference
   article: https://cderv.github.io/pandoc/articles

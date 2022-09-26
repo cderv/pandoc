@@ -126,24 +126,22 @@
 <code class="sourceCode R"><span><span class="co"># install the nightly version (overwrites previous one)</span></span>
 <span><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install_nightly</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># or pandoc_install("nightly")</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span></span>
-<span><span class="co">#&gt;   Downloading bundle...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 58f4b78ed9f4a5ea307cde0a39873848ba8968b8</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last version already installed: 58f4b78ed9f4a5ea307cde0a39873848ba8968b8</span></span></code></pre></div>
 <p>All those versions can live together and are installed in an isolated directory in user’s data folders.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Which version are currently installed ? </span></span>
 <span><span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_versions</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "nightly"  "2.19.2"   "2.19.1"   "2.18"     "2.17.1.1" "2.17.1"  </span></span>
-<span><span class="co">#&gt;  [7] "2.17.0.1" "2.17"     "2.16.2"   "2.16.1"   "2.16"     "2.15"    </span></span>
-<span><span class="co">#&gt; [13] "2.14.2"   "2.14.1"   "2.14.0.3" "2.14.0.2" "2.14.0.1" "2.14"    </span></span>
-<span><span class="co">#&gt; [19] "2.13"     "2.12"     "2.11.4"   "2.11.3.2" "2.11.3.1" "2.11.3"  </span></span>
-<span><span class="co">#&gt; [25] "2.11.2"   "2.11.1.1" "2.11.1"   "2.11.0.4" "2.11.0.2" "2.11.0.1"</span></span>
-<span><span class="co">#&gt; [31] "2.11"     "2.10.1"   "2.10"     "2.9.2.1"  "2.9.2"    "2.9.1.1" </span></span>
-<span><span class="co">#&gt; [37] "2.9.1"    "2.9"      "2.8.1"    "2.8.0.1"  "2.8"      "2.7.3"   </span></span>
-<span><span class="co">#&gt; [43] "2.7.2"    "2.7.1"    "2.7"      "2.6"      "2.5"      "2.4"     </span></span>
-<span><span class="co">#&gt; [49] "2.3.1"    "2.3"      "2.2.3.2"  "2.2.3.1"  "2.2.2.1"  "2.2.2"   </span></span>
-<span><span class="co">#&gt; [55] "2.2.1"    "2.2"      "2.1.3"    "2.1.2"    "2.1.1"    "2.1"     </span></span>
-<span><span class="co">#&gt; [61] "2.0.6"    "2.0.5"    "2.0.4"    "2.0.3"</span></span>
+<span><span class="co">#&gt;  [1] "nightly"  "2.19.2"   "2.19.1"   "2.19"     "2.18"     "2.17.1.1"</span></span>
+<span><span class="co">#&gt;  [7] "2.17.1"   "2.17.0.1" "2.17"     "2.16.2"   "2.16.1"   "2.16"    </span></span>
+<span><span class="co">#&gt; [13] "2.15"     "2.14.2"   "2.14.1"   "2.14.0.3" "2.14.0.2" "2.14.0.1"</span></span>
+<span><span class="co">#&gt; [19] "2.14"     "2.13"     "2.12"     "2.11.4"   "2.11.3.2" "2.11.3.1"</span></span>
+<span><span class="co">#&gt; [25] "2.11.3"   "2.11.2"   "2.11.1.1" "2.11.1"   "2.11.0.4" "2.11.0.2"</span></span>
+<span><span class="co">#&gt; [31] "2.11.0.1" "2.11"     "2.10.1"   "2.10"     "2.9.2.1"  "2.9.2"   </span></span>
+<span><span class="co">#&gt; [37] "2.9.1.1"  "2.9.1"    "2.9"      "2.8.1"    "2.8.0.1"  "2.8"     </span></span>
+<span><span class="co">#&gt; [43] "2.7.3"    "2.7.2"    "2.7.1"    "2.7"      "2.6"      "2.5"     </span></span>
+<span><span class="co">#&gt; [49] "2.4"      "2.3.1"    "2.3"      "2.2.3.2"  "2.2.3.1"  "2.2.2.1" </span></span>
+<span><span class="co">#&gt; [55] "2.2.2"    "2.2.1"    "2.2"      "2.1.3"    "2.1.2"    "2.1.1"   </span></span>
+<span><span class="co">#&gt; [61] "2.1"      "2.0.6"    "2.0.5"    "2.0.4"    "2.0.3"</span></span>
 <span><span class="co"># Which is the latest version installed (nightly excluded)? </span></span>
 <span><span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_latest</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2.19.2"</span></span>
