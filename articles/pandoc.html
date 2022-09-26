@@ -113,7 +113,7 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Using cached version 'github-cache.rds' in instead of fetching GH</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 2.19.1 already installed.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 2.19.2 already installed.</span></span>
 <span><span class="co">#&gt;   Use 'force = TRUE' to overwrite.</span></span></code></pre></div>
 <p>If a specific older Pandoc version is needed (e.g for testing differences between version), a version can be specified.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -128,12 +128,12 @@
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span></span>
 <span><span class="co">#&gt;   Downloading bundle...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: eb96defcc680047cbf02c32b3b09b94e0992c210</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 58f4b78ed9f4a5ea307cde0a39873848ba8968b8</span></span></code></pre></div>
 <p>All those versions can live together and are installed in an isolated directory in user’s data folders.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Which version are currently installed ? </span></span>
 <span><span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_versions</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "nightly"  "2.19.1"   "2.19"     "2.18"     "2.17.1.1" "2.17.1"  </span></span>
+<span><span class="co">#&gt;  [1] "nightly"  "2.19.2"   "2.19.1"   "2.18"     "2.17.1.1" "2.17.1"  </span></span>
 <span><span class="co">#&gt;  [7] "2.17.0.1" "2.17"     "2.16.2"   "2.16.1"   "2.16"     "2.15"    </span></span>
 <span><span class="co">#&gt; [13] "2.14.2"   "2.14.1"   "2.14.0.3" "2.14.0.2" "2.14.0.1" "2.14"    </span></span>
 <span><span class="co">#&gt; [19] "2.13"     "2.12"     "2.11.4"   "2.11.3.2" "2.11.3.1" "2.11.3"  </span></span>
@@ -146,7 +146,7 @@
 <span><span class="co">#&gt; [61] "2.0.6"    "2.0.5"    "2.0.4"    "2.0.3"</span></span>
 <span><span class="co"># Which is the latest version installed (nightly excluded)? </span></span>
 <span><span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_latest</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "2.19.1"</span></span>
+<span><span class="co">#&gt; [1] "2.19.2"</span></span>
 <span><span class="co"># Is a specific version installed ? </span></span>
 <span><span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_is_installed</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
@@ -206,12 +206,12 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Default to latest version installed</span></span>
 <span><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.19.1' is now the active one.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '2.19.2' is now the active one.</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span></span>
 <span><span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "~/.local/share/r-pandoc/2.19.1"</span></span>
+<span><span class="co">#&gt; [1] "~/.local/share/r-pandoc/2.19.2"</span></span>
 <span><span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">~/.local/share/r-pandoc/2.19.1/pandoc</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">~/.local/share/r-pandoc/2.19.2/pandoc</span></span></span>
 <span></span>
 <span><span class="co"># Activate specific version</span></span>
 <span><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span></span>
@@ -339,7 +339,7 @@
 <span><span class="co">#&gt; [1] '2.11.4'</span></span>
 <span><span class="co"># Get version for a specific version</span></span>
 <span><span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] '2.19.1.9999'</span></span>
+<span><span class="co">#&gt; [1] '2.19.2.9999'</span></span>
 <span><span class="co"># Get version for a specific version</span></span>
 <span><span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span> <span class="co"># equivalent to pandoc_system_version()</span></span>
 <span><span class="co">#&gt; [1] '2.14.2'</span></span></code></pre></div>
@@ -422,7 +422,6 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> markdown blank_before_header      TRUE   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> markdown bracketed_spans          TRUE   </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 58 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span>
 <span><span class="fu"><a href="../reference/pandoc_list_extensions.html">pandoc_list_extensions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"gfm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 26 × 3</span></span></span>
 <span><span class="co">#&gt;    format extensions             default</span></span>
@@ -438,7 +437,6 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> gfm    fenced_divs            FALSE  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> gfm    footnotes              FALSE  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 16 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span>
 <span><span class="fu"><a href="../reference/pandoc_list_extensions.html">pandoc_list_extensions</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"html"</span>, version <span class="op">=</span> <span class="st">"nightly"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 3</span></span></span>
 <span><span class="co">#&gt;    format extensions                default</span></span>
@@ -480,7 +478,6 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> input docx        </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> input dokuwiki    </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 28 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span>
 <span><span class="fu"><a href="../reference/pandoc_list_formats.html">pandoc_list_formats</a></span><span class="op">(</span><span class="st">"output"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 61 × 2</span></span></span>
 <span><span class="co">#&gt;    type   formats     </span></span>
@@ -496,7 +493,6 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> output csljson     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> output docbook     </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 51 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span>
 <span><span class="fu"><a href="../reference/pandoc_list_formats.html">pandoc_list_formats</a></span><span class="op">(</span><span class="st">"output"</span>, version <span class="op">=</span> <span class="st">"nightly"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 62 × 2</span></span></span>
 <span><span class="co">#&gt;    type   formats     </span></span>
@@ -511,8 +507,7 @@
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> output context     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> output csljson     </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> output docbook     </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 52 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 52 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="list-available-highlight-style">List available highlight style<a class="anchor" aria-label="anchor" href="#list-available-highlight-style"></a>

@@ -85,6 +85,33 @@ any arguments supported by the Pandoc binary.</p>
 <p>The output of running <code>pandoc</code> binary</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Run any command line argument (prefer `pandoc_convert()` for conversion )</span></span></span>
+<span class="r-in"><span><span class="fu">pandoc</span><span class="fu">::</span><span class="fu">pandoc_run</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"--version"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "pandoc 2.14.2"                                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "Compiled with pandoc-types 1.22, texmath 0.12.3.1, skylighting 0.11,"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "citeproc 0.5, ipynb 0.1.0.1"                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "User data directory: /home/runner/.local/share/pandoc"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "Copyright (C) 2006-2021 John MacFarlane. Web:  https://pandoc.org"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "This is free software; see the source for copying conditions. There is no"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "warranty, not even for merchantability or fitness for a particular purpose."</span>
+<span class="r-in"><span><span class="fu">pandoc</span><span class="fu">::</span><span class="fu">pandoc_run</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"--list-input-formats"</span><span class="op">)</span>, version <span class="op">=</span> <span class="st">"system"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "biblatex"          "bibtex"            "commonmark"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "commonmark_x"      "creole"            "csljson"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "csv"               "docbook"           "docx"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "dokuwiki"          "epub"              "fb2"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "gfm"               "haddock"           "html"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "ipynb"             "jats"              "jira"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "json"              "latex"             "man"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "markdown"          "markdown_github"   "markdown_mmd"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "markdown_phpextra" "markdown_strict"   "mediawiki"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "muse"              "native"            "odt"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "opml"              "org"               "rst"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "rtf"               "t2t"               "textile"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "tikiwiki"          "twiki"             "vimwiki"          </span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

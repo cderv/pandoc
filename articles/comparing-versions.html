@@ -92,7 +92,18 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cderv/pandoc" class="external-link">pandoc</a></span><span class="op">)</span></span></code></pre></div>
 <p>As a prerequisite to the analysis, all available pandoc versions needs to be installed.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">walk</a></span><span class="op">(</span><span class="fu"><a href="../reference/pandoc_available_releases.html">pandoc_available_releases</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/safely.html" class="external-link">safely</a></span><span class="op">(</span><span class="va">pandoc_install</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">walk</a></span><span class="op">(</span><span class="fu"><a href="../reference/pandoc_available_releases.html">pandoc_available_releases</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/safely.html" class="external-link">safely</a></span><span class="op">(</span><span class="va">pandoc_install</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in utils::download.file(release_bundle$url, destfile =</span></span>
+<span><span class="co">#&gt; bundle_name, : cannot open URL 'https://objects.githubusercontent.com/</span></span>
+<span><span class="co">#&gt; github-production-release-asset-2e65be/571770/2abbde59-9522-4259-</span></span>
+<span><span class="co">#&gt; a9de-59e9e73f9558?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-</span></span>
+<span><span class="co">#&gt; Credential=AKIAIWNJYAX4CSVEH53A%2F20220926%2Fus-east-1%2Fs3%2Faws4_request&amp;X-</span></span>
+<span><span class="co">#&gt; Amz-Date=20220926T153100Z&amp;X-Amz-Expires=300&amp;X-Amz-</span></span>
+<span><span class="co">#&gt; Signature=f0a27230094e5b6bbbed10b630b06e12ef44e6aaee596e21004cf057d06f52a0&amp;X-</span></span>
+<span><span class="co">#&gt; Amz-SignedHeaders=host&amp;actor_id=0&amp;key_id=0&amp;repo_id=571770&amp;response-content-</span></span>
+<span><span class="co">#&gt; disposition=attachment%3B%20filename%3Dpandoc-2.19-linux-amd64.tar.gz&amp;response-</span></span>
+<span><span class="co">#&gt; content-type=application%2Foctet-stream': HTTP status was '503 Service</span></span>
+<span><span class="co">#&gt; Unavailable'</span></span></code></pre></div>
 <p>Once this is done, it is easy to iterate over versions to do an analysis over an hypothesis.</p>
 <p>First, we use each Pandoc version to convert <code>"This is a &lt;span&gt;Span&lt;/span&gt;."</code> to Github Markdown</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">

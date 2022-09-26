@@ -91,6 +91,35 @@ printed and return as one string (invisibly). If <code>output</code> is provided
 the output (invisibly).</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">pandoc_export_template</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $if(titleblock)$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $titleblock$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $endif$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $for(header-includes)$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $header-includes$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $endfor$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $for(include-before)$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $include-before$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $endfor$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $if(toc)$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $table-of-contents$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $endif$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $body$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $for(include-after)$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $include-after$</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $endfor$</span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># rlang::is_interactive()</span></span></span>
+<span class="r-in"><span><span class="fu">pandoc_export_template</span><span class="op">(</span><span class="st">"latex"</span>, output <span class="op">=</span> <span class="st">"default.tex"</span>, version <span class="op">=</span> <span class="st">"system"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

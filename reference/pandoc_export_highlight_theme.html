@@ -111,6 +111,16 @@ export by this function.</p>
 also <code>--output</code> to write a export a data file built in Pandoc.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># rlang::is_interactive()</span></span></span>
+<span class="r-in"><span><span class="co"># export tango theme used by Pandoc highlighting to `tango.theme` file</span></span></span>
+<span class="r-in"><span><span class="fu">pandoc_export_highlight_theme</span><span class="op">(</span><span class="st">"tango"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pandoc_export_highlight_theme</span><span class="op">(</span><span class="st">"pygments"</span>, output <span class="op">=</span> <span class="st">"my_theme.theme"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pandoc_export_highlight_theme</span><span class="op">(</span><span class="st">"zenburn"</span>, version <span class="op">=</span> <span class="st">"system"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
