@@ -27,15 +27,15 @@ version of Pandoc, and new change in Pandoc should not break any
 
 This explains the needs for a more focused tooling to:
 
--   Install and manage several Pandoc versions. This is useful for
-    testing versions and comparing between them.
--   Call Pandoc’s command directly without the layers added by
-    **rmarkdown**. This is useful for debugging or quickly iterating and
-    finding where a bug comes from.
--   Retrieve information from Pandoc directly. Each version comes with
-    changes and some of them are included into the binary. Being able to
-    retrieve those information and compare between versions is important
-    to help maintain the user exposed tooling.
+- Install and manage several Pandoc versions. This is useful for testing
+  versions and comparing between them.
+- Call Pandoc’s command directly without the layers added by
+  **rmarkdown**. This is useful for debugging or quickly iterating and
+  finding where a bug comes from.
+- Retrieve information from Pandoc directly. Each version comes with
+  changes and some of them are included into the binary. Being able to
+  retrieve those information and compare between versions is important
+  to help maintain the user exposed tooling.
 
 This package can also be useful to advanced developers that are working
 around Pandoc through **rmarkdown** or not.
@@ -70,43 +70,43 @@ for full details of functions.
 
 Most functions follows these following rules:
 
--   They are prefixed with `pandoc_` .
--   They can be used with any installed Pandoc version using `version`
-    argument.
--   Versions to use are passed as a string, either the version number
-    (e.g `"2.14.2"` ), or one special alias (`default`, `nightly` ,
-    `rstudio` , `system`) .
+- They are prefixed with `pandoc_` .
+- They can be used with any installed Pandoc version using `version`
+  argument.
+- Versions to use are passed as a string, either the version number (e.g
+  `"2.14.2"` ), or one special alias (`default`, `nightly` , `rstudio` ,
+  `system`) .
 
 Available functions allows:
 
--   Installing / Uninstalling specific Pandoc version from ‘2.0.3’ to
-    ‘2.18’ , including development version of Pandoc.
-    -   `pandoc_install()`, `pandoc_install_nightly()`,
-        `pandoc_uninstall()`, …
--   Switching Pandoc version by activating a specific one or running any
-    function with a specific Pandoc version using `version=` argument.
-    -   `pandoc_activate()` , `with_pandoc()` , ….
--   Managing locally installed version of Pandoc as versions installed
-    by this package are located within one folder per version in a
-    user’s data directory.
-    -   `pandoc_installed_versions()` , `pandoc_installed_latest` ,
-        `pandoc::pandoc_is_installed()` , `pandoc_locate()`,
-        `pandoc_available()`, …
--   Using easily one of the installed version with **rmarkdown** (i.e
-    `rmarkdown::render()` will use the version activated by this pandoc)
-    -   See `pandoc::pandoc_activate(rmarkdown = TRUE)`
--   Running a Pandoc binary from R, including a version installed
-    system-wise (`pandoc_bin("system")`), or the version shipped with
-    RStudio (`pandoc_bin("rstudio")`).
--   Calling binary at low-level from R with any version installed.
-    -   `pandoc_run()`
--   to easily access information in R usually requiring command line
-    execution
-    -   `pandoc_version()`, `pandoc_list_extensions()` ,
-        `pandoc_export_template()` , and all other wrappers…
--   opening Pandoc’s resources from R
-    -   `pandoc::pandoc_browse_manual()`,
-        `pandoc::pandoc_browse_extension()` , ….
+- Installing / Uninstalling specific Pandoc version from ‘2.0.3’ to
+  ‘2.19.2’ , including development version of Pandoc.
+  - `pandoc_install()`, `pandoc_install_nightly()`,
+    `pandoc_uninstall()`, …
+- Switching Pandoc version by activating a specific one or running any
+  function with a specific Pandoc version using `version=` argument.
+  - `pandoc_activate()` , `with_pandoc()` , ….
+- Managing locally installed version of Pandoc as versions installed by
+  this package are located within one folder per version in a user’s
+  data directory.
+  - `pandoc_installed_versions()` , `pandoc_installed_latest` ,
+    `pandoc::pandoc_is_installed()` , `pandoc_locate()`,
+    `pandoc_available()`, …
+- Using easily one of the installed version with **rmarkdown** (i.e
+  `rmarkdown::render()` will use the version activated by this pandoc)
+  - See `pandoc::pandoc_activate(rmarkdown = TRUE)`
+- Running a Pandoc binary from R, including a version installed
+  system-wise (`pandoc_bin("system")`), or the version shipped with
+  RStudio (`pandoc_bin("rstudio")`).
+- Calling binary at low-level from R with any version installed.
+  - `pandoc_run()`
+- to easily access information in R usually requiring command line
+  execution
+  - `pandoc_version()`, `pandoc_list_extensions()` ,
+    `pandoc_export_template()` , and all other wrappers…
+- opening Pandoc’s resources from R
+  - `pandoc::pandoc_browse_manual()`,
+    `pandoc::pandoc_browse_extension()` , ….
 
 ## Example
 
@@ -121,7 +121,7 @@ pandoc_install("2.11.4")
 #>   Use 'force = TRUE' to overwrite.
 # Highest install is used
 pandoc_version()
-#> [1] '2.18'
+#> [1] '2.19.2'
 ```
 
 See detailed examples in [Get

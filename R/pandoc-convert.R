@@ -27,8 +27,8 @@
 #'
 #' @examplesIf pandoc::pandoc_available()
 #' pandoc::pandoc_convert(text = "_This will be emphasize_", to = "latex")
-#' @examplesIf pandoc::pandoc_available("2.19.2")
-#' pandoc::pandoc_convert(text = "**This will be bold**", to = "html", version = "2.19.2")
+#' @examplesIf pandoc::pandoc_is_installed("2.11.4")
+#' pandoc::pandoc_convert(text = "**This will be bold**", to = "html", version = "2.11.4")
 #' @export
 pandoc_convert <- function(file = NULL,
                            text = NULL,

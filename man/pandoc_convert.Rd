@@ -58,7 +58,7 @@ This function will do just that:
 \dontshow{if (pandoc::pandoc_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 pandoc::pandoc_convert(text = "_This will be emphasize_", to = "latex")
 \dontshow{\}) # examplesIf}
-\dontshow{if (pandoc::pandoc_available("2.19.2")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-pandoc::pandoc_convert(text = "**This will be bold**", to = "html", version = "2.19.2")
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+pandoc::pandoc_convert(text = "**This will be bold**", to = "html", version = "2.11.4")
 \dontshow{\}) # examplesIf}
 }
