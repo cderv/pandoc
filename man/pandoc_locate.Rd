@@ -25,10 +25,13 @@ This function helps with finding the path to those specific versions of Pandoc.
 See \code{\link[=pandoc_bin]{pandoc_bin()}} for another way of getting paths to \code{pandoc} binaries
 }
 \examples{
+\dontshow{if (pandoc::pandoc_available() && !pandoc::pandoc_is_active("system")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # where is the default active version located ?
 pandoc_locate()
+\dontshow{\}) # examplesIf}
+pandoc::pandoc_is_installed("2.11.4")
 # where is a specific installed version located
-pandoc_locate("2.19.2")
+pandoc_locate("2.11.4")
 # return root folder of installed versions
 pandoc_locate(NULL)
 }

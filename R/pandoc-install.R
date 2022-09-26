@@ -510,11 +510,13 @@ pandoc_is_active <- function(version) {
 #' @inheritParams pandoc_bin
 #' @return Path of Pandoc binaries root folder if version is available.
 #' @seealso [pandoc_install()]
-#' @examples
+#' @examplesIf pandoc::pandoc_available() && !pandoc::pandoc_is_active("system")
 #' # where is the default active version located ?
 #' pandoc_locate()
+#' @examples pandoc::pandoc_is_installed("2.11.4")
 #' # where is a specific installed version located
-#' pandoc_locate("2.19.2")
+#' pandoc_locate("2.11.4")
+#' @examples
 #' # return root folder of installed versions
 #' pandoc_locate(NULL)
 #' @export
