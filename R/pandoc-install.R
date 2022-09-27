@@ -23,6 +23,7 @@ with_download_cache <- function(version, bundle_name, code) {
 #' Binary releases of Pandoc are available on its release page. By default, this
 #' function will install the latest available version.
 #' `pandoc_install_nightly()` is a wrapper for `pandoc_install("nightly")`.
+#' `pandoc_update()` is an alias for `pandoc_install()` default behavior.
 #'
 #' Pandoc versions are installed in user data directories with one folder per
 #' version. See [pandoc_locate()].
@@ -39,14 +40,15 @@ with_download_cache <- function(version, bundle_name, code) {
 #' @param force To set to `TRUE` to force a re-installation
 #' @return Invisibly, the path where the binary is installed otherwise. `NULL` if already
 #'   installed.
-#' @seealso [pandoc_uninstall()]
-#' @examplesIf FALSE
+#' @examplesIf rlang::is_interactive() && !pandoc::pandoc_is_installed("latest")
 #' # Install the latest pandoc version
-#' pandoc_install()
+#' pandoc_install() # or pandoc_update()
+#' pandoc_uninstall("latest")
+#' @examplesIf rlang::is_interactive() && !pandoc::pandoc_is_installed("2.11.4")
 #' # Install a specific pandoc version
 #' pandoc_install("2.11.4")
-#' # Install last nightly build of pandoc
-#' pandoc_install_nightly()
+#' pandoc_uninstall("2.11.4")
+#' @name pandoc_install
 #' @export
 pandoc_install <- function(version = "latest", force = FALSE) {
   gh_required()
@@ -126,16 +128,7 @@ pandoc_install <- function(version = "latest", force = FALSE) {
 
 
 
-#' Update to last Pandoc version available
-#'
-#' This function will check last version of Pandoc released, and install it if
-#' not already installed.
-#'
-#' @seealso [pandoc_install()]
-#'
-#' @return invisibly, path to installed pandoc version
-#' @examplesIf FALSE
-#' pandoc_update()
+#' @rdname pandoc_install
 #' @export
 pandoc_update <- function() {
   rlang::inform(c(i = "Updating to last available Pandoc release"))
@@ -145,8 +138,10 @@ pandoc_update <- function() {
 #' @rdname pandoc_install
 #' @param n_last Set to `n` as integer to install the n-th from last nightly
 #'   build. Default is last available build (1L)
-#' @examplesIf FALSE
+#' @examplesIf rlang::is_interactive() && !pandoc::pandoc_is_installed("nightly")
+#' # Install last nightly build of pandoc
 #' pandoc_install_nightly()
+#' pandoc_uninstall("nightly")
 #' @export
 pandoc_install_nightly <- function(n_last = 1L) {
   gh_required()
@@ -364,7 +359,7 @@ pandoc_installed_versions <- function() {
 }
 
 #' @rdname pandoc_installed_versions
-#' @examplesIf FALSE
+#' @examples
 #' pandoc_installed_latest()
 #' @export
 pandoc_installed_latest <- function() {
@@ -419,7 +414,7 @@ pandoc_is_installed <- function(version, error = FALSE, ask = FALSE) {
 #' @return `TRUE` (invisibly) if uninstalling is successful.
 #'
 #' @seealso [pandoc_install()]
-#' @examplesIf FALSE
+#' @examplesIf rlang::is_interactive() && !pandoc::pandoc_is_installed("2.19.2")
 #' pandoc_install("2.19.2")
 #' pandoc_is_installed("2.19.2")
 #' pandoc_uninstall("2.19.2")

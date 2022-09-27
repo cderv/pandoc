@@ -2,10 +2,13 @@
 % Please edit documentation in R/pandoc-install.R
 \name{pandoc_install}
 \alias{pandoc_install}
+\alias{pandoc_update}
 \alias{pandoc_install_nightly}
 \title{Install a pandoc binary for Github release page}
 \usage{
 pandoc_install(version = "latest", force = FALSE)
+
+pandoc_update()
 
 pandoc_install_nightly(n_last = 1L)
 }
@@ -30,6 +33,7 @@ installed.
 Binary releases of Pandoc are available on its release page. By default, this
 function will install the latest available version.
 \code{pandoc_install_nightly()} is a wrapper for \code{pandoc_install("nightly")}.
+\code{pandoc_update()} is an alias for \code{pandoc_install()} default behavior.
 }
 \details{
 Pandoc versions are installed in user data directories with one folder per
@@ -41,18 +45,19 @@ one if any. Installing nightly version is useful for example to test a bug
 against the very last available built version.
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("latest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Install the latest pandoc version
-pandoc_install()
+pandoc_install() # or pandoc_update()
+pandoc_uninstall("latest")
+\dontshow{\}) # examplesIf}
+\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Install a specific pandoc version
 pandoc_install("2.11.4")
+pandoc_uninstall("2.11.4")
+\dontshow{\}) # examplesIf}
+\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("nightly")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Install last nightly build of pandoc
 pandoc_install_nightly()
+pandoc_uninstall("nightly")
 \dontshow{\}) # examplesIf}
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-pandoc_install_nightly()
-\dontshow{\}) # examplesIf}
-}
-\seealso{
-\code{\link[=pandoc_uninstall]{pandoc_uninstall()}}
 }
