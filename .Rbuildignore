@@ -14,3 +14,4 @@
 ^docs$
 ^github-cache\.rds$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
