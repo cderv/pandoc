@@ -8,11 +8,6 @@ template:
   params:
     noindex: true
 
-development:
-  destination: "."
-  version_label: danger
-  version_tooltip: "Experimental version"
-
 authors:
   RStudio:
     href: https://www.rstudio.com
