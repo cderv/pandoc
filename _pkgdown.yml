@@ -68,3 +68,6 @@ reference:
   desc: "Functions for quickly accessing relevant online resources."
 - contents:
   - starts_with("pandoc_browse")
+
+development:
+  mode: auto
