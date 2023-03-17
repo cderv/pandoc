@@ -36,9 +36,11 @@ coverage](https://codecov.io/gh/cderv/pandoc/branch/main/graph/badge.svg)](https
 ## Usage
 
 All functions are prefixed with `pandoc_` and you will find below their
-main usage. See [Get started](https://cderv.github.io/pandoc/articles/pandoc.html) for usage examples
-and [Reference](https://cderv.github.io/pandoc/reference/index.html) page for full details of
-functions.
+main usage. See [Get
+started](https://cderv.github.io/pandoc/articles/pandoc.html) for usage
+examples and
+[Reference](https://cderv.github.io/pandoc/reference/index.html) page
+for full details of functions.
 
 Most functions follows these following rules:
 
@@ -92,7 +94,8 @@ pandoc_install("2.11.4")
 pandoc_version()
 ```
 
-See detailed examples in [Get started](https://cderv.github.io/pandoc/articles/pandoc.html).
+See detailed examples in [Get
+started](https://cderv.github.io/pandoc/articles/pandoc.html).
 
 ## Code of Conduct
 
