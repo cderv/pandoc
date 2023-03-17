@@ -39,19 +39,25 @@ Word document (\code{reference.docx}) or Powerpoint document (\code{reference.pp
 }
 \examples{
 \dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\dontshow{withr::local_dir(withr::local_tempdir())}
+\dontshow{
+withr::local_dir(withr::local_tempdir())
+}
 # export style.html file included in Pandoc HTML template
 pandoc_export_data_file("styles.html", output = "custom.html")
 # export css file used for epub by default
 pandoc_export_data_file("epub.css")
 \dontshow{\}) # examplesIf}
 \dontshow{if (pandoc::pandoc_available() && rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\dontshow{withr::local_dir(withr::local_tempdir())}
+\dontshow{
+withr::local_dir(withr::local_tempdir())
+}
 pandoc_export_reference_doc("docx")
 pandoc_export_reference_doc("pptx")
 \dontshow{\}) # examplesIf}
 \dontshow{if (pandoc::pandoc_is_installed("2.11.4") && rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\dontshow{withr::local_dir(withr::local_tempdir())}
+\dontshow{
+withr::local_dir(withr::local_tempdir())
+}
 pandoc_export_reference_doc("pptx", version = "2.11.4")
 \dontshow{\}) # examplesIf}
 }

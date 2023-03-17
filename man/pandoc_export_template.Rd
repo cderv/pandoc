@@ -34,7 +34,9 @@ this function, one can easily export default LaTeX template for example.
 pandoc_export_template()
 \dontshow{\}) # examplesIf}
 \dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-\dontshow{withr::local_dir(withr::local_tempdir())}
+\dontshow{
+withr::local_dir(withr::local_tempdir())
+}
 pandoc_export_template("latex", output = "default.tex", version = "system")
 \dontshow{\}) # examplesIf}
 }

@@ -48,8 +48,8 @@ This is inspired from \strong{withr} package.
 \dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Run with pandoc without activating the version for rmarkdown::render()
 with_pandoc_version("system",
-   pandoc_bin(),
-   rmarkdown = FALSE
+  pandoc_bin(),
+  rmarkdown = FALSE
 )
 \dontshow{\}) # examplesIf}
 \dontshow{if (pandoc::pandoc_is_installed("2.11.4") && rlang::is_installed("rmarkdown")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

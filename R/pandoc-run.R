@@ -65,8 +65,8 @@ pandoc_version <- function(version = "default") {
 #' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18
 #' # Run with pandoc without activating the version for rmarkdown::render()
 #' with_pandoc_version("system",
-#'    pandoc_bin(),
-#'    rmarkdown = FALSE
+#'   pandoc_bin(),
+#'   rmarkdown = FALSE
 #' )
 #' @examplesIf pandoc::pandoc_is_installed("2.11.4") && rlang::is_installed("rmarkdown")
 #' with_pandoc_version("2.11.4", rmarkdown::find_pandoc(), rmarkdown = TRUE)

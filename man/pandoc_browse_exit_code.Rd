@@ -13,6 +13,8 @@ Open the webpage at the place regarding exit code thrown by Pandoc.
 Open Pandoc's documentation about exit codes
 }
 \examples{
-\dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+\dontshow{
+withr::local_options(list(rlang_interactive = FALSE))
+}
 pandoc_browse_exit_code()
 }

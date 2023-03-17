@@ -34,7 +34,9 @@ test_that("rmarkdown version can be changed", {
   suppressMessages(pandoc_install("nightly"))
   old <- the$active_version
   old_rmd <- rmarkdown::find_pandoc()
-  expect_equal(pandoc_activate_rmarkdown("2.11.4"),
-               list(old = old_rmd, new = rmarkdown::find_pandoc()))
+  expect_equal(
+    pandoc_activate_rmarkdown("2.11.4"),
+    list(old = old_rmd, new = rmarkdown::find_pandoc())
+  )
   expect_equal(pandoc_activate_rmarkdown(NULL)$new, old_rmd)
 })

@@ -39,7 +39,9 @@ pandoc_browse_release <- function(version = "latest") {
 #'
 #' @return Open the Pandoc's MANUAL
 #' @examples
-#' \dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+#' \dontshow{
+#' withr::local_options(list(rlang_interactive = FALSE))
+#' }
 #' # open MANUAL home page
 #' pandoc_browse_manual()
 #' # open MANUAL at math part
@@ -60,7 +62,9 @@ pandoc_browse_manual <- function(id = NULL) {
 #'
 #' @return Open the webpage at the place regarding the required extension.
 #' @examples
-#' \dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+#' \dontshow{
+#' withr::local_options(list(rlang_interactive = FALSE))
+#' }
 #' pandoc_browse_extension()
 #' pandoc_browse_extension("auto_identifiers")
 #' @export
@@ -81,7 +85,9 @@ pandoc_browse_extension <- function(extension = NULL) {
 #'
 #' @return Open the webpage at the place regarding the required option
 #' @examples
-#' \dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+#' \dontshow{
+#' withr::local_options(list(rlang_interactive = FALSE))
+#' }
 #' pandoc_browse_option()
 #' pandoc_browse_option("embed-resources")
 #' @export
@@ -99,7 +105,9 @@ pandoc_browse_option <- function(option = NULL) {
 #'
 #' @return Open the webpage at the place regarding citation processing in Pandoc.
 #' @examples
-#' \dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+#' \dontshow{
+#' withr::local_options(list(rlang_interactive = FALSE))
+#' }
 #' pandoc_browse_citation()
 #' @export
 pandoc_browse_citation <- function() {
@@ -110,7 +118,9 @@ pandoc_browse_citation <- function() {
 #'
 #' @return Open the webpage at the place regarding exit code thrown by Pandoc.
 #' @examples
-#' \dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+#' \dontshow{
+#' withr::local_options(list(rlang_interactive = FALSE))
+#' }
 #' pandoc_browse_exit_code()
 #' @export
 pandoc_browse_exit_code <- function() {

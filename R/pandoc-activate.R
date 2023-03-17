@@ -49,7 +49,6 @@ pandoc_activate <- function(version = "latest", rmarkdown = getOption("pandoc.ac
     if (!quiet) {
       rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
     }
-
   }
   if (rmarkdown) pandoc_activate_rmarkdown(version, quiet)
   invisible(old_active)
@@ -123,7 +122,7 @@ reset_rmarkdown_pandoc_version <- function() {
 #' @export
 pandoc_available <- function(min = NULL, max = NULL) {
   active_version <- tryCatch(pandoc_version(version = "default"),
-                             error = function(e) NULL
+    error = function(e) NULL
   )
   if (is.null(active_version)) {
     return(FALSE)

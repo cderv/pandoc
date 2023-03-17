@@ -1,4 +1,3 @@
-
 # About how to install version --------------------------------------------
 
 with_download_cache <- function(version, bundle_name, code) {
@@ -260,13 +259,13 @@ pandoc_releases <- function() {
     if (!is.na(cached)) {
       # use same ~ on all OS
       if (fs::path_ext(cached) == "rds" && fs::file_exists(cached)) {
-      rlang::inform(c(
-        "i" = sprintf(
-          "Using cached version '%s' in instead of fetching GH",
-          fs::path_file(cached)
-        )
-      ))
-      readRDS(cached)
+        rlang::inform(c(
+          "i" = sprintf(
+            "Using cached version '%s' in instead of fetching GH",
+            fs::path_file(cached)
+          )
+        ))
+        readRDS(cached)
       }
     } else {
       fetch_gh_releases()

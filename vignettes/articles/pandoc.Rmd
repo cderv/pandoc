@@ -47,11 +47,11 @@ pandoc_install_nightly() # or pandoc_install("nightly")
 All those versions can live together and are installed in an isolated directory in user's data folders.
 
 ```{r}
-# Which version are currently installed ? 
+# Which version are currently installed ?
 pandoc_installed_versions()
-# Which is the latest version installed (nightly excluded)? 
+# Which is the latest version installed (nightly excluded)?
 pandoc_installed_latest()
-# Is a specific version installed ? 
+# Is a specific version installed ?
 pandoc_is_installed("2.11.4")
 pandoc_is_installed("2.7.3")
 ```
@@ -252,7 +252,7 @@ Main usage of Pandoc is to convert a document. The `pandoc::pandoc_convert()` is
 ```{r}
 # convert from text directly
 pandoc_convert(text = "# A header", to = "html")
-pandoc_convert(text = "# A header", to = "html", version = "system") 
+pandoc_convert(text = "# A header", to = "html", version = "system")
 
 # convert from file
 tmp <- tempfile(fileext = ".md")
@@ -339,7 +339,7 @@ unlink(c(ref_docx, ref_pptx))
 
 ```{r}
 pandoc_export_template(format = "jira")
-outfile <- pandoc_export_template(format = "latex",output = "default.latex")
+outfile <- pandoc_export_template(format = "latex", output = "default.latex")
 outfile
 readLines(outfile, n = 5)
 ```

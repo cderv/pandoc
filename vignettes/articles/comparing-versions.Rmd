@@ -44,7 +44,7 @@ versions <- purrr::set_names(versions)
 
 # Do conversion for each version
 res <- purrr::map(
-  versions, 
+  versions,
   ~ pandoc_convert(text = "This is a <span>Span</span>.", to = "gfm", version = .x)
 )
 ```
@@ -66,7 +66,7 @@ tab %>%
   filter(grepl("<span>", string, fixed = TRUE)) %>%
   # Order version
   arrange(num_ver) %>%
-  # which is the max one ? 
+  # which is the max one ?
   slice_tail(n = 1)
 ```
 We can confirm looking at 2.10 and 2.10.1, that `<span>` is indeed not preserve.

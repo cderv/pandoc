@@ -13,6 +13,8 @@ Open the webpage at the place regarding citation processing in Pandoc.
 Open Pandoc's documentation about citation processing
 }
 \examples{
-\dontshow{withr::local_options(list(rlang_interactive = FALSE))}
+\dontshow{
+withr::local_options(list(rlang_interactive = FALSE))
+}
 pandoc_browse_citation()
 }
