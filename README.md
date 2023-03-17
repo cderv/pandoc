@@ -52,9 +52,6 @@ The development version can be install from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("cderv/pandoc")
-
 # install.packages("pak")
 pak::pak("cderv/pandoc")
 ```
