@@ -23,6 +23,37 @@ expect_pandoc_installed <- function(version) {
   expect_true(fs::file_exists(bin))
 }
 
+test_that("Bundle name regex is computed correctly", {
+  expect_equal(
+    pandoc_bundle_name("3.1.2", "macOS", "arm64"),
+    "pandoc-3\\.1\\.2(-\\d)?(-arm64)?(-macOS)?\\.zip"
+  )
+  expect_equal(
+    pandoc_bundle_name("3.1.2", "macOS", "x86_64"),
+    "pandoc-3\\.1\\.2(-\\d)?(-x86_64)?(-macOS)?\\.zip"
+  )
+  expect_equal(
+    pandoc_bundle_name("3.1.0", "macOS", "arm64"),
+    "pandoc-3\\.1\\.0(-\\d)?(-macOS)?\\.zip"
+  )
+  expect_equal(
+    pandoc_bundle_name("3.1.0", "macOS", "x86_64"),
+    "pandoc-3\\.1\\.0(-\\d)?(-macOS)?\\.zip"
+  )
+  expect_equal(
+    pandoc_bundle_name("3.1.0", "linux", "arm64"),
+    "pandoc-3\\.1\\.0(-\\d)?(-linux)?(-arm64)?\\.tar\\.gz"
+  )
+  expect_equal(
+    pandoc_bundle_name("3.1.2", "linux", "amd64"),
+    "pandoc-3\\.1\\.2(-\\d)?(-linux)?(-amd64)?\\.tar\\.gz"
+  )
+  expect_equal(
+    pandoc_bundle_name("3.1.0", "windows", "x86_64"),
+    "pandoc-3\\.1\\.0(-\\d)?(-windows)?(-x86_64)?\\.zip"
+  )
+})
+
 skip_on_cran()
 skip_if_offline()
 
@@ -91,20 +122,35 @@ test_that("Assets are correctly found on linux arm64", {
   skip_on_cran()
   skip_if_offline()
   assets <- .get_assets_info("linux", "arm64")
-  errors <- keep(assets, ~ numeric_version(.x$version) <= "2.12")
+  errors <- keep(assets, ~ numeric_version(.x$version) < "2.12")
   walk(errors, ~ {
     expect_match(.x$error, "available for 2.12 and above only", fixed = TRUE)
   })
-  walk(discard(assets, ~ numeric_version(.x$version) <= "2.12"), ~ {
+
+  walk(discard(assets, ~ numeric_version(.x$version) < "2.12"), ~ {
     asset_url <- .x[["url"]]
     expect_match(asset_url, "https://github.com/jgm/pandoc/releases/download", fixed = TRUE)
   })
 })
 
-test_that("Assets are correctly found on linux arm64", {
+test_that("Assets are correctly found on macOS arm64", {
   skip_on_cran()
   skip_if_offline()
-  assets <- .get_assets_info("macOS", NULL)
+  assets <- .get_assets_info("macOS", "arm64")
+  errors <- keep(assets, ~ numeric_version(.x$version) < "3.1.2")
+  walk(errors, ~ {
+    expect_match(.x$error, "for 3.1.2 and above", fixed = TRUE)
+  })
+  walk(discard(assets, ~ numeric_version(.x$version) < "3.1.2"), ~ {
+    asset_url <- .x[["url"]]
+    expect_match(asset_url, "https://github.com/jgm/pandoc/releases/download", fixed = TRUE)
+  })
+})
+
+test_that("Assets are correctly found on macOS x86_64", {
+  skip_on_cran()
+  skip_if_offline()
+  assets <- .get_assets_info("macOS", "x86_64")
   pandoc_2.2.3 <- keep(assets, ~ .x$version == "2.2.3")[[1]]
   expect_match(pandoc_2.2.3$error, "regression")
   walk(discard(assets, ~ .x$version == "2.2.3"), ~ {

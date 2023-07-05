@@ -34,9 +34,9 @@ tab <- tab %>% filter(!is.na(name))
 unique(tab$name)
 
 extract_component <- function(name) {
-  mat <- stringr::str_match_all(name, "pandoc-([0-9.]*[0-9]+)-?(?:\\d)?-?(?<os>[a-zA-Z]+)?-?.?(pkg|amd64|i386|x86_64|arm64)?\\.(deb|tar\\.gz|zip|pkg|msi|dmg)$")[[1]]
+  mat <- stringr::str_match_all(name, "pandoc-([0-9.]*[0-9]+)-?(?:\\d)?-?(?<os>[a-zA-Z]+)?-?.?(pkg|amd64|i386|x86_64|arm64)?-?(?<variant>macOS)?\\.(deb|tar\\.gz|zip|pkg|msi|dmg)$")[[1]]
   mat <- mat[, -1]
-  names(mat) <- c("version", "os", "arch", "ext")
+  names(mat) <- c("version", "os", "arch", "variant", "ext")
   mat
 }
 
@@ -55,7 +55,11 @@ tab <- tab %>%
   mutate(version = numeric_version(version))
 
 # Github release since ?
-tab %>% summarise(minmax = range(version))
+tab %>% reframe(minmax = range(version))
+
+# Since 3.1.2, macOS has been moved in the name
+tab <- tab %>%
+  mutate(os = ifelse(is.na(os), variant, os))
 
 #' ## WINDOWS
 
@@ -64,53 +68,61 @@ tab %>% summarise(minmax = range(version))
 # from which version zip are available compare to msi ?
 tab %>%
   filter(ext == "msi") %>%
-  summarise(minmax = range(version))
+  reframe(minmax = range(version))
 
-#' MSI since 1.12
+#' MSI since 1.12 up
 
 tab %>%
   filter(ext == "zip", os == "windows") %>%
-  summarise(minmax = range(version))
+  reframe(minmax = range(version))
 
 #' Zip are available since 2.0.2 only
 
 #' ## LINUX
 tab %>%
   filter(ext == "tar.gz") %>%
-  summarise(minmax = range(version))
+  reframe(minmax = range(version))
+
 #' tar.gz available since pandoc 2.0
 
-#' deb file are available since 1.13.2
 tab %>%
   filter(ext == "deb") %>%
-  summarise(minmax = range(version))
+  reframe(minmax = range(version))
+#' deb file are available since 1.13.2
 
 #' Linux was not available before that
 
 #' ## MACOS
 #' Zip file is provided in addition to .pkg file
+
 tab %>%
   filter(ext == "zip", os == "macOS") %>%
-  summarise(minmax = range(version))
+  reframe(minmax = range(version))
 
 #' it switches to macOS after that
 tab %>%
   filter(os == "macOS", ext == "pkg") %>%
-  summarise(minmax = range(version))
+  reframe(minmax = range(version))
 
 #' until 1.19.2.1, os was called osx
 tab %>%
   filter(os == "osx", ext == "pkg") %>%
-  summarise(minmax = range(version))
+  reframe(minmax = range(version))
 
 #' before 1.13, pkg for mac OS was a zip file
 tab %>%
   filter(os == "osx", ext == "zip") %>%
-  summarise(minmax = range(version))
+  reframe(minmax = range(version))
 
 #' and before that it was dmg file
 tab %>%
   filter(is.na(os), ext == "dmg")
+
+#' Since 3.1.2 there is an architecture for MacOS
+tab %>%
+  filter(os == "macOS") %>%
+  group_by(arch) %>%
+  summarise(min = range(version)[1], max = range(version)[2])
 
 tab2 <- tab %>% select(-assets, -releases)
 
