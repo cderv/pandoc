@@ -7,7 +7,7 @@ the <- rlang::new_environment(
     # Possible pandoc installation not managed by this package directly
     external_versions = c("system", "rstudio"),
     # rmarkdown pandoc version
-    rmarkdown_active_version = if (rlang::is_installed("rmarkdown")) rmarkdown::find_pandoc(),
+    rmarkdown_active_version = if (rlang::is_installed("rmarkdown")) tryCatch(rmarkdown::find_pandoc(), error = function(e) NULL),
     rmarkdown_old_active_version = NULL
 
     # other possibles values in this env
