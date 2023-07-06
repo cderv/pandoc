@@ -15,6 +15,16 @@ test_that("pandoc_export_template() exports templates for a format", {
   expect_snapshot_file(theme_file, "default.jira", compare = compare_file_text)
 })
 
+test_that("pandoc_export_template() handles space in file path", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install())
+  local_pandoc_version("latest")
+  withr::local_dir(tempdir())
+  expect_no_error(suppressMessages(pandoc_export_template("jira", output = "path with space.jira")))
+  expect_true(fs::file_exists("path with space.jira"))
+})
+
 test_that("pandoc_export_data_file() exports data file", {
   skip_on_cran()
   skip_if_offline()
@@ -57,6 +67,16 @@ test_that("pandoc_export_data_file() exports data file", {
   unlink(theme_file)
 })
 
+test_that("pandoc_export_data_file() handles space in file path", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install())
+  local_pandoc_version("latest")
+  withr::local_dir(tempdir())
+  expect_no_error(suppressMessages(pandoc_export_data_file("styles.html", output = "my styles.html")))
+  expect_true(fs::file_exists("my styles.html"))
+})
+
 test_that("pandoc_export_highlight_theme() exports .theme file", {
   skip_on_cran()
   skip_if_offline()
@@ -85,4 +105,14 @@ test_that("pandoc_export_highlight_theme() exports .theme file", {
     theme_file <- pandoc_export_highlight_theme("tango", output = tmp_file)
   )
   expect_snapshot_file(theme_file, "tango.theme", compare = compare_file_text)
+})
+
+test_that("pandoc_export_highlight_theme() handles space in file path", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install())
+  local_pandoc_version("latest")
+  withr::local_dir(tempdir())
+  expect_no_error(suppressMessages(pandoc_export_highlight_theme(output = "my theme.theme")))
+  expect_true(fs::file_exists("my theme.theme"))
 })

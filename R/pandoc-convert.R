@@ -51,9 +51,9 @@ pandoc_convert <- function(file = NULL,
     "--from", from,
     "--to", to,
     if (standalone) "--standalone",
-    if (!is.null(output)) c("--output", output),
+    if (!is.null(output)) c("--output", shQuote(output)),
     args,
-    file
+    shQuote(file)
   )
 
   res <- pandoc_run(args, version = version)
