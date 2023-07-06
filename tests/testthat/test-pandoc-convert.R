@@ -22,4 +22,5 @@ test_that("pandoc_convert() handles space in file path", {
   writeLines("# My Markdown", "my test.md")
   expect_no_error(pandoc_convert("my test.md", to = "html"))
   expect_no_error(pandoc_convert("my test.md", to = "html", output = "my test.html"))
+  expect_true(fs::file_exists("my test.html"))
 })
