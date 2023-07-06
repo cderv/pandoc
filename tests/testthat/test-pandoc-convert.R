@@ -12,3 +12,14 @@ test_that("pandoc_convert()", {
   )
   expect_snapshot_file(tmp_file, "convert-markdown-dummy.md", compare = compare_file_text)
 })
+
+test_that("pandoc_convert() handles space in file path", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install())
+  local_pandoc_version("latest")
+  tmp_dir <- withr::local_tempdir()
+  writeLines("# My Markdown", "my test.md")
+  expect_no_error(pandoc_convert("my test.md", to = "html"))
+  expect_no_error(pandoc_convert("my test.md", to = "html", output = "my test.html"))
+})
