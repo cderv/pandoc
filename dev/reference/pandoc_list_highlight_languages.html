@@ -116,58 +116,25 @@ attributes.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "matlab"          "maxima"          "mediawiki"       "metafont"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "mips"            "modelines"       "modula2"         "modula3"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "monobasic"       "mustache"        "nasm"            "nim"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "noweb"           "objectivec"      "objectivecpp"    "ocaml"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "octave"          "opencl"          "orgmode"         "pascal"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "perl"            "php"             "pike"            "postscript"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "povray"          "powershell"      "prolog"          "protobuf"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "pure"            "purebasic"       "python"          "qml"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "r"               "raku"            "relaxng"         "relaxngcompact" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "rest"            "rhtml"           "roff"            "ruby"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "rust"            "sass"            "scala"           "scheme"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "sci"             "scss"            "sed"             "sgml"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "sml"             "spdxcomments"    "sql"             "sqlmysql"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "sqlpostgresql"   "stan"            "stata"           "swift"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "systemverilog"   "tcl"             "tcsh"            "texinfo"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "toml"            "typescript"      "verilog"         "vhdl"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "xml"             "xorg"            "xslt"            "xul"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "yacc"            "yaml"            "zsh"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "nix"             "noweb"           "objectivec"      "objectivecpp"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "ocaml"           "octave"          "opencl"          "orgmode"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "pascal"          "perl"            "php"             "pike"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "postscript"      "povray"          "powershell"      "prolog"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "protobuf"        "pure"            "purebasic"       "python"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "qml"             "r"               "raku"            "relaxng"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "relaxngcompact"  "rest"            "rhtml"           "roff"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "ruby"            "rust"            "sass"            "scala"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "scheme"          "sci"             "scss"            "sed"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "sgml"            "sml"             "spdxcomments"    "sql"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "sqlmysql"        "sqlpostgresql"   "stan"            "stata"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "swift"           "systemverilog"   "tcl"             "tcsh"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "texinfo"         "toml"            "typescript"      "verilog"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "vhdl"            "xml"             "xorg"            "xslt"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "xul"             "yacc"            "yaml"            "zsh"            </span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># pandoc::pandoc_is_installed("2.11.4")</span></span></span>
 <span class="r-in"><span><span class="co"># check languages available in a specific Pandoc's version</span></span></span>
 <span class="r-in"><span><span class="fu">pandoc_list_highlight_languages</span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "abc"             "actionscript"    "ada"             "agda"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "apache"          "asn1"            "asp"             "ats"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "awk"             "bash"            "bibtex"          "boo"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "c"               "changelog"       "clojure"         "cmake"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "coffee"          "coldfusion"      "comments"        "commonlisp"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "cpp"             "cs"              "css"             "curry"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "d"               "default"         "diff"            "djangotemplate" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "dockerfile"      "dot"             "doxygen"         "doxygenlua"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "dtd"             "eiffel"          "elixir"          "elm"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "email"           "erlang"          "fasm"            "fortranfixed"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "fortranfree"     "fsharp"          "gcc"             "glsl"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "gnuassembler"    "go"              "graphql"         "groovy"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "hamlet"          "haskell"         "haxe"            "html"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "idris"           "ini"             "isocpp"          "j"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "java"            "javadoc"         "javascript"      "javascriptreact"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "json"            "jsp"             "julia"           "kotlin"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "latex"           "lex"             "lilypond"        "literatecurry"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "literatehaskell" "llvm"            "lua"             "m4"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "makefile"        "mandoc"          "markdown"        "mathematica"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "matlab"          "maxima"          "mediawiki"       "metafont"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "mips"            "modelines"       "modula2"         "modula3"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "monobasic"       "mustache"        "nasm"            "nim"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "noweb"           "objectivec"      "objectivecpp"    "ocaml"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "octave"          "opencl"          "pascal"          "perl"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "php"             "pike"            "postscript"      "povray"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "powershell"      "prolog"          "protobuf"        "pure"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "purebasic"       "python"          "qml"             "r"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "relaxng"         "relaxngcompact"  "rest"            "rhtml"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "roff"            "ruby"            "rust"            "scala"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "scheme"          "sci"             "sed"             "sgml"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "sml"             "spdxcomments"    "sql"             "sqlmysql"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "sqlpostgresql"   "stata"           "tcl"             "tcsh"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "texinfo"         "toml"            "typescript"      "verilog"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "vhdl"            "xml"             "xorg"            "xslt"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "xul"             "yacc"            "yaml"            "zsh"            </span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

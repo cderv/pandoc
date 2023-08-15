@@ -130,7 +130,7 @@ there.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Using cached version 'github-cache.rds' in instead of fetching GH</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 3.1.4 already installed.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Pandoc 3.1.6.1 already installed.</span></span>
 <span><span class="co">#&gt;   Use 'force = TRUE' to overwrite.</span></span></code></pre></div>
 <p>If a specific older Pandoc version is needed (e.g for testing
 differences between version), a version can be specified.</p>
@@ -146,27 +146,30 @@ building a binary every day called <em>nightly</em> in there CI.</p>
 <code class="sourceCode R"><span><span class="co"># install the nightly version (overwrites previous one)</span></span>
 <span><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install_nightly</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># or pandoc_install("nightly")</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last version already installed: 7ba9ecfb5a3ef1fe8193daae240761f5b95a6ff3</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span></span>
+<span><span class="co">#&gt;   Downloading bundle...</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 948567f200ddaf59c87d0155bb0d652930601a61</span></span></code></pre></div>
 <p>All those versions can live together and are installed in an isolated
 directory in user’s data folders.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Which version are currently installed ?</span></span>
 <span><span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_versions</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "nightly"  "3.1.4"    "3.1.3"    "3.1.2"    "3.1.1"    "3.1"     </span></span>
-<span><span class="co">#&gt;  [7] "3.0.1"    "3.0"      "2.19.2"   "2.19.1"   "2.19"     "2.18"    </span></span>
-<span><span class="co">#&gt; [13] "2.17.1.1" "2.17.1"   "2.17.0.1" "2.17"     "2.16.2"   "2.16.1"  </span></span>
-<span><span class="co">#&gt; [19] "2.16"     "2.15"     "2.14.2"   "2.14.1"   "2.14.0.3" "2.14.0.2"</span></span>
-<span><span class="co">#&gt; [25] "2.14.0.1" "2.14"     "2.13"     "2.12"     "2.11.4"   "2.11.3.2"</span></span>
-<span><span class="co">#&gt; [31] "2.11.3.1" "2.11.3"   "2.11.2"   "2.11.1.1" "2.11.1"   "2.11.0.4"</span></span>
-<span><span class="co">#&gt; [37] "2.11.0.2" "2.11.0.1" "2.11"     "2.10.1"   "2.10"     "2.9.2.1" </span></span>
-<span><span class="co">#&gt; [43] "2.9.2"    "2.9.1.1"  "2.9.1"    "2.9"      "2.8.1"    "2.8.0.1" </span></span>
-<span><span class="co">#&gt; [49] "2.8"      "2.7.3"    "2.7.2"    "2.7.1"    "2.7"      "2.6"     </span></span>
-<span><span class="co">#&gt; [55] "2.5"      "2.4"      "2.3.1"    "2.3"      "2.2.3.2"  "2.2.3.1" </span></span>
-<span><span class="co">#&gt; [61] "2.2.2.1"  "2.2.2"    "2.2.1"    "2.2"      "2.1.3"    "2.1.2"   </span></span>
-<span><span class="co">#&gt; [67] "2.1.1"    "2.1"      "2.0.6"    "2.0.5"    "2.0.4"    "2.0.3"</span></span>
+<span><span class="co">#&gt;  [1] "nightly"  "3.1.6.1"  "3.1.6"    "3.1.5"    "3.1.4"    "3.1.3"   </span></span>
+<span><span class="co">#&gt;  [7] "3.1.2"    "3.1.1"    "3.1"      "3.0.1"    "3.0"      "2.19.2"  </span></span>
+<span><span class="co">#&gt; [13] "2.19.1"   "2.19"     "2.18"     "2.17.1.1" "2.17.1"   "2.17.0.1"</span></span>
+<span><span class="co">#&gt; [19] "2.17"     "2.16.2"   "2.16.1"   "2.16"     "2.15"     "2.14.2"  </span></span>
+<span><span class="co">#&gt; [25] "2.14.1"   "2.14.0.3" "2.14.0.2" "2.14.0.1" "2.14"     "2.13"    </span></span>
+<span><span class="co">#&gt; [31] "2.12"     "2.11.4"   "2.11.3.2" "2.11.3.1" "2.11.3"   "2.11.2"  </span></span>
+<span><span class="co">#&gt; [37] "2.11.1.1" "2.11.1"   "2.11.0.4" "2.11.0.2" "2.11.0.1" "2.11"    </span></span>
+<span><span class="co">#&gt; [43] "2.10.1"   "2.10"     "2.9.2.1"  "2.9.2"    "2.9.1.1"  "2.9.1"   </span></span>
+<span><span class="co">#&gt; [49] "2.9"      "2.8.1"    "2.8.0.1"  "2.8"      "2.7.3"    "2.7.2"   </span></span>
+<span><span class="co">#&gt; [55] "2.7.1"    "2.7"      "2.6"      "2.5"      "2.4"      "2.3.1"   </span></span>
+<span><span class="co">#&gt; [61] "2.3"      "2.2.3.2"  "2.2.3.1"  "2.2.2.1"  "2.2.2"    "2.2.1"   </span></span>
+<span><span class="co">#&gt; [67] "2.2"      "2.1.3"    "2.1.2"    "2.1.1"    "2.1"      "2.0.6"   </span></span>
+<span><span class="co">#&gt; [73] "2.0.5"    "2.0.4"    "2.0.3"</span></span>
 <span><span class="co"># Which is the latest version installed (nightly excluded)?</span></span>
 <span><span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_latest</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "3.1.4"</span></span>
+<span><span class="co">#&gt; [1] "3.1.6.1"</span></span>
 <span><span class="co"># Is a specific version installed ?</span></span>
 <span><span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_is_installed</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
@@ -244,12 +247,12 @@ version will be used with any of the function.
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Default to latest version installed</span></span>
 <span><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '3.1.4' is now the active one.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version '3.1.6.1' is now the active one.</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span></span>
 <span><span class="fu"><a href="../reference/pandoc_locate.html">pandoc_locate</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "~/.local/share/r-pandoc/3.1.4"</span></span>
+<span><span class="co">#&gt; [1] "~/.local/share/r-pandoc/3.1.6.1"</span></span>
 <span><span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">~/.local/share/r-pandoc/3.1.4/pandoc</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">~/.local/share/r-pandoc/3.1.6.1/pandoc</span></span></span>
 <span></span>
 <span><span class="co"># Activate specific version</span></span>
 <span><span class="fu"><a href="../reference/pandoc_activate.html">pandoc_activate</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span></span>
@@ -396,7 +399,7 @@ binaries</p>
 <span><span class="co">#&gt; [1] '2.11.4'</span></span>
 <span><span class="co"># Get version for a specific version</span></span>
 <span><span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"nightly"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] '3.1.4.9999'</span></span>
+<span><span class="co">#&gt; [1] '3.1.6.1.9999'</span></span>
 <span><span class="co"># Get version for a specific version</span></span>
 <span><span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span> <span class="co"># equivalent to pandoc_system_version()</span></span>
 <span><span class="co">#&gt; [1] '2.19.2'</span></span></code></pre></div>
@@ -565,20 +568,20 @@ met.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> output docbook     </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 51 more rows</span></span></span>
 <span><span class="fu"><a href="../reference/pandoc_list_formats.html">pandoc_list_formats</a></span><span class="op">(</span><span class="st">"output"</span>, version <span class="op">=</span> <span class="st">"nightly"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 64 × 2</span></span></span>
-<span><span class="co">#&gt;    type   formats     </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> output asciidoc    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> output asciidoctor </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> output beamer      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> output biblatex    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> output bibtex      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> output chunkedhtml </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> output commonmark  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> output commonmark_x</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> output context     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> output csljson     </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 54 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 65 × 2</span></span></span>
+<span><span class="co">#&gt;    type   formats        </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> output asciidoc       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> output asciidoc_legacy</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> output asciidoctor    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> output beamer         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> output biblatex       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> output bibtex         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> output chunkedhtml    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> output commonmark     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> output commonmark_x   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> output context        </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 55 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="list-available-highlight-style">List available highlight style<a class="anchor" aria-label="anchor" href="#list-available-highlight-style"></a>
