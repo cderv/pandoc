@@ -18,7 +18,7 @@ url_view <- function(...) {
 #' @references <https://github.com/jgm/pandoc/releases>
 #'
 #' @return Open the web page in browser in interactive mode or print the url
-#' @examplesIf rlang::is_interactive()
+#' @examplesIf rlang::is_interactive() && rlang::is_installed("gh") && attr(curlGetHeaders("https://github.com"), "status") == "200"
 #' pandoc_browse_release()
 #' pandoc_browse_release("2.14")
 #' @export

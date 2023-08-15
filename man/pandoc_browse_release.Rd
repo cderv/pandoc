@@ -16,7 +16,7 @@ Open the web page in browser in interactive mode or print the url
 Open Pandoc's release page in browser
 }
 \examples{
-\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive() && rlang::is_installed("gh") && attr(curlGetHeaders("https://github.com"), "status") == "200") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 pandoc_browse_release()
 pandoc_browse_release("2.14")
 \dontshow{\}) # examplesIf}
