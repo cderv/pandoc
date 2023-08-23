@@ -30,7 +30,7 @@ any arguments supported by the Pandoc binary.
 # Run any command line argument (prefer `pandoc_convert()` for conversion )
 pandoc::pandoc_run(c("--version"))
 \dontshow{\}) # examplesIf}
-\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "1.18") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 pandoc::pandoc_run(c("--list-input-formats"), version = "system")
 \dontshow{\}) # examplesIf}
 }

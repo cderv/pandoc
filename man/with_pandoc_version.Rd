@@ -45,7 +45,7 @@ without modifying the R session state.
 This is inspired from \strong{withr} package.
 }
 \examples{
-\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "1.18") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Run with pandoc without activating the version for rmarkdown::render()
 with_pandoc_version("system",
   pandoc_bin(),

@@ -29,7 +29,7 @@ will add a \code{.9999} suffix to the version reported by Pandoc.
 \dontshow{if (pandoc::pandoc_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 pandoc::pandoc_version()
 \dontshow{\}) # examplesIf}
-\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "1.18") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 pandoc::pandoc_version(version = "system")
 \dontshow{\}) # examplesIf}
 }
