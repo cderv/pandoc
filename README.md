@@ -77,7 +77,7 @@ Most functions follows these following rules:
 Available functions allows:
 
 - Installing / Uninstalling specific Pandoc version from ‘2.0.3’ to
-  ‘3.1.1’ , including development version of Pandoc.
+  ‘3.1.6.2’ , including development version of Pandoc.
   - `pandoc_install()`, `pandoc_install_nightly()`,
     `pandoc_uninstall()`, …
 - Switching Pandoc version by activating a specific one or running any
@@ -118,7 +118,7 @@ pandoc_install("2.11.4")
 #>   Use 'force = TRUE' to overwrite.
 # Highest install is used
 pandoc_version()
-#> [1] '3.1.1'
+#> [1] '3.1.6'
 ```
 
 See detailed examples in [Get
