@@ -1,5 +1,7 @@
 # pandoc (development version)
 
+-   Fix an issue with input and output path containing short path version using \`\~\` (thanks, @olivroy, #31)
+
 -   Fix Pandoc 3.1.2 and above on Mac as Pandoc bundles' name have changed.
 
 -   Fix an issue in installation on Mac M1 with broken external Pandoc.
