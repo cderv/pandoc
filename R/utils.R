@@ -13,7 +13,7 @@ resolve_version <- function(version) {
 }
 
 pandoc_feature_requirement <- function(min, version = "default") {
-  if (pandoc_version(version = version) < min) {
+  if (pandoc_version(version = version) < as.character(min)) {
     rlang::abort(
       sprintf("This feature is only available for Pandoc `%s` and above.", min),
       call = rlang::caller_env()

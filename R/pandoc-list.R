@@ -56,7 +56,7 @@ pandoc_list_formats <- function(type = c("input", "output"), version = "default"
 #' @examplesIf pandoc_available("2.8")
 #' pandoc_list_extensions("markdown")
 #' pandoc_list_extensions("gfm")
-#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 2.8
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "2.8"
 #' # target a specific version
 #' pandoc_list_extensions("html", version = "system")
 #' @export

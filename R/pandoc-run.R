@@ -10,7 +10,7 @@
 #' @examplesIf pandoc::pandoc_available()
 #' # Run any command line argument (prefer `pandoc_convert()` for conversion )
 #' pandoc::pandoc_run(c("--version"))
-#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "1.18"
 #' pandoc::pandoc_run(c("--list-input-formats"), version = "system")
 #' @export
 pandoc_run <- function(args, version = "default") {
@@ -41,7 +41,7 @@ pandoc_run <- function(args, version = "default") {
 #' @return The version number for `pandoc` binary as a [base::numeric_version()] object.
 #' @examplesIf pandoc::pandoc_available()
 #' pandoc::pandoc_version()
-#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "1.18"
 #' pandoc::pandoc_version(version = "system")
 #' @export
 pandoc_version <- function(version = "default") {
@@ -62,7 +62,7 @@ pandoc_version <- function(version = "default") {
 #' @param code Code to execute with the temporary active Pandoc version.
 #'
 #' @return The results of the evaluation of the `code` argument.
-#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > 1.18
+#' @examplesIf !is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "1.18"
 #' # Run with pandoc without activating the version for rmarkdown::render()
 #' with_pandoc_version("system",
 #'   pandoc_bin(),
