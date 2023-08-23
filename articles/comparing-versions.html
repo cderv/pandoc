@@ -8,10 +8,10 @@
 <meta name="description" content="pandoc">
 <title>Comparing Pandoc versions • pandoc</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Comparing Pandoc versions">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Comparing Pandoc versions">
 <meta property="og:description" content="pandoc">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">pandoc</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,20 +84,35 @@
 
     
     
-<p>One of the aim for this package is to help dealing with Pandoc changes over time. Pandoc is a project which has often some breaking change between versions. However, tools like R Markdown aims to work with any Pandoc versions, and hide those changes for the user by insure backward compatibility and adjustment toward new features.</p>
-<p>Dealing with this can require to compare versions and now when a change occurs.</p>
+<p>One of the aim for this package is to help dealing with Pandoc
+changes over time. Pandoc is a project which has often some breaking
+change between versions. However, tools like R Markdown aims to work
+with any Pandoc versions, and hide those changes for the user by insure
+backward compatibility and adjustment toward new features.</p>
+<p>Dealing with this can require to compare versions and now when a
+change occurs.</p>
 <div class="section level3">
 <h3 id="use-case-1-finding-which-version-introduced-a-change">Use Case 1: Finding which version introduced a change<a class="anchor" aria-label="anchor" href="#use-case-1-finding-which-version-introduced-a-change"></a>
 </h3>
-<p>Let’s take the example of a change in Pandoc regarding <code>gfm</code> format: It appears at some point that raw HTML <code>&lt;span&gt;&lt;/span&gt;</code> was removed during conversion. When does this happened ? Let’s take a look.</p>
-<p>For that, we want to convert <code>"This is a &lt;span&gt;Span&lt;/span&gt;."</code> to <code>gfm</code> format and look for the max version that keep the raw HTML <code>&lt;span&gt;</code> in its markdown output.</p>
+<p>Let’s take the example of a change in Pandoc regarding
+<code>gfm</code> format: It appears at some point that raw HTML
+<code>&lt;span&gt;&lt;/span&gt;</code> was removed during conversion.
+When does this happened ? Let’s take a look.</p>
+<p>For that, we want to convert
+<code>"This is a &lt;span&gt;Span&lt;/span&gt;."</code> to
+<code>gfm</code> format and look for the max version that keep the raw
+HTML <code>&lt;span&gt;</code> in its markdown output.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cderv/pandoc" class="external-link">pandoc</a></span><span class="op">)</span></span></code></pre></div>
-<p>As a prerequisite to the analysis, all available pandoc versions needs to be installed.</p>
+<p>As a prerequisite to the analysis, all available pandoc versions
+needs to be installed.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">walk</a></span><span class="op">(</span><span class="fu"><a href="../reference/pandoc_available_releases.html">pandoc_available_releases</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/safely.html" class="external-link">safely</a></span><span class="op">(</span><span class="va">pandoc_install</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Once this is done, it is easy to iterate over versions to do an analysis over an hypothesis.</p>
-<p>First, we use each Pandoc version to convert <code>"This is a &lt;span&gt;Span&lt;/span&gt;."</code> to Github Markdown</p>
+<p>Once this is done, it is easy to iterate over versions to do an
+analysis over an hypothesis.</p>
+<p>First, we use each Pandoc version to convert
+<code>"This is a &lt;span&gt;Span&lt;/span&gt;."</code> to Github
+Markdown</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get the available versions</span></span>
 <span><span class="va">versions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pandoc_installed_versions.html">pandoc_installed_versions</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -105,10 +120,11 @@
 <span></span>
 <span><span class="co"># Do conversion for each version</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span></span>
-<span>  <span class="va">versions</span>, </span>
+<span>  <span class="va">versions</span>,</span>
 <span>  <span class="op">~</span> <span class="fu"><a href="../reference/pandoc_convert.html">pandoc_convert</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"This is a &lt;span&gt;Span&lt;/span&gt;."</span>, to <span class="op">=</span> <span class="st">"gfm"</span>, version <span class="op">=</span> <span class="va">.x</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>With the result, we can build a tibble to filter out which is the maximum version that preserve the raw <code>&lt;span&gt;</code></p>
+<p>With the result, we can build a tibble to filter out which is the
+maximum version that preserve the raw <code>&lt;span&gt;</code></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -132,13 +148,14 @@
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"&lt;span&gt;"</span>, <span class="va">string</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="co"># Order version</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">num_ver</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="co"># which is the max one ? </span></span>
+<span>  <span class="co"># which is the max one ?</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_tail</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 3</span></span></span>
 <span><span class="co">#&gt;   ver   string                       num_ver   </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;nmrc_vrs&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2.10  This is a &lt;span&gt;Span&lt;/span&gt;. 2.10</span></span></code></pre></div>
-<p>We can confirm looking at 2.10 and 2.10.1, that <code>&lt;span&gt;</code> is indeed not preserve.</p>
+<p>We can confirm looking at 2.10 and 2.10.1, that
+<code>&lt;span&gt;</code> is indeed not preserve.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tab</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ver</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2.10"</span>, <span class="st">"2.10.1"</span><span class="op">)</span><span class="op">)</span></span>
@@ -147,16 +164,20 @@
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2.10.1 This is a Span.             </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2.10   This is a &lt;span&gt;Span&lt;/span&gt;.</span></span></code></pre></div>
-<p>From there, it is easier to know how to adapt, by first looking into the changes in Pandoc’s release not</p>
+<p>From there, it is easier to know how to adapt, by first looking into
+the changes in Pandoc’s release not</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pandoc_browse_release.html">pandoc_browse_release</a></span><span class="op">(</span><span class="st">"2.10.1"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Open URL</span></span>
 <span><span class="co">#&gt; https://github.com/jgm/pandoc/releases/2.10.1</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="use-case-2-which-output-formats-has---autolink_bare_uris-extensions-available">Use Case 2: Which output formats has <code>--autolink_bare_uris</code> extensions available ?<a class="anchor" aria-label="anchor" href="#use-case-2-which-output-formats-has---autolink_bare_uris-extensions-available"></a>
+<h2 id="use-case-2-which-output-formats-has---autolink_bare_uris-extensions-available">Use Case 2: Which output formats has
+<code>--autolink_bare_uris</code> extensions available ?<a class="anchor" aria-label="anchor" href="#use-case-2-which-output-formats-has---autolink_bare_uris-extensions-available"></a>
 </h2>
-<p>To answer this question, it is interesting to be able to iterate over all available formats, for a specific version. Let’s take version “2.17” as example.</p>
+<p>To answer this question, it is interesting to be able to iterate over
+all available formats, for a specific version. Let’s take version “2.17”
+as example.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/cderv/pandoc" class="external-link">pandoc</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install</a></span><span class="op">(</span><span class="st">"2.17"</span><span class="op">)</span></span></code></pre></div>
@@ -176,7 +197,7 @@
 <span><span class="va">has_smart</span> <span class="op">&lt;-</span> <span class="va">format_extensions</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">hoist</a></span><span class="op">(</span><span class="va">exts</span>, <span class="st">"extensions"</span>, <span class="st">"default"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">exts</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">unnest_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"extensions"</span>, <span class="st">"default"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html" class="external-link">unnest_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"extensions"</span>, <span class="st">"default"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">extensions</span> <span class="op">==</span> <span class="st">"smart"</span><span class="op">)</span></span></code></pre></div>
 <p>Which has it by default ?</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -225,12 +246,12 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Christophe Dervieux, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
+<p>Developed by Christophe Dervieux, <a href="https://www.posit.io" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" width="72"></a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
     </footer>
