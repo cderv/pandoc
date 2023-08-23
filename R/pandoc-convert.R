@@ -46,12 +46,17 @@ pandoc_convert <- function(file = NULL,
     on.exit(unlink(file))
     text <- paste0(text, collapse = "\n")
     write_utf8(text, file)
+  } else if (!is.null(file)) {
+    file <- path.expand(file)
+  } else {
+    stop("`file` or `text` arguments must be used.")
   }
+
   args <- c(
     "--from", from,
     "--to", to,
     if (standalone) "--standalone",
-    if (!is.null(output)) c("--output", shQuote(output)),
+    if (!is.null(output)) c("--output", shQuote(path.expand(output))),
     args,
     shQuote(file)
   )

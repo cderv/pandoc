@@ -29,7 +29,7 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
     preview <- TRUE
   }
   args <- c(
-    "--output", shQuote(output),
+    "--output", shQuote(path.expand(output)),
     "--print-default-template", format
   )
   pandoc_run(args, version = version)
@@ -81,7 +81,7 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
     file <- "templates/styles.html"
   }
   args <- c(
-    "--output", shQuote(output),
+    "--output", shQuote(path.expand(output)),
     "--print-default-data-file", file
   )
   pandoc_run(args, version = version)
@@ -149,7 +149,7 @@ pandoc_export_highlight_theme <- function(style = "pygments", output = style, ve
   }
   output <- fs::path_ext_set(output, ".theme")
   args <- c(
-    "--output", shQuote(output),
+    "--output", shQuote(path.expand(output)),
     "--print-highlight-style", style
   )
   pandoc_run(args, version = version)
