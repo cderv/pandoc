@@ -149,14 +149,14 @@ pandoc_install_nightly <- function(n_last = 1L) {
   version <- "nightly"
   install_dir <- pandoc_home(version)
   rlang::inform(c(i = "Retrieving last available nightly informations..."))
-  runs <- gh::gh("/repos/jgm/pandoc/actions/workflows/nightly.yml/runs",
+  runs <- gh_wrapper("/repos/jgm/pandoc/actions/workflows/nightly.yml/runs",
     .limit = max(15L, n_last + 5)
   )
   runs <- keep(runs$workflow_runs, ~ .x$conclusion == "success")
   ind <- min(length(runs), n_last)
   artifacts_url <- runs[[ind]][["artifacts_url"]]
   head_sha <- runs[[ind]][["head_sha"]]
-  artifacts <- gh::gh(artifacts_url)
+  artifacts <- gh_wrapper(artifacts_url)
   artifact_url <- keep(artifacts$artifacts, ~ .x$name == bundle_name)[[1]][["archive_download_url"]]
   if (fs::dir_exists(install_dir)) {
     current_version <- pandoc_nightly_version()
@@ -171,7 +171,7 @@ pandoc_install_nightly <- function(n_last = 1L) {
   bundle_name <- fs::path_ext_set(head_sha, "zip")
   rlang::inform(c(i = "Installing last available nightly..."))
   tmp_file <- with_download_cache("nightly", bundle_name, {
-    gh::gh(artifact_url, .destfile = bundle_name)
+    gh_wrapper(artifact_url, .destfile = bundle_name)
   })
 
   utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
@@ -293,7 +293,7 @@ pandoc_releases <- function() {
 fetch_gh_releases <- function(limit = Inf) {
   gh_required()
   rlang::inform(c(i = "Fetching Pandoc releases info from github..."))
-  gh::gh(
+  gh_wrapper(
     "GET /repos/:owner/:repo/releases",
     owner = "jgm",
     repo = "pandoc",
@@ -334,6 +334,23 @@ pandoc_os <- function() {
     linux = "linux",
     windows = "windows",
     rlang::abort("Unknown operating system.")
+  )
+}
+
+# fallback for bad token errors. See 
+# https://github.com/cderv/pandoc/issues/30#issuecomment-1691712036
+# for details
+gh_wrapper <- function(...) {
+  tryCatch(gh::gh(...),
+    http_error_401 = function(e) {
+      rlang::inform(c(
+        "!" = "Bad GitHub credentials found", 
+        i = "Attempting to install without credentials..."))
+      # if we get a 401 error, the user has a bad token and we should try with
+      # an empty token
+      e$call$.token <- ""
+      eval(e$call)
+    }
   )
 }
 
