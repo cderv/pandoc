@@ -1,5 +1,8 @@
 # pandoc (development version)
 
+-   pandoc installation will no longer immediately fail for users with bad 
+    GitHub credentials
+
 # pandoc 0.2.0
 
 -   input and output path containing short path version using `~` now works (thanks, @olivroy, #31)
