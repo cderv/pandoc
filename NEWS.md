@@ -1,3 +1,5 @@
+# pandoc (development version)
+
 # pandoc 0.2.0
 
 -   input and output path containing short path version using `~` now works (thanks, @olivroy, #31)
