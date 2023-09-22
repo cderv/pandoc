@@ -52,3 +52,14 @@ test_that("rmarkdown version is correctly set / reset", {
   expect_equal(rmarkdown::find_pandoc(), before_with)
   expect_equal(pandoc_version(), as.numeric_version("2.18"))
 })
+
+test_that("Pandoc error is shown", {
+  skip_on_cran()
+  skip_if_offline()
+  suppressMessages(pandoc_install("2.18"))
+  local_pandoc_version("2.18")
+  tmp <- withr::local_tempfile(fileext = ".md")
+  write_utf8("dummy", tmp)
+  expect_identical(pandoc::pandoc_run(c("--to", "gfm", tmp)), "dummy")
+  expect_snapshot(pandoc::pandoc_run(c("--to", "word", tmp)), error = TRUE)
+})
