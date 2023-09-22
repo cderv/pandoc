@@ -21,7 +21,7 @@ pandoc_run <- function(args, version = "default") {
   # Seems like expansion is needed (https://github.com/cderv/pandoc/pull/15)
   # not doing it on windows because `~` does not mean the same for {fs}
   if (pandoc_os() != "windows") bin <- fs::path_expand(bin)
-  res <- suppressWarnings(system2(bin, args, stdout = TRUE))
+  res <- suppressWarnings(system2(bin, args, stdout = TRUE, stderr = TRUE))
   status <- attr(res, "status", TRUE)
   if (length(status) > 0 && status > 0) {
     rlang::abort(c("Running Pandoc failed with following error", res))
