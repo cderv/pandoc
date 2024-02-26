@@ -171,7 +171,15 @@ pandoc_install_nightly <- function(n_last = 1L) {
   bundle_name <- fs::path_ext_set(head_sha, "zip")
   rlang::inform(c(i = "Installing last available nightly..."))
   tmp_file <- with_download_cache("nightly", bundle_name, {
-    gh::gh(artifact_url, .destfile = bundle_name)
+    tryCatch({
+      gh::gh(artifact_url, .destfile = bundle_name)
+    },
+    error = function(e) {
+      if (fs::file_exists(bundle_name)) {
+        fs::file_delete(bundle_name)
+      }
+      rlang::abort(parent = e, class = "pandoc_pkg_download_cache_error")
+    })
   })
 
   utils::unzip(tmp_file, exdir = install_dir, junkpaths = TRUE)
