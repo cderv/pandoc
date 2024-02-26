@@ -20,6 +20,7 @@ Imports:
 Suggests: 
     covr,
     gh,
+    jeroen/curl,
     rmarkdown (>= 2.14),
     testthat (>= 3.0.0),
     tibble,
