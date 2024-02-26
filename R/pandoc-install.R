@@ -160,7 +160,7 @@ pandoc_install_nightly <- function(n_last = 1L) {
   artifact_url <- keep(artifacts$artifacts, ~ .x$name == bundle_name)[[1]][["archive_download_url"]]
   if (fs::dir_exists(install_dir)) {
     current_version <- pandoc_nightly_version()
-    if (head_sha == current_version) {
+    if (!is.null(current_version) && head_sha == current_version) {
       rlang::inform(c(v = paste0("Last version already installed: ", current_version)))
       return(invisible(install_dir))
     }
