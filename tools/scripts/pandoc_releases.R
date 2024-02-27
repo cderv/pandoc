@@ -83,6 +83,21 @@ tab %>%
   filter(ext == "tar.gz") %>%
   reframe(minmax = range(version))
 
+#' arm64 since 2.12
+tab %>%
+  filter(ext == "tar.gz", arch == "arm64") %>%
+  reframe(minmax = range(version))
+
+#' amd64 since  2.8
+tab %>%
+  filter(ext == "tar.gz", arch == "amd64") %>%
+  reframe(minmax = range(version))
+
+#' no arch before from 2.0 to 2.7.3
+tab %>%
+  filter(ext == "tar.gz", is.na(arch)) %>%
+  reframe(minmax = range(version))
+
 #' tar.gz available since pandoc 2.0
 
 tab %>%
@@ -120,7 +135,7 @@ tab %>%
 
 #' Since 3.1.2 there is an architecture for MacOS
 tab %>%
-  filter(os == "macOS") %>%
+  filter(os == "macOS" | variant == "macOS") %>%
   group_by(arch) %>%
   summarise(min = range(version)[1], max = range(version)[2])
 
