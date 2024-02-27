@@ -93,15 +93,14 @@ See <code><a href="pandoc_bin.html">pandoc_bin()</a></code> for another way of g
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># pandoc::pandoc_available() &amp;&amp; !pandoc::pandoc_is_active("system") &amp;&amp;      !pandoc::pandoc_is_active("rstudio")</span></span></span>
-<span class="r-in"><span><span class="co"># where is the default active version located ?</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># where is the default active version located ?</span></span></span>
 <span class="r-in"><span><span class="fu">pandoc_locate</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "~/.local/share/r-pandoc/2.18"</span>
 <span class="r-in"><span><span class="fu">pandoc</span><span class="fu">::</span><span class="fu"><a href="pandoc_installed_versions.html">pandoc_is_installed</a></span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span><span class="co"># where is a specific installed version located</span></span></span>
 <span class="r-in"><span><span class="fu">pandoc_locate</span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "~/.local/share/r-pandoc/2.11.4"</span>
 <span class="r-in"><span><span class="co"># return root folder of installed versions</span></span></span>
 <span class="r-in"><span><span class="fu">pandoc_locate</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "~/.local/share/r-pandoc"</span>
