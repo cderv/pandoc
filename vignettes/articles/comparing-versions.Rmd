@@ -81,7 +81,7 @@ From there, it is easier to know how to adapt, by first looking into the changes
 pandoc_browse_release("2.10.1")
 ```
 
-# Use Case 2: Which output formats has `--autolink_bare_uris` extensions available ?
+## Use Case 2: Which output formats has `--autolink_bare_uris` extensions available ?
 
 To answer this question, it is interesting to be able to iterate over all
 available formats, for a specific version. Let's take version "2.17" as example. 
