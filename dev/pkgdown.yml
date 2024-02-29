@@ -1,10 +1,10 @@
-pandoc: 2.19.2
+pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   comparing-versions: comparing-versions.html
   pandoc: pandoc.html
-last_built: 2024-02-27T13:30Z
+last_built: 2024-02-29T11:16Z
 urls:
   reference: https://cderv.github.io/pandoc/reference
   article: https://cderv.github.io/pandoc/articles

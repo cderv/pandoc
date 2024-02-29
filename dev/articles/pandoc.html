@@ -146,7 +146,10 @@ building a binary every day called <em>nightly</em> in there CI.</p>
 <code class="sourceCode R"><span><span class="co"># install the nightly version (overwrites previous one)</span></span>
 <span><span class="fu"><a href="../reference/pandoc_install.html">pandoc_install_nightly</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># or pandoc_install("nightly")</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Retrieving last available nightly informations...</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last version already installed: 23337fe9dc3afada6b173bbaa90b855bd07abb26</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Removing old Pandoc nightly version 23337fe9dc3afada6b173bbaa90b855bd07abb26</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Installing last available nightly...</span></span>
+<span><span class="co">#&gt;   Downloading bundle...</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Last Pandoc nightly installed: 6c88c39c6dbcf8ac4033bf377c71a8713eaba900</span></span></code></pre></div>
 <p>All those versions can live together and are installed in an isolated
 directory in user’s data folders.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -276,7 +279,7 @@ version will be used with any of the function.
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Version 'system' is now the active one.</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB;">ℹ</span> Pandoc version also activated for rmarkdown functions.</span></span>
 <span><span class="fu"><a href="../reference/pandoc_bin.html">pandoc_bin</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/usr/bin/pandoc</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00; font-weight: bold;">/opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc</span></span></span></code></pre></div>
 <p>A default active version will be set when the package is loaded (i.e
 using <code>onLoad</code>) following this search order:</p>
 <ul>
@@ -401,7 +404,7 @@ binaries</p>
 <span><span class="co">#&gt; [1] '3.1.12.1.9999'</span></span>
 <span><span class="co"># Get version for a specific version</span></span>
 <span><span class="fu"><a href="../reference/pandoc_version.html">pandoc_version</a></span><span class="op">(</span><span class="st">"system"</span><span class="op">)</span> <span class="co"># equivalent to pandoc_system_version()</span></span>
-<span><span class="co">#&gt; [1] '2.19.2'</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] '3.1.11'</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -424,7 +427,7 @@ some arguments. By default, it will use the active version
 <span><span class="co">#&gt; [6] "This is free software; see the source for copying conditions. There is no"    </span></span>
 <span><span class="co">#&gt; [7] "warranty, not even for merchantability or fitness for a particular purpose."</span></span></code></pre></div>
 <p>equivalent to calling</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">--version</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">--version</span></span></code></pre></div>
 <p>with the correct binary.</p>
 <p>Using the <code>version=</code> argument allows to run a specific
 version</p>
