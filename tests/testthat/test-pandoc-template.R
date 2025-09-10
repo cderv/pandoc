@@ -1,6 +1,8 @@
 test_that("pandoc_export_template() exports templates for a format", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_macos_arm()
+  # only works with pandoc > 2.7.1
   suppressMessages(pandoc_install("2.5"))
   expect_error(pandoc_export_template(version = "2.5"))
   suppressMessages(pandoc_install("2.11.4"))
@@ -31,6 +33,8 @@ test_that("pandoc_export_template() handles space in file path", {
 test_that("pandoc_export_data_file() exports data file", {
   skip_on_cran()
   skip_if_offline()
+  # only works with pandoc 2.7.1+
+  skip_on_macos_arm()
   suppressMessages(pandoc_install("2.5"))
   expect_error(pandoc_export_data_file("styles.html", version = "2.5"))
   suppressMessages(pandoc_install("2.11.4"))
@@ -57,6 +61,8 @@ test_that("pandoc_export_data_file() exports data file", {
 test_that("pandoc_export_data_file() exports data file", {
   skip_on_cran()
   skip_if_offline()
+  # only works with pandoc 2.7.1+
+  skip_on_macos_arm()
   suppressMessages(pandoc_install("2.5"))
   expect_error(pandoc_export_reference_doc(version = "2.5"))
   suppressMessages(pandoc_install("2.11.4"))
@@ -90,8 +96,10 @@ test_that("pandoc_export_data_file() handles space in file path", {
 test_that("pandoc_export_highlight_theme() exports .theme file", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.5"))
+  # only works for 2.7.1+
+  skip_on_macos_arm()
   expect_error(pandoc_export_highlight_theme(version = "2.5"))
+  suppressMessages(pandoc_install("2.5"))
   suppressMessages(pandoc_install("2.11.4"))
   local_pandoc_version("2.11.4")
   # default file name

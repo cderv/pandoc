@@ -1,22 +1,18 @@
 test_that("resolve_version()", {
   rlang::local_bindings(active_version = "nightly", .env = the)
   expect_equal(resolve_version("default"), "nightly")
-  expect_equal(resolve_version("2.11.4"), "2.11.4")
+  expect_equal(resolve_version("3.6.3"), "3.6.3")
   expect_equal(resolve_version("latest"), pandoc_installed_latest())
 })
 
 test_that("pandoc_feature_requirement() not met", {
   skip_on_cran()
   skip_if_offline()
-  # 2.11.4 is not available on ARM macOS
-  skip_if(
-    pandoc_os() == "macOS" && pandoc_arch("macOS") == "arm64"
-  )
-  suppressMessages(pandoc_install("2.11.4"))
-  expect_true(pandoc_feature_requirement("2.8", version = "2.11.4"))
+  suppressMessages(pandoc_install("3.6.3"))
+  expect_true(pandoc_feature_requirement("2.8", version = "3.6.3"))
   expect_error(
-    pandoc_feature_requirement("2.12", version = "2.11.4"),
-    "`2.12` and above",
+    pandoc_feature_requirement("3.7.0", version = "3.6.3"),
+    "`3.7.0` and above",
     fixed = TRUE
   )
 })

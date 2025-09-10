@@ -11,7 +11,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
+          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
         },
         "names": {
           "type": "character",
@@ -23,12 +23,12 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input"]
+          "value": ["input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input", "input"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["biblatex", "bibtex", "commonmark", "commonmark_x", "creole", "csljson", "csv", "docbook", "docx", "dokuwiki", "epub", "fb2", "gfm", "haddock", "html", "ipynb", "jats", "jira", "json", "latex", "man", "markdown", "markdown_github", "markdown_mmd", "markdown_phpextra", "markdown_strict", "mediawiki", "muse", "native", "odt", "opml", "org", "rst", "t2t", "textile", "tikiwiki", "twiki", "vimwiki"]
+          "value": ["biblatex", "bibtex", "bits", "commonmark", "commonmark_x", "creole", "csljson", "csv", "djot", "docbook", "docx", "dokuwiki", "endnotexml", "epub", "fb2", "gfm", "haddock", "html", "ipynb", "jats", "jira", "json", "latex", "man", "markdown", "markdown_github", "markdown_mmd", "markdown_phpextra", "markdown_strict", "mdoc", "mediawiki", "muse", "native", "odt", "opml", "org", "pod", "ris", "rst", "rtf", "t2t", "textile", "tikiwiki", "tsv", "twiki", "typst", "vimwiki"]
         }
       ]
     }
@@ -46,7 +46,7 @@
         "row.names": {
           "type": "integer",
           "attributes": {},
-          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]
+          "value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67]
         },
         "names": {
           "type": "character",
@@ -58,12 +58,12 @@
         {
           "type": "character",
           "attributes": {},
-          "value": ["output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output"]
+          "value": ["output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output", "output"]
         },
         {
           "type": "character",
           "attributes": {},
-          "value": ["asciidoc", "asciidoctor", "beamer", "biblatex", "bibtex", "commonmark", "commonmark_x", "context", "csljson", "docbook", "docbook4", "docbook5", "docx", "dokuwiki", "dzslides", "epub", "epub2", "epub3", "fb2", "gfm", "haddock", "html", "html4", "html5", "icml", "ipynb", "jats", "jats_archiving", "jats_articleauthoring", "jats_publishing", "jira", "json", "latex", "man", "markdown", "markdown_github", "markdown_mmd", "markdown_phpextra", "markdown_strict", "mediawiki", "ms", "muse", "native", "odt", "opendocument", "opml", "org", "pdf", "plain", "pptx", "revealjs", "rst", "rtf", "s5", "slideous", "slidy", "tei", "texinfo", "textile", "xwiki", "zimwiki"]
+          "value": ["ansi", "asciidoc", "asciidoc_legacy", "asciidoctor", "beamer", "biblatex", "bibtex", "chunkedhtml", "commonmark", "commonmark_x", "context", "csljson", "djot", "docbook", "docbook4", "docbook5", "docx", "dokuwiki", "dzslides", "epub", "epub2", "epub3", "fb2", "gfm", "haddock", "html", "html4", "html5", "icml", "ipynb", "jats", "jats_archiving", "jats_articleauthoring", "jats_publishing", "jira", "json", "latex", "man", "markdown", "markdown_github", "markdown_mmd", "markdown_phpextra", "markdown_strict", "markua", "mediawiki", "ms", "muse", "native", "odt", "opendocument", "opml", "org", "pdf", "plain", "pptx", "revealjs", "rst", "rtf", "s5", "slideous", "slidy", "tei", "texinfo", "textile", "typst", "xwiki", "zimwiki"]
         }
       ]
     }
@@ -174,36 +174,42 @@
         [9] "awk"             "bash"            "bibtex"          "boo"            
        [13] "c"               "changelog"       "clojure"         "cmake"          
        [17] "coffee"          "coldfusion"      "comments"        "commonlisp"     
-       [21] "cpp"             "cs"              "css"             "curry"          
-       [25] "d"               "default"         "diff"            "djangotemplate" 
-       [29] "dockerfile"      "dot"             "doxygen"         "doxygenlua"     
-       [33] "dtd"             "eiffel"          "elixir"          "elm"            
-       [37] "email"           "erlang"          "fasm"            "fortranfixed"   
-       [41] "fortranfree"     "fsharp"          "gcc"             "glsl"           
-       [45] "gnuassembler"    "go"              "graphql"         "groovy"         
-       [49] "hamlet"          "haskell"         "haxe"            "html"           
-       [53] "idris"           "ini"             "isocpp"          "j"              
-       [57] "java"            "javadoc"         "javascript"      "javascriptreact"
-       [61] "json"            "jsp"             "julia"           "kotlin"         
-       [65] "latex"           "lex"             "lilypond"        "literatecurry"  
-       [69] "literatehaskell" "llvm"            "lua"             "m4"             
-       [73] "makefile"        "mandoc"          "markdown"        "mathematica"    
-       [77] "matlab"          "maxima"          "mediawiki"       "metafont"       
-       [81] "mips"            "modelines"       "modula2"         "modula3"        
-       [85] "monobasic"       "mustache"        "nasm"            "nim"            
-       [89] "noweb"           "objectivec"      "objectivecpp"    "ocaml"          
-       [93] "octave"          "opencl"          "pascal"          "perl"           
-       [97] "php"             "pike"            "postscript"      "povray"         
-      [101] "powershell"      "prolog"          "protobuf"        "pure"           
-      [105] "purebasic"       "python"          "qml"             "r"              
-      [109] "relaxng"         "relaxngcompact"  "rest"            "rhtml"          
-      [113] "roff"            "ruby"            "rust"            "scala"          
-      [117] "scheme"          "sci"             "sed"             "sgml"           
-      [121] "sml"             "spdxcomments"    "sql"             "sqlmysql"       
-      [125] "sqlpostgresql"   "stata"           "tcl"             "tcsh"           
-      [129] "texinfo"         "toml"            "typescript"      "verilog"        
-      [133] "vhdl"            "xml"             "xorg"            "xslt"           
-      [137] "xul"             "yacc"            "yaml"            "zsh"            
+       [21] "cpp"             "crystal"         "cs"              "css"            
+       [25] "curry"           "d"               "dart"            "debiancontrol"  
+       [29] "default"         "diff"            "djangotemplate"  "dockerfile"     
+       [33] "dosbat"          "dot"             "doxygen"         "doxygenlua"     
+       [37] "dtd"             "eiffel"          "elixir"          "elm"            
+       [41] "email"           "erlang"          "fasm"            "fortranfixed"   
+       [45] "fortranfree"     "fsharp"          "gap"             "gcc"            
+       [49] "gdscript"        "glsl"            "gnuassembler"    "go"             
+       [53] "gpr"             "graphql"         "groovy"          "hamlet"         
+       [57] "haskell"         "haxe"            "html"            "idris"          
+       [61] "ini"             "isocpp"          "j"               "java"           
+       [65] "javadoc"         "javascript"      "javascriptreact" "json"           
+       [69] "jsp"             "julia"           "kotlin"          "latex"          
+       [73] "lex"             "lilypond"        "literatecurry"   "literatehaskell"
+       [77] "llvm"            "lua"             "m4"              "makefile"       
+       [81] "mandoc"          "markdown"        "mathematica"     "matlab"         
+       [85] "maxima"          "mediawiki"       "metafont"        "mips"           
+       [89] "modelines"       "modula2"         "modula3"         "monobasic"      
+       [93] "mustache"        "nasm"            "nim"             "nix"            
+       [97] "noweb"           "objectivec"      "objectivecpp"    "ocaml"          
+      [101] "octave"          "odin"            "opencl"          "orgmode"        
+      [105] "pascal"          "perl"            "php"             "pike"           
+      [109] "postscript"      "povray"          "powershell"      "prolog"         
+      [113] "protobuf"        "pure"            "purebasic"       "purescript"     
+      [117] "python"          "qml"             "r"               "racket"         
+      [121] "raku"            "relaxng"         "relaxngcompact"  "rest"           
+      [125] "rhtml"           "roff"            "ruby"            "rust"           
+      [129] "sass"            "scala"           "scheme"          "sci"            
+      [133] "scss"            "sed"             "sgml"            "sml"            
+      [137] "spdxcomments"    "sql"             "sqlmysql"        "sqlpostgresql"  
+      [141] "stan"            "stata"           "swift"           "systemverilog"  
+      [145] "tcl"             "tcsh"            "terraform"       "texinfo"        
+      [149] "tlaplus"         "toml"            "typescript"      "typst"          
+      [153] "verilog"         "vhdl"            "xml"             "xorg"           
+      [157] "xslt"            "xul"             "yacc"            "yaml"           
+      [161] "zig"             "zsh"            
 
 # pandoc_list_abbreviations
 

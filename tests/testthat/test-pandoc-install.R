@@ -245,14 +245,14 @@ test_that("Pandoc nightly can be installed and ran", {
 test_that("Pandoc specific release can be installed and ran", {
   skip_on_cran()
   skip_if_offline()
-  expect_pandoc_installed("2.11.4")
-  expect_snapshot(expect_null(pandoc_install("2.11.4")))
+  expect_pandoc_installed("3.1.2")
+  expect_snapshot(expect_null(pandoc_install("3.1.2")))
   expect_identical(
-    suppressMessages(pandoc_install("2.11.4", force = TRUE)),
-    pandoc_locate("2.11.4")
+    suppressMessages(pandoc_install("3.1.2", force = TRUE)),
+    pandoc_locate("3.1.2")
   )
   # installed version is working
-  expect_equal(pandoc_version("2.11.4"), numeric_version("2.11.4"))
+  expect_equal(pandoc_version("3.1.2"), numeric_version("3.1.2"))
   # does not exist
   expect_error(pandoc_install("2.2.3"))
 })
@@ -266,6 +266,7 @@ test_that("`pandoc_locate()` does not work with external pandoc", {
 test_that("pandoc-citeproc is correctly placed in root folder", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_macos_arm()
   # Before Pandoc 2.11, pandoc-citeproc is also shipped
   expect_pandoc_installed("2.7.3")
   bin <- fs::path(
@@ -279,44 +280,45 @@ test_that("pandoc-citeproc is correctly placed in root folder", {
 test_that("Installed versions can be listed", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  suppressMessages(pandoc_install("2.7.3"))
+  suppressMessages(pandoc_install("3.1.2"))
+  suppressMessages(pandoc_install("3.6.3"))
   suppressMessages(pandoc_install("nightly"))
-  expect_equal(pandoc_installed_versions(), c("nightly", "2.11.4", "2.7.3"))
+  expect_equal(pandoc_installed_versions(), c("nightly", "3.6.3", "3.1.2", "2.7.3"))
 })
 
 test_that("Most recent version installed can be identified", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  suppressMessages(pandoc_install("2.7.3"))
-  expect_equal(pandoc_installed_latest(), "2.11.4")
+  suppressMessages(pandoc_install("3.6.3"))
+  suppressMessages(pandoc_install("3.1.2"))
+  expect_equal(pandoc_installed_latest(), "3.6.3")
 })
 
 test_that("Is a version installed ?", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  expect_true(pandoc_is_installed("2.11.4"), c("2.11.4"))
+  suppressMessages(pandoc_install("3.6.3"))
+  expect_true(pandoc_is_installed("3.6.3"), c("3.6.3"))
 })
 
-test_that("Pandoc release can be uninstall", {
+test_that("Pandoc nighly can be uninstalled", {
   skip_on_cran()
   skip_if_offline()
   suppressMessages(pandoc_install("nightly"))
   expect_true(pandoc_uninstall("nightly"))
   expect_false(fs::dir_exists(pandoc_home("nigthly")))
-  expect_equal(pandoc_installed_versions(), c("2.11.4", "2.7.3"))
+  expect_equal(pandoc_installed_versions(), c("3.6.3", "3.1.2", "2.7.3"))
 })
 
-test_that("Pandoc release can be uninstall", {
+test_that("Pandoc release can be uninstalled", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  suppressMessages(pandoc_install("2.7.3"))
-  the$active_version <- "2.11.4"
-  expect_true(pandoc_uninstall("2.11.4"))
+  suppressMessages(pandoc_install("3.6.3"))
+  suppressMessages(pandoc_install("3.1.2"))
+  the$active_version <- "3.6.3"
+  expect_true(pandoc_uninstall("3.6.3"))
   expect_equal(the$active_version, pandoc_installed_latest())
+  expect_true(pandoc_uninstall("3.1.2"))
   expect_true(pandoc_uninstall("2.7.3"))
   expect_equal(the$active_version, "")
 })

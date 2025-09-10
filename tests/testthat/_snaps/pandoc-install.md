@@ -25,8 +25,8 @@
 # Pandoc specific release can be installed and ran
 
     Code
-      expect_null(pandoc_install("2.11.4"))
+      expect_null(pandoc_install("3.1.2"))
     Message
-      v Pandoc 2.11.4 already installed.
+      v Pandoc 3.1.2 already installed.
         Use 'force = TRUE' to overwrite.
 
