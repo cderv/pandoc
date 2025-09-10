@@ -2,6 +2,8 @@
 
 -   Correctly order error message of Pandoc failure (thanks, \@hadley, #39).
 
+-   `pandoc_install_nightly()` does not fail when called while a Pandoc's nigthly workflow is currently running
+
 # pandoc 0.2.0
 
 -   input and output path containing short path version using `~` now works (thanks, \@olivroy, #31)

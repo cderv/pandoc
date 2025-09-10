@@ -331,3 +331,54 @@ test_that("Pandoc latest release can be installed", {
     fixed = TRUE
   )
 })
+
+test_that("Retrieving nightly does return only success without error", {
+  skip_on_cran()
+
+  expect_last_successful_run <- function(n) {
+    expect_message(
+      expect_identical(
+        get_last_nightly_run(),
+        list(conclusion = "success", n = n)
+      )
+    )
+  }
+
+  # simulate querying when last run is failure
+  with_mocked_bindings(
+    get_nightly_runs = function(...) {
+      list(
+        workflow_runs = list(
+          list(conclusion = "fail", n = 1),
+          list(conclusion = "success", n = 2)
+        )
+      )
+    },
+    expect_last_successful_run(n = 2)
+  )
+  # simulate querying several success
+  with_mocked_bindings(
+    get_nightly_runs = function(...) {
+      list(
+        workflow_runs = list(
+          list(conclusion = "success", n = 1),
+          list(conclusion = "success", n = 2),
+          list(conclusion = "success", n = 3)
+        )
+      )
+    },
+    expect_last_successful_run(n = 1)
+  )
+  # simulate querying during a run (conclusion will be NULL)
+  with_mocked_bindings(
+    get_nightly_runs = function(...) {
+      list(
+        workflow_runs = list(
+          list(conclusion = NULL, n = 1),
+          list(conclusion = "success", n = 2)
+        )
+      )
+    },
+    expect_last_successful_run(n = 2)
+  )
+})
