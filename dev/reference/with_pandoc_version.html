@@ -103,9 +103,13 @@ be changed globally by setting option <code>pandoc.activate_rmarkdown</code>.</p
 <span class="r-in"><span>  rmarkdown <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00; font-weight: bold;">/opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc</span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># pandoc::pandoc_is_installed("2.11.4") &amp;&amp; rlang::is_installed("rmarkdown")</span></span></span>
 <span class="r-in"><span><span class="fu">with_pandoc_version</span><span class="op">(</span><span class="st">"2.11.4"</span>, <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/find_pandoc.html" class="external-link">find_pandoc</a></span><span class="op">(</span><span class="op">)</span>, rmarkdown <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $version</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ‘2.11.4’</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $dir</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/home/runner/.local/share/r-pandoc/2.11.4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># rlang::is_interactive() &amp;&amp; pandoc::pandoc_is_installed("2.11.4")</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="fu">local_pandoc_version</span><span class="op">(</span><span class="st">"2.11.4"</span><span class="op">)</span></span></span>
