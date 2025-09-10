@@ -239,7 +239,7 @@ test_that("Pandoc nightly can be installed and ran", {
     fixed = TRUE
   )
   # installed version is working
-  expect_error(pandoc_version("nightly"), NA)
+  expect_no_error(pandoc_version("nightly"))
 })
 
 test_that("Pandoc specific release can be installed and ran", {
