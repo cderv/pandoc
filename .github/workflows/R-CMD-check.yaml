@@ -78,7 +78,7 @@ jobs:
         shell: bash
 
       - name: Cache Pandoc release information
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: cache-release
         with:
           path: github-cache.rds
