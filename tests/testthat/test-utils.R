@@ -8,6 +8,10 @@ test_that("resolve_version()", {
 test_that("pandoc_feature_requirement() not met", {
   skip_on_cran()
   skip_if_offline()
+  # 2.11.4 is not available on ARM macOS
+  skip_if(
+    pandoc_os() == "macOS" && pandoc_arch("macOS") == "arm64"
+  )
   suppressMessages(pandoc_install("2.11.4"))
   expect_true(pandoc_feature_requirement("2.8", version = "2.11.4"))
   expect_error(
