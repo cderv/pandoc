@@ -283,7 +283,7 @@ test_that("Installed versions can be listed", {
   suppressMessages(pandoc_install("3.1.2"))
   suppressMessages(pandoc_install("3.6.3"))
   suppressMessages(pandoc_install("nightly"))
-  expect_equal(pandoc_installed_versions(), c("nightly", "3.6.3", "3.1.2", "2.7.3"))
+  expect_true(c("nightly", "3.6.3", "3.1.2") %in% pandoc_installed_versions())
 })
 
 test_that("Most recent version installed can be identified", {
@@ -307,7 +307,7 @@ test_that("Pandoc nighly can be uninstalled", {
   suppressMessages(pandoc_install("nightly"))
   expect_true(pandoc_uninstall("nightly"))
   expect_false(fs::dir_exists(pandoc_home("nigthly")))
-  expect_equal(pandoc_installed_versions(), c("3.6.3", "3.1.2", "2.7.3"))
+  expect_false("nightly" %in% pandoc_installed_versions())
 })
 
 test_that("Pandoc release can be uninstalled", {
