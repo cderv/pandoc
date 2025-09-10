@@ -16,12 +16,18 @@
 #' # target a specific version
 #' pandoc_list_formats("input", version = "system")
 #' @export
-pandoc_list_formats <- function(type = c("input", "output"), version = "default") {
+pandoc_list_formats <- function(
+  type = c("input", "output"),
+  version = "default"
+) {
   if (pandoc_version(version = version) < "1.18") {
-    rlang::abort(c("x" = "This feature is only available for Pandoc 1.18 and above."))
+    rlang::abort(c(
+      "x" = "This feature is only available for Pandoc 1.18 and above."
+    ))
   }
   type <- rlang::arg_match(type)
-  args <- switch(type,
+  args <- switch(
+    type,
     input = "--list-input-formats",
     output = "--list-output-formats"
   )

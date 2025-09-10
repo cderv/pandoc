@@ -30,14 +30,16 @@
 #' @examplesIf pandoc::pandoc_is_installed("2.11.4")
 #' pandoc::pandoc_convert(text = "**This will be bold**", to = "html", version = "2.11.4")
 #' @export
-pandoc_convert <- function(file = NULL,
-                           text = NULL,
-                           from = "markdown",
-                           to,
-                           output = NULL,
-                           standalone = FALSE,
-                           args = c(),
-                           version = "default") {
+pandoc_convert <- function(
+  file = NULL,
+  text = NULL,
+  from = "markdown",
+  to,
+  output = NULL,
+  standalone = FALSE,
+  args = c(),
+  version = "default"
+) {
   if (!is.null(file) && !is.null(text)) {
     rlang::abort(c("x" = "Only 'file' or 'text' can be used."))
   }
@@ -53,8 +55,10 @@ pandoc_convert <- function(file = NULL,
   }
 
   args <- c(
-    "--from", from,
-    "--to", to,
+    "--from",
+    from,
+    "--to",
+    to,
     if (standalone) "--standalone",
     if (!is.null(output)) c("--output", shQuote(path.expand(output))),
     args,

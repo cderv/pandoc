@@ -35,7 +35,8 @@ pandoc_bin <- function(version = "default") {
 
 pandoc_which_bin <- function(which = c("rstudio", "system")) {
   which <- rlang::arg_match(which)
-  bin <- switch(which,
+  bin <- switch(
+    which,
     rstudio = pandoc_bin_impl(Sys.getenv("RSTUDIO_PANDOC")),
     system = unname(Sys.which("pandoc"))
   )
@@ -58,7 +59,9 @@ pandoc_bin_browse <- function(version = "default") {
     return(NULL)
   }
   bin <- pandoc_bin(version)
-  if (is.null(bin)) rlang::abort(paste0("Version ", version, " does not seem to be installed."))
+  if (is.null(bin)) {
+    rlang::abort(paste0("Version ", version, " does not seem to be installed."))
+  }
   bin_dir <- fs::path_dir(bin)
   if (pandoc_os() == "windows") {
     try(shell.exec(bin_dir))
@@ -138,10 +141,14 @@ pandoc_rstudio_bin <- function() {
 #' @export
 pandoc_citeproc_bin <- function(version = "default") {
   if (pandoc_is_external_version(version)) {
-    rlang::abort("This function does not work with externally installed version of Pandoc.")
+    rlang::abort(
+      "This function does not work with externally installed version of Pandoc."
+    )
   }
   pandoc_path <- pandoc_locate(version)
-  path <- fs::path(pandoc_path, "pandoc-citeproc",
+  path <- fs::path(
+    pandoc_path,
+    "pandoc-citeproc",
     ext = ifelse(pandoc_os() == "windows", "exe", "")
   )
   if (!fs::file_exists(path)) {

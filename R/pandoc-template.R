@@ -19,7 +19,11 @@
 #' }
 #' pandoc_export_template("latex", output = "default.tex", version = "system")
 #' @export
-pandoc_export_template <- function(format = "markdown", output = NULL, version = "default") {
+pandoc_export_template <- function(
+  format = "markdown",
+  output = NULL,
+  version = "default"
+) {
   # https://pandoc.org/releases.html#pandoc-2.7.1-2019-03-14
   pandoc_feature_requirement("2.7.1", version)
   preview <- FALSE
@@ -29,8 +33,10 @@ pandoc_export_template <- function(format = "markdown", output = NULL, version =
     preview <- TRUE
   }
   args <- c(
-    "--output", shQuote(path.expand(output)),
-    "--print-default-template", format
+    "--output",
+    shQuote(path.expand(output)),
+    "--print-default-template",
+    format
   )
   pandoc_run(args, version = version)
   if (preview) {
@@ -81,8 +87,10 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
     file <- "templates/styles.html"
   }
   args <- c(
-    "--output", shQuote(path.expand(output)),
-    "--print-default-data-file", file
+    "--output",
+    shQuote(path.expand(output)),
+    "--print-default-data-file",
+    file
   )
   pandoc_run(args, version = version)
   rlang::inform(c(v = paste0("Template written to ", output)))
@@ -103,7 +111,10 @@ pandoc_export_data_file <- function(file, output = file, version = "default") {
 #' }
 #' pandoc_export_reference_doc("pptx", version = "2.11.4")
 #' @export
-pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "default") {
+pandoc_export_reference_doc <- function(
+  type = c("docx", "pptx"),
+  version = "default"
+) {
   type <- rlang::arg_match(type)
   ref_doc <- fs::path_ext_set("reference", type)
   pandoc_export_data_file(ref_doc, ref_doc, version = version)
@@ -140,17 +151,26 @@ pandoc_export_reference_doc <- function(type = c("docx", "pptx"), version = "def
 #' pandoc_export_highlight_theme("pygments", output = "my_theme.theme")
 #' pandoc_export_highlight_theme("zenburn", version = "system")
 #' @export
-pandoc_export_highlight_theme <- function(style = "pygments", output = style, version = "default") {
+pandoc_export_highlight_theme <- function(
+  style = "pygments",
+  output = style,
+  version = "default"
+) {
   # https://pandoc.org/releases.html#pandoc-2.7.1-2019-03-14
   pandoc_feature_requirement("2.7.1", version)
-  style <- rlang::arg_match(style, pandoc_list_highlight_style(version = version))
+  style <- rlang::arg_match(
+    style,
+    pandoc_list_highlight_style(version = version)
+  )
   if (!fs::path_ext(output) %in% c("", "theme")) {
     rlang::warn("`output` extension must be `.theme` and it will be enforced.")
   }
   output <- fs::path_ext_set(output, ".theme")
   args <- c(
-    "--output", shQuote(path.expand(output)),
-    "--print-highlight-style", style
+    "--output",
+    shQuote(path.expand(output)),
+    "--print-highlight-style",
+    style
   )
   pandoc_run(args, version = version)
   rlang::inform(c(v = paste0("Style written to ", output)))

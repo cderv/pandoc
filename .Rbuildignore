@@ -15,3 +15,5 @@
 ^github-cache\.rds$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^[\.]?air\.toml$
+^\.vscode$

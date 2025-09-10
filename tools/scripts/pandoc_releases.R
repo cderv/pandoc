@@ -34,7 +34,10 @@ tab <- tab %>% filter(!is.na(name))
 unique(tab$name)
 
 extract_component <- function(name) {
-  mat <- stringr::str_match_all(name, "pandoc-([0-9.]*[0-9]+)-?(?:\\d)?-?(?<os>[a-zA-Z]+)?-?.?(pkg|amd64|i386|x86_64|arm64)?-?(?<variant>macOS)?\\.(deb|tar\\.gz|zip|pkg|msi|dmg)$")[[1]]
+  mat <- stringr::str_match_all(
+    name,
+    "pandoc-([0-9.]*[0-9]+)-?(?:\\d)?-?(?<os>[a-zA-Z]+)?-?.?(pkg|amd64|i386|x86_64|arm64)?-?(?<variant>macOS)?\\.(deb|tar\\.gz|zip|pkg|msi|dmg)$"
+  )[[1]]
   mat <- mat[, -1]
   names(mat) <- c("version", "os", "arch", "variant", "ext")
   mat

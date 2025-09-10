@@ -16,11 +16,16 @@
 pandoc_run <- function(args, version = "default") {
   bin <- pandoc_bin(version)
   if (is.null(bin)) {
-    rlang::abort(sprintf("Requested Pandoc binary is not available: %s", version))
+    rlang::abort(sprintf(
+      "Requested Pandoc binary is not available: %s",
+      version
+    ))
   }
   # Seems like expansion is needed (https://github.com/cderv/pandoc/pull/15)
   # not doing it on windows because `~` does not mean the same for {fs}
-  if (pandoc_os() != "windows") bin <- fs::path_expand(bin)
+  if (pandoc_os() != "windows") {
+    bin <- fs::path_expand(bin)
+  }
   res <- suppressWarnings(system2(bin, args, stdout = TRUE, stderr = TRUE))
   status <- attr(res, "status", TRUE)
   if (length(status) > 0 && status > 0) {
@@ -47,7 +52,9 @@ pandoc_run <- function(args, version = "default") {
 pandoc_version <- function(version = "default") {
   out <- pandoc_run("--version", version = version)
   version <- gsub("^pandoc(?:\\.exe)? ([\\d.]+).*$", "\\1", out[1], perl = TRUE)
-  if (grepl("-nightly-", out[1])) version <- paste(version, "9999", sep = ".")
+  if (grepl("-nightly-", out[1])) {
+    version <- paste(version, "9999", sep = ".")
+  }
   numeric_version(version)
 }
 
@@ -71,7 +78,11 @@ pandoc_version <- function(version = "default") {
 #' @examplesIf pandoc::pandoc_is_installed("2.11.4") && rlang::is_installed("rmarkdown")
 #' with_pandoc_version("2.11.4", rmarkdown::find_pandoc(), rmarkdown = TRUE)
 #' @export
-with_pandoc_version <- function(version, code, rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE)) {
+with_pandoc_version <- function(
+  version,
+  code,
+  rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE)
+) {
   old <- pandoc_activate(version, rmarkdown = rmarkdown, quiet = TRUE)
   on.exit({
     pandoc_activate(old, rmarkdown = rmarkdown, quiet = TRUE)
@@ -90,8 +101,11 @@ with_pandoc_version <- function(version, code, rmarkdown = getOption("pandoc.act
 #' })
 #' rmarkdown::find_pandoc()
 #' @export
-local_pandoc_version <- function(version, rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE),
-                                 .local_envir = parent.frame()) {
+local_pandoc_version <- function(
+  version,
+  rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE),
+  .local_envir = parent.frame()
+) {
   rlang::check_installed("withr")
 
   old <- pandoc_activate(version, rmarkdown = rmarkdown, quiet = TRUE)

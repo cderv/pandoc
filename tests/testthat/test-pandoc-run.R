@@ -20,7 +20,8 @@ test_that("Activating temporarily works", {
   suppressMessages(pandoc_install("2.11.4"))
   suppressMessages(pandoc_install("2.18"))
   local_pandoc_version("2.18", rmarkdown = TRUE)
-  with_pandoc_version("2.11.4",
+  with_pandoc_version(
+    "2.11.4",
     {
       expect_equal(pandoc_version(), as.numeric_version("2.11.4"))
     },

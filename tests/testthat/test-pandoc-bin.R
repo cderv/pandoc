@@ -12,7 +12,8 @@ test_that("pandoc_bin() for external version", {
   skip_on_cran()
   local_edition(2) # required for local_mock()
   mocked <- function(version) {
-    bin <- switch(version,
+    bin <- switch(
+      version,
       rstudio = "rstudio/path/pandoc",
       system = "system/path/pandoc"
     )

@@ -21,7 +21,10 @@ test_that("pandoc_export_template() handles space in file path", {
   suppressMessages(pandoc_install())
   local_pandoc_version("latest")
   withr::local_dir(tempdir())
-  expect_no_error(suppressMessages(pandoc_export_template("jira", output = "path with space.jira")))
+  expect_no_error(suppressMessages(pandoc_export_template(
+    "jira",
+    output = "path with space.jira"
+  )))
   expect_true(fs::file_exists("path with space.jira"))
 })
 
@@ -44,7 +47,11 @@ test_that("pandoc_export_data_file() exports data file", {
   expect_message(
     theme_file <- pandoc_export_data_file("styles.html", output = tmp_file)
   )
-  expect_snapshot_file(theme_file, "styles-custom-path.html", compare = compare_file_text)
+  expect_snapshot_file(
+    theme_file,
+    "styles-custom-path.html",
+    compare = compare_file_text
+  )
 })
 
 test_that("pandoc_export_data_file() exports data file", {
@@ -73,7 +80,10 @@ test_that("pandoc_export_data_file() handles space in file path", {
   suppressMessages(pandoc_install())
   local_pandoc_version("latest")
   withr::local_dir(tempdir())
-  expect_no_error(suppressMessages(pandoc_export_data_file("styles.html", output = "my styles.html")))
+  expect_no_error(suppressMessages(pandoc_export_data_file(
+    "styles.html",
+    output = "my styles.html"
+  )))
   expect_true(fs::file_exists("my styles.html"))
 })
 
@@ -99,7 +109,11 @@ test_that("pandoc_export_highlight_theme() exports .theme file", {
   expect_message(expect_warning(
     theme_file <- pandoc_export_highlight_theme(output = tmp_file)
   ))
-  expect_snapshot_file(theme_file, "incorrect-ext.theme", compare = compare_file_text)
+  expect_snapshot_file(
+    theme_file,
+    "incorrect-ext.theme",
+    compare = compare_file_text
+  )
   tmp_file <- withr::local_tempfile(fileext = ".theme")
   expect_message(
     theme_file <- pandoc_export_highlight_theme("tango", output = tmp_file)
@@ -113,6 +127,8 @@ test_that("pandoc_export_highlight_theme() handles space in file path", {
   suppressMessages(pandoc_install())
   local_pandoc_version("latest")
   withr::local_dir(tempdir())
-  expect_no_error(suppressMessages(pandoc_export_highlight_theme(output = "my theme.theme")))
+  expect_no_error(suppressMessages(pandoc_export_highlight_theme(
+    output = "my theme.theme"
+  )))
   expect_true(fs::file_exists("my theme.theme"))
 })

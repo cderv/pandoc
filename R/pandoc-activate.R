@@ -34,7 +34,11 @@
 #' # activate only for this package functions and not rmarkdown
 #' pandoc_activate("2.18", rmarkdown = FALSE)
 #' @export
-pandoc_activate <- function(version = "latest", rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE), quiet = FALSE) {
+pandoc_activate <- function(
+  version = "latest",
+  rmarkdown = getOption("pandoc.activate_rmarkdown", TRUE),
+  quiet = FALSE
+) {
   old_active <- the$active_version
   version <- resolve_version(version)
   if (is.null(version) || version == "") {
@@ -47,10 +51,14 @@ pandoc_activate <- function(version = "latest", rmarkdown = getOption("pandoc.ac
     }
     the$active_version <- version
     if (!quiet) {
-      rlang::inform(c(v = sprintf("Version '%s' is now the active one.", the$active_version)))
+      rlang::inform(c(
+        v = sprintf("Version '%s' is now the active one.", the$active_version)
+      ))
     }
   }
-  if (rmarkdown) pandoc_activate_rmarkdown(version, quiet)
+  if (rmarkdown) {
+    pandoc_activate_rmarkdown(version, quiet)
+  }
   invisible(old_active)
 }
 
@@ -66,7 +74,9 @@ pandoc_activate_rmarkdown <- function(version, quiet = TRUE) {
   )
   the$rmarkdown_active_version <- rmarkdown::find_pandoc()
   if (!quiet) {
-    rlang::inform(c(i = "Pandoc version also activated for rmarkdown functions."))
+    rlang::inform(c(
+      i = "Pandoc version also activated for rmarkdown functions."
+    ))
   }
   list(
     old = the$rmarkdown_old_active_version,
@@ -121,15 +131,20 @@ reset_rmarkdown_pandoc_version <- function() {
 #'
 #' @export
 pandoc_available <- function(min = NULL, max = NULL) {
-  active_version <- tryCatch(pandoc_version(version = "default"),
+  active_version <- tryCatch(
+    pandoc_version(version = "default"),
     error = function(e) NULL
   )
   if (is.null(active_version)) {
     return(FALSE)
   }
   is_above <- is_below <- TRUE
-  if (!is.null(min)) is_above <- active_version >= min
-  if (!is.null(max)) is_below <- active_version <= max
+  if (!is.null(min)) {
+    is_above <- active_version >= min
+  }
+  if (!is.null(max)) {
+    is_below <- active_version <= max
+  }
   return(is_above && is_below)
 }
 
