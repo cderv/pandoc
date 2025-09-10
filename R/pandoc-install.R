@@ -146,6 +146,22 @@ pandoc_update <- function() {
   invisible(pandoc_install(version = "latest"))
 }
 
+get_last_nightly_run <- function(n_last = 1L) {
+  gh_required()
+  rlang::inform(c(i = "Retrieving last available nightly informations..."))
+  runs <- get_nightly_runs(n_last)
+  runs <- keep(runs$workflow_runs, ~ identical(.x$conclusion, "success"))
+  ind <- min(length(runs), n_last)
+  runs[[ind]]
+}
+
+get_nightly_runs <- function(n_last) {
+  gh::gh(
+    "/repos/jgm/pandoc/actions/workflows/nightly.yml/runs",
+    .limit = max(15L, n_last + 5)
+  )
+}
+
 #' @rdname pandoc_install
 #' @param n_last Set to `n` as integer to install the n-th from last nightly
 #'   build. Default is last available build (1L)
@@ -155,24 +171,15 @@ pandoc_update <- function() {
 #' pandoc_uninstall("nightly")
 #' @export
 pandoc_install_nightly <- function(n_last = 1L) {
-  gh_required()
-  os <- tolower(pandoc_os())
-  bundle_name <- sprintf("nightly-%s", os)
-  version <- "nightly"
-  install_dir <- pandoc_home(version)
-  rlang::inform(c(i = "Retrieving last available nightly informations..."))
-  runs <- gh::gh(
-    "/repos/jgm/pandoc/actions/workflows/nightly.yml/runs",
-    .limit = max(15L, n_last + 5)
-  )
-  runs <- keep(runs$workflow_runs, ~ .x$conclusion == "success")
-  ind <- min(length(runs), n_last)
-  artifacts_url <- runs[[ind]][["artifacts_url"]]
-  head_sha <- runs[[ind]][["head_sha"]]
+  successful_run <- get_last_nightly_run(n_last)
+  artifacts_url <- successful_run[["artifacts_url"]]
+  head_sha <- successful_run[["head_sha"]]
   artifacts <- gh::gh(artifacts_url)
+  bundle_name <- sprintf("nightly-%s", tolower(pandoc_os()))
   artifact_url <- keep(artifacts$artifacts, ~ .x$name == bundle_name)[[1]][[
     "archive_download_url"
   ]]
+  install_dir <- pandoc_home("nightly")
   if (fs::dir_exists(install_dir)) {
     current_version <- pandoc_nightly_version()
     if (!is.null(current_version) && head_sha == current_version) {
