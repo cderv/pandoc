@@ -283,7 +283,7 @@ test_that("Installed versions can be listed", {
   suppressMessages(pandoc_install("3.1.2"))
   suppressMessages(pandoc_install("3.6.3"))
   suppressMessages(pandoc_install("nightly"))
-  expect_true(c("nightly", "3.6.3", "3.1.2") %in% pandoc_installed_versions())
+  expect_true(all(c("nightly", "3.6.3", "3.1.2") %in% pandoc_installed_versions()))
 })
 
 test_that("Most recent version installed can be identified", {
