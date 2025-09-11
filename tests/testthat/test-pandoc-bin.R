@@ -1,25 +1,25 @@
 test_that("pandoc_bin() for version installed by this package", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  suppressMessages(pandoc_install("2.7.3"))
-  local_pandoc_version("2.7.3")
-  expect_match(pandoc_bin(), "2.7.3", fixed = TRUE)
-  expect_match(pandoc_bin("2.11.4"), "2.11.4", fixed = TRUE)
+  suppressMessages(pandoc_install("3.6.3"))
+  suppressMessages(pandoc_install("3.1.2"))
+  local_pandoc_version("3.1.2")
+  expect_match(pandoc_bin(), "3.1.2", fixed = TRUE)
+  expect_match(pandoc_bin("3.6.3"), "3.6.3", fixed = TRUE)
 })
 
 test_that("pandoc_bin() for external version", {
   skip_on_cran()
-  local_edition(2) # required for local_mock()
-  mocked <- function(version) {
-    bin <- switch(
-      version,
-      rstudio = "rstudio/path/pandoc",
-      system = "system/path/pandoc"
-    )
-    fs::as_fs_path(bin)
-  }
-  local_mock(pandoc_bin = mocked)
+  local_mocked_bindings(
+    pandoc_bin = function(version) {
+      bin <- switch(
+        version,
+        rstudio = "rstudio/path/pandoc",
+        system = "system/path/pandoc"
+      )
+      fs::as_fs_path(bin)
+    }
+  )
   expect_equal(pandoc_bin("rstudio"), fs::fs_path("rstudio/path/pandoc"))
   expect_equal(pandoc_rstudio_bin(), pandoc_bin("rstudio"))
   expect_equal(pandoc_bin("system"), fs::path("system/path/pandoc"))
@@ -37,6 +37,7 @@ test_that("pandoc_which_bin() not found", {
 test_that("pandoc_citeproc_bin()", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_macos_arm()
   suppressMessages(pandoc_install("2.2.1"))
   suppressMessages(pandoc_install("2.7.3"))
   suppressMessages(pandoc_install("2.11.4"))

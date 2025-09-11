@@ -28,7 +28,10 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          # arm mac
           - {os: macos-latest,   r: 'release'}
+          # x64 mac
+          - {os: macos-13,   r: 'release'}
 
           - {os: windows-latest, r: 'release'}
           # use 4.0 or 4.1 to check with rtools40's older compiler

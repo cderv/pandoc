@@ -1,9 +1,9 @@
 test_that("pandoc_version()", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  local_pandoc_version("2.11.4")
-  expect_equal(pandoc_version(), numeric_version("2.11.4"))
+  suppressMessages(pandoc_install("3.6.3"))
+  local_pandoc_version("3.6.3")
+  expect_equal(pandoc_version(), numeric_version("3.6.3"))
 })
 
 test_that("pandoc_version() deals with nightly version", {
@@ -17,48 +17,48 @@ test_that("pandoc_version() deals with nightly version", {
 test_that("Activating temporarily works", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.11.4"))
-  suppressMessages(pandoc_install("2.18"))
-  local_pandoc_version("2.18", rmarkdown = TRUE)
+  suppressMessages(pandoc_install("3.6.3"))
+  suppressMessages(pandoc_install("3.1.2"))
+  local_pandoc_version("3.1.2", rmarkdown = TRUE)
   with_pandoc_version(
-    "2.11.4",
+    "3.6.3",
     {
-      expect_equal(pandoc_version(), as.numeric_version("2.11.4"))
+      expect_equal(pandoc_version(), as.numeric_version("3.6.3"))
     },
     rmarkdown = FALSE
   )
-  expect_equal(pandoc_version(), as.numeric_version("2.18"))
+  expect_equal(pandoc_version(), as.numeric_version("3.1.2"))
 })
 
 test_that("rmarkdown version is correctly set / reset", {
   skip_on_cran()
   skip_if_offline()
   skip_if_not_installed("rmarkdown")
-  suppressMessages(pandoc_install("2.11.4"))
-  suppressMessages(pandoc_install("2.18"))
+  suppressMessages(pandoc_install("3.6.3"))
+  suppressMessages(pandoc_install("3.7.0.2"))
   old_rmd <- rmarkdown::find_pandoc()
   # setting up a default
-  local_pandoc_version("2.18", rmarkdown = TRUE)
-  expect_equal(rmarkdown::pandoc_version(), as.numeric_version("2.18"))
+  local_pandoc_version("3.7.0.2", rmarkdown = TRUE)
+  expect_equal(rmarkdown::pandoc_version(), as.numeric_version("3.7.0.2"))
   # current and previous are saved
   expect_equal(the$rmarkdown_active_version, rmarkdown::find_pandoc())
   expect_equal(the$rmarkdown_old_active_version, old_rmd)
   # changing version temporarily
   before_with <- rmarkdown::find_pandoc()
   withr::local_options(list(pandoc.activate_rmarkdown = TRUE))
-  with_pandoc_version("2.11.4", {
+  with_pandoc_version("3.6.3", {
     expect_equal(rmarkdown::pandoc_version(), pandoc_version())
-    expect_equal(rmarkdown::pandoc_version(), as.numeric_version("2.11.4"))
+    expect_equal(rmarkdown::pandoc_version(), as.numeric_version("3.6.3"))
   })
   expect_equal(rmarkdown::find_pandoc(), before_with)
-  expect_equal(pandoc_version(), as.numeric_version("2.18"))
+  expect_equal(pandoc_version(), as.numeric_version("3.7.0.2"))
 })
 
 test_that("Pandoc error is shown", {
   skip_on_cran()
   skip_if_offline()
-  suppressMessages(pandoc_install("2.18"))
-  local_pandoc_version("2.18")
+  suppressMessages(pandoc_install("3.7.0.2"))
+  local_pandoc_version("3.7.0.2")
   tmp <- withr::local_tempfile(fileext = ".md")
   write_utf8("dummy", tmp)
   expect_identical(pandoc::pandoc_run(c("--to", "gfm", tmp)), "dummy")
