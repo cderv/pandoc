@@ -55,6 +55,7 @@ test_that("pandoc_which_bin_quarto() - found with valid pandoc", {
     file_exists = function(path) {
       grepl("tools/pandoc", as.character(path))
     },
+    path_real = function(path) path,
     .package = "fs"
   )
   result <- pandoc_which_bin_quarto()
