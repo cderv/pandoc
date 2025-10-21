@@ -24,6 +24,7 @@ based on the parameter \code{style} (i.e \verb{<style>.theme}).}
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -44,7 +45,7 @@ This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-highli
 also \code{--output} to write a export a data file built in Pandoc.
 }
 \examples{
-\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive()) withAutoprint(\{ # examplesIf}
 \dontshow{
 withr::local_dir(withr::local_tempdir())
 }

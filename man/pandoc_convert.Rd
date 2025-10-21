@@ -40,6 +40,7 @@ This corresponds to \href{https://pandoc.org/MANUAL.html#option--standalone}{\co
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -55,10 +56,10 @@ This function will do just that:
 }
 }
 \examples{
-\dontshow{if (pandoc::pandoc_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_available()) withAutoprint(\{ # examplesIf}
 pandoc::pandoc_convert(text = "_This will be emphasize_", to = "latex")
 \dontshow{\}) # examplesIf}
-\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) withAutoprint(\{ # examplesIf}
 pandoc::pandoc_convert(text = "**This will be bold**", to = "html", version = "2.11.4")
 \dontshow{\}) # examplesIf}
 }

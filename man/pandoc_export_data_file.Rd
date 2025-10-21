@@ -22,6 +22,7 @@ with the same file name.}
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 
 \item{type}{one of \code{docx} or \code{pptx} depending on the reference doc to export.}
@@ -38,7 +39,7 @@ also \code{--output} to write a export a data file built in Pandoc.
 Word document (\code{reference.docx}) or Powerpoint document (\code{reference.pptx})
 }
 \examples{
-\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive()) withAutoprint(\{ # examplesIf}
 \dontshow{
 withr::local_dir(withr::local_tempdir())
 }
@@ -47,14 +48,14 @@ pandoc_export_data_file("styles.html", output = "custom.html")
 # export css file used for epub by default
 pandoc_export_data_file("epub.css")
 \dontshow{\}) # examplesIf}
-\dontshow{if (pandoc::pandoc_available() && rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_available() && rlang::is_interactive()) withAutoprint(\{ # examplesIf}
 \dontshow{
 withr::local_dir(withr::local_tempdir())
 }
 pandoc_export_reference_doc("docx")
 pandoc_export_reference_doc("pptx")
 \dontshow{\}) # examplesIf}
-\dontshow{if (pandoc::pandoc_is_installed("2.11.4") && rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4") && rlang::is_interactive()) withAutoprint(\{ # examplesIf}
 \dontshow{
 withr::local_dir(withr::local_tempdir())
 }

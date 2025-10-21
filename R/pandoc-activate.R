@@ -153,8 +153,10 @@ on_load({
   # * "latest" Pandoc version installed with this package
   # * "rstudio" version. Will be always found in the RStudio IDE
   # * "system" version. When one version is available on PATH
+  # * "quarto" version. When Quarto CLI is available on PATH
   latest_bin <- pandoc_installed_latest()
   rstudio_bin <- pandoc_which_bin("rstudio")
+  quarto_bin <- pandoc_which_bin("quarto")
   system_bin <- pandoc_which_bin("system")
   if (!is.null(latest_bin)) {
     the$active_version <- latest_bin
@@ -162,5 +164,7 @@ on_load({
     the$active_version <- "rstudio"
   } else if (!is.null(system_bin)) {
     the$active_version <- "system"
+  } else if (!is.null(quarto_bin)) {
+    the$active_version <- "quarto"
   }
 })

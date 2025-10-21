@@ -15,7 +15,8 @@ test_that("pandoc_bin() for external version", {
       bin <- switch(
         version,
         rstudio = "rstudio/path/pandoc",
-        system = "system/path/pandoc"
+        system = "system/path/pandoc",
+        quarto = "quarto/bin/tools/pandoc"
       )
       fs::as_fs_path(bin)
     }
@@ -24,6 +25,8 @@ test_that("pandoc_bin() for external version", {
   expect_equal(pandoc_rstudio_bin(), pandoc_bin("rstudio"))
   expect_equal(pandoc_bin("system"), fs::path("system/path/pandoc"))
   expect_equal(pandoc_system_bin(), pandoc_bin("system"))
+  expect_equal(pandoc_bin("quarto"), fs::path("quarto/bin/tools/pandoc"))
+  expect_equal(pandoc_quarto_bin(), pandoc_bin("quarto"))
 })
 
 test_that("pandoc_which_bin() not found", {
@@ -32,6 +35,74 @@ test_that("pandoc_which_bin() not found", {
     c(RSTUDIO_PANDOC = NA),
     expect_null(pandoc_which_bin("rstudio"))
   )
+})
+
+test_that("pandoc_which_bin_quarto() - found with valid pandoc", {
+  skip_on_cran()
+  local_mocked_bindings(
+    sys_which = function(cmd) {
+      if (cmd == "quarto") "/usr/bin/quarto" else ""
+    },
+    sys_system2 = function(command, args, stdout, stderr) {
+      if (command == "quarto" && "--paths" %in% args) {
+        c("/path/to/quarto/bin", "/path/to/quarto/share")
+      } else {
+        character(0)
+      }
+    }
+  )
+  local_mocked_bindings(
+    file_exists = function(path) {
+      grepl("tools/pandoc", as.character(path))
+    },
+    path_real = function(path) path,
+    .package = "fs"
+  )
+  result <- pandoc_which_bin_quarto()
+  expect_true(!is.null(result))
+  expect_match(as.character(result), "tools/pandoc")
+})
+
+test_that("pandoc_which_bin_quarto() - not on PATH", {
+  skip_on_cran()
+  local_mocked_bindings(
+    sys_which = function(cmd) ""
+  )
+  expect_null(pandoc_which_bin_quarto())
+})
+
+test_that("pandoc_which_bin_quarto() - found but pandoc missing", {
+  skip_on_cran()
+  local_mocked_bindings(
+    sys_which = function(cmd) {
+      if (cmd == "quarto") "/usr/bin/quarto" else ""
+    },
+    sys_system2 = function(command, args, stdout, stderr) {
+      if (command == "quarto" && "--paths" %in% args) {
+        c("/path/to/quarto/bin", "/path/to/quarto/share")
+      } else {
+        character(0)
+      }
+    }
+  )
+  local_mocked_bindings(
+    file_exists = function(path) FALSE,
+    .package = "fs"
+  )
+  expect_null(pandoc_which_bin_quarto())
+})
+
+test_that("pandoc_which_bin_quarto() - system2 error", {
+  skip_on_cran()
+  local_mocked_bindings(
+    sys_which = function(cmd) {
+      if (cmd == "quarto") "/usr/bin/quarto" else ""
+    },
+    sys_system2 = function(command, args, stdout, stderr) {
+      stop("Command failed")
+    }
+  )
+  expect_null(pandoc_which_bin_quarto())
 })
 
 test_that("pandoc_citeproc_bin()", {

@@ -20,7 +20,7 @@ Pandoc can also be installed on a system and available through the PATH.
 Theses function are helper to easily use this specific version.
 }
 \examples{
-\dontshow{if (!is.null(pandoc::pandoc_system_bin())) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (!is.null(pandoc::pandoc_system_bin())) withAutoprint(\{ # examplesIf}
 \dontshow{\}) # examplesIf}
 pandoc_system_bin()
 }

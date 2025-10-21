@@ -41,3 +41,12 @@ on_testthat <- function() {
 on_ci <- function() {
   isTRUE(as.logical(Sys.getenv("CI")))
 }
+
+# To help with mocking in our tests
+sys_which <- function(...) {
+  unname(Sys.which(...))
+}
+
+sys_system2 <- function(...) {
+  system2(...)
+}

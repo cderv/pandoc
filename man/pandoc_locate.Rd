@@ -14,6 +14,7 @@ pandoc_locate(version = "default")
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -25,7 +26,7 @@ This function helps with finding the path to those specific versions of Pandoc.
 See \code{\link[=pandoc_bin]{pandoc_bin()}} for another way of getting paths to \code{pandoc} binaries
 }
 \examples{
-\dontshow{if (pandoc::pandoc_available() && !pandoc::pandoc_is_active("system") && !pandoc::pandoc_is_active("rstudio")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_available() && !pandoc::pandoc_is_active("system") && !pandoc::pandoc_is_active("rstudio")) withAutoprint(\{ # examplesIf}
 # where is the default active version located ?
 pandoc_locate()
 \dontshow{\}) # examplesIf}

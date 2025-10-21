@@ -1,5 +1,7 @@
 # pandoc (development version)
 
+-   `pandoc_bin()` now supports `version = "quarto"` to use the Pandoc binary shipped with Quarto CLI. New convenience functions `pandoc_quarto_bin()` and `pandoc_quarto_version()` are also available.
+
 -   Correctly order error message of Pandoc failure (thanks, \@hadley, #39).
 
 -   `pandoc_install_nightly()` does not fail when called while a Pandoc's nigthly workflow is currently running
