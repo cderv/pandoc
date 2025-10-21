@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pandoc</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.0.9002</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.0.9003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="pandoc-development-version">pandoc (development version)<a class="anchor" aria-label="anchor" href="#pandoc-development-version"></a></h2>
-<ul><li><p>Correctly order error message of Pandoc failure (thanks, <a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/cderv/pandoc/issues/39" class="external-link">#39</a>).</p></li>
+<ul><li><p><code><a href="../reference/pandoc_bin.html">pandoc_bin()</a></code> now supports <code>version = "quarto"</code> to use the Pandoc binary shipped with Quarto CLI. New convenience functions <code><a href="../reference/quarto_pandoc.html">pandoc_quarto_bin()</a></code> and <code><a href="../reference/quarto_pandoc.html">pandoc_quarto_version()</a></code> are also available.</p></li>
+<li><p>Correctly order error message of Pandoc failure (thanks, <a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/cderv/pandoc/issues/39" class="external-link">#39</a>).</p></li>
 <li><p><code><a href="../reference/pandoc_install.html">pandoc_install_nightly()</a></code> does not fail when called while a Pandoc’s nigthly workflow is currently running</p></li>
 </ul></div>
     <div class="section level2">
