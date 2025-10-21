@@ -1,11 +1,3 @@
-# if Windows, add .exe extension
-pandoc_bin_impl <- function(path, exe = FALSE) {
-  if (!nzchar(path) || is.na(path) || is.null(path)) {
-    return(NULL)
-  }
-  fs::path(path, "pandoc", ext = ifelse(pandoc_os() == "windows", "exe", ""))
-}
-
 #' Get path to the pandoc binary
 #'
 #' @param version Version to use. Default will be the `"default"` version. Other possible value are
@@ -14,6 +6,7 @@ pandoc_bin_impl <- function(path, exe = FALSE) {
 #' * The latest installed version with `"latest"`
 #' * Pandoc binary shipped with RStudio IDE with `"rstudio"`
 #' * Pandoc binary found in PATH with `"system"`
+#' * Pandoc binary shipped with Quarto CLI with `"quarto"`
 #'
 #' @return Absolute path to the pandoc binary of the requested version.
 #' @examples
@@ -22,6 +15,7 @@ pandoc_bin_impl <- function(path, exe = FALSE) {
 #' pandoc_bin("nightly")
 #' pandoc_bin("rstudio")
 #' pandoc_bin("system")
+#' pandoc_bin("quarto")
 #' @export
 pandoc_bin <- function(version = "default") {
   version <- resolve_version(version)
@@ -33,17 +27,66 @@ pandoc_bin <- function(version = "default") {
   pandoc_bin_impl(pandoc_path)
 }
 
-pandoc_which_bin <- function(which = c("rstudio", "system")) {
+pandoc_which_bin <- function(which = c("rstudio", "system", "quarto")) {
   which <- rlang::arg_match(which)
   bin <- switch(
     which,
-    rstudio = pandoc_bin_impl(Sys.getenv("RSTUDIO_PANDOC")),
-    system = unname(Sys.which("pandoc"))
+    rstudio = pandoc_which_bin_rstudio(),
+    system = pandoc_which_bin_system(),
+    quarto = pandoc_which_bin_quarto()
   )
   if (!nzchar(bin) || is.na(bin) || is.null(bin)) {
     return(NULL)
   }
   fs::as_fs_path(bin)
+}
+
+pandoc_which_bin_rstudio <- function() {
+  pandoc_bin_impl(Sys.getenv("RSTUDIO_PANDOC"))
+}
+
+pandoc_which_bin_system <- function() {
+  sys_which("pandoc")
+}
+
+pandoc_which_bin_quarto <- function() {
+  # Check if quarto is available
+  quarto_path <- sys_which("quarto")
+  if (!nzchar(quarto_path)) {
+    return(NULL)
+  }
+
+  # Get quarto paths
+  paths <- tryCatch(
+    sys_system2("quarto", c("--paths"), stdout = TRUE, stderr = FALSE),
+    error = function(e) NULL,
+    warning = function(w) NULL
+  )
+  if (is.null(paths) || length(paths) == 0) {
+    return(NULL)
+  }
+
+  # First line is the bin directory
+  quarto_bin_dir <- paths[1]
+
+  # Construct path to pandoc in tools subdirectory
+  # pandoc_bin_impl will add "pandoc" + extension
+  pandoc_path <- pandoc_bin_impl(fs::path(quarto_bin_dir, "tools"))
+
+  # Verify the binary exists
+  if (is.null(pandoc_path) || !fs::file_exists(pandoc_path)) {
+    return(NULL)
+  }
+
+  fs::path_real(pandoc_path)
+}
+
+# if Windows, add .exe extension
+pandoc_bin_impl <- function(path, exe = FALSE) {
+  if (!nzchar(path) || is.na(path) || is.null(path)) {
+    return(NULL)
+  }
+  fs::path(path, "pandoc", ext = ifelse(pandoc_os() == "windows", "exe", ""))
 }
 
 
@@ -121,6 +164,30 @@ pandoc_rstudio_version <- function() {
 #' @export
 pandoc_rstudio_bin <- function() {
   pandoc_bin(version = "rstudio")
+}
+
+#' Retrieve path and version of Pandoc shipped with Quarto CLI
+#'
+#' Quarto CLI ships with a pandoc binary. The path can be found by running
+#' `quarto --paths` command. These functions are helpers to easily use this specific version.
+#'
+#' @return `pandoc_quarto_version()` returns the version number for `pandoc` binary used by Quarto CLI as a [base::numeric_version()] object.
+#'
+#' @seealso [pandoc_version()], [pandoc_bin()]
+#' @examplesIf !is.null(pandoc::pandoc_quarto_bin())
+#' @export
+#' @name quarto_pandoc
+pandoc_quarto_version <- function() {
+  pandoc_version(version = "quarto")
+}
+
+#' @rdname quarto_pandoc
+#' @return `pandoc_quarto_bin()` returns absolute path to the `pandoc` binary used by Quarto CLI.
+#' @examples
+#' pandoc_quarto_bin()
+#' @export
+pandoc_quarto_bin <- function() {
+  pandoc_bin(version = "quarto")
 }
 
 #' Get path to the pandoc-citeproc binary.
