@@ -14,6 +14,7 @@ pandoc_citeproc_bin(version = "default")
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -26,11 +27,11 @@ This function will return the path to \code{pandoc-citeproc} if available. It wi
 only work with \code{version} of Pandoc installed by this package.
 }
 \examples{
-\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive()) withAutoprint(\{ # examplesIf}
 # Look into current active version
 pandoc_citeproc_bin()
 \dontshow{\}) # examplesIf}
-\dontshow{if (pandoc::pandoc_is_installed("2.9.2")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.9.2")) withAutoprint(\{ # examplesIf}
 # Look into a specific version
 pandoc_citeproc_bin("2.9.2")
 \dontshow{\}) # examplesIf}

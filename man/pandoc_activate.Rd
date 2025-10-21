@@ -49,7 +49,7 @@ binary found between:
 }
 
 \examples{
-\dontshow{if (pandoc::pandoc_is_installed("2.18")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.18")) withAutoprint(\{ # examplesIf}
 # activate version 2.18, including for use with rmarkdown package
 pandoc_activate("2.18")
 

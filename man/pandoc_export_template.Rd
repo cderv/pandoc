@@ -18,6 +18,7 @@ pandoc_export_template(format = "markdown", output = NULL, version = "default")
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -30,10 +31,10 @@ This correspond to the \href{https://pandoc.org/MANUAL.html#option--print-defaul
 this function, one can easily export default LaTeX template for example.
 }
 \examples{
-\dontshow{if (pandoc::pandoc_available("2.7.1")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_available("2.7.1")) withAutoprint(\{ # examplesIf}
 pandoc_export_template()
 \dontshow{\}) # examplesIf}
-\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive()) withAutoprint(\{ # examplesIf}
 \dontshow{
 withr::local_dir(withr::local_tempdir())
 }

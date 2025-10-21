@@ -45,17 +45,17 @@ one if any. Installing nightly version is useful for example to test a bug
 against the very last available built version.
 }
 \examples{
-\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("latest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("latest")) withAutoprint(\{ # examplesIf}
 # Install the latest pandoc version
 pandoc_install() # or pandoc_update()
 pandoc_uninstall("latest")
 \dontshow{\}) # examplesIf}
-\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("2.11.4")) withAutoprint(\{ # examplesIf}
 # Install a specific pandoc version
 pandoc_install("2.11.4")
 pandoc_uninstall("2.11.4")
 \dontshow{\}) # examplesIf}
-\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("nightly")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (rlang::is_interactive() && !pandoc::pandoc_is_installed("nightly")) withAutoprint(\{ # examplesIf}
 # Install last nightly build of pandoc
 pandoc_install_nightly()
 pandoc_uninstall("nightly")

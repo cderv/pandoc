@@ -14,6 +14,7 @@ pandoc_list_abbreviations(version = "default")
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -29,10 +30,10 @@ spaces.
 This correspond to the option \href{https://pandoc.org/MANUAL.html#option--abbreviations}{\code{--abbreviations} as CLI flag}.
 }
 \examples{
-\dontshow{if (pandoc::pandoc_available("2.0")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_available("2.0")) withAutoprint(\{ # examplesIf}
 pandoc_list_abbreviations()
 \dontshow{\}) # examplesIf}
-\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) withAutoprint(\{ # examplesIf}
 # check abbreviations available in a specific Pandoc's version
 pandoc_list_abbreviations("2.11.4")
 \dontshow{\}) # examplesIf}

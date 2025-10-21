@@ -14,6 +14,7 @@ pandoc_list_highlight_style(version = "default")
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -26,10 +27,10 @@ the supported values which can be specify at \code{pandoc} command line using th
 \href{https://pandoc.org/MANUAL.html#option--highlight-style}{\verb{--highlight-style=} flag}.
 }
 \examples{
-\dontshow{if (pandoc::pandoc_available("2.0")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_available("2.0")) withAutoprint(\{ # examplesIf}
 pandoc_list_highlight_style()
 \dontshow{\}) # examplesIf}
-\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc::pandoc_is_installed("2.11.4")) withAutoprint(\{ # examplesIf}
 # check style available in a specific Pandoc's version
 pandoc_list_highlight_style("2.11.4")
 \dontshow{\}) # examplesIf}

@@ -16,6 +16,7 @@ pandoc_list_extensions(format = "markdown", version = "default")
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -36,11 +37,11 @@ All the extensions for the last Pandoc version released are available in
 \url{https://pandoc.org/MANUAL.html}.
 }
 \examples{
-\dontshow{if (pandoc_available("2.8")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (pandoc_available("2.8")) withAutoprint(\{ # examplesIf}
 pandoc_list_extensions("markdown")
 pandoc_list_extensions("gfm")
 \dontshow{\}) # examplesIf}
-\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "2.8") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (!is.null(pandoc::pandoc_system_bin()) && pandoc_system_version() > "2.8") withAutoprint(\{ # examplesIf}
 # target a specific version
 pandoc_list_extensions("html", version = "system")
 \dontshow{\}) # examplesIf}

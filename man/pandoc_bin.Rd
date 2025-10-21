@@ -17,6 +17,7 @@ pandoc_bin_browse(version = "default")
 \item The latest installed version with \code{"latest"}
 \item Pandoc binary shipped with RStudio IDE with \code{"rstudio"}
 \item Pandoc binary found in PATH with \code{"system"}
+\item Pandoc binary shipped with Quarto CLI with \code{"quarto"}
 }}
 }
 \value{
@@ -35,5 +36,6 @@ pandoc_bin("2.18")
 pandoc_bin("nightly")
 pandoc_bin("rstudio")
 pandoc_bin("system")
+pandoc_bin("quarto")
 pandoc_bin_browse("2.18")
 }
