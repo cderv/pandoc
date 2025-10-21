@@ -52,7 +52,7 @@ test_that("pandoc_which_bin_quarto() - found with valid pandoc", {
     }
   )
   local_mocked_bindings(
-    fs::file_exists = function(path) {
+    file_exists = function(path) {
       grepl("tools/pandoc", as.character(path))
     },
     .package = "fs"
@@ -85,7 +85,7 @@ test_that("pandoc_which_bin_quarto() - found but pandoc missing", {
     }
   )
   local_mocked_bindings(
-    fs::file_exists = function(path) FALSE,
+    file_exists = function(path) FALSE,
     .package = "fs"
   )
   expect_null(pandoc_which_bin_quarto())
