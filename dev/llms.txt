@@ -1,0 +1,258 @@
+# pandoc
+
+**pandoc** is currently an experimental R package primarily develop to
+help maintainers of R Markdown ecosystem.
+
+Indeed, the R Markdown ecosystem is highly dependent on Pandoc
+(<https://pandoc.org/>) changes and it is designed to be as version
+independent as possible. R Markdown is best used with the latest Pandoc
+version but any **rmarkdown** package version should work with previous
+version of Pandoc, and new change in Pandoc should not break any
+**rmarkdown** features.
+
+This explains the needs for a more focused tooling to:
+
+- Install and manage several Pandoc versions. This is useful for testing
+  versions and comparing between them.
+- Call Pandoc’s command directly without the layers added by
+  **rmarkdown**. This is useful for debugging or quickly iterating and
+  finding where a bug comes from.
+- Retrieve information from Pandoc directly. Each version comes with
+  changes and some of them are included into the binary. Being able to
+  retrieve those information and compare between versions is important
+  to help maintain the user exposed tooling.
+
+This package can also be useful to advanced developers that are working
+around Pandoc through **rmarkdown** or not.
+
+## Installation
+
+Install from CRAN:
+
+``` r
+install.packages("pandoc")
+```
+
+The development version can be install from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("cderv/pandoc")
+```
+
+## Usage
+
+All functions are prefixed with `pandoc_` and you will find below their
+main usage. See [Get
+started](https://cderv.github.io/pandoc/articles/pandoc.html) for usage
+examples and
+[Reference](https://cderv.github.io/pandoc/reference/index.html) page
+for full details of functions.
+
+Most functions follows these following rules:
+
+- They are prefixed with `pandoc_` .
+- They can be used with any installed Pandoc version using `version`
+  argument.
+- Versions to use are passed as a string, either the version number (e.g
+  `"2.14.2"` ), or one special alias (`default`, `nightly` , `rstudio` ,
+  `system`) .
+
+Available functions allows:
+
+- Installing / Uninstalling specific Pandoc version from ‘2.0.3’ to
+  ‘3.1.6.2’ , including development version of Pandoc.
+  - [`pandoc_install()`](https://cderv.github.io/pandoc/dev/reference/pandoc_install.md),
+    [`pandoc_install_nightly()`](https://cderv.github.io/pandoc/dev/reference/pandoc_install.md),
+    [`pandoc_uninstall()`](https://cderv.github.io/pandoc/dev/reference/pandoc_uninstall.md),
+    …
+- Switching Pandoc version by activating a specific one or running any
+  function with a specific Pandoc version using `version=` argument.
+  - [`pandoc_activate()`](https://cderv.github.io/pandoc/dev/reference/pandoc_activate.md)
+    , `with_pandoc()` , ….
+- Managing locally installed version of Pandoc as versions installed by
+  this package are located within one folder per version in a user’s
+  data directory.
+  - [`pandoc_installed_versions()`](https://cderv.github.io/pandoc/dev/reference/pandoc_installed_versions.md)
+    , `pandoc_installed_latest` ,
+    [`pandoc::pandoc_is_installed()`](https://cderv.github.io/pandoc/dev/reference/pandoc_installed_versions.md)
+    ,
+    [`pandoc_locate()`](https://cderv.github.io/pandoc/dev/reference/pandoc_locate.md),
+    [`pandoc_available()`](https://cderv.github.io/pandoc/dev/reference/pandoc_available.md),
+    …
+- Using easily one of the installed version with **rmarkdown** (i.e
+  [`rmarkdown::render()`](https://pkgs.rstudio.com/rmarkdown/reference/render.html)
+  will use the version activated by this pandoc)
+  - See `pandoc::pandoc_activate(rmarkdown = TRUE)`
+- Running a Pandoc binary from R, including a version installed
+  system-wise (`pandoc_bin("system")`), or the version shipped with
+  RStudio (`pandoc_bin("rstudio")`).
+- Calling binary at low-level from R with any version installed.
+  - [`pandoc_run()`](https://cderv.github.io/pandoc/dev/reference/pandoc_run.md)
+- to easily access information in R usually requiring command line
+  execution
+  - [`pandoc_version()`](https://cderv.github.io/pandoc/dev/reference/pandoc_version.md),
+    [`pandoc_list_extensions()`](https://cderv.github.io/pandoc/dev/reference/pandoc_list_extensions.md)
+    ,
+    [`pandoc_export_template()`](https://cderv.github.io/pandoc/dev/reference/pandoc_export_template.md)
+    , and all other wrappers…
+- opening Pandoc’s resources from R
+  - [`pandoc::pandoc_browse_manual()`](https://cderv.github.io/pandoc/dev/reference/pandoc_browse_manual.md),
+    [`pandoc::pandoc_browse_extension()`](https://cderv.github.io/pandoc/dev/reference/pandoc_browse_extension.md)
+    , ….
+
+## Example
+
+``` r
+library(pandoc)
+# Install version
+pandoc_install("2.7.3")
+#> ✔ Pandoc 2.7.3 already installed.
+#>   Use 'force = TRUE' to overwrite.
+pandoc_install("2.11.4")
+#> ✔ Pandoc 2.11.4 already installed.
+#>   Use 'force = TRUE' to overwrite.
+# Highest install is used
+pandoc_version()
+#> [1] '3.1.6'
+```
+
+See detailed examples in [Get
+started](https://cderv.github.io/pandoc/articles/pandoc.html).
+
+## Code of Conduct
+
+Please note that the **pandoc** project is released with a [Contributor
+Code of Conduct](https://cderv.github.io/pandoc/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+# Package index
+
+## Install & Manage Pandoc with this package
+
+### Install / Update / Uninstall Pandoc
+
+- [`pandoc_install()`](https://cderv.github.io/pandoc/dev/reference/pandoc_install.md)
+  [`pandoc_update()`](https://cderv.github.io/pandoc/dev/reference/pandoc_install.md)
+  [`pandoc_install_nightly()`](https://cderv.github.io/pandoc/dev/reference/pandoc_install.md)
+  : Install a pandoc binary for Github release page
+- [`pandoc_installed_versions()`](https://cderv.github.io/pandoc/dev/reference/pandoc_installed_versions.md)
+  [`pandoc_installed_latest()`](https://cderv.github.io/pandoc/dev/reference/pandoc_installed_versions.md)
+  [`pandoc_is_installed()`](https://cderv.github.io/pandoc/dev/reference/pandoc_installed_versions.md)
+  : Check Pandoc versions already installed
+- [`pandoc_uninstall()`](https://cderv.github.io/pandoc/dev/reference/pandoc_uninstall.md)
+  : Uninstall a Pandoc version
+- [`pandoc_available_releases()`](https://cderv.github.io/pandoc/dev/reference/pandoc_available_releases.md)
+  : Fetch all versions available to install
+
+### Manage versions installed by this package
+
+Functions to find an installed version by this package
+
+- [`pandoc_installed_versions()`](https://cderv.github.io/pandoc/dev/reference/pandoc_installed_versions.md)
+  [`pandoc_installed_latest()`](https://cderv.github.io/pandoc/dev/reference/pandoc_installed_versions.md)
+  [`pandoc_is_installed()`](https://cderv.github.io/pandoc/dev/reference/pandoc_installed_versions.md)
+  : Check Pandoc versions already installed
+- [`pandoc_locate()`](https://cderv.github.io/pandoc/dev/reference/pandoc_locate.md)
+  : Locate a specific Pandoc version installed with this package
+
+## Get path to any pandoc binary
+
+Functions to access pandoc binary path, including external ones.
+
+- [`pandoc_bin()`](https://cderv.github.io/pandoc/dev/reference/pandoc_bin.md)
+  [`pandoc_bin_browse()`](https://cderv.github.io/pandoc/dev/reference/pandoc_bin.md)
+  : Get path to the pandoc binary
+- [`pandoc_citeproc_bin()`](https://cderv.github.io/pandoc/dev/reference/pandoc_citeproc_bin.md)
+  : Get path to the pandoc-citeproc binary.
+- [`pandoc_quarto_version()`](https://cderv.github.io/pandoc/dev/reference/quarto_pandoc.md)
+  [`pandoc_quarto_bin()`](https://cderv.github.io/pandoc/dev/reference/quarto_pandoc.md)
+  : Retrieve path and version of Pandoc shipped with Quarto CLI
+- [`pandoc_rstudio_version()`](https://cderv.github.io/pandoc/dev/reference/rstudio_pandoc.md)
+  [`pandoc_rstudio_bin()`](https://cderv.github.io/pandoc/dev/reference/rstudio_pandoc.md)
+  : Retrieve path and version of Pandoc shipped with RStudio
+- [`pandoc_system_version()`](https://cderv.github.io/pandoc/dev/reference/system_pandoc.md)
+  [`pandoc_system_bin()`](https://cderv.github.io/pandoc/dev/reference/system_pandoc.md)
+  : Retrieve path and version of Pandoc found on the system PATH
+
+## Handle Pandoc version
+
+### Activate a pandoc version
+
+Function to change active default version of Pandoc used
+
+- [`pandoc_activate()`](https://cderv.github.io/pandoc/dev/reference/pandoc_activate.md)
+  : Activate a specific Pandoc version to be used
+- [`with_pandoc_version()`](https://cderv.github.io/pandoc/dev/reference/with_pandoc_version.md)
+  [`local_pandoc_version()`](https://cderv.github.io/pandoc/dev/reference/with_pandoc_version.md)
+  : Execute any code with a specific Pandoc version
+
+### Check pandoc (active) version
+
+- [`pandoc_is_active()`](https://cderv.github.io/pandoc/dev/reference/pandoc_is_active.md)
+  : Is a pandoc version active ?
+- [`pandoc_available()`](https://cderv.github.io/pandoc/dev/reference/pandoc_available.md)
+  : Check if active Pandoc version meet a requirement
+- [`pandoc_version()`](https://cderv.github.io/pandoc/dev/reference/pandoc_version.md)
+  : Get Pandoc version
+
+## Run pandoc binary
+
+- [`pandoc_run()`](https://cderv.github.io/pandoc/dev/reference/pandoc_run.md)
+  : Run the pandoc binary from R
+- [`pandoc_convert()`](https://cderv.github.io/pandoc/dev/reference/pandoc_convert.md)
+  : Run Pandoc to convert a document or a text
+
+### List some informations built-in Pandoc binary
+
+Functions to access from R information usually accessible by command
+line only
+
+- [`pandoc_list_abbreviations()`](https://cderv.github.io/pandoc/dev/reference/pandoc_list_abbreviations.md)
+  : List system default abbreviations
+- [`pandoc_list_extensions()`](https://cderv.github.io/pandoc/dev/reference/pandoc_list_extensions.md)
+  : List supported extensions for a format
+- [`pandoc_list_formats()`](https://cderv.github.io/pandoc/dev/reference/pandoc_list_formats.md)
+  : List available supported formats
+- [`pandoc_list_highlight_languages()`](https://cderv.github.io/pandoc/dev/reference/pandoc_list_highlight_languages.md)
+  : List supported languages for Pandoc syntax highlighting
+- [`pandoc_list_highlight_style()`](https://cderv.github.io/pandoc/dev/reference/pandoc_list_highlight_style.md)
+  : List supported styles for Pandoc syntax highlighting
+
+### Export templates and other file content built-in Pandoc binary
+
+Functions to export to file templates, reference doc and other data file
+
+- [`pandoc_export_data_file()`](https://cderv.github.io/pandoc/dev/reference/pandoc_export_data_file.md)
+  [`pandoc_export_reference_doc()`](https://cderv.github.io/pandoc/dev/reference/pandoc_export_data_file.md)
+  : Export Pandoc internal data file
+- [`pandoc_export_highlight_theme()`](https://cderv.github.io/pandoc/dev/reference/pandoc_export_highlight_theme.md)
+  : Export highlighting style as JSON file
+- [`pandoc_export_template()`](https://cderv.github.io/pandoc/dev/reference/pandoc_export_template.md)
+  : Retrieve Pandoc template for a format
+
+## Browse Pandoc’s useful online resources
+
+Functions for quickly accessing relevant online resources.
+
+- [`pandoc_browse_citation()`](https://cderv.github.io/pandoc/dev/reference/pandoc_browse_citation.md)
+  : Open Pandoc's documentation about citation processing
+- [`pandoc_browse_exit_code()`](https://cderv.github.io/pandoc/dev/reference/pandoc_browse_exit_code.md)
+  : Open Pandoc's documentation about exit codes
+- [`pandoc_browse_extension()`](https://cderv.github.io/pandoc/dev/reference/pandoc_browse_extension.md)
+  : Open Pandoc's documentation about an extension
+- [`pandoc_browse_manual()`](https://cderv.github.io/pandoc/dev/reference/pandoc_browse_manual.md)
+  : Open Pandoc's MANUAL
+- [`pandoc_browse_option()`](https://cderv.github.io/pandoc/dev/reference/pandoc_browse_option.md)
+  : Open Pandoc's documentation about a command line option
+- [`pandoc_browse_release()`](https://cderv.github.io/pandoc/dev/reference/pandoc_browse_release.md)
+  : Open Pandoc's release page in browser
+
+# Articles
+
+### All vignettes
+
+- [Comparing Pandoc
+  versions](https://cderv.github.io/pandoc/dev/articles/comparing-versions.md):
+- [pandoc](https://cderv.github.io/pandoc/dev/articles/pandoc.md):
